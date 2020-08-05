@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>第一篇博客</title>
-    <link href="/2020/08/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <url>/2020/08/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <title>Hello World</title>
+    <link href="/2020/08/06/hello-world/"/>
+    <url>/2020/08/06/hello-world/</url>
     
-    <content type="html"><![CDATA[<h4 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h4><p>vsftpd是linux下的一款小巧轻快，安全易用的FTP服务器软件，是一款在各个Linux发行版中最受推崇的FTP服务器软件。</p><p>1.安装vsftpd，直接yum 安装就可以了</p><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y vsftpd</code></pre><p>2.相关配置文件：</p><pre><code class="hljs awk">cd <span class="hljs-regexp">/etc/</span>vsftpd</code></pre><p>3.启动服务</p><p><code>systemctl enable vsftpd.service</code> //设置开机自启动</p><p><code>systemctl start vsftpd.service</code> //启动ftp服务</p><p><code>netstat -antup | grep ftp</code> //查看ftp服务端口</p><p>4.另外简单介绍下vsftpd.conf的配置文件参数说明。</p><pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>vsftpd/vsftpd.conf</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
     
@@ -17,11 +17,11 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2020/08/05/hello-world/"/>
-    <url>/2020/08/05/hello-world/</url>
+    <title>第一篇博客</title>
+    <link href="/2020/08/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2020/08/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h4 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h4><p>vsftpd是linux下的一款小巧轻快，安全易用的FTP服务器软件，是一款在各个Linux发行版中最受推崇的FTP服务器软件。</p><p>1.安装vsftpd，直接yum 安装就可以了</p><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y vsftpd</code></pre><p>2.相关配置文件：</p><pre><code class="hljs awk">cd <span class="hljs-regexp">/etc/</span>vsftpd</code></pre><p>3.启动服务</p><p><code>systemctl enable vsftpd.service</code> //设置开机自启动</p><p><code>systemctl start vsftpd.service</code> //启动ftp服务</p><p><code>netstat -antup | grep ftp</code> //查看ftp服务端口</p><p>4.另外简单介绍下vsftpd.conf的配置文件参数说明。</p><pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>vsftpd/vsftpd.conf</code></pre>]]></content>
     
     
     
