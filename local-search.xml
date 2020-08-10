@@ -4,6 +4,147 @@
   
   
   <entry>
+    <title>Centos7搭建FTP</title>
+    <link href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/"/>
+    <url>/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/</url>
+    
+    <content type="html"><![CDATA[<h4 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h4><p>vsftpd是linux下的一款小巧轻快，安全易用的FTP服务器软件，是一款在各个Linux发行版中最受推崇的FTP服务器软件。</p><p>1.安装vsftpd，直接yum 安装就可以了</p><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y vsftpd</code></pre><p>2.相关配置文件：</p><pre><code class="hljs awk">cd <span class="hljs-regexp">/etc/</span>vsftpd</code></pre><p>3.启动服务</p><p><code>systemctl enable vsftpd.service</code> //设置开机自启动</p><p><code>systemctl start vsftpd.service</code> //启动ftp服务</p><p><code>netstat -antup | grep ftp</code> //查看ftp服务端口</p><p>4.另外简单介绍下vsftpd.conf的配置文件参数说明。</p><pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>vsftpd/vsftpd.conf</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ftp</tag>
+      
+      <tag>Centos7</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux安装Node+Npm</title>
+    <link href="/2020/08/10/Linux%E5%AE%89%E8%A3%85Node+Npm/"/>
+    <url>/2020/08/10/Linux%E5%AE%89%E8%A3%85Node+Npm/</url>
+    
+    <content type="html"><![CDATA[<h4 id="Linux安装Node-Npm"><a href="#Linux安装Node-Npm" class="headerlink" title="Linux安装Node+Npm"></a>Linux安装Node+Npm</h4><ul><li>node官网下载node（**Linux Binaries (x64)**）安装包 <a href="https://links.jianshu.com/go?to=https://nodejs.org/zh-cn/download/">https://nodejs.org/zh-cn/download/</a></li><li>执行解压操作</li></ul><pre><code class="hljs css"><span class="hljs-selector-tag">tar</span> <span class="hljs-selector-tag">-xvf</span> <span class="hljs-selector-tag">node-v10</span><span class="hljs-selector-class">.16</span><span class="hljs-selector-class">.3-linux-x64</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.xz</span> </code></pre><h5 id="确认一下nodejs下bin目录是否有node-和npm文件-如果有执行软连接，如果没有重新下载"><a href="#确认一下nodejs下bin目录是否有node-和npm文件-如果有执行软连接，如果没有重新下载" class="headerlink" title="确认一下nodejs下bin目录是否有node 和npm文件,如果有执行软连接，如果没有重新下载"></a><strong>确认一下nodejs下bin目录是否有node 和npm文件,如果有执行软连接，如果没有重新下载</strong></h5><ul><li>建立软连接，变为全局,对应自己路径</li></ul><pre><code class="hljs bash">ln -s /usr/<span class="hljs-built_in">local</span>/src/node-v10.16.3-linux-x64/bin/npm  /usr/<span class="hljs-built_in">local</span>/bin/(此处不改)ln -s /usr/<span class="hljs-built_in">local</span>/src/node-v10.16.3-linux-x64/bin/node /usr/<span class="hljs-built_in">local</span>/bin/</code></pre><ul><li>验证node是否生效</li></ul><pre><code class="hljs undefined">npm -v node -v</code></pre><h4 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h4><pre><code class="hljs arduino">npm <span class="hljs-built_in">config</span> <span class="hljs-built_in">set</span> registry https:<span class="hljs-comment">//registry.npm.taobao.org</span><span class="hljs-comment">// 配置后可通过下面方式来验证是否成功</span>npm <span class="hljs-built_in">config</span> <span class="hljs-built_in">get</span> registry</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+      <tag>npm</tag>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Mongo常用查询</title>
+    <link href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/"/>
+    <url>/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/</url>
+    
+    <content type="html"><![CDATA[<h4 id="查询并显示集合中的数据"><a href="#查询并显示集合中的数据" class="headerlink" title="查询并显示集合中的数据"></a>查询并显示集合中的数据</h4><pre><code class="hljs javascript">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).aggregate([    &#123; <span class="hljs-attr">$group</span>: &#123; <span class="hljs-attr">_id</span> : <span class="hljs-string">&#x27;$author.id&#x27;</span>, <span class="hljs-attr">count</span>: &#123; <span class="hljs-attr">$sum</span> : <span class="hljs-number">1</span> &#125; &#125; &#125;,    &#123; <span class="hljs-attr">$match</span>: &#123; <span class="hljs-attr">count</span>: &#123; <span class="hljs-attr">$gt</span> : <span class="hljs-number">1</span>&#125; &#125; &#125;])</code></pre><h4 id="查询条件为数据中对象某个属性值"><a href="#查询条件为数据中对象某个属性值" class="headerlink" title="查询条件为数据中对象某个属性值"></a>查询条件为数据中对象某个属性值</h4><pre><code class="hljs javascript">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).find(&#123;<span class="hljs-string">&quot;author.id&quot;</span>:<span class="hljs-number">35562628</span>&#125;)</code></pre><h4 id="命令导出数据库"><a href="#命令导出数据库" class="headerlink" title="命令导出数据库"></a>命令导出数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoexport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Images -c picjson -o <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json -f <span class="hljs-string">&quot;_id,tags,pid,p,uid,title,author,url,r18,width,height,_v&quot;</span></code></pre><h4 id="命令导入数据库"><a href="#命令导入数据库" class="headerlink" title="命令导入数据库"></a>命令导入数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoimport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Pixiv -c picjson <span class="hljs-params">--file</span> <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>mongodb</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux安装MongoDB</title>
+    <link href="/2020/08/10/MongoDB/"/>
+    <url>/2020/08/10/MongoDB/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h2><p>　　官方下载地址：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></p><h2 id="2-上传解压"><a href="#2-上传解压" class="headerlink" title="2.上传解压"></a>2.上传解压</h2><h3 id="1-使用工具（FileZilla）上传至服务器"><a href="#1-使用工具（FileZilla）上传至服务器" class="headerlink" title="　　1.使用工具（FileZilla）上传至服务器"></a>　　1.使用工具（FileZilla）上传至服务器</h3><p>　　<img src="https://i.loli.net/2020/08/10/1EluM4Qy2CVPpZ6.png" alt="img"></p><h3 id="2-解压安装"><a href="#2-解压安装" class="headerlink" title="　　2.解压安装"></a>　　2.解压安装</h3><pre><code class="hljs angelscript">解压：tar -zxvf mongodb-linux-x86_64<span class="hljs-number">-4.0</span><span class="hljs-number">.6</span>.tgz移动：mv ./mongodb-linux-x86_64<span class="hljs-number">-4.0</span><span class="hljs-number">.6</span> /usr/local/mongodb</code></pre><p>　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315144629293-243768918.png" alt="img"></p><h2 id="3-配置conf与目录"><a href="#3-配置conf与目录" class="headerlink" title="3.配置conf与目录"></a>3.配置conf与目录</h2><h3 id="1-进入mongodb目录"><a href="#1-进入mongodb目录" class="headerlink" title="　　1.进入mongodb目录　　　"></a>　　1.进入mongodb目录　　　</h3><pre><code class="hljs awk">cd <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mongodb/</span></code></pre><p>　　　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315145017284-1028054786.png" alt="img"></p><h3 id="2-创建db目录和日志文件"><a href="#2-创建db目录和日志文件" class="headerlink" title="　　2.创建db目录和日志文件　　"></a>　　2.创建db目录和日志文件　　</h3><pre><code class="hljs awk">mkdir -p .<span class="hljs-regexp">/data/</span>dbmkdir -p ./logstouch .<span class="hljs-regexp">/logs/m</span>ongodb.log</code></pre><p>　　　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315145325509-1623167612.png" alt="img"></p><h3 id="3-创建mongodb-conf文件"><a href="#3-创建mongodb-conf文件" class="headerlink" title="　　3.创建mongodb.conf文件"></a>　　3.创建mongodb.conf文件</h3><p>　　　　<strong>vim mongodb.conf</strong></p><pre><code class="hljs ini"><span class="hljs-comment">#端口号</span><span class="hljs-attr">port</span>=<span class="hljs-number">27017</span><span class="hljs-comment">#db目录</span><span class="hljs-attr">dbpath</span>=/usr/local/mongodb/data/db<span class="hljs-comment">#日志目录</span><span class="hljs-attr">logpath</span>=//usr/local/mongodb/logs/mongodb.log<span class="hljs-comment">#后台</span><span class="hljs-attr">fork</span>=<span class="hljs-literal">true</span><span class="hljs-comment">#日志输出</span><span class="hljs-attr">logappend</span>=<span class="hljs-literal">true</span><span class="hljs-comment">#允许远程IP连接</span><span class="hljs-attr">bind_ip</span>=<span class="hljs-number">0.0</span>.<span class="hljs-number">0.0</span></code></pre><h2 id="4-启动测试"><a href="#4-启动测试" class="headerlink" title="4.启动测试"></a>4.启动测试</h2><h3 id="1-启动"><a href="#1-启动" class="headerlink" title="　　1.启动　"></a>　　1.启动　</h3><pre><code class="hljs awk">.<span class="hljs-regexp">/bin/m</span>ongod --config mongodb.conf</code></pre><p> 　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315150104231-1845968800.png" alt="img"></p><h3 id="2-连接"><a href="#2-连接" class="headerlink" title="　　2.连接　"></a>　　2.连接　</h3><pre><code class="hljs awk">.<span class="hljs-regexp">/bin/m</span>ongo  --默认端口<span class="hljs-number">27017</span>.<span class="hljs-regexp">/bin/m</span>ongo localhost:<span class="hljs-number">23234</span>  --指定端口，需要与配置的端口号一致</code></pre><p>　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315150455580-93719054.png" alt="img"></p><h3 id="3-测试"><a href="#3-测试" class="headerlink" title="　　3.测试　　"></a>　　3.测试　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315152856246-931789177.png" alt="img"></h3><h2 id="5-配置mongodb服务开机启动"><a href="#5-配置mongodb服务开机启动" class="headerlink" title="5.配置mongodb服务开机启动"></a>5.配置mongodb服务开机启动</h2><h3 id="1-设置mongodb-service开机服务启动"><a href="#1-设置mongodb-service开机服务启动" class="headerlink" title="1.设置mongodb.service开机服务启动"></a>1.设置mongodb.service开机服务启动</h3><pre><code class="hljs routeros">cd /lib/systemd/systemvim mongodb.service添加如下配置--记得路劲和自己的配置路径要一致[Unit]<span class="hljs-attribute">Description</span>=mongodb<span class="hljs-attribute">After</span>=network.target remote-fs.target nss-lookup.target[Service]<span class="hljs-attribute">Type</span>=forking<span class="hljs-attribute">ExecStart</span>=/usr/local/mongodb/bin/mongod --config /usr/local/mongodb/mongodb.conf<span class="hljs-attribute">ExecReload</span>=/bin/kill -s HUP <span class="hljs-variable">$MAINPID</span><span class="hljs-attribute">ExecStop</span>=/usr/local/mongodb/bin/mongod --shutdown --config /usr/local/mongodb/mongodb.conf<span class="hljs-attribute">PrivateTmp</span>=<span class="hljs-literal">true</span>[Install]<span class="hljs-attribute">WantedBy</span>=multi-user.target</code></pre><p>   然后设置mongodb.service权限</p><pre><code class="hljs css"><span class="hljs-selector-tag">chmod</span> +<span class="hljs-selector-tag">x</span> <span class="hljs-selector-tag">mongodb</span><span class="hljs-selector-class">.service</span></code></pre><p>​    #启动服务 </p><pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> mongodb.service  </code></pre><p>   #停止服务</p><pre><code class="hljs arduino">systemctl <span class="hljs-built_in">stop</span> mongodb.service</code></pre><p>   #添加开机自启动</p><pre><code class="hljs routeros">systemctl <span class="hljs-builtin-name">enable</span> mongodb.service</code></pre><p>   #重启服务</p><pre><code class="hljs css"><span class="hljs-selector-tag">systemctl</span> <span class="hljs-selector-tag">restart</span> <span class="hljs-selector-tag">mongodb</span><span class="hljs-selector-class">.service</span></code></pre><h3 id="2）添加环境变量"><a href="#2）添加环境变量" class="headerlink" title="2）添加环境变量"></a>2）添加环境变量</h3><pre><code class="hljs routeros">1、直接用export命令：   <span class="hljs-builtin-name">export</span>  <span class="hljs-attribute">PATH</span>=<span class="hljs-variable">$PATH</span>:/usr/local/mongodb/bin2、修改profile文件：   cat &gt;&gt;/etc/profile&lt;&lt;<span class="hljs-string">&quot;EOF&quot;</span>   <span class="hljs-builtin-name">export</span> <span class="hljs-attribute">PATH</span>=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/usr/local/mongodb/bin&quot;</span>   EOF   刷新profile文件：   source /etc/profile3、 修改.bashrc文件：     cat &gt;&gt;/root/.bashrc&lt;&lt;<span class="hljs-string">&quot;EOF&quot;</span>       <span class="hljs-builtin-name">export</span> <span class="hljs-attribute">PATH</span>=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>:/usr/local/mongodb/bin&quot;</span>       EOF</code></pre><p>   上述三步依次执行完毕，环境变量配置完成！！！！</p><p>   重启服务器，输入mongo 回车就有了。。。。。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>linux</tag>
+      
+      <tag>mongo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Navicat12激活</title>
+    <link href="/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/"/>
+    <url>/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/</url>
+    
+    <content type="html"><![CDATA[<p>本教程更新时间：2019-4-19 16:37:38</p><p><a href="https://www.52pojie.cn/thread-934566-1-1.html">https://www.52pojie.cn/thread-934566-1-1.html</a></p><p>本文所需软件<br>1、navicat_premium原版安装包<br>官网下载地址：<a href="https://www.navicat.com.cn/download/navicat-premium">https://www.navicat.com.cn/download/navicat-premium</a><br>2、注册工具<br>github地址：<a href="https://github.com/DoubleLabyrinth/navicat-keygen">https://github.com/DoubleLabyrinth/navicat-keygen</a><br>以上本文所需文件已整理到网盘，自取：<br>链接：<a href="https://pan.baidu.com/s/1MDuDFBsS0EI-rz4WkQ7kJw">https://pan.baidu.com/s/1MDuDFBsS0EI-rz4WkQ7kJw</a><br>提取码：gdn5<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p><p>~<del>~ 分割线</del></p><p>好了，教程开始<br><strong>1、安装原版navicat</strong><br>正常安装，一直下一步，直到安装成功，这个我就不截图了。<br>默认安装路径是：C:\Program Files\PremiumSoft\Navicat Premium 12<br><strong>2、开始激活</strong><br><strong>2.1、首先需要先替换掉Navicat激活公钥</strong><br>a、解压navicat-keygen-for-x64.zip文件，开始执行cmd命令<br>b、打开命令提示符（管理员），win+x<br>(因为我是安装在了C盘，文件写入需要管理员权限，如果安装在别的盘，普通的命令提示符就行，或者在解压文件夹按住shift点右键，也能选择命令提示符打开)</p><p><img src="https://attach.52pojie.cn/forum/201904/19/160557tm0i0zk08q0a9f99.png" alt="img"></p><p>c、进入到navicat-keygen-for-x64.zip文件的解压目录，执行如下命令</p><pre><code class="hljs latex">cd [解压目录].<span class="hljs-tag">\<span class="hljs-name">navicat</span></span>-patcher.exe &quot;C:<span class="hljs-tag">\<span class="hljs-name">Program</span></span> Files<span class="hljs-tag">\<span class="hljs-name">PremiumSoft</span></span><span class="hljs-tag">\<span class="hljs-name">Navicat</span></span> Premium 12&quot;</code></pre><p><img src="https://attach.52pojie.cn/forum/201904/19/161149zmt1zxgarvrqatj2.png" alt="img"></p><p>d、回车继续，一顿飘屏猛如虎，好的，出现这样的提示表示替换成功。成功之后会在当前文件夹下生成RegPrivateKey.pem文件</p><p><img src="https://attach.52pojie.cn/forum/201904/19/161405f9gdzno4z3d4ob5d.png" alt="img"></p><p><strong>2.2、接下来我们就要开始生成序列号和激活码</strong><br>a、和替换公钥类似，执行如下命令</p><pre><code class="hljs css">.\<span class="hljs-selector-tag">navicat-keygen</span><span class="hljs-selector-class">.exe</span> <span class="hljs-selector-tag">-text</span> .\<span class="hljs-selector-tag">RegPrivateKey</span><span class="hljs-selector-class">.pem</span></code></pre><p>b、接下来你会被要求选择Navicat产品类别、语言以及输入主版本号。之后会随机生成一个序列号。</p><p><img src="https://attach.52pojie.cn/forum/201904/19/162347wpp8fo7pktogsavt.png" alt="img"></p><p>c、得到序列号，复制下来，注意：<strong>窗口不要关闭</strong></p><p>d、此时打开安装的原版Navicat，第一次打开会出现如下提示，点击注册按钮，进入注册页面</p><p><img src="https://attach.52pojie.cn/forum/201904/19/155913jd4w4coog0sx25n5.png" alt="img"></p><p><img src="https://attach.52pojie.cn/forum/201904/19/162730x44dr8xzfg77zwbj.png" alt="img"></p><p>e、接下来输入用户名，组织名和请求码，然后回车两次，获得激活码</p><p><img src="https://attach.52pojie.cn/forum/201904/19/163431if96i5uu2610fs0s.png" alt="img"></p><p>f、把获得到的激活码粘贴到navcat中，点击激活，激活成功。</p><p><img src="https://attach.52pojie.cn/forum/201904/19/163431yrza4l445rprd888.png" alt="img"></p><p><strong>附上激活成功的截图。</strong></p><p><img src="https://attach.52pojie.cn/forum/201904/19/163432k6rbb5wdbb116pp2.png" alt="img"></p><p><img src="https://attach.52pojie.cn/forum/201904/19/164734oam0stsajsuotaja.png" alt="img"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Navicat</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VMware Workstation 15 Pro 密钥</title>
+    <link href="/2020/08/10/VMware%20Workstation%2015%20Pro%20%E5%AF%86%E9%92%A5/"/>
+    <url>/2020/08/10/VMware%20Workstation%2015%20Pro%20%E5%AF%86%E9%92%A5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="VMware-Workstation-15-Pro-密钥"><a href="#VMware-Workstation-15-Pro-密钥" class="headerlink" title="VMware Workstation 15 Pro 密钥"></a>VMware Workstation 15 Pro 密钥</h1><pre><code class="hljs apache"><span class="hljs-attribute">UG5J2</span>-<span class="hljs-number">0</span>ME<span class="hljs-number">12</span>-M<span class="hljs-number">89</span>WY-NPWXX-WQH<span class="hljs-number">88</span><span class="hljs-attribute">GA590</span>-<span class="hljs-number">86</span>Y<span class="hljs-number">05</span>-<span class="hljs-number">4806</span>Y-X<span class="hljs-number">4</span>PEE-ZV<span class="hljs-number">8</span>E<span class="hljs-number">0</span><span class="hljs-attribute">YA18K</span>-<span class="hljs-number">0</span>WY<span class="hljs-number">8</span>P-H<span class="hljs-number">85</span>DY-L<span class="hljs-number">4</span>NZG-X<span class="hljs-number">7</span>RAD<span class="hljs-attribute">UA5DR</span>-<span class="hljs-number">2</span>ZD<span class="hljs-number">4</span>H-<span class="hljs-number">089</span>FY-<span class="hljs-number">6</span>YQ<span class="hljs-number">5</span>T-YPRX<span class="hljs-number">6</span><span class="hljs-attribute">B806Y</span>-<span class="hljs-number">86</span>Y<span class="hljs-number">05</span>-GA<span class="hljs-number">590</span>-X<span class="hljs-number">4</span>PEE-ZV<span class="hljs-number">8</span>E<span class="hljs-number">0</span><span class="hljs-attribute">ZF582</span>-<span class="hljs-number">0</span>NW<span class="hljs-number">5</span>N-H<span class="hljs-number">8</span>D<span class="hljs-number">2</span>P-<span class="hljs-number">0</span>XZEE-Z<span class="hljs-number">22</span>VA</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>VMware Workstation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Vue代理</title>
+    <link href="/2020/08/10/Vue%E7%9B%B8%E5%85%B3/"/>
+    <url>/2020/08/10/Vue%E7%9B%B8%E5%85%B3/</url>
+    
+    <content type="html"><![CDATA[<h4 id="资源路径代理（图片等）"><a href="#资源路径代理（图片等）" class="headerlink" title="资源路径代理（图片等）"></a>资源路径代理（图片等）</h4><h5 id="修改index-js"><a href="#修改index-js" class="headerlink" title="修改index.js"></a>修改index.js</h5><pre><code class="hljs dts"><span class="hljs-symbol">proxyTable:</span> &#123;    <span class="hljs-string">&quot;/resources&quot;</span>: &#123;<span class="hljs-symbol">        target:</span> <span class="hljs-string">&quot;http://localhost:9100/&quot;</span>, <span class="hljs-comment">//这里填写后端存放资源文件的域名</span><span class="hljs-symbol">        ws:</span> true,<span class="hljs-symbol">        changeOrigin:</span> true, 是否跨域        <span class="hljs-comment">// 如果接口中是没有api的，那就直接置空（如上）。如果接口中有api，就需要写成&#123;‘^/api’:‘/api’&#125;</span><span class="hljs-symbol">        pathRewrite:</span> &#123;        <span class="hljs-string">&quot;/api&quot;</span>: <span class="hljs-string">&quot;/&quot;</span>    &#125;&#125;,</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2020/08/07/hello-world/"/>
     <url>/2020/08/07/hello-world/</url>
@@ -23,19 +164,6 @@
       <tag>Test</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>第一篇博客</title>
-    <link href="/2020/08/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <url>/2020/08/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    
-    <content type="html"><![CDATA[<h4 id="安装前准备"><a href="#安装前准备" class="headerlink" title="安装前准备"></a>安装前准备</h4><p>vsftpd是linux下的一款小巧轻快，安全易用的FTP服务器软件，是一款在各个Linux发行版中最受推崇的FTP服务器软件。</p><p>1.安装vsftpd，直接yum 安装就可以了</p><pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y vsftpd</code></pre><p>2.相关配置文件：</p><pre><code class="hljs awk">cd <span class="hljs-regexp">/etc/</span>vsftpd</code></pre><p>3.启动服务</p><p><code>systemctl enable vsftpd.service</code> //设置开机自启动</p><p><code>systemctl start vsftpd.service</code> //启动ftp服务</p><p><code>netstat -antup | grep ftp</code> //查看ftp服务端口</p><p>4.另外简单介绍下vsftpd.conf的配置文件参数说明。</p><pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>vsftpd/vsftpd.conf</code></pre>]]></content>
-    
-    
     
   </entry>
   

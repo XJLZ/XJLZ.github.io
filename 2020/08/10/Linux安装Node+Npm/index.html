@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Hello World - Hexo</title>
+  <title>Linux安装Node+Npm - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-07 16:51">
-      2020年8月7日 下午
+    <time datetime="2020-08-10 15:32">
+      2020年8月10日 下午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      75 字
+      162 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      2
        分钟
     </span>
   
@@ -216,37 +216,43 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre>
+              <h4 id="Linux安装Node-Npm"><a href="#Linux安装Node-Npm" class="headerlink" title="Linux安装Node+Npm"></a>Linux安装Node+Npm</h4><ul>
+<li>node官网下载node（**Linux Binaries (x64)**）安装包 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://nodejs.org/zh-cn/download/">https://nodejs.org/zh-cn/download/</a></li>
+<li>执行解压操作</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-selector-tag">tar</span> <span class="hljs-selector-tag">-xvf</span> <span class="hljs-selector-tag">node-v10</span><span class="hljs-selector-class">.16</span><span class="hljs-selector-class">.3-linux-x64</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.xz</span> </code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre>
+<h5 id="确认一下nodejs下bin目录是否有node-和npm文件-如果有执行软连接，如果没有重新下载"><a href="#确认一下nodejs下bin目录是否有node-和npm文件-如果有执行软连接，如果没有重新下载" class="headerlink" title="确认一下nodejs下bin目录是否有node 和npm文件,如果有执行软连接，如果没有重新下载"></a><strong>确认一下nodejs下bin目录是否有node 和npm文件,如果有执行软连接，如果没有重新下载</strong></h5><ul>
+<li>建立软连接，变为全局,对应自己路径</li>
+</ul>
+<pre><code class="hljs bash">ln -s /usr/<span class="hljs-built_in">local</span>/src/node-v10.16.3-linux-x64/bin/npm  /usr/<span class="hljs-built_in">local</span>/bin/(此处不改)
+ln -s /usr/<span class="hljs-built_in">local</span>/src/node-v10.16.3-linux-x64/bin/node /usr/<span class="hljs-built_in">local</span>/bin/</code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre>
+<ul>
+<li>验证node是否生效</li>
+</ul>
+<pre><code class="hljs undefined">npm -v 
+node -v</code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre>
+<h4 id="npm换源"><a href="#npm换源" class="headerlink" title="npm换源"></a>npm换源</h4><pre><code class="hljs arduino">npm <span class="hljs-built_in">config</span> <span class="hljs-built_in">set</span> registry https:<span class="hljs-comment">//registry.npm.taobao.org</span>
+<span class="hljs-comment">// 配置后可通过下面方式来验证是否成功</span>
+npm <span class="hljs-built_in">config</span> <span class="hljs-built_in">get</span> registry</code></pre>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Test/">Test</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Test/">Test</a>
+                      <a class="hover-with-bg" href="/tags/node/">node</a>
+                    
+                      <a class="hover-with-bg" href="/tags/npm/">npm</a>
+                    
+                      <a class="hover-with-bg" href="/tags/linux/">linux</a>
                     
                   </div>
                 
@@ -259,15 +265,21 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/10/Vue%E7%9B%B8%E5%85%B3/">
+                      <a href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue代理</span>
+                        <span class="hidden-mobile">Centos7搭建FTP</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </div>
                   <div class="post-next col-6">
                     
+                    
+                      <a href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/">
+                        <span class="hidden-mobile">Mongo常用查询</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </div>
                 </div>
@@ -458,7 +470,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Hello World&nbsp;",
+        "Linux安装Node+Npm&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
