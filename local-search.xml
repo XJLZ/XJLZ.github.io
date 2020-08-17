@@ -4,6 +4,48 @@
   
   
   <entry>
+    <title>JDK脚本安装</title>
+    <link href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/"/>
+    <url>/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h4 id="压缩包"><a href="#压缩包" class="headerlink" title="压缩包"></a>压缩包</h4><pre><code class="hljs awk"><span class="hljs-comment">#!/bin/bash</span><span class="hljs-comment">#判断是否安装有openJDK</span>yum list installed |grep -e java -e jdk<span class="hljs-keyword">if</span> [ $? -eq <span class="hljs-number">0</span> ]then        read -p <span class="hljs-string">&quot;继续执行将卸载已安装JDK,y确定，其他退出?&quot;</span> choose        <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$choose</span>==<span class="hljs-string">&quot;y&quot;</span> ]        then                yum -y remove java-* &amp;&gt; <span class="hljs-regexp">/dev/</span>null                yum -y remove tzdata-java* &amp;&gt; <span class="hljs-regexp">/dev/</span>null        <span class="hljs-keyword">else</span>                <span class="hljs-keyword">exit</span> <span class="hljs-number">1</span>        fifi<span class="hljs-comment">#判断安装包是否存在</span><span class="hljs-keyword">if</span> [ -f jdk-<span class="hljs-number">8</span>u261-linux-x64.tar.gz ]<span class="hljs-comment">#判断是否已经安装</span>then        java &amp;&gt; <span class="hljs-regexp">/dev/</span>null        <span class="hljs-keyword">if</span> [ $? -eq <span class="hljs-number">0</span> ]        then                echo <span class="hljs-string">&quot;已经安装JDK&quot;</span>                <span class="hljs-keyword">exit</span> <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>                echo <span class="hljs-string">&quot;开始安装JDK&quot;</span>                tar zxvf jdk-<span class="hljs-number">8</span>u261-linux-x64.tar.gz -C <span class="hljs-regexp">/usr/</span>local                echo <span class="hljs-string">&quot;JDK安装完成，开始配置环境变量&quot;</span>                echo <span class="hljs-string">&#x27;export JAVA_HOME=/usr/jdk1.8.0_261&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh                echo <span class="hljs-string">&#x27;export PATH=$PATH:$JAVA_HOME/bin&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh                echo <span class="hljs-string">&#x27;export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh                echo <span class="hljs-string">&quot;环境变量配置完成&quot;</span>        fi<span class="hljs-keyword">else</span>        echo <span class="hljs-string">&quot;请将当前shell脚本和安装包放在同一目录&quot;</span>fiecho <span class="hljs-string">&quot;开始使环境变量生效&quot;</span>chmod +x <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.shsource <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.shecho <span class="hljs-string">&quot;======JDK安装完成，请使用命令：java -version检查是否成功安装=======&quot;</span></code></pre><h4 id="rpm包"><a href="#rpm包" class="headerlink" title="rpm包"></a>rpm包</h4><pre><code class="hljs awk"><span class="hljs-comment">#!/bin/bash</span><span class="hljs-comment">#判断是否安装有openJDK</span>yum list installed |grep -e java -e jdk<span class="hljs-keyword">if</span> [ $? -eq <span class="hljs-number">0</span> ]then        read -p <span class="hljs-string">&quot;继续执行将卸载已有JDK,y确定，其他退出?&quot;</span> choose        <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$choose</span>==<span class="hljs-string">&quot;y&quot;</span> ]        then                yum -y remove java-* &amp;&gt; <span class="hljs-regexp">/dev/</span>null                yum -y remove tzdata-java* &amp;&gt; <span class="hljs-regexp">/dev/</span>null        <span class="hljs-keyword">else</span>                <span class="hljs-keyword">exit</span> <span class="hljs-number">1</span>        fifi<span class="hljs-comment">#判断安装包是否存在</span><span class="hljs-keyword">if</span> [ -f jdk-<span class="hljs-number">8</span>u261-linux-x64.rpm ]<span class="hljs-comment">#判断是否已经安装</span>then        java &amp;&gt; <span class="hljs-regexp">/dev/</span>null        <span class="hljs-keyword">if</span> [ $? -eq <span class="hljs-number">0</span> ]        then                echo <span class="hljs-string">&quot;已经安装JDK&quot;</span>                <span class="hljs-keyword">exit</span> <span class="hljs-number">1</span>        <span class="hljs-keyword">else</span>                echo <span class="hljs-string">&quot;开始安装JDK&quot;</span>                rpm -ivh jdk-<span class="hljs-number">8</span>u261-linux-x64.rpm &amp;&gt;<span class="hljs-regexp">/dev/</span>null                echo <span class="hljs-string">&quot;JDK安装完成，开始配置环境变量&quot;</span>                echo <span class="hljs-string">&#x27;export JAVA_HOME=/usr/java/jdk1.8.0_261-amd64&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh                echo <span class="hljs-string">&#x27;export PATH=$JAVA_HOME/bin:$PATH&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh                echo <span class="hljs-string">&#x27;export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh                echo <span class="hljs-string">&quot;环境变量配置完成&quot;</span>        fi<span class="hljs-keyword">else</span>        echo <span class="hljs-string">&quot;请将当前shell脚本和安装包放在同一目录&quot;</span>fichmod +x <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.shsh <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.shecho <span class="hljs-string">&quot;======JDK安装完成，请使用命令：java -version检查是否成功安装=======&quot;</span></code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+      <tag>JDK</tag>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Centos7 常用命令</title>
+    <link href="/2020/08/10/Centos7%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <url>/2020/08/10/Centos7%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h4 id="开端口"><a href="#开端口" class="headerlink" title="开端口"></a>开端口</h4><pre><code class="hljs routeros">【单个】firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=8090/tcp --permanent【范围】firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=50000-50100/tcp --permanent【删除】firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--remove-port</span>=80/tcp --permanent  <span class="hljs-comment">#找出公共区域的所有设置</span>firewall-cmd <span class="hljs-attribute">--zone</span>=public --list-allfirewall-cmd --list-all</code></pre><h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><pre><code class="hljs css"><span class="hljs-selector-tag">systemctl</span> <span class="hljs-selector-tag">restart</span> <span class="hljs-selector-tag">firewalld</span><span class="hljs-selector-class">.service</span></code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Centos7搭建FTP</title>
     <link href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/"/>
     <url>/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/</url>
@@ -14,9 +56,9 @@
     
     <tags>
       
-      <tag>ftp</tag>
-      
       <tag>Centos7</tag>
+      
+      <tag>ftp</tag>
       
     </tags>
     
@@ -48,25 +90,6 @@
   
   
   <entry>
-    <title>Mongo常用查询</title>
-    <link href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/"/>
-    <url>/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/</url>
-    
-    <content type="html"><![CDATA[<h4 id="查询并显示集合中的数据"><a href="#查询并显示集合中的数据" class="headerlink" title="查询并显示集合中的数据"></a>查询并显示集合中的数据</h4><pre><code class="hljs javascript">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).aggregate([    &#123; <span class="hljs-attr">$group</span>: &#123; <span class="hljs-attr">_id</span> : <span class="hljs-string">&#x27;$author.id&#x27;</span>, <span class="hljs-attr">count</span>: &#123; <span class="hljs-attr">$sum</span> : <span class="hljs-number">1</span> &#125; &#125; &#125;,    &#123; <span class="hljs-attr">$match</span>: &#123; <span class="hljs-attr">count</span>: &#123; <span class="hljs-attr">$gt</span> : <span class="hljs-number">1</span>&#125; &#125; &#125;])</code></pre><h4 id="查询条件为数据中对象某个属性值"><a href="#查询条件为数据中对象某个属性值" class="headerlink" title="查询条件为数据中对象某个属性值"></a>查询条件为数据中对象某个属性值</h4><pre><code class="hljs javascript">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).find(&#123;<span class="hljs-string">&quot;author.id&quot;</span>:<span class="hljs-number">35562628</span>&#125;)</code></pre><h4 id="命令导出数据库"><a href="#命令导出数据库" class="headerlink" title="命令导出数据库"></a>命令导出数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoexport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Images -c picjson -o <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json -f <span class="hljs-string">&quot;_id,tags,pid,p,uid,title,author,url,r18,width,height,_v&quot;</span></code></pre><h4 id="命令导入数据库"><a href="#命令导入数据库" class="headerlink" title="命令导入数据库"></a>命令导入数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoimport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Pixiv -c picjson <span class="hljs-params">--file</span> <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json</code></pre>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>mongodb</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Linux安装MongoDB</title>
     <link href="/2020/08/10/MongoDB/"/>
     <url>/2020/08/10/MongoDB/</url>
@@ -88,6 +111,25 @@
   
   
   <entry>
+    <title>Mongo常用查询</title>
+    <link href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/"/>
+    <url>/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/</url>
+    
+    <content type="html"><![CDATA[<h4 id="查询并显示集合中的数据"><a href="#查询并显示集合中的数据" class="headerlink" title="查询并显示集合中的数据"></a>查询并显示集合中的数据</h4><pre><code class="hljs javascript">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).aggregate([    &#123; <span class="hljs-attr">$group</span>: &#123; <span class="hljs-attr">_id</span> : <span class="hljs-string">&#x27;$author.id&#x27;</span>, <span class="hljs-attr">count</span>: &#123; <span class="hljs-attr">$sum</span> : <span class="hljs-number">1</span> &#125; &#125; &#125;,    &#123; <span class="hljs-attr">$match</span>: &#123; <span class="hljs-attr">count</span>: &#123; <span class="hljs-attr">$gt</span> : <span class="hljs-number">1</span>&#125; &#125; &#125;])</code></pre><h4 id="查询条件为数据中对象某个属性值"><a href="#查询条件为数据中对象某个属性值" class="headerlink" title="查询条件为数据中对象某个属性值"></a>查询条件为数据中对象某个属性值</h4><pre><code class="hljs javascript">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).find(&#123;<span class="hljs-string">&quot;author.id&quot;</span>:<span class="hljs-number">35562628</span>&#125;)</code></pre><h4 id="命令导出数据库"><a href="#命令导出数据库" class="headerlink" title="命令导出数据库"></a>命令导出数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoexport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Images -c picjson -o <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json -f <span class="hljs-string">&quot;_id,tags,pid,p,uid,title,author,url,r18,width,height,_v&quot;</span></code></pre><h4 id="命令导入数据库"><a href="#命令导入数据库" class="headerlink" title="命令导入数据库"></a>命令导入数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoimport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Pixiv -c picjson <span class="hljs-params">--file</span> <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>mongodb</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Navicat12激活</title>
     <link href="/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/"/>
     <url>/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/</url>
@@ -99,6 +141,50 @@
     <tags>
       
       <tag>Navicat</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>MySQ5.7脚本安装</title>
+    <link href="/2020/08/10/Mysql5.7%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/"/>
+    <url>/2020/08/10/Mysql5.7%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><pre><code class="hljs awk"><span class="hljs-comment">#!/bin/bash</span>data=<span class="hljs-string">&quot;root/mysql&quot;</span>echo <span class="hljs-string">&quot;将mysql压缩包解压&quot;</span>tar xvf mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">30</span>-linux-glibc2.<span class="hljs-number">12</span>-x86_64.tar.gz echo <span class="hljs-string">&quot;新建mysql文件夹&quot;</span><span class="hljs-keyword">if</span> [ ! -d <span class="hljs-string">&quot;/&quot;</span><span class="hljs-variable">$&#123;data&#125;</span><span class="hljs-string">&quot;/mysql-5.7.30-linux-glibc2.12-x86_64&quot;</span> ]; then        echo <span class="hljs-string">&quot;mysql解压未完成&quot;</span>        <span class="hljs-keyword">exit</span>fiecho <span class="hljs-string">&quot;mysql解压完成修改文件夹&quot;</span>mv mysql-<span class="hljs-number">5.7</span>.<span class="hljs-number">30</span>-linux-glibc2.<span class="hljs-number">12</span>-x86_64 mysqlmv mysql <span class="hljs-regexp">/usr/</span>localecho <span class="hljs-string">&quot;mysql解压完成&quot;</span>echo <span class="hljs-string">&quot;切换目录&quot;</span>cd <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mysql/</span>echo <span class="hljs-string">&quot;新建数据库data目录&quot;</span>mkdir dataecho <span class="hljs-string">&quot;初始化mysql&quot;</span>cd <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mysql/</span>bin<span class="hljs-regexp">/mysqld --initialize --user=root --basedir=/u</span>sr<span class="hljs-regexp">/local/my</span>sql --datadir=<span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mysql/</span>dataecho <span class="hljs-string">&quot;修改配置文件&quot;</span>cat <span class="hljs-regexp">/dev/</span>null &gt; <span class="hljs-regexp">/etc/my</span>.cnf<span class="hljs-keyword">if</span> [ -f <span class="hljs-string">&quot;/etc/my.cnf&quot;</span> ]; then        mv <span class="hljs-regexp">/etc/my</span>.cnf <span class="hljs-regexp">/etc/my</span>.cnf.bakfiecho <span class="hljs-string">&#x27;[mysqld]&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;bind-address=0.0.0.0&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;basedir = /usr/local/mysql&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;datadir = /usr/local/mysql/data&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;socket=/tmp/mysql.sock&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;user=root&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;port=3306&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;character-set-server=utf8&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf<span class="hljs-comment">#echo &#x27;skip-grant-tables&#x27; &gt;&gt; /etc/my.cnf</span>echo <span class="hljs-string">&#x27;# Disabling symbolic-links is recommended to prevent assorted security risks&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;symbolic-links=0&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;# skip-grant-tables&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;[mysqld_safe]&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;log-error=/var/log/mysqld.log&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;pid-file=/var/run/mysqld/mysqld.pid&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;!includedir /etc/my.cnf.d&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;[client]&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;user=root&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;password=123456&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&#x27;port=3306&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnfecho <span class="hljs-string">&quot;配置修改完成，将mysql加入服务&quot;</span>cp <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mysql/</span>support-files<span class="hljs-regexp">/mysql.server /</span>etc<span class="hljs-regexp">/init.d/my</span>sqld<span class="hljs-comment">#chmod +x /etc/init.d/mysqld</span>echo <span class="hljs-string">&quot;添加mysql指令&quot;</span>ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mysql/</span>bin<span class="hljs-regexp">/mysql  /u</span>sr<span class="hljs-regexp">/local/</span>binln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mysql/</span>bin<span class="hljs-regexp">/mysqladmin  /u</span>sr<span class="hljs-regexp">/local/</span>bin<span class="hljs-comment">#echo &quot;服务启动&quot;</span>sudo service mysqld startsudo systemctl restart mysqldsystemctl status mysqld</code></pre><p>1、 修改用户密码</p><pre><code class="hljs routeros">mysql&gt; alter<span class="hljs-built_in"> user </span><span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> identified by <span class="hljs-string">&#x27;root&#x27;</span>;  刷新权限mysql&gt; flush privileges;</code></pre><p>2、远程登录</p><pre><code class="hljs routeros">mysql&gt; update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> host = <span class="hljs-string">&#x27;%&#x27;</span> where<span class="hljs-built_in"> user </span>= <span class="hljs-string">&#x27;root&#x27;</span>;mysql&gt; grant all privileges on *.* <span class="hljs-keyword">to</span> root@<span class="hljs-string">&#x27;%&#x27;</span> i dentified by <span class="hljs-string">&#x27;root&#x27;</span>;刷新权限mysql&gt; flush privileges;</code></pre><p>3、查找并删除mysql有关的文件</p><pre><code class="hljs swift"><span class="hljs-built_in">find</span> / -name mysqlrm -rf 上边查找到的路径，多个路径用空格隔开#或者下边一条命令即可<span class="hljs-built_in">find</span> / -name mysql|xargs rm -rf</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+      <tag>MySQL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Nginx安装</title>
+    <link href="/2020/08/10/Nginx%E5%AE%89%E8%A3%85/"/>
+    <url>/2020/08/10/Nginx%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre><code class="hljs properties"><span class="hljs-attr">1</span> <span class="hljs-string">gcc 安装</span><span class="hljs-attr">yum</span> <span class="hljs-string">install -y gcc gcc-c++</span><span class="hljs-attr">2</span> <span class="hljs-string">PCRE pcre-devel 安装</span><span class="hljs-attr">yum</span> <span class="hljs-string">install -y pcre pcre-devel</span><span class="hljs-attr">3</span> <span class="hljs-string">zlib 安装</span><span class="hljs-attr">yum</span> <span class="hljs-string">install -y zlib zlib-devel</span><span class="hljs-attr">4</span> <span class="hljs-string">OpenSSL 安装</span><span class="hljs-attr">yum</span> <span class="hljs-string">install -y openssl openssl-devel</span></code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+      <tag>Nginx</tag>
+      
+      <tag>Linux</tag>
       
     </tags>
     
@@ -137,6 +223,27 @@
     <tags>
       
       <tag>Vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VMWare Centos7 NAT模式</title>
+    <link href="/2020/08/10/%E8%99%9A%E6%8B%9F%E6%9C%BANAT%E6%A8%A1%E5%BC%8F/"/>
+    <url>/2020/08/10/%E8%99%9A%E6%8B%9F%E6%9C%BANAT%E6%A8%A1%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1、VMware设置"><a href="#1、VMware设置" class="headerlink" title="1、VMware设置"></a>1、VMware设置</h2><p>点击 编辑 -&gt; 虚拟网络编辑器 -&gt; 更改设置 </p><p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177f4ac11cc681?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p><p>选择 NAT模式，具体勾选如下：</p><p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177f82afeb2f5d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p><p>打开 NAT设置，记录子网掩码，网关ip</p><p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177fae46428226?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p><p>记录网段信息</p><p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177fcd1baeb763?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p><h2 id="2、登录虚拟机"><a href="#2、登录虚拟机" class="headerlink" title="2、登录虚拟机"></a>2、登录虚拟机</h2><p>root用户登录虚拟机，输入以命令，编辑保存</p><pre><code class="hljs angelscript">vi /etc/sysconfig/network-scripts/ifcfg-ens33ONBOOT=yesIPADDR=<span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.130</span>METMASK=<span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span>GATEWAY=<span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.2</span>DNS=<span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span></code></pre><p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17178035c1b9e9c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p><p>输入一下命令，重启network</p><pre><code class="hljs ebnf"><span class="hljs-attribute">systemctl restart network</span></code></pre><h2 id="3、验证"><a href="#3、验证" class="headerlink" title="3、验证"></a>3、验证</h2><p>  输入以下命令，查看结果</p><pre><code class="hljs css"><span class="hljs-selector-tag">ping</span> <span class="hljs-selector-tag">www</span><span class="hljs-selector-class">.baidu</span><span class="hljs-selector-class">.com</span></code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+      <tag>Linux</tag>
       
     </tags>
     

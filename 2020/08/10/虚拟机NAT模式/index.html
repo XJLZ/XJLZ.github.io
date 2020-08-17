@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Vue代理 - Hexo</title>
+  <title>VMWare Centos7 NAT模式 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      90 字
+      133 字
     </span>
   
 
@@ -216,16 +216,34 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="资源路径代理（图片等）"><a href="#资源路径代理（图片等）" class="headerlink" title="资源路径代理（图片等）"></a>资源路径代理（图片等）</h4><h5 id="修改index-js"><a href="#修改index-js" class="headerlink" title="修改index.js"></a>修改index.js</h5><pre><code class="hljs dts"><span class="hljs-symbol">proxyTable:</span> &#123;
-    <span class="hljs-string">&quot;/resources&quot;</span>: &#123;
-<span class="hljs-symbol">        target:</span> <span class="hljs-string">&quot;http://localhost:9100/&quot;</span>, <span class="hljs-comment">//这里填写后端存放资源文件的域名</span>
-<span class="hljs-symbol">        ws:</span> true,
-<span class="hljs-symbol">        changeOrigin:</span> true, 是否跨域
-        <span class="hljs-comment">// 如果接口中是没有api的，那就直接置空（如上）。如果接口中有api，就需要写成&#123;‘^/api’:‘/api’&#125;</span>
-<span class="hljs-symbol">        pathRewrite:</span> &#123;
-        <span class="hljs-string">&quot;/api&quot;</span>: <span class="hljs-string">&quot;/&quot;</span>
-    &#125;
-&#125;,</code></pre>
+              <h2 id="1、VMware设置"><a href="#1、VMware设置" class="headerlink" title="1、VMware设置"></a>1、VMware设置</h2><p>点击 编辑 -&gt; 虚拟网络编辑器 -&gt; 更改设置 </p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177f4ac11cc681?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt="img"></p>
+<p>选择 NAT模式，具体勾选如下：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177f82afeb2f5d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt="img"></p>
+<p>打开 NAT设置，记录子网掩码，网关ip</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177fae46428226?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt="img"></p>
+<p>记录网段信息</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17177fcd1baeb763?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt="img"></p>
+<h2 id="2、登录虚拟机"><a href="#2、登录虚拟机" class="headerlink" title="2、登录虚拟机"></a>2、登录虚拟机</h2><p>root用户登录虚拟机，输入以命令，编辑保存</p>
+<pre><code class="hljs angelscript">vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+ONBOOT=yes
+IPADDR=<span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.130</span>
+METMASK=<span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span>
+GATEWAY=<span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.2</span>
+DNS=<span class="hljs-number">8.8</span><span class="hljs-number">.8</span><span class="hljs-number">.8</span></code></pre>
+
+
+
+<p><img src="https://user-gold-cdn.xitu.io/2020/4/14/17178035c1b9e9c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" srcset="/img/loading.gif" alt="img"></p>
+<p>输入一下命令，重启network</p>
+<pre><code class="hljs ebnf"><span class="hljs-attribute">systemctl restart network</span></code></pre>
+
+
+
+<h2 id="3、验证"><a href="#3、验证" class="headerlink" title="3、验证"></a>3、验证</h2><p>  输入以下命令，查看结果</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">ping</span> <span class="hljs-selector-tag">www</span><span class="hljs-selector-class">.baidu</span><span class="hljs-selector-class">.com</span></code></pre>
+
 
 
             </article>
@@ -237,7 +255,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                      <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
                     
                   </div>
                 
@@ -250,9 +270,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/10/VMware%20Workstation%2015%20Pro%20%E5%AF%86%E9%92%A5/">
+                      <a href="/2020/08/10/Vue%E7%9B%B8%E5%85%B3/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">VMware Workstation 15 Pro 密钥</span>
+                        <span class="hidden-mobile">Vue代理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -260,8 +280,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/10/%E8%99%9A%E6%8B%9F%E6%9C%BANAT%E6%A8%A1%E5%BC%8F/">
-                        <span class="hidden-mobile">VMWare Centos7 NAT模式</span>
+                      <a href="/2020/08/07/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -455,7 +475,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Vue代理&nbsp;",
+        "VMWare Centos7 NAT模式&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
