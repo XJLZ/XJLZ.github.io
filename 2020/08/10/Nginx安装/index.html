@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      46 字
+      258 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      4
        分钟
     </span>
   
@@ -225,6 +225,51 @@
 <span class="hljs-attr">4</span> <span class="hljs-string">OpenSSL 安装</span>
 <span class="hljs-attr">yum</span> <span class="hljs-string">install -y openssl openssl-devel</span>
 </code></pre>
+
+<h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-comment">#安装目录</span>
+data=<span class="hljs-string">&quot;usr/local&quot;</span>
+<span class="hljs-comment">#压缩包目录</span>
+default=<span class="hljs-string">&quot;home/mirror/nginx&quot;</span>
+<span class="hljs-comment">#安装依赖</span>
+<span class="hljs-comment">#1 gcc 安装</span>
+yum install -y gcc gcc-c++
+<span class="hljs-comment">#2 PCRE pcre-devel 安装</span>
+yum install -y pcre pcre-devel
+<span class="hljs-comment">#3 zlib 安装</span>
+yum install -y zlib zlib-devel
+<span class="hljs-comment">#4 OpenSSL 安装</span>
+yum install -y openssl openssl-devel
+<span class="hljs-comment">## 解压</span>
+tar -xvf ./nginx-1.19.1.tar.gz -C /<span class="hljs-variable">$&#123;data&#125;</span>/
+
+mv /<span class="hljs-variable">$&#123;data&#125;</span>/nginx-1.19.1 /<span class="hljs-variable">$&#123;data&#125;</span>/nginx
+
+<span class="hljs-comment">##进入nginx目录</span>
+<span class="hljs-built_in">cd</span> /<span class="hljs-variable">$&#123;data&#125;</span>/nginx
+<span class="hljs-comment">## 配置</span>
+./configure --prefix=/usr/<span class="hljs-built_in">local</span>/nginx
+
+<span class="hljs-comment"># make</span>
+make
+make install
+rm -rf logs
+mkdir logs
+chmod 700 logs
+<span class="hljs-comment"># cd到刚才配置的安装目录/usr/loca/nginx/</span>
+<span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/nginx
+./sbin/nginx -t
+
+<span class="hljs-comment">#在文件的32行加入文件引入</span>
+<span class="hljs-built_in">cd</span> conf
+sed -i <span class="hljs-string">&#x27;$d&#x27;</span> nginx.conf
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;include /&#x27;</span><span class="hljs-variable">$&#123;default&#125;</span><span class="hljs-string">&#x27;/default.conf;&#x27;</span> &gt;&gt; nginx.conf
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;&#125;&#x27;</span> &gt;&gt; nginx.conf
+
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+firewall-cmd --zone=public --add-port=8082/tcp --permanent
+
+systemctl restart firewalld.service</code></pre>
 
 
             </article>

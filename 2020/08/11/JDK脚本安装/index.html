@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      567 字
+      584 字
     </span>
   
 
@@ -216,12 +216,13 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="压缩包"><a href="#压缩包" class="headerlink" title="压缩包"></a>压缩包</h4><pre><code class="hljs awk"><span class="hljs-comment">#!/bin/bash</span>
+              <h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><pre><code class="hljs awk"><span class="hljs-comment">#!/bin/bash</span>
+<span class="hljs-comment">#脚本与压缩包同目录</span>
 <span class="hljs-comment">#判断是否安装有openJDK</span>
 yum list installed |grep -e java -e jdk
 <span class="hljs-keyword">if</span> [ $? -eq <span class="hljs-number">0</span> ]
 then
-        read -p <span class="hljs-string">&quot;继续执行将卸载已安装JDK,y确定，其他退出?&quot;</span> choose
+        read -p <span class="hljs-string">&quot;继续执行将卸载已有JDK,y确定，其他退出?&quot;</span> choose
         <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$choose</span>==<span class="hljs-string">&quot;y&quot;</span> ]
         then
                 yum -y remove java-* &amp;&gt; <span class="hljs-regexp">/dev/</span>null
@@ -244,19 +245,24 @@ then
                 echo <span class="hljs-string">&quot;开始安装JDK&quot;</span>
                 tar zxvf jdk-<span class="hljs-number">8</span>u261-linux-x64.tar.gz -C <span class="hljs-regexp">/usr/</span>local
                 echo <span class="hljs-string">&quot;JDK安装完成，开始配置环境变量&quot;</span>
-                echo <span class="hljs-string">&#x27;export JAVA_HOME=/usr/jdk1.8.0_261&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh
+            cat <span class="hljs-regexp">/dev/</span>null &gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh
+                echo <span class="hljs-string">&#x27;export JAVA_HOME=/usr/local/jdk1.8.0_261&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh
                 echo <span class="hljs-string">&#x27;export PATH=$PATH:$JAVA_HOME/bin&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh
                 echo <span class="hljs-string">&#x27;export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh
-
                 echo <span class="hljs-string">&quot;环境变量配置完成&quot;</span>
         fi
 <span class="hljs-keyword">else</span>
         echo <span class="hljs-string">&quot;请将当前shell脚本和安装包放在同一目录&quot;</span>
 fi
-echo <span class="hljs-string">&quot;开始使环境变量生效&quot;</span>
+
 chmod +x <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh
+
 source <span class="hljs-regexp">/etc/</span>profile.d/jdkconf.sh
-echo <span class="hljs-string">&quot;======JDK安装完成，请使用命令：java -version检查是否成功安装=======&quot;</span></code></pre>
+
+echo <span class="hljs-string">&quot;======JDK安装完成，请使用命令：java -version检查是否成功安装,若失败请执行source /etc/profile.d/jdkconf.sh=======&quot;</span>
+
+
+</code></pre>
 
 <h4 id="rpm包"><a href="#rpm包" class="headerlink" title="rpm包"></a>rpm包</h4><pre><code class="hljs awk"><span class="hljs-comment">#!/bin/bash</span>
 <span class="hljs-comment">#判断是否安装有openJDK</span>

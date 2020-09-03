@@ -187,14 +187,15 @@
         
           
         
-        <div>压缩包#!/bin/bash
+        <div>脚本#!/bin/bash
+#脚本与压缩包同目录
 #判断是否安装有openJDK
 yum list installed |grep -e java -e jdk
 if [ $? -eq 0 ]
 then
-        read -p &quot;继续执行将卸载已安装JDK,y确定，其他退出?&quot; choose
+        read -p &quot;继续执行将卸载已有JDK,y确定，其他退出?&quot; choose
         if [ $choose==&quot;y&quot; ]
-        the</div>
+  </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -466,14 +467,15 @@ https://www.52pojie.cn/thread-934566-1-1.html
           
         
         <div>脚本#!/bin/bash
-data=&quot;root/mysql&quot;
+#压缩包目录
+data=&quot;home/mysql&quot;
 
 echo &quot;将mysql压缩包解压&quot;
 
 tar xvf mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz 
 
 echo &quot;新建mysql文件夹&quot;
-if [ ! -d &quot;/&quot;$&#123;data&#125;&quot;</div>
+if [ ! -d &quot;/&quot;$&#123;data&#125</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -518,7 +520,8 @@ yum install -y zlib zlib-devel
 yum install -y openssl openssl-devel
 
 
-</div>
+脚本#!/bin/bash
+#</div>
       </a>
 
       <div class="index-btm post-metas">
