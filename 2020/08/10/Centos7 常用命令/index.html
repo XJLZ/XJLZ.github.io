@@ -217,7 +217,7 @@
             
             <article class="markdown-body">
               <h4 id="开端口"><a href="#开端口" class="headerlink" title="开端口"></a>开端口</h4><pre><code class="hljs routeros">【单个】
-firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=8090/tcp --permanent
+firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=8082/tcp --permanent
 【范围】
 firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=50000-50100/tcp --permanent
 【删除】
@@ -227,6 +227,7 @@ firewall-cmd <span class="hljs-attribute">--zone</span>=public --list-all
 firewall-cmd --list-all</code></pre>
 
 <h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><pre><code class="hljs css"><span class="hljs-selector-tag">systemctl</span> <span class="hljs-selector-tag">restart</span> <span class="hljs-selector-tag">firewalld</span><span class="hljs-selector-class">.service</span></code></pre>
+
 
 
             </article>
@@ -313,12 +314,6 @@ firewall-cmd --list-all</code></pre>
 </div>
 
 <!-- Custom -->
-
-  <div class="col-lg-7 mx-auto nopadding-md">
-    <div class="container custom post-content mx-auto">
-      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
-    </div>
-  </div>
 
 
     
