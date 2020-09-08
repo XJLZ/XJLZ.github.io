@@ -187,15 +187,15 @@
         
           
         
-        <div>脚本#!/bin/bash
-#脚本与压缩包同目录
+        <div>脚本脚本与压缩包同目录
+#!/bin/bash
 #判断是否安装有openJDK
 yum list installed |grep -e java -e jdk
 if [ $? -eq 0 ]
 then
         read -p &quot;继续执行将卸载已有JDK,y确定，其他退出?&quot; choose
         if [ $choose==&quot;y&quot; ]
-  </div>
+   </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -233,11 +233,11 @@ then
           
         
         <div>开端口【单个】
-firewall-cmd --zone=public --add-port=8082/tcp --permanent
+firewall-cmd --zone=public --add-port=8848/tcp --permanent
 【范围】
-firewall-cmd --zone=public --add-port=50000-50100/tcp --permanent
+firewall-cmd --zone=public --remove-port=8000-8900/tcp --permanent
 【删除】
-firewall-cmd --zone=public --remove-port=80/tcp --permane</div>
+firewall-cmd --zone=public --remove-port=80/tcp --perman</div>
       </a>
 
       <div class="index-btm post-metas">
