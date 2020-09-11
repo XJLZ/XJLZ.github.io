@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      625 字
+      624 字
     </span>
   
 
@@ -311,7 +311,7 @@ mysql&gt; flush privileges;</code></pre>
 
 <p>2、远程登录</p>
 <pre><code class="hljs routeros">mysql&gt; update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> host = <span class="hljs-string">&#x27;%&#x27;</span> where<span class="hljs-built_in"> user </span>= <span class="hljs-string">&#x27;root&#x27;</span>;
-mysql&gt; grant all privileges on *.* <span class="hljs-keyword">to</span>  root@<span class="hljs-string">&#x27;%&#x27;</span> i dentified by <span class="hljs-string">&#x27;root&#x27;</span>;
+mysql&gt; grant all privileges on *.* <span class="hljs-keyword">to</span>  root@<span class="hljs-string">&#x27;%&#x27;</span> identified by <span class="hljs-string">&#x27;root&#x27;</span>;
 刷新权限
 mysql&gt; flush privileges;</code></pre>
 
