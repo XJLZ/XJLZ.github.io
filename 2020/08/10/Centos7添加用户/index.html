@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>httpd - Hexo</title>
+  <title>CentOS 7中添加一个新用户并授权 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      174 字
+      575 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      7
        分钟
     </span>
   
@@ -216,47 +216,57 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code class="hljs apache"><span class="hljs-attribute">yum</span> -y install httpd.x<span class="hljs-number">86</span>_<span class="hljs-number">64</span></code></pre>
+              <h1 id="CentOS-7中添加一个新用户并授权"><a href="#CentOS-7中添加一个新用户并授权" class="headerlink" title="CentOS 7中添加一个新用户并授权"></a>CentOS 7中添加一个新用户并授权</h1><h2 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h2><p>创建一个用户名为：linuxidc</p>
+<pre><code class="hljs autoit">[root<span class="hljs-symbol">@localhost</span> ~]<span class="hljs-meta"># adduser linuxidc</span></code></pre>
+
+<p>为这个用户初始化密码，linux会判断密码复杂度，不过可以强行忽略：</p>
+<pre><code class="hljs autoit">[root<span class="hljs-symbol">@localhost</span> ~]<span class="hljs-meta"># passwd linuxidc</span>
+更改用户 zhangbiao 的密码 。
+新的 密码：
+无效的密码： 密码未通过字典检查 - 过于简单化/系统化
+重新输入新的 密码：
+passwd：所有的身份验证令牌已经成功更新。</code></pre>
+
+<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>个人用户的权限只可以在本home下有完整权限，其他目录要看别人授权。而经常需要root用户的权限，这时候sudo可以化身为root来操作。我记得我曾经sudo创建了文件，然后发现自己并没有读写权限，因为查看权限是root创建的。</p>
+<p>新创建的用户并不能使用sudo命令，需要给他添加授权。</p>
+<p>sudo命令的授权管理是在sudoers文件里的。可以看看sudoers：</p>
+<pre><code class="hljs awk">[root@localhost ~]<span class="hljs-comment"># sudoers</span>
+bash: sudoers: 未找到命令...
+[root@localhost ~]<span class="hljs-comment"># whereis sudoers</span>
+sudoers: <span class="hljs-regexp">/etc/</span>sudoers <span class="hljs-regexp">/etc/</span>sudoers.d <span class="hljs-regexp">/usr/</span>libexec<span class="hljs-regexp">/sudoers.so /u</span>sr<span class="hljs-regexp">/share/m</span>an<span class="hljs-regexp">/man5/</span>sudoers.<span class="hljs-number">5</span>.gz</code></pre>
+
+<p>找到这个文件位置之后再查看权限：</p>
+<pre><code class="hljs angelscript">[<span class="hljs-symbol">root@</span>localhost ~]# ls -l /etc/sudoers
+-r--r----- <span class="hljs-number">1</span> root root <span class="hljs-number">4251</span> <span class="hljs-number">9</span>月  <span class="hljs-number">25</span> <span class="hljs-number">15</span>:<span class="hljs-number">08</span> /etc/sudoers</code></pre>
+
+<p>是的，只有只读的权限，如果想要修改的话，需要先添加w权限：</p>
+<pre><code class="hljs livescript">[root@localhost ~]<span class="hljs-comment"># chmod -v u+w /etc/sudoers</span>
+mode <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;/etc/sudoers&quot;</span> changed <span class="hljs-keyword">from</span> <span class="hljs-number">0440</span> (r--r-----) <span class="hljs-keyword">to</span> <span class="hljs-number">0640</span> (rw-r-----)</code></pre>
+
+<p>然后就可以添加内容了，在下面的一行下追加新增的用户：</p>
+<pre><code class="hljs pgsql">[root@localhost ~]# vim /etc/sudoers
 
 
+## Allow root <span class="hljs-keyword">to</span> run <span class="hljs-keyword">any</span> commands anywher  
+root    <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)       <span class="hljs-keyword">ALL</span>  
+linuxidc  <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)       <span class="hljs-keyword">ALL</span>  #这个是新增的用户</code></pre>
 
+<p>wq保存退出，这时候要记得将写权限收回：</p>
+<pre><code class="hljs livescript">[root@localhost ~]<span class="hljs-comment"># chmod -v u-w /etc/sudoers</span>
+mode <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;/etc/sudoers&quot;</span> changed <span class="hljs-keyword">from</span> <span class="hljs-number">0640</span> (rw-r-----) <span class="hljs-keyword">to</span> <span class="hljs-number">0440</span> (r--r-----)</code></pre>
 
+<p>这时候使用新用户登录，使用sudo：</p>
+<pre><code class="hljs routeros">[linuxidc@localhost ~]$ sudo cat /etc/passwd
+[sudo] password <span class="hljs-keyword">for</span> linuxidc: 
 
-<h4 id="配置文件-位置：-etc-httpd-conf-httpd-conf"><a href="#配置文件-位置：-etc-httpd-conf-httpd-conf" class="headerlink" title="配置文件(位置：/etc/httpd/conf/httpd.conf)"></a>配置文件(位置：/etc/httpd/conf/httpd.conf)</h4><pre><code class="hljs apache"><span class="hljs-attribute"><span class="hljs-nomarkup">Listen</span></span> <span class="hljs-number">80</span>
-<span class="hljs-attribute"><span class="hljs-nomarkup">Listen</span></span> <span class="hljs-number">192.168.31.30:8080</span>
+We trust you have received the usual lecture <span class="hljs-keyword">from</span> the local System
+Administrator. It usually boils down <span class="hljs-keyword">to</span> these three things:
 
-<span class="hljs-section">&lt;virtualhost <span class="hljs-number">192.168.31.30:8080</span>&gt;</span>
-        <span class="hljs-attribute"><span class="hljs-nomarkup">Documentroot</span></span> /home/diskdata/ftp/minioData
-        <span class="hljs-section">&lt;Directory <span class="hljs-string">&quot;/home/diskdata/ftp/minioData&quot;</span>&gt;</span>
-            <span class="hljs-attribute"><span class="hljs-nomarkup">Options</span></span> FollowSymLinks
-            <span class="hljs-attribute">AllowOverride</span> none
-            <span class="hljs-attribute">Require</span> <span class="hljs-literal">all</span> granted
-        <span class="hljs-section">&lt;/Directory&gt;</span>
-<span class="hljs-section">&lt;/virtualhost&gt;</span></code></pre>
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.</code></pre>
 
-
-
-
-
-
-
-
-
-<h4 id="解决启动Apache遇到的问题Permission-denied-AH00072-make-sock-could-not-bind-to-address-0-0-0-0-8888"><a href="#解决启动Apache遇到的问题Permission-denied-AH00072-make-sock-could-not-bind-to-address-0-0-0-0-8888" class="headerlink" title="解决启动Apache遇到的问题Permission denied: AH00072: make_sock: could not bind to address 0.0.0.0:8888"></a>解决启动Apache遇到的问题Permission denied: AH00072: make_sock: could not bind to address 0.0.0.0:8888</h4><pre><code class="hljs yaml"><span class="hljs-number">1</span><span class="hljs-string">.可能原因：SELinux限制了Apache的端口设置</span>
-<span class="hljs-number">2</span><span class="hljs-string">.关闭SELinux</span>
-<span class="hljs-string">setenforce</span> <span class="hljs-number">0</span> <span class="hljs-comment">##设置SELinux 成为permissive模式 √</span>
-<span class="hljs-number">3</span><span class="hljs-string">.</span>
-<span class="hljs-string">//安装semanage</span>
-<span class="hljs-string">yum</span> <span class="hljs-string">provides</span> <span class="hljs-string">/usr/sbin/semanage</span>
-<span class="hljs-string">yum</span> <span class="hljs-string">-y</span> <span class="hljs-string">install</span> <span class="hljs-string">policycoreutils-python</span>
-<span class="hljs-string">//查看默认允许的端口</span>
-<span class="hljs-string">semanage</span> <span class="hljs-string">port</span> <span class="hljs-string">-l</span> <span class="hljs-string">|</span> <span class="hljs-string">grep</span> <span class="hljs-string">-w</span> <span class="hljs-string">http_port_t</span>
-<span class="hljs-string">//</span> <span class="hljs-string">http_port_t</span>  <span class="hljs-string">tcp</span> <span class="hljs-number">80</span><span class="hljs-string">,</span> <span class="hljs-number">81</span><span class="hljs-string">,</span> <span class="hljs-number">443</span><span class="hljs-string">,</span> <span class="hljs-number">488</span><span class="hljs-string">,</span> <span class="hljs-number">8008</span><span class="hljs-string">,</span> <span class="hljs-number">8009</span><span class="hljs-string">,</span> <span class="hljs-number">8443</span><span class="hljs-string">,</span> <span class="hljs-number">9000</span>
-<span class="hljs-string">//使用semanage添加apache侦听的端口</span>
-<span class="hljs-string">semanage</span> <span class="hljs-string">port</span> <span class="hljs-string">-a</span> <span class="hljs-string">-t</span> <span class="hljs-string">http_port_t</span> <span class="hljs-string">-p</span> <span class="hljs-string">tcp</span> <span class="hljs-number">8888</span>
-<span class="hljs-string">//启动apache</span>
-<span class="hljs-string">systemctl</span> <span class="hljs-string">start</span> <span class="hljs-string">httpd</span></code></pre>
-
+<p>第一次使用会提示你，你已经化身超人，身负责任。而且需要输入密码才可以下一步。如果不想需要输入密码怎么办，将最后一个ALL修改成NOPASSWD: ALL。</p>
 
             </article>
             <hr>
@@ -269,8 +279,6 @@
                     
                       <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
                     
-                      <a class="hover-with-bg" href="/tags/httpd/">httpd</a>
-                    
                   </div>
                 
               </div>
@@ -282,9 +290,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/10/Consul/">
+                      <a href="/2020/08/10/httpd/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Consul</span>
+                        <span class="hidden-mobile">httpd</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -292,8 +300,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/10/Centos7%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7/">
-                        <span class="hidden-mobile">CentOS 7中添加一个新用户并授权</span>
+                      <a href="/2020/08/07/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -481,7 +489,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "httpd&nbsp;",
+        "CentOS 7中添加一个新用户并授权&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
