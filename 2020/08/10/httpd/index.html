@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      174 字
+      237 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      3
        分钟
     </span>
   
@@ -236,7 +236,18 @@
 
 
 
+<h4 id="第一、启动、终止、重启"><a href="#第一、启动、终止、重启" class="headerlink" title="第一、启动、终止、重启"></a>第一、启动、终止、重启</h4><pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> httpd.service <span class="hljs-comment">#启动</span>
+systemctl <span class="hljs-literal">stop</span> httpd.service <span class="hljs-comment">#停止</span>
+systemctl restart httpd.service <span class="hljs-comment">#重启</span></code></pre>
 
+
+
+<h4 id="第二、设置开机启动-关闭"><a href="#第二、设置开机启动-关闭" class="headerlink" title="第二、设置开机启动/关闭"></a>第二、设置开机启动/关闭</h4><pre><code class="hljs bash">systemctl <span class="hljs-built_in">enable</span> httpd.service <span class="hljs-comment">#开机启动</span>
+systemctl <span class="hljs-built_in">disable</span> httpd.service <span class="hljs-comment">#开机不启动</span></code></pre>
+
+
+
+<h4 id="第三、检查httpd状态"><a href="#第三、检查httpd状态" class="headerlink" title="第三、检查httpd状态"></a>第三、检查httpd状态</h4><pre><code class="hljs css"><span class="hljs-selector-tag">systemctl</span> <span class="hljs-selector-tag">status</span> <span class="hljs-selector-tag">httpd</span><span class="hljs-selector-class">.service</span></code></pre>
 
 
 
