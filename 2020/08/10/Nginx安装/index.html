@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      251 字
+      332 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分钟
     </span>
   
@@ -269,6 +269,42 @@ sed -i <span class="hljs-string">&#x27;$d&#x27;</span> nginx.conf
 firewall-cmd --zone=public --add-port=80/tcp --permanent
 
 systemctl restart firewalld.service</code></pre>
+
+<p>default.conf</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">upstream</span>  /backApi &#123;
+    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:9100</span>;
+&#125;
+<span class="hljs-section">server</span> &#123;
+    <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span> default_server;
+    <span class="hljs-attribute">server_name</span>  www.xxxx.com;
+
+    <span class="hljs-attribute">index</span> index.html;
+    <span class="hljs-attribute">location</span> / &#123;
+        <span class="hljs-attribute">alias</span>   /root;
+        <span class="hljs-attribute">index</span>  index.html index.htm;
+    &#125;
+    <span class="hljs-attribute">location</span> /api &#123;
+        <span class="hljs-attribute">rewrite</span><span class="hljs-regexp"> ^/api/(.*)$</span> /<span class="hljs-variable">$1</span> <span class="hljs-literal">break</span>;
+        <span class="hljs-attribute">proxy_pass</span>   http://backApi;
+        <span class="hljs-attribute">proxy_set_header</span>   Host             <span class="hljs-variable">$host</span>:<span class="hljs-variable">$server_port</span>;
+        <span class="hljs-attribute">proxy_set_header</span>   X-Real-IP        <span class="hljs-variable">$remote_addr</span>;
+        <span class="hljs-attribute">proxy_set_header</span>   X-Forwarded-For  <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;
+        <span class="hljs-attribute">proxy_set_header</span>   Proxy-Client-IP  <span class="hljs-variable">$remote_addr</span>;
+    &#125;
+
+&#125;
+
+<span class="hljs-section">server</span> &#123;
+    <span class="hljs-attribute">listen</span>  <span class="hljs-number">8888</span>
+    server_name  www.xxxx.com;
+
+    <span class="hljs-attribute">location</span> /wqe/ &#123;
+        <span class="hljs-attribute">alais</span> /home/xxxx
+    &#125;
+
+&#125;
+
+</code></pre>
 
 
             </article>
