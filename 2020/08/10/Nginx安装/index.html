@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      258 字
+      251 字
     </span>
   
 
@@ -260,14 +260,13 @@ chmod 700 logs
 <span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/nginx
 ./sbin/nginx -t
 
-<span class="hljs-comment">#在文件的32行加入文件引入</span>
+<span class="hljs-comment">#在文件的最后一行加入文件引入</span>
 <span class="hljs-built_in">cd</span> conf
 sed -i <span class="hljs-string">&#x27;$d&#x27;</span> nginx.conf
 <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;include /&#x27;</span><span class="hljs-variable">$&#123;default&#125;</span><span class="hljs-string">&#x27;/default.conf;&#x27;</span> &gt;&gt; nginx.conf
 <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;&#125;&#x27;</span> &gt;&gt; nginx.conf
 
 firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --zone=public --add-port=8082/tcp --permanent
 
 systemctl restart firewalld.service</code></pre>
 
@@ -284,8 +283,6 @@ systemctl restart firewalld.service</code></pre>
                       <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
                     
                       <a class="hover-with-bg" href="/tags/Nginx/">Nginx</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
                     
                   </div>
                 
