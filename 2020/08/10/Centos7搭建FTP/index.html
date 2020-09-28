@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      134 字
+      379 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      4
        分钟
     </span>
   
@@ -221,14 +221,36 @@
 <pre><code class="hljs cmake">yum <span class="hljs-keyword">install</span> -y vsftpd</code></pre>
 
 <p>2.相关配置文件：</p>
-<pre><code class="hljs awk">cd <span class="hljs-regexp">/etc/</span>vsftpd</code></pre>
+<pre><code class="hljs awk">cd <span class="hljs-regexp">/etc/</span>vsftpd/</code></pre>
 
 <p>3.启动服务</p>
 <p><code>systemctl enable vsftpd.service</code> //设置开机自启动</p>
 <p><code>systemctl start vsftpd.service</code> //启动ftp服务</p>
 <p><code>netstat -antup | grep ftp</code> //查看ftp服务端口</p>
-<p>4.另外简单介绍下vsftpd.conf的配置文件参数说明。</p>
-<pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>vsftpd/vsftpd.conf</code></pre>
+<p>3.修改相关配置文件</p>
+<pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>vsftpd/vsftpd.conf</code></pre>
+
+<h4 id="创建ftp用户"><a href="#创建ftp用户" class="headerlink" title="创建ftp用户"></a>创建ftp用户</h4><p>1.创建用户并指定目录</p>
+<pre><code class="hljs awk">useradd -d <span class="hljs-regexp">/var/</span>www/ftpData admin  <span class="hljs-comment">#目录自己创建  </span>
+passwd admin  <span class="hljs-comment">#(回车)给用户admin设置登录密码</span></code></pre>
+
+<p>2.修改配置文件</p>
+<pre><code class="hljs ini"><span class="hljs-attr">userlist_enable</span>=<span class="hljs-literal">YES</span>     <span class="hljs-comment">#启动用户列表</span>
+<span class="hljs-attr">userlist_deny</span>=<span class="hljs-literal">NO</span>        <span class="hljs-comment">#决定是否对用户列表的用户拒绝访问ftp </span>
+<span class="hljs-attr">userlist_file</span>=/etc/vsftpd/user_list</code></pre>
+
+<p>3.在user_list中写入 ftp这个用户</p>
+<p>4.配置vsftpd.conf 锁定根目录</p>
+<pre><code class="hljs ini"><span class="hljs-attr">local_root</span>= /var/www        <span class="hljs-comment">#本地用户登录后自动转到的ftp根目录</span>
+<span class="hljs-attr">chroot_local_user</span>=<span class="hljs-literal">YES</span>       <span class="hljs-comment">#将所有用户限定在指定的主目录内</span>
+<span class="hljs-attr">chroot_list_enable</span>=<span class="hljs-literal">NO</span>       <span class="hljs-comment">#不启用列外的用户列表</span>
+<span class="hljs-attr">chroot_list_file</span>=/etc/vsftpd/chroot_list  <span class="hljs-comment">#指定列外的用户列表文件 此文件是让用户登录后可以查看其他目录，若要使用户仅在指定的ftp目录，该文件就不要填写该用户</span></code></pre>
+
+<p>5.修改ftp目录的权限,将用户添加到root组</p>
+<pre><code class="hljs properties"><span class="hljs-attr">usermod</span> <span class="hljs-string">-g root admin</span>
+<span class="hljs-attr">chown</span> <span class="hljs-string">admin:root /var/www/ftpData</span>
+<span class="hljs-attr">！！添加到root用户组后需要修改配置文件，加上以下配置：</span>
+<span class="hljs-attr">allow_writeable_chroot</span>=<span class="hljs-string">YES</span></code></pre>
 
 
             </article>
