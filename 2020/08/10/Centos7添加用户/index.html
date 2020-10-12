@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      575 字
+      644 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
@@ -244,12 +244,14 @@ sudoers: <span class="hljs-regexp">/etc/</span>sudoers <span class="hljs-regexp"
 mode <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;/etc/sudoers&quot;</span> changed <span class="hljs-keyword">from</span> <span class="hljs-number">0440</span> (r--r-----) <span class="hljs-keyword">to</span> <span class="hljs-number">0640</span> (rw-r-----)</code></pre>
 
 <p>然后就可以添加内容了，在下面的一行下追加新增的用户：</p>
-<pre><code class="hljs pgsql">[root@localhost ~]# vim /etc/sudoers
+<pre><code class="hljs pgsql">[root@localhost ~]# vim /etc/sudoers vim /etc/sudoers vim /etc/sudoers  vim /etc/sudoers
 
 
 ## Allow root <span class="hljs-keyword">to</span> run <span class="hljs-keyword">any</span> commands anywher  
 root    <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)       <span class="hljs-keyword">ALL</span>  
-linuxidc  <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)       <span class="hljs-keyword">ALL</span>  #这个是新增的用户</code></pre>
+linuxidc  <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)       <span class="hljs-keyword">ALL</span>  #这个是新增的用户
+ 默认<span class="hljs-number">5</span>分钟后刚才输入的sudo密码过期，下次sudo需要重新输入密码，如果觉得在sudo的时候输入密码麻烦，把刚才的输入换成如下内容即可：
+linuxidc <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>) NOPASSWD:<span class="hljs-keyword">ALL</span></code></pre>
 
 <p>wq保存退出，这时候要记得将写权限收回：</p>
 <pre><code class="hljs livescript">[root@localhost ~]<span class="hljs-comment"># chmod -v u-w /etc/sudoers</span>
