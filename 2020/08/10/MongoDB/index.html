@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      461 字
+      465 字
     </span>
   
 
@@ -262,9 +262,9 @@ vim mongodb.service
 
 [Service]
 <span class="hljs-attribute">Type</span>=forking
-<span class="hljs-attribute">ExecStart</span>=/usr/local/mongodb/bin/mongod --config /usr/local/mongodb/mongodb.conf
+<span class="hljs-attribute">ExecStart</span>=/usr/local/mongodb/mongodb/bin/mongod --config /usr/local/mongodb/mongodb/mongodb.conf
 <span class="hljs-attribute">ExecReload</span>=/bin/kill -s HUP <span class="hljs-variable">$MAINPID</span>
-<span class="hljs-attribute">ExecStop</span>=/usr/local/mongodb/bin/mongod --shutdown --config /usr/local/mongodb/mongodb.conf
+<span class="hljs-attribute">ExecStop</span>=/usr/local/mongodb/mongodb/bin/mongod --shutdown --config /usr/local/mongodb/mongodb/mongodb.conf
 <span class="hljs-attribute">PrivateTmp</span>=<span class="hljs-literal">true</span>
 
 [Install]
