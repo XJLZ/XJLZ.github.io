@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      13
        分钟
     </span>
   
@@ -278,16 +278,17 @@ Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<spa
 Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos systemd[<span class="hljs-number">1</span>]: Started RabbitMQ broker.
 Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: completed with <span class="hljs-number">0</span> plugins.</code></pre>
 
-<h5 id="修改防火墙和SELinux规则"><a href="#修改防火墙和SELinux规则" class="headerlink" title="修改防火墙和SELinux规则"></a>修改防火墙和SE<a target="_blank" rel="noopener" href="https://www.linuxprobe.com/">Linux</a>规则</h5><p>如果您已安装并运行防火墙 ，则必须通过防火墙允许端口8161。 运行以下命令相同。</p>
-<p>或者直接关闭防火墙  <strong>systemctl stop firewalld.service</strong></p>
-<pre><code class="hljs routeros">firewall-cmd –<span class="hljs-attribute">zone</span>=public –permanent –<span class="hljs-attribute">add-port</span>=4369/tcp
-firewall-cmd –<span class="hljs-attribute">zone</span>=public –permanent –<span class="hljs-attribute">add-port</span>=25672/tcp
-firewall-cmd –<span class="hljs-attribute">zone</span>=public –permanent –<span class="hljs-attribute">add-port</span>=5671-5672/tcp
-firewall-cmd –<span class="hljs-attribute">zone</span>=public –permanent –<span class="hljs-attribute">add-port</span>=15672/tcp
-firewall-cmd –<span class="hljs-attribute">zone</span>=public –permanent –<span class="hljs-attribute">add-port</span>=61613-61614/tcp
-firewall-cmd –<span class="hljs-attribute">zone</span>=public –permanent –<span class="hljs-attribute">add-port</span>=1883/tcp
-firewall-cmd –<span class="hljs-attribute">zone</span>=public –permanent –<span class="hljs-attribute">add-port</span>=8883/tcp
-firewall-cmd –reload</code></pre>
+<h5 id="修改防火墙和SELinux规则"><a href="#修改防火墙和SELinux规则" class="headerlink" title="修改防火墙和SELinux规则"></a>修改防火墙和<a href="/2020/08/10/SELinux/">SELinux</a>规则</h5><pre><code class="hljs dockerfile">
+<span class="hljs-comment">#放行5672和15672两个端口，（--permanent表示永久生效，没有此参数重启后失效）</span>
+firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --zone=public --add-port=5672/tcp --permanent</span>
+
+firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --zone=public --add-port=15672/tcp --permanent</span>
+
+<span class="hljs-comment">#重载防火墙是设置生效</span>
+firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --reload</span>
+
+<span class="hljs-comment">#查看放行端口列表，此时列表显示如下图</span>
+firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --list-all</span></code></pre>
 
 <p>如果您启用SELinux，则必须运行以下命令以允许RabbitMQ服务。</p>
 <pre><code class="hljs angelscript">setsebool -P nis_enabled <span class="hljs-number">1</span></code></pre>
