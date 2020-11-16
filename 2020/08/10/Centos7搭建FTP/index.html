@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      381 字
+      465 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      6
        分钟
     </span>
   
@@ -231,7 +231,7 @@
 <pre><code class="hljs awk">vim <span class="hljs-regexp">/etc/</span>vsftpd/vsftpd.conf</code></pre>
 
 <h4 id="创建ftp本地用户"><a href="#创建ftp本地用户" class="headerlink" title="创建ftp本地用户"></a>创建ftp本地用户</h4><p>1.创建用户并指定目录</p>
-<pre><code class="hljs awk">useradd -d <span class="hljs-regexp">/var/</span>www/ftpData ftpuser  <span class="hljs-comment">#目录自己创建  </span>
+<pre><code class="hljs awk">useradd -d <span class="hljs-regexp">/data/</span>ftp ftpuser  <span class="hljs-comment">#目录自己创建  </span>
 passwd ftpuser  <span class="hljs-comment">#(回车)给用户ftpuser设置登录密码</span></code></pre>
 
 <p>2.修改配置文件</p>
@@ -244,13 +244,38 @@ passwd ftpuser  <span class="hljs-comment">#(回车)给用户ftpuser设置登录
 <pre><code class="hljs ini"><span class="hljs-attr">local_root</span>= /var/www        <span class="hljs-comment">#本地用户登录后自动转到的ftp根目录</span>
 <span class="hljs-attr">chroot_local_user</span>=<span class="hljs-literal">YES</span>       <span class="hljs-comment">#将所有用户限定在指定的主目录内</span>
 <span class="hljs-attr">chroot_list_enable</span>=<span class="hljs-literal">NO</span>       <span class="hljs-comment">#不启用列外的用户列表</span>
-<span class="hljs-attr">chroot_list_file</span>=/etc/vsftpd/chroot_list  <span class="hljs-comment">#指定列外的用户列表文件 此文件是让用户登录后可以查看其他目录，若要使用户仅在指定的ftp目录，该文件就不要填写该用户</span></code></pre>
+<span class="hljs-attr">chroot_list_file</span>=/etc/vsftpd/chroot_list  <span class="hljs-comment">#指定列外的用户列表文件 此文件是让用户登录后可以查看其他目录，若要使用户仅在指定的ftp目录，该文件就不要填写该用户,若没有该文件则新建</span></code></pre>
 
 <p>5.修改ftp目录的权限,将用户添加到root组</p>
 <pre><code class="hljs properties"><span class="hljs-attr">usermod</span> <span class="hljs-string">-g root ftpuser</span>
-<span class="hljs-attr">chown</span> <span class="hljs-string">ftpuser:root /var/www/ftpData</span>
+<span class="hljs-attr">chown</span> <span class="hljs-string">ftpuser:root /data/ftp</span>
 <span class="hljs-attr">！！添加到root用户组后需要修改配置文件，加上以下配置：</span>
 <span class="hljs-attr">allow_writeable_chroot</span>=<span class="hljs-string">YES</span></code></pre>
+
+<h4 id="参考配置（vsftpd-conf）"><a href="#参考配置（vsftpd-conf）" class="headerlink" title="参考配置（vsftpd.conf）"></a>参考配置（vsftpd.conf）</h4><pre><code class="hljs ini"><span class="hljs-attr">anonymous_enable</span>=<span class="hljs-literal">NO</span>
+<span class="hljs-attr">local_enable</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">write_enable</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">local_umask</span>=<span class="hljs-number">000</span>
+<span class="hljs-attr">dirmessage_enable</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">xferlog_enable</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">connect_from_port_20</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">xferlog_std_format</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">chroot_local_user</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">chroot_list_enable</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">chroot_list_file</span>=/etc/vsftpd/chroot_list
+<span class="hljs-attr">listen</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">listen_ipv6</span>=<span class="hljs-literal">NO</span>
+<span class="hljs-attr">pam_service_name</span>=vsftpd
+<span class="hljs-attr">tcp_wrappers</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">userlist_enable</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">userlist_deny</span>=<span class="hljs-literal">NO</span>
+<span class="hljs-attr">userlist_file</span>=/etc/vsftpd/user_list
+<span class="hljs-comment">#目录自己创建，记得对应新建用户时的用户目录</span>
+<span class="hljs-attr">local_root</span>= /data/ftp
+<span class="hljs-attr">allow_writeable_chroot</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">pasv_enable</span>=<span class="hljs-literal">YES</span>
+<span class="hljs-attr">pasv_min_port</span>=<span class="hljs-number">30000</span>
+<span class="hljs-attr">pasv_max_port</span>=<span class="hljs-number">30999</span></code></pre>
 
 
             </article>

@@ -216,7 +216,9 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="安装-amp-配置"><a href="#安装-amp-配置" class="headerlink" title="安装&amp;配置"></a>安装&amp;配置</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><pre><code class="hljs properties"><span class="hljs-comment">#获取镜像</span>
+              <h1 id="安装-amp-配置"><a href="#安装-amp-配置" class="headerlink" title="安装&amp;配置"></a>安装&amp;配置</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><pre><code class="hljs properties"><span class="hljs-comment">#启动服务</span>
+<span class="hljs-attr">systemctl</span> <span class="hljs-string">start docker</span>
+<span class="hljs-comment">#获取镜像</span>
 <span class="hljs-attr">docker</span>  <span class="hljs-string">pull [镜像:xx.xx]</span>
 <span class="hljs-meta">//docker</span> <span class="hljs-string">pull mysql:8.0.12</span>
 
@@ -467,14 +469,14 @@ $  <span class="hljs-string">./src/redis-server</span> <span class="hljs-string"
 <span class="hljs-comment">#访问</span>
     ip:<span class="hljs-number">82</span></code></pre>
 
-<h3 id="MinIO-Docker"><a href="#MinIO-Docker" class="headerlink" title="MinIO Docker"></a>MinIO Docker</h3><pre><code class="hljs awk"><span class="hljs-comment"># docker安装镜像</span>
+<h3 id="MinIO-Docker"><a href="#MinIO-Docker" class="headerlink" title="MinIO Docker"></a>MinIO Docker</h3><pre><code class="hljs routeros"><span class="hljs-comment"># docker安装镜像</span>
     docker pull minio/minio
 
 <span class="hljs-comment"># 启动</span>
-    docker run -p <span class="hljs-number">50005</span>:<span class="hljs-number">9000</span> -d --name minio \
-      -v <span class="hljs-regexp">/var/</span>ftp<span class="hljs-regexp">/pub/</span>Photo<span class="hljs-regexp">/imgs/mi</span>nio:/data \
-      -v <span class="hljs-regexp">/mnt/</span>config:<span class="hljs-regexp">/root/</span>.minio \
-      minio<span class="hljs-regexp">/minio server /</span>data
+    docker <span class="hljs-builtin-name">run</span> -p 9000:9000 -d --name minio \
+      -v /home/zkcm/ftp:/data \
+      -v /mnt/config:/root/.minio \
+      minio/minio<span class="hljs-built_in"> server </span>/data
 <span class="hljs-comment"># 默认用户密码 </span>
     minioadmin
     minioadmin</code></pre>
@@ -503,6 +505,12 @@ $  <span class="hljs-string">./src/redis-server</span> <span class="hljs-string"
                 <div class="post-prevnext row">
                   <div class="post-prev col-6">
                     
+                    
+                      <a href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Kafka安装使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </div>
                   <div class="post-next col-6">

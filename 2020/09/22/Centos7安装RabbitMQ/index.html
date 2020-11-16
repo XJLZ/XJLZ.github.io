@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      14
        分钟
     </span>
   
@@ -278,7 +278,7 @@ Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<spa
 Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos systemd[<span class="hljs-number">1</span>]: Started RabbitMQ broker.
 Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: completed with <span class="hljs-number">0</span> plugins.</code></pre>
 
-<h5 id="修改防火墙和SELinux规则"><a href="#修改防火墙和SELinux规则" class="headerlink" title="修改防火墙和SELinux规则"></a>修改防火墙和<a href="/2020/08/10/SELinux/">SELinux</a>规则</h5><pre><code class="hljs dockerfile">
+<h5 id="修改防火墙和SELinux规则"><a href="#修改防火墙和SELinux规则" class="headerlink" title="修改防火墙和SELinux规则"></a>修改防火墙和<a href="/2020/08/10/SELinux/">SELinux规则</a></h5><pre><code class="hljs dockerfile">
 <span class="hljs-comment">#放行5672和15672两个端口，（--permanent表示永久生效，没有此参数重启后失效）</span>
 firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --zone=public --add-port=5672/tcp --permanent</span>
 
@@ -300,8 +300,13 @@ firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --list-all</sp
 <pre><code class="hljs crystal">chown -R <span class="hljs-symbol">rabbitmq:</span>rabbitmq /var/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">rabbitmq</span>/</span></code></pre>
 
 <p>现在，您将需要为RabbitMQ Web管理控制台创建管理用户。 运行以下命令相同。</p>
-<pre><code class="hljs nsis">rabbitmqctl add_user <span class="hljs-literal">admin</span> StrongPassword
+<pre><code class="hljs nsis"><span class="hljs-comment">#查看当前用户列表</span>
+rabbitmqctl list_users
+<span class="hljs-comment">#添加admin用户，用户名和密码都为admin </span>
+rabbitmqctl add_user <span class="hljs-literal">admin</span> <span class="hljs-literal">admin</span>
+<span class="hljs-comment">#设置admin的角色为administrator</span>
 rabbitmqctl set_user_tags <span class="hljs-literal">admin</span> administrator
+<span class="hljs-comment">#设置admin用户的权限，可访问所有</span>
 rabbitmqctl set_permissions -p / <span class="hljs-literal">admin</span> “.*” “.*” “.*”
 修改密码
 rabbitmqctl  change_password  <span class="hljs-literal">admin</span>  <span class="hljs-string">&#x27;Newpassword&#x27;</span></code></pre>

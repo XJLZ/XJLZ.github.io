@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      628 字
+      961 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      17
        分钟
     </span>
   
@@ -259,6 +259,7 @@ cat <span class="hljs-regexp">/dev/</span>null &gt; <span class="hljs-regexp">/e
         mv <span class="hljs-regexp">/etc/my</span>.cnf <span class="hljs-regexp">/etc/my</span>.cnf.bak
 fi
 
+<span class="hljs-comment">#跳过密码验证</span>
 echo <span class="hljs-string">&#x27;[mysqld]&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
 echo <span class="hljs-string">&#x27;bind-address=0.0.0.0&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
 echo <span class="hljs-string">&#x27;basedir = /usr/local/mysql&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
@@ -302,24 +303,69 @@ sudo systemctl restart mysqld
 
 systemctl status mysqld
 
-</code></pre>
+<span class="hljs-comment">#开启端口</span>
+firewall-cmd --zone=public --add-port=<span class="hljs-number">3306</span>/tcp --permanent
 
-<p>1、 修改用户密码</p>
-<pre><code class="hljs routeros">mysql&gt; alter<span class="hljs-built_in"> user </span><span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> identified by <span class="hljs-string">&#x27;root&#x27;</span>;  
-刷新权限
-mysql&gt; flush privileges;</code></pre>
+systemctl restart firewalld.service
+
+<span class="hljs-comment">#修改root初始化密码</span>
+mysql -uroot -p &lt; <span class="hljs-regexp">/home/mi</span>rror<span class="hljs-regexp">/mysql/i</span>nit.sql
+
+<span class="hljs-comment">#关闭跳过密码验证</span>
+cat <span class="hljs-regexp">/dev/</span>null &gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;[mysqld]&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;bind-address=0.0.0.0&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;basedir=/usr/local/mysql&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;datadir=/usr/local/mysql/data&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;socket=/tmp/mysql.sock&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;user=root&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;port=3306&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;character-set-server=utf8&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;#skip-grant-tables&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;# Disabling symbolic-links is recommended to prevent assorted security risks&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;symbolic-links=0&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;[mysqld_safe]&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;log-error=/var/log/mysqld.log&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;pid-file=/var/run/mysqld/mysqld.pid&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+echo <span class="hljs-string">&#x27;!includedir /etc/my.cnf.d&#x27;</span> &gt;&gt; <span class="hljs-regexp">/etc/my</span>.cnf
+
+sudo systemctl restart mysqld
+
+sudo systemctl status mysqld</code></pre>
+
+<p>1、 修改用户密码（init.sql）</p>
+<pre><code class="hljs sql"><span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
+<span class="hljs-comment">#修改root密码为root</span>
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;root&#x27;</span>;  
+<span class="hljs-comment">#刷新权限</span>
+<span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;</code></pre>
 
 <p>2、远程登录</p>
-<pre><code class="hljs routeros">mysql&gt; update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> host = <span class="hljs-string">&#x27;159.226.241.120&#x27;</span> where<span class="hljs-built_in"> user </span>= <span class="hljs-string">&#x27;root&#x27;</span>;
-mysql&gt; grant all privileges on *.* <span class="hljs-keyword">to</span>  root@<span class="hljs-string">&#x27;%&#x27;</span> identified by <span class="hljs-string">&#x27;root&#x27;</span>;
-刷新权限
-mysql&gt; flush privileges;</code></pre>
+<pre><code class="hljs routeros">use mysql;
+update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> host = <span class="hljs-string">&#x27;%&#x27;</span> where<span class="hljs-built_in"> user </span>= <span class="hljs-string">&#x27;root&#x27;</span>;
+<span class="hljs-comment">#刷新权限</span>
+flush privileges;</code></pre>
 
-<p>3、查找并删除mysql有关的文件</p>
+<p>3、添加用户</p>
+<pre><code class="hljs sql"><span class="hljs-comment">#添加用户“xiao&quot;，密码为: aquatic@zkcm</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;fx&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;fx@zkcm&#x27;</span>;
+<span class="hljs-comment">#赋权所有权限，并且可以查看所有表</span>
+<span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;xiao&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
+<span class="hljs-comment">#赋权test数据库所有权限，只可以使用数据库test</span>
+<span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> fx.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;fx&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
+<span class="hljs-comment">#刷新权限</span>
+<span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;</code></pre>
+
+
+
+<p>4、查找并删除mysql有关的文件</p>
 <pre><code class="hljs swift"><span class="hljs-built_in">find</span> / -name mysql
 rm -rf 上边查找到的路径，多个路径用空格隔开
 #或者下边一条命令即可
 <span class="hljs-built_in">find</span> / -name mysql|xargs rm -rf</code></pre>
+
+<p>5、建库</p>
+<pre><code class="hljs routeros">CREATE DATABASE `fx`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8 COLLATE utf8_general_ci;</code></pre>
 
 
             </article>

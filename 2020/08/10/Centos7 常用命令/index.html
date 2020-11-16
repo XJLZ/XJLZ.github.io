@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      91 字
+      179 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      2
        分钟
     </span>
   
@@ -217,11 +217,13 @@
             
             <article class="markdown-body">
               <h4 id="开端口"><a href="#开端口" class="headerlink" title="开端口"></a>开端口</h4><pre><code class="hljs routeros">【单个】
-firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=8500/tcp --permanent
+firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=2181/tcp --permanent
 【范围】
 firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=30000-30999/tcp --permanent
 【删除】
 firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--remove-port</span>=8080/tcp --permanent
+【刷新配置】
+firewall-cmd --reload
 <span class="hljs-comment">#找出公共区域的所有设置</span>
 firewall-cmd <span class="hljs-attribute">--zone</span>=public --list-all
 firewall-cmd --list-all</code></pre>
@@ -231,6 +233,16 @@ firewall-cmd --list-all</code></pre>
 
 <h4 id="开机启动配置"><a href="#开机启动配置" class="headerlink" title="开机启动配置"></a>开机启动配置</h4><pre><code class="hljs applescript">/etc/rc.<span class="hljs-keyword">local</span>
 可加入命令，如：nohup java -jar <span class="hljs-built_in">text</span>.jar</code></pre>
+
+<h4 id="shell脚本执行报错"><a href="#shell脚本执行报错" class="headerlink" title="shell脚本执行报错"></a>shell脚本执行报错</h4><pre><code class="hljs matlab">sed -<span class="hljs-built_in">i</span> <span class="hljs-string">&quot;s/\r//&quot;</span> xxx.sh</code></pre>
+
+<p>mMN7aJgE</p>
+<h4 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h4><pre><code class="hljs awk">cat <span class="hljs-regexp">/proc/</span>version
+cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
+
+<h4 id="查看文件-文件夹大小"><a href="#查看文件-文件夹大小" class="headerlink" title="查看文件/文件夹大小"></a>查看文件/文件夹大小</h4><pre><code class="hljs stata">指定目录的总大小，可以使用 du -<span class="hljs-keyword">sh</span> 目录名称，du -<span class="hljs-keyword">sh</span> <span class="hljs-keyword">test</span>/ 或 du -<span class="hljs-keyword">h</span> <span class="hljs-keyword">test</span>/
+当前目录大小 du -<span class="hljs-keyword">sh</span> 或  du -<span class="hljs-keyword">h</span>
+文件大小 du -<span class="hljs-keyword">h</span> index.html</code></pre>
 
 
             </article>

@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>CentOS 7中添加一个新用户并授权 - Hexo</title>
+  <title>Kafka安装使用 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-10 15:32">
-      2020年8月10日 下午
+    <time datetime="2020-10-29 11:32">
+      2020年10月29日 中午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      635 字
+      1.5k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      23
        分钟
     </span>
   
@@ -216,59 +216,157 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="CentOS-7中添加一个新用户并授权"><a href="#CentOS-7中添加一个新用户并授权" class="headerlink" title="CentOS 7中添加一个新用户并授权"></a>CentOS 7中添加一个新用户并授权</h1><h2 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h2><p>创建一个用户名为：linuxidc</p>
-<pre><code class="hljs autoit">[root<span class="hljs-symbol">@localhost</span> ~]<span class="hljs-meta"># adduser linuxidc</span></code></pre>
+              <h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><p>1.<a target="_blank" rel="noopener" href="https://kafka.apachecn.org/downloads.html">官网下载</a></p>
+<p>2.解压 tar -zxvf  xxxxxxx.tar.gz</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><pre><code class="hljs clean">
+############################# Server Basics #############################
 
-<p>为这个用户初始化密码，linux会判断密码复杂度，不过可以强行忽略：</p>
-<pre><code class="hljs autoit">[root<span class="hljs-symbol">@localhost</span> ~]<span class="hljs-meta"># passwd linuxidc</span>
-更改用户 zhangbiao 的密码 。
-新的 密码：
-无效的密码： 密码未通过字典检查 - 过于简单化/系统化
-重新输入新的 密码：
-passwd：所有的身份验证令牌已经成功更新。</code></pre>
+# broker的id，要求唯一，集群部署不能重复
+broker.id=<span class="hljs-number">0</span>
+############################# Socket Server Settings #############################
 
-<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>个人用户的权限只可以在本home下有完整权限，其他目录要看别人授权。而经常需要root用户的权限，这时候sudo可以化身为root来操作。我记得我曾经sudo创建了文件，然后发现自己并没有读写权限，因为查看权限是root创建的。</p>
-<p>新创建的用户并不能使用sudo命令，需要给他添加授权。</p>
-<p>sudo命令的授权管理是在sudoers文件里的。可以看看sudoers：</p>
-<pre><code class="hljs awk">[root@localhost ~]<span class="hljs-comment"># sudoers</span>
-bash: sudoers: 未找到命令...
-[root@localhost ~]<span class="hljs-comment"># whereis sudoers</span>
-sudoers: <span class="hljs-regexp">/etc/</span>sudoers <span class="hljs-regexp">/etc/</span>sudoers.d <span class="hljs-regexp">/usr/</span>libexec<span class="hljs-regexp">/sudoers.so /u</span>sr<span class="hljs-regexp">/share/m</span>an<span class="hljs-regexp">/man5/</span>sudoers.<span class="hljs-number">5</span>.gz</code></pre>
+# 监听的服务端口，所部署机器的IP或者域名＋端口，记得防火墙开端口 
+# 监听器列表 - 使用逗号分隔URI列表和监听器名称。如果侦听器名称不是安全协议，则还必须设置listener.security.protocol.map。指定主机名为<span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>来绑定到所有接口。留空则绑定到默认接口上
+# java.net.InetAddress.getCanonicalHostName() <span class="hljs-keyword">if</span> not configured.
+#   FORMAT:
+#     listeners = listener_name:<span class="hljs-comment">//host_name:port</span>
+#   EXAMPLE:
+#     listeners = PLAINTEXT:<span class="hljs-comment">//your.host.name:9092</span>
+listeners=PLAINTEXT:<span class="hljs-comment">//192.168.186.144:9092</span>
 
-<p>找到这个文件位置之后再查看权限：</p>
-<pre><code class="hljs angelscript">[<span class="hljs-symbol">root@</span>localhost ~]# ls -l /etc/sudoers
--r--r----- <span class="hljs-number">1</span> root root <span class="hljs-number">4251</span> <span class="hljs-number">9</span>月  <span class="hljs-number">25</span> <span class="hljs-number">15</span>:<span class="hljs-number">08</span> /etc/sudoers</code></pre>
+# Hostname and port the broker will advertise to producers and consumers. If not set, 
+# it uses the value for <span class="hljs-string">&quot;listeners&quot;</span> <span class="hljs-keyword">if</span> configured.  Otherwise, it will use the value
+# returned <span class="hljs-keyword">from</span> java.net.InetAddress.getCanonicalHostName().
+#advertised.listeners=PLAINTEXT:<span class="hljs-comment">//your.host.name:9092</span>
 
-<p>是的，只有只读的权限，如果想要修改的话，需要先添加w权限：</p>
-<pre><code class="hljs livescript">[root@localhost ~]<span class="hljs-comment"># chmod -v u+w /etc/sudoers</span>
-mode <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;/etc/sudoers&quot;</span> changed <span class="hljs-keyword">from</span> <span class="hljs-number">0440</span> (r--r-----) <span class="hljs-keyword">to</span> <span class="hljs-number">0640</span> (rw-r-----)</code></pre>
+# Maps listener names to security protocols, the default is for them to be the same. See the config documentation for more details
+#listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL
 
-<p>然后就可以添加内容了，在下面的一行下追加新增的用户：</p>
-<pre><code class="hljs pgsql">[root@localhost ~]# vim /etc/sudoers
+# 服务器用于从接收网络请求并发送网络响应的线程数
+num.network.threads=<span class="hljs-number">3</span>
+
+# 服务器用于处理请求的线程数，可能包括磁盘I/O
+num.io.threads=<span class="hljs-number">8</span>
+
+# 服务端用来处理socket连接的SO_SNDBUF缓冲大小。如果值为<span class="hljs-number">-1</span>，则使用系统默认值。
+socket.send.buffer.bytes=<span class="hljs-number">102400</span>
+
+# 服务端用来处理socket连接的SO_RCVBUFF缓冲大小。如果值为<span class="hljs-number">-1</span>，则使用系统默认值
+socket.receive.buffer.bytes=<span class="hljs-number">102400</span>
+
+# socket请求的最大大小，这是为了防止server跑光内存，不能大于Java堆的大小。（<span class="hljs-number">104857600</span>-&gt;<span class="hljs-number">100</span>MB）
+socket.request.max.bytes=<span class="hljs-number">104857600</span>
 
 
-## Allow root <span class="hljs-keyword">to</span> run <span class="hljs-keyword">any</span> commands anywher  
-root    <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)       <span class="hljs-keyword">ALL</span>  
-linuxidc  <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>)       <span class="hljs-keyword">ALL</span>  #这个是新增的用户
- 默认<span class="hljs-number">5</span>分钟后刚才输入的sudo密码过期，下次sudo需要重新输入密码，如果觉得在sudo的时候输入密码麻烦，把刚才的输入换成如下内容即可：
-linuxidc <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>) NOPASSWD:<span class="hljs-keyword">ALL</span></code></pre>
+############################# Log Basics #############################
 
-<p>wq保存退出，这时候要记得将写权限收回：</p>
-<pre><code class="hljs livescript">[root@localhost ~]<span class="hljs-comment"># chmod -v u-w /etc/sudoers</span>
-mode <span class="hljs-keyword">of</span> <span class="hljs-string">&quot;/etc/sudoers&quot;</span> changed <span class="hljs-keyword">from</span> <span class="hljs-number">0640</span> (rw-r-----) <span class="hljs-keyword">to</span> <span class="hljs-number">0440</span> (r--r-----)</code></pre>
+# 保存日志数据的目录，如果未设置将使用log.dir的配置。
+log.dirs=/home/cloud/server/kafka/kafka/logs
 
-<p>这时候使用新用户登录，使用sudo：</p>
-<pre><code class="hljs routeros">[linuxidc@localhost ~]$ sudo cat /etc/passwd
-[sudo] password <span class="hljs-keyword">for</span> linuxidc: 
+# ！！每个topic的默认日志分区数 主题分区数必须大于broker数 ！！
+num.partitions=<span class="hljs-number">3</span>
 
-We trust you have received the usual lecture <span class="hljs-keyword">from</span> the local System
-Administrator. It usually boils down <span class="hljs-keyword">to</span> these three things:
+# 每个数据目录，用于启动时日志恢复和关闭时刷新的线程数
+num.recovery.threads.per.data.dir=<span class="hljs-number">1</span>
 
-    #1) Respect the privacy of others.
-    #2) Think before you type.
-    #3) With great power comes great responsibility.</code></pre>
+############################# Internal Topic Settings  #############################
+# The replication factor for the group metadata internal topics <span class="hljs-string">&quot;__consumer_offsets&quot;</span> and <span class="hljs-string">&quot;__transaction_state&quot;</span>
+# For anything other than development testing, a value greater than <span class="hljs-number">1</span> is recommended for to ensure availability such <span class="hljs-keyword">as</span> <span class="hljs-number">3.</span>
 
-<p>第一次使用会提示你，你已经化身超人，身负责任。而且需要输入密码才可以下一步。如果不想需要输入密码怎么办，将最后一个ALL修改成NOPASSWD: ALL。</p>
+# offset topic的副本数（设置的越大，可用性越高）。内部topic创建将失败，直到集群大小满足此副本数要求。
+offsets.topic.replication.factor=<span class="hljs-number">1</span>
+# 事务topic的副本数（设置的越大，可用性越高）。内部topic在集群数满足副本数之前，将会一直创建失败。
+transaction.state.log.replication.factor=<span class="hljs-number">1</span>
+# 覆盖事务topic的min.insync.replicas配置
+# 当producer将ack设置为“全部”（或“<span class="hljs-number">-1</span>”）时，min.insync.replicas指定了被认为写入成功的最小副本数。
+# 如果这个最小值不能满足，那么producer将会引发一个异常（NotEnoughReplicas或NotEnoughReplicasAfterAppend）。
+# 当一起使用时，min.insync.replicas和acks允许您强制更大的耐久性保证。 
+# 一个经典的情况是创建一个复本数为<span class="hljs-number">3</span>的topic，将min.insync.replicas设置为<span class="hljs-number">2</span>，并且producer使用“all”选项。 
+# 这将确保如果大多数副本没有写入producer则抛出异常。
+transaction.state.log.min.isr=<span class="hljs-number">1</span>
+
+############################# Log Flush Policy #############################
+
+# Messages are immediately written to the filesystem but by default we only fsync() to sync
+# the OS cache lazily. The following configurations control the flush <span class="hljs-keyword">of</span> data to disk.
+# There are a few important trade-offs here:
+#    <span class="hljs-number">1.</span> Durability: Unflushed data may be lost <span class="hljs-keyword">if</span> you are not using replication.
+#    <span class="hljs-number">2.</span> Latency: Very large flush intervals may lead to latency spikes when the flush does occur <span class="hljs-keyword">as</span> there will be a lot <span class="hljs-keyword">of</span> data to flush.
+#    <span class="hljs-number">3.</span> Throughput: The flush is generally the most expensive operation, and a small flush interval may lead to exceessive seeks.
+# The settings below allow one to configure the flush policy to flush data after a period <span class="hljs-keyword">of</span> time or
+# every N messages (or both). This can be done globally and overridden on a per-topic basis.
+
+# 在将消息刷新到磁盘之前，在日志分区上累积的消息数量。默认：    <span class="hljs-number">9223372036854775807</span>
+#log.flush.interval.messages=<span class="hljs-number">10000</span>
+
+# 在刷新到磁盘之前，任何topic中的消息保留在内存中的最长时间（以毫秒为单位）。如果未设置，则使用
+# 如果未设置，则使用log.flush.scheduler.interval.ms中的值。 
+#log.flush.interval.ms=<span class="hljs-number">1000</span>
+
+############################# Log Retention Policy #############################
+
+# The following configurations control the disposal <span class="hljs-keyword">of</span> log segments. The policy can
+# be set to delete segments after a period <span class="hljs-keyword">of</span> time, or after a given size has accumulated.
+# A segment will be deleted whenever *either* <span class="hljs-keyword">of</span> these criteria are met. Deletion always happens
+# <span class="hljs-keyword">from</span> the end <span class="hljs-keyword">of</span> the log.
+
+# The minimum age <span class="hljs-keyword">of</span> a log file to be eligible for deletion due to age
+log.retention.hours=<span class="hljs-number">168</span>
+
+# A size-based retention policy for logs. Segments are pruned <span class="hljs-keyword">from</span> the log unless the remaining
+# segments drop below log.retention.bytes. Functions independently <span class="hljs-keyword">of</span> log.retention.hours.
+#log.retention.bytes=<span class="hljs-number">1073741824</span>
+
+# The maximum size <span class="hljs-keyword">of</span> a log segment file. When this size is reached a new log segment will be created.
+log.segment.bytes=<span class="hljs-number">1073741824</span>
+
+# The interval at which log segments are checked to see <span class="hljs-keyword">if</span> they can be deleted according
+# to the retention policies
+log.retention.check.interval.ms=<span class="hljs-number">300000</span>
+
+############################# Zookeeper #############################
+
+# Zookeeper connection string (see zookeeper docs for details).
+# This is a comma separated host:port pairs, each corresponding to a zk
+# server. e.g. <span class="hljs-string">&quot;127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002&quot;</span>.
+# You can also append an optional chroot string to the urls to specify the
+# root directory for all kafka znodes.
+zookeeper.connect=localhost:<span class="hljs-number">2181</span>
+
+# Timeout <span class="hljs-keyword">in</span> ms for connecting to zookeeper
+zookeeper.connection.timeout.ms=<span class="hljs-number">6000</span>
+
+
+############################# Group Coordinator Settings #############################
+
+# The following configuration specifies the time, <span class="hljs-keyword">in</span> milliseconds, that the GroupCoordinator will delay the initial consumer rebalance.
+# The rebalance will be further delayed by the value <span class="hljs-keyword">of</span> group.initial.rebalance.delay.ms <span class="hljs-keyword">as</span> new members join the group, up to a maximum <span class="hljs-keyword">of</span> max.poll.interval.ms.
+# The default value for this is <span class="hljs-number">3</span> seconds.
+# We override this to <span class="hljs-number">0</span> here <span class="hljs-keyword">as</span> it makes for a better out-<span class="hljs-keyword">of</span>-the-box experience for development and testing.
+# However, <span class="hljs-keyword">in</span> production environments the default value <span class="hljs-keyword">of</span> <span class="hljs-number">3</span> seconds is more suitable <span class="hljs-keyword">as</span> this will help to avoid unnecessary, and potentially expensive, rebalances during application startup.
+group.initial.rebalance.delay.ms=<span class="hljs-number">0</span>
+</code></pre>
+
+<h4 id="启动zk"><a href="#启动zk" class="headerlink" title="启动zk"></a>启动zk</h4><pre><code class="hljs awk">.<span class="hljs-regexp">/bin/</span>zkServer.sh start</code></pre>
+
+<h4 id="启动kafka"><a href="#启动kafka" class="headerlink" title="启动kafka"></a>启动kafka</h4><pre><code class="hljs pgsql">nohup ./bin/kafka-<span class="hljs-keyword">server</span>-<span class="hljs-keyword">start</span>.sh config/<span class="hljs-keyword">server</span>.properties &gt; <span class="hljs-keyword">server</span>.<span class="hljs-keyword">out</span> &amp;
+nohup ./bin/kafka-<span class="hljs-keyword">server</span>-<span class="hljs-keyword">start</span>.sh config/<span class="hljs-keyword">server</span><span class="hljs-number">-1.</span>properties &gt; server1.<span class="hljs-keyword">out</span> &amp;
+nohup ./bin/kafka-<span class="hljs-keyword">server</span>-<span class="hljs-keyword">start</span>.sh config/<span class="hljs-keyword">server</span><span class="hljs-number">-2.</span>properties &gt; server2.<span class="hljs-keyword">out</span> &amp;</code></pre>
+
+<h4 id="创建topic"><a href="#创建topic" class="headerlink" title="创建topic"></a>创建topic</h4><pre><code class="hljs brainfuck"><span class="hljs-comment">bin/kafka</span><span class="hljs-literal">-</span><span class="hljs-comment">topics</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> --<span class="hljs-comment">create</span> --<span class="hljs-comment">zookeeper</span> <span class="hljs-comment">localhost:2181</span> --<span class="hljs-comment">replication</span><span class="hljs-literal">-</span><span class="hljs-comment">factor</span> <span class="hljs-comment">1</span> --<span class="hljs-comment">partitions</span> <span class="hljs-comment">1</span> --<span class="hljs-comment">topic</span> <span class="hljs-comment">kafka</span><span class="hljs-literal">-</span><span class="hljs-comment">stream1</span></code></pre>
+
+
+
+<h4 id="查看topic描述"><a href="#查看topic描述" class="headerlink" title="查看topic描述"></a>查看topic描述</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./bin/kafka-topics.sh</span> <span class="hljs-params">--describe</span> <span class="hljs-params">--zookeeper</span> localhost<span class="hljs-function">:2181</span> <span class="hljs-params">--topic</span> kafka-more</code></pre>
+
+<h4 id="查看消费者组"><a href="#查看消费者组" class="headerlink" title="查看消费者组"></a>查看消费者组</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./bin/kafka-consumer-groups.sh</span> <span class="hljs-params">--new-consumer</span> <span class="hljs-params">--bootstrap-server</span> 192.168.186.140<span class="hljs-function">:9092</span> <span class="hljs-params">--list</span>
+<span class="hljs-string">./bin/kafka-consumer-groups.sh</span> <span class="hljs-params">--zookeeper</span> localhost<span class="hljs-function">:2181</span> <span class="hljs-params">--list</span>
+<span class="hljs-string">./bin/kafka-topics.sh</span> <span class="hljs-params">--zookeeper</span> localhost<span class="hljs-function">:2181</span>/kafka-cluster <span class="hljs-params">--list</span>  </code></pre>
+
+<h4 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./bin/kafka-console-consumer.sh</span> <span class="hljs-params">--bootstrap-server</span> localhost<span class="hljs-function">:9092</span> <span class="hljs-params">--from-beginning</span> <span class="hljs-params">--topic</span> kafka-more</code></pre>
+
+<h4 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./bin/kafka-console-producer.sh</span> <span class="hljs-params">--broker-list</span> localhost<span class="hljs-function">:9092</span> <span class="hljs-params">--topic</span> kafka-more</code></pre>
+
 
             </article>
             <hr>
@@ -281,6 +379,10 @@ Administrator. It usually boils down <span class="hljs-keyword">to</span> these 
                     
                       <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
                     
+                      <a class="hover-with-bg" href="/tags/Kafka/">Kafka</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring-Boot/">Spring-Boot</a>
+                    
                   </div>
                 
               </div>
@@ -292,18 +394,12 @@ Administrator. It usually boils down <span class="hljs-keyword">to</span> these 
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/10/httpd/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">httpd</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/10/Centos7%E5%AE%89%E8%A3%85Node+Npm/">
-                        <span class="hidden-mobile">Centos7安装Node+Npm</span>
+                      <a href="/2020/10/10/Docker/">
+                        <span class="hidden-mobile">Docker</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -491,7 +587,7 @@ Administrator. It usually boils down <span class="hljs-keyword">to</span> these 
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "CentOS 7中添加一个新用户并授权&nbsp;",
+        "Kafka安装使用&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
