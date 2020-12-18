@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      135 字
+      152 字
     </span>
   
 
@@ -222,6 +222,10 @@
 ])</code></pre>
 
 <h4 id="查询条件为数据中对象某个属性值"><a href="#查询条件为数据中对象某个属性值" class="headerlink" title="查询条件为数据中对象某个属性值"></a>查询条件为数据中对象某个属性值</h4><pre><code class="hljs javascript">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).find(&#123;<span class="hljs-string">&quot;author.id&quot;</span>:<span class="hljs-number">35562628</span>&#125;)</code></pre>
+
+<h5 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h5><pre><code class="hljs elixir">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).find(&#123;<span class="hljs-string">&quot;author.name&quot;</span><span class="hljs-symbol">:/Rella/</span>&#125;)</code></pre>
+
+
 
 <h4 id="命令导出数据库"><a href="#命令导出数据库" class="headerlink" title="命令导出数据库"></a>命令导出数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoexport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Images -c picjson -o <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json -f <span class="hljs-string">&quot;_id,tags,pid,p,uid,title,author,url,r18,width,height,_v&quot;</span></code></pre>
 
@@ -600,5 +604,5 @@
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

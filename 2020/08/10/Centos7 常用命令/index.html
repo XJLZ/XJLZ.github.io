@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      179 字
+      319 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      4
        分钟
     </span>
   
@@ -234,9 +234,8 @@ firewall-cmd --list-all</code></pre>
 <h4 id="开机启动配置"><a href="#开机启动配置" class="headerlink" title="开机启动配置"></a>开机启动配置</h4><pre><code class="hljs applescript">/etc/rc.<span class="hljs-keyword">local</span>
 可加入命令，如：nohup java -jar <span class="hljs-built_in">text</span>.jar</code></pre>
 
-<h4 id="shell脚本执行报错"><a href="#shell脚本执行报错" class="headerlink" title="shell脚本执行报错"></a>shell脚本执行报错</h4><pre><code class="hljs matlab">sed -<span class="hljs-built_in">i</span> <span class="hljs-string">&quot;s/\r//&quot;</span> xxx.sh</code></pre>
+<h4 id="shell脚本执行报错（-bin-bash-M-坏的解释器-没有那个文件或目录）"><a href="#shell脚本执行报错（-bin-bash-M-坏的解释器-没有那个文件或目录）" class="headerlink" title="shell脚本执行报错（ /bin/bash^M: 坏的解释器: 没有那个文件或目录）"></a>shell脚本执行报错（ /bin/bash^M: 坏的解释器: 没有那个文件或目录）</h4><pre><code class="hljs cmake">sed -i <span class="hljs-string">&quot;s/\r//&quot;</span> <span class="hljs-keyword">install</span>.sh</code></pre>
 
-<p>mMN7aJgE</p>
 <h4 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h4><pre><code class="hljs awk">cat <span class="hljs-regexp">/proc/</span>version
 cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
 
@@ -244,6 +243,26 @@ cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
 当前目录大小 du -<span class="hljs-keyword">sh</span> 或  du -<span class="hljs-keyword">h</span>
 文件大小 du -<span class="hljs-keyword">h</span> index.html</code></pre>
 
+<h4 id="查看系统时间"><a href="#查看系统时间" class="headerlink" title="查看系统时间"></a>查看系统时间</h4><ul>
+<li>查看系统时间的命令： date</li>
+</ul>
+<h4 id="查看硬件时间"><a href="#查看硬件时间" class="headerlink" title="查看硬件时间"></a>查看硬件时间</h4><ul>
+<li>查看硬件时间的命令：  hwclock</li>
+</ul>
+<h4 id="时间服务器上的时间同步的方法"><a href="#时间服务器上的时间同步的方法" class="headerlink" title="时间服务器上的时间同步的方法"></a>时间服务器上的时间同步的方法</h4><pre><code class="hljs vala">安装ntpdate工具
+<span class="hljs-meta"># yum -y install ntp ntpdate</span>
+
+设置系统时间与网络时间同步
+<span class="hljs-meta"># ntpdate cn.pool.ntp.org</span>
+
+将系统时间写入硬件时间
+<span class="hljs-meta"># hwclock --systohc</span></code></pre>
+
+<h4 id="安装net-tools"><a href="#安装net-tools" class="headerlink" title="安装net-tools"></a>安装net-tools</h4><pre><code class="hljs apache"><span class="hljs-attribute">yum</span> install -y net-tools.x<span class="hljs-number">86</span>_<span class="hljs-number">64</span> </code></pre>
+
+<h4 id="安装lrzsz"><a href="#安装lrzsz" class="headerlink" title="安装lrzsz"></a>安装lrzsz</h4><pre><code class="hljs cmake">yum -y <span class="hljs-keyword">install</span> lrzsz</code></pre>
+
+<p>w1sTqlD8QvFsx/aoSPrmfZMQkAwAxy1y+eEXwEc7GiYb4Q5gujLos4M0xfu77S2ZR8rr0hwMoqKDLFVHA5PxayGHy8lMyZSn5K3vCcjR/4Z8vEyzGReK+EgucnatTkfgOOys1wS02UcoQfX5Cffg0PIhhPokggSTGk5gxBizoW9kvAmzspCJEQ+v3Gq9Q5bZlugpdiwJ3bbLiW/OHg1iZq39mAxXcvaPbWOJmtqhbmkDm/VCZ/zFQ1vf8Xi32rseazqFJsPhLOcZLdqLfwOjqoSJuc9G9mCQIxbtskBD9wQOP3AVmdhtEg6d+en4uhypJdf7UEUAWjCj2JO5BOg75ZAbnEr72s89N9HWsydsPQSWSJbmF75X2E22qg7naKjZZBSJZez45i7j5FgHp1pt82zvIWIlAItpYeH00Kkn96eUQ0ODQJ0wodg2Pfoi4Vu46wG3jC/1J0oOWBP2uzCy3JA+rqCgYAtB+NNhAidtwYPk4Nu1HxNFHKDRNo5MMKr/1ujMIBR2+4Eft2S1Mq7eq3vOrz5+AQdxv+rjRxyKMFaBHXKYxYU/6YfrqLqxqjx31JLVRMPdS5s5z58GosjqHNFPQY0Bhokc6ZauqSFelY/M2AHUdnlp4/YATZhjteIyJLIprT0UyYEiidwwtxzlCNfqyKLhfC72F0bB+n8TKIs=</p>
 
             </article>
             <hr>
@@ -617,5 +636,5 @@ cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

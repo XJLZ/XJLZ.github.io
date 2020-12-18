@@ -180,6 +180,129 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/12/18/Spring%20Cloud%20%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">Spring Cloud 服务注册中心</a>
+
+      <a href="/2020/12/18/Spring%20Cloud%20%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/" class="index-excerpt">
+        
+        
+          
+        
+        <div>什么是服务注册中心​        服务注册中心就是，在微服务体系中，其中有一个服务是用来集中管理这些微服务实例，微服务间的调用只需要知道对方的服务名，而无需关注具体的IP和端口，便于微服务架构的拓展和维护。
+CAP理论​        CAP理论是分布式架构中重要理论，CAP不能都取，只能取其二
+
+
+一致性(Consistency) (所有节点在同一时间具有相同的数据)
+可用性(Availabi</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-12-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Spring-Cloud/">Spring Cloud</a>
+            
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">服务注册与发现</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/11/30/FFmpeg/">FFmpeg</a>
+
+      <a href="/2020/11/30/FFmpeg/" class="index-excerpt">
+        
+        
+          
+        
+        <div>安装1、下载
+命令ffmpeg -i D:\test\abc.mp4 -c copy -map 0 -f segment -segment_list abc.m3u8 -segment_time 10 abc%03d.ts
+
+
+
+ffmpeg -y \
+-i The_Kriss_Vector.mp4 \
+-hls_time 20 \       # 将test.mp4分割成每个小段多少秒
+-hls</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-11-30
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/FFmpeg/">FFmpeg</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/">Centos7安装elasticsearch</a>
+
+      <a href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/" class="index-excerpt">
+        
+        
+          
+        
+        <div>下载安装包官网地址  https://www.elastic.co/cn/downloads/past-releases#elasticsearch
+选择自己要下载的版本，这里以v7.3.2为例
+安装&amp;脚本​    es是要用非root用户启动
+#!/bin/bash
+data=&quot;/usr/local&quot;
+# 设置用户和用户组
+user=&quot;es&quot;
+gr</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-11-19
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/elasticsearch/">elasticsearch</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">Kafka安装使用</a>
 
       <a href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="index-excerpt">
@@ -481,120 +604,6 @@ systemc</div>
     </div>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/">Mongo常用查询</a>
-
-      <a href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/" class="index-excerpt">
-        
-        
-          
-        
-        <div>查询并显示集合中的数据db.getCollection(&#x27;pixiv&#x27;).aggregate([
-    &#123; $group: &#123; _id : &#x27;$author.id&#x27;, count: &#123; $sum : 1 &#125; &#125; &#125;,
-    &#123; $match: &#123; count: &#123; </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mongodb/">mongodb</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/">Navicat12激活</a>
-
-      <a href="/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/" class="index-excerpt">
-        
-        
-          
-        
-        <div>本教程更新时间：2019-4-19 16:37:38
-https://www.52pojie.cn/thread-934566-1-1.html
-本文所需软件1、navicat_premium原版安装包官网下载地址：https://www.navicat.com.cn/download/navicat-premium2、注册工具github地址：https://github.com/DoubleL</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Navicat/">Navicat</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Mysql5.7%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">MySQ5.7脚本安装</a>
-
-      <a href="/2020/08/10/Mysql5.7%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" class="index-excerpt">
-        
-        
-          
-        
-        <div>脚本#!/bin/bash
-#压缩包目录
-data=&quot;home/mysql&quot;
-
-echo &quot;将mysql压缩包解压&quot;
-
-tar xvf mysql-5.7.30-linux-glibc2.12-x86_64.tar.gz 
-
-echo &quot;新建mysql文件夹&quot;
-if [ ! -d &quot;/&quot;$&#123;data&#125</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/MySQL/">MySQL</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -848,5 +857,5 @@ if [ ! -d &quot;/&quot;$&#123;data&#125</div>
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

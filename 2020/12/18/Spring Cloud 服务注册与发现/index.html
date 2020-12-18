@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Spring Cloud 服务注册中心 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>XJL的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-12-18 09:32">
+      2020年12月18日 上午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h4 id="什么是服务注册中心"><a href="#什么是服务注册中心" class="headerlink" title="什么是服务注册中心"></a>什么是服务注册中心</h4><p>​        服务注册中心就是，在微服务体系中，其中有一个服务是用来集中管理这些微服务实例，微服务间的调用只需要知道对方的服务名，而无需关注具体的IP和端口，便于微服务架构的拓展和维护。</p>
+<h4 id="CAP理论"><a href="#CAP理论" class="headerlink" title="CAP理论"></a>CAP理论</h4><p>​        CAP理论是分布式架构中重要理论，CAP不能都取，只能取其二</p>
+<blockquote>
+<ul>
+<li>一致性(Consistency) (所有节点在同一时间具有相同的数据)</li>
+<li>可用性(Availability) (保证每个请求不管成功或者失败都有响应)</li>
+<li>分区容错性(Partition tolerance) (系统中任意信息的丢失或失败不会影响系统的继续运作)</li>
+</ul>
+</blockquote>
+<h4 id="常用的注册中心"><a href="#常用的注册中心" class="headerlink" title="常用的注册中心"></a>常用的注册中心</h4><blockquote>
+<ul>
+<li>Eureka</li>
+<li>Zookeeper</li>
+<li>Consul</li>
+<li>Nacos</li>
+</ul>
+</blockquote>
+<h4 id="Eureka-gt-AP"><a href="#Eureka-gt-AP" class="headerlink" title="Eureka &gt; AP"></a>Eureka &gt; AP</h4><p>​        Eureka遵信AP原则，即高可用以及分隔容忍性，最终保证一致性，在Eureka Server集群中，由于其采用的是p2p对等通信，互相注册的方式，去除了中心化，所以只要还存在其中一个服务，服务就可以正常注册和发现，当宕机的Eureka Server可用时，就会请求复制操作，同步当前可用Eureka Server所有的服务节点</p>
+<h5 id="使用方式："><a href="#使用方式：" class="headerlink" title="使用方式："></a>使用方式：</h5><h6 id="Eureka-Server"><a href="#Eureka-Server" class="headerlink" title="Eureka Server"></a>Eureka Server</h6><p>​        在注册中心这个微服务中引入依赖</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+
+<p>​        在application.yml中添加配置</p>
+<pre><code class="hljs yml"><span class="hljs-attr">eureka:</span>
+  <span class="hljs-attr">instance:</span>
+    <span class="hljs-attr">hostname:</span> <span class="hljs-string">www.eureka7000.com</span> <span class="hljs-comment">#eureka服务端的应用实例主机名</span>
+  <span class="hljs-attr">client:</span>
+    <span class="hljs-comment">#false表示不向注册中心注册自己</span>
+    <span class="hljs-attr">register-with-eureka:</span> <span class="hljs-literal">false</span>
+    <span class="hljs-comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span>
+    <span class="hljs-attr">fetch-registry:</span> <span class="hljs-literal">false</span>
+    <span class="hljs-attr">service-url:</span>
+      <span class="hljs-comment">#设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址</span>
+      <span class="hljs-comment">#集群指向其它eureka</span>
+<span class="hljs-comment">#      defaultZone: http://www.eureka7001.com:7001/eureka/</span>
+      <span class="hljs-comment">#单机就是7000自己</span>
+      <span class="hljs-attr">defaultZone:</span> <span class="hljs-string">http://www.eureka7000.com:7000/eureka/</span>
+  <span class="hljs-attr">server:</span>
+    <span class="hljs-comment"># false 关闭自我保护机制，保证不可用服务呗及时剔除(不推荐)</span>
+<span class="hljs-comment">#    enable-self-preservation: false</span>
+    <span class="hljs-comment"># Eureka Server 清理无效节点的时间间隔（单位：毫秒）</span>
+<span class="hljs-comment">#    eviction-interval-timer-in-ms: 2000</span></code></pre>
+
+<p>​        最后在该服务的启动类上加上注解：**@EnableEurekaServer**</p>
+<p>集群方式启动：可以看到副本列表中有另一个Eureka Server的实例主机名</p>
+<p><img src="https://i.loli.net/2020/12/18/bzIGvP38Wwgd5SO.png" srcset="/img/loading.gif" alt="image-20201218095906560"></p>
+<p><img src="https://i.loli.net/2020/12/18/ALwhEKFaOmxZNID.png" srcset="/img/loading.gif" alt="image-20201218095933475"></p>
+<h6 id="Eureka-Client"><a href="#Eureka-Client" class="headerlink" title="Eureka Client"></a><strong>Eureka Client</strong></h6><p>​        在资源微服务中引入依赖</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+
+<p>​        在application.yml中添加配置</p>
+<pre><code class="hljs yml"><span class="hljs-attr">eureka:</span>
+  <span class="hljs-attr">instance:</span>
+    <span class="hljs-comment"># 隐藏域名</span>
+    <span class="hljs-attr">instance-id:</span> <span class="hljs-string">payment8001</span>
+    <span class="hljs-comment"># 左下角访问路径可以显示IP地址</span>
+    <span class="hljs-attr">prefer-ip-address:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-comment"># 向Eureka 服务端发送心跳的间隔时间，单位为秒，用于服务续约。这里配置为20秒，即每隔20秒向Eureka Server发送心跳，表明当前服务没有宕机；</span>
+<span class="hljs-comment">#    lease-renewal-interval-in-seconds: 20</span>
+    <span class="hljs-comment"># Eureka服务端在收到最后一次心跳后等待时间上限，（秒），默认90秒，超时剔除服务</span>
+<span class="hljs-comment">#    lease-expiration-duration-in-seconds: 2</span>
+  <span class="hljs-attr">client:</span>
+    <span class="hljs-comment">#表示是否将自己注册进Eureka Server默认为true</span>
+    <span class="hljs-attr">register-with-eureka:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-comment">#是否从Eureka Server抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡</span>
+    <span class="hljs-attr">fetch-registry:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">service-url:</span>
+    <span class="hljs-comment"># 集群</span>
+      <span class="hljs-attr">defaultZone:</span> <span class="hljs-string">http://www.eureka7001.com:7001/eureka,http://www.eureka7000.com:7000/eureka</span>
+    <span class="hljs-comment"># 单节点</span>
+<span class="hljs-comment">#      defaultZone: http://www.eureka7000.com:7000/eureka</span></code></pre>
+
+<p>​    最后在该服务的启动类上加上注解：**@EnableEurekaClient**</p>
+<p>​    可以看出，在使用了eureka.instance.instance-id之后隐藏了服务id以及端口</p>
+<p><img src="https://i.loli.net/2020/12/18/flqzcHDsYZEWNpX.png" srcset="/img/loading.gif" alt="image-20201218102313617"></p>
+<p><img src="https://i.loli.net/2020/12/18/gYrUD3p5xMw4lHk.png" srcset="/img/loading.gif" alt="image-20201218102421648"></p>
+<p>​        当鼠标悬浮到“payment8002”上时，浏览器左下角显示IP地址</p>
+<p><img src="https://i.loli.net/2020/12/18/rAsZjkCJ3e4qMWm.png" srcset="/img/loading.gif" alt="image-20201218102707248"></p>
+<h4 id="Zookeeper-gt-CP"><a href="#Zookeeper-gt-CP" class="headerlink" title="Zookeeper &gt; CP"></a>Zookeeper &gt; CP</h4><p>​    Zookeeper从设计模式角度来理解：是一个基于观察者模式设计（一个领导者(Leader)，多个跟随者(Follower)组成的集群）的分布式服务管理框架，它负责存储和管理大家都关心的数据，然后接受观察者的注册，一旦这些数据的状态发生变化，Zookeeper就将负责通知已经在Zookeeper上注册的那些观察者做出相应的反应。</p>
+<p>​    Zookeeper遵循CP原则，保证容错和数据实时一致性，从 Zookeeper 的实际应用情况来看，在使用 Zookeeper 获取服务列表时，如果此时的 Zookeeper 集群中的 Leader 宕机了，该集群就要进行 Leader 的选举，又或者 Zookeeper 集群中半数以上服务器节点不可用（例如有三个节点，如果节点一检测到节点三挂了 ，节点二也检测到节点三挂了，那这个节点才算是真的挂了），那么将无法处理该请求。所以说，Zookeeper 不能保证服务可用性。</p>
+<p>​        当然，在大多数分布式环境中，尤其是涉及到数据存储的场景，数据一致性应该是首先被保证的，这也是 Zookeeper 设计紧遵CP原则的另一个原因。</p>
+<h5 id="使用方式：-1"><a href="#使用方式：-1" class="headerlink" title="使用方式："></a>使用方式：</h5><h6 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h6><p>​        首先Zookeeper注册中心需要单独下载</p>
+<pre><code class="hljs awk">官网：https:<span class="hljs-regexp">//</span>zookeeper.apache.org<span class="hljs-regexp">/ 或 https:/</span><span class="hljs-regexp">/mirrors.tuna.tsinghua.edu.cn/</span>apache<span class="hljs-regexp">/zookeeper/</span></code></pre>
+
+<p>​        解压并进入conf文件夹，修改配置文件，主要时修改dataDir位置对应的目录，<strong>目录没有的先创建</strong></p>
+<pre><code class="hljs css"># 复制一份配置文件
+<span class="hljs-selector-tag">cp</span> <span class="hljs-selector-tag">zoo_sample</span><span class="hljs-selector-class">.cfg</span> <span class="hljs-selector-tag">zoo</span><span class="hljs-selector-class">.cfg</span>
+# 编辑<span class="hljs-selector-tag">zoo</span><span class="hljs-selector-class">.cfg</span>
+<span class="hljs-selector-tag">vim</span> <span class="hljs-selector-tag">zoo</span><span class="hljs-selector-class">.cfg</span></code></pre>
+
+<p><img src="https://i.loli.net/2020/12/18/IiCh6VBKZxzmPtR.png" srcset="/img/loading.gif" alt="image-20201218105618926"></p>
+<p>​        修改好配置文件后，进入到bin目录</p>
+<pre><code class="hljs vala"><span class="hljs-meta"># 启动zk</span>
+./zkServer.sh start
+<span class="hljs-meta"># 开启端口2181</span></code></pre>
+
+<p><img src="https://i.loli.net/2020/12/18/5JaA3siTq6bfzDW.png" srcset="/img/loading.gif" alt="image-20201218105800886"></p>
+<h6 id="服务Client"><a href="#服务Client" class="headerlink" title="服务Client"></a>服务Client</h6><p>​        在资源微服务中引入依赖</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-zookeeper-discovery<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+     <span class="hljs-comment">&lt;!--先排除自带的zookeeper3.5.3--&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span>
+             <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.zookeeper<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+             <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>zookeeper<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+         <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span>
+     <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<span class="hljs-comment">&lt;!--添加zookeeper3.4.14版本--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.zookeeper<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>zookeeper<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.4.14<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">exclusions</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">exclusion</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>slf4j-log4j12<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">exclusion</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">exclusions</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+
+<p>​        在application.yml中添加配置</p>
+<pre><code class="hljs yml"><span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">application:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">cloud-consumer-order</span>
+  <span class="hljs-attr">cloud:</span>
+    <span class="hljs-attr">zookeeper:</span>
+      <span class="hljs-attr">connect-string:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.140</span><span class="hljs-string">:2181</span>
+      <span class="hljs-attr">discovery:</span>
+        <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span></code></pre>
+
+<p>​        最后在启动类添加注解：**@EnableDiscoveryClient**</p>
+<p>​        启动服务、执行命令./zkCli.sh进入zk客户端，执行 ls /services，查看注册进来的服务。</p>
+<p><img src="https://i.loli.net/2020/12/18/EBXknhrN5ZLGbo2.png" srcset="/img/loading.gif" alt="image-20201218112909638"></p>
+<h4 id="Consul-gt-CP"><a href="#Consul-gt-CP" class="headerlink" title="Consul &gt; CP"></a>Consul &gt; CP</h4><p>​        Consul遵循CP原则，保证了强一致性和分区容错性，且使用的是Raft算法，比zookeeper使用的Paxos算法更加简单。虽然保证了强一致性，但是可用性就相应下降了，例如服务注册的时间会稍长一些，因为 Consul 的 raft 协议要求必须过半数的节点都写入成功才认为注册成功 ；在leader挂掉了之后，重新选举出leader之前会导致Consul 服务不可用</p>
+<h5 id="使用方式：-2"><a href="#使用方式：-2" class="headerlink" title="使用方式："></a>使用方式：</h5><h6 id="Server-1"><a href="#Server-1" class="headerlink" title="Server"></a>Server</h6><p>​        <strong>Consul官网：</strong><a target="_blank" rel="noopener" href="https://www.consul.io/intro/index.html%EF%BC%8C%E4%B8%8B%E8%BD%BD%E4%B8%80%E4%B8%AA%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6">https://www.consul.io/intro/index.html，下载一个可执行文件</a></p>
+<p>​        下载完成后解压</p>
+<pre><code class="hljs angelscript"># 可视化界面启动，后台运行，并把日志输出到log.<span class="hljs-keyword">out</span>
+nohup ./consul agent -dev -client <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span> -ui &gt; log.<span class="hljs-keyword">out</span> &amp;</code></pre>
+
+<p>​        访问 IP:8500</p>
+<p><img src="https://i.loli.net/2020/12/18/jGC3fybYMao8QJ7.png" srcset="/img/loading.gif" alt="image-20201218132156223"></p>
+<h6 id="服务Client-1"><a href="#服务Client-1" class="headerlink" title="服务Client"></a>服务Client</h6><p>​    在资源微服务中引入依赖</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-consul-discovery<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+
+<p>​        在application.yml中添加配置</p>
+<pre><code class="hljs yml"><span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">application:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">cloud-consumer-order</span>
+  <span class="hljs-attr">cloud:</span>
+    <span class="hljs-attr">consul:</span>
+      <span class="hljs-attr">host:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.140</span>
+      <span class="hljs-attr">port:</span> <span class="hljs-number">8500</span>
+      <span class="hljs-attr">discovery:</span>
+        <span class="hljs-attr">service-name:</span> <span class="hljs-string">$&#123;spring.application.name&#125;</span></code></pre>
+
+<p>​        最后在启动类添加注解：**@EnableDiscoveryClient**</p>
+<p>启动服务，刷新页面，可以看到服务已经注册进来了</p>
+<p><img src="https://i.loli.net/2020/12/18/EDCSLbK5kQ4wAhc.png" srcset="/img/loading.gif" alt="image-20201218132549369"></p>
+<p>点击进去可以看到该服务的状态以及信息</p>
+<p><img src="https://i.loli.net/2020/12/18/FKI8orfdjqUtLi3.png" srcset="/img/loading.gif" alt="image-20201218132723838"></p>
+<p><img src="https://i.loli.net/2020/12/18/GP2tobIJS9NcM17.png" srcset="/img/loading.gif" alt="image-20201218132747412"></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring-Cloud/">Spring Cloud</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">服务注册与发现</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/30/FFmpeg/">
+                        <span class="hidden-mobile">FFmpeg</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.defer = false
+      s.setAttribute('repo', 'XJLZ/blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      var e = document.getElementsByTagName('script')[0];
+      e.parentNode.insertBefore(s, e);
+    }
+    createObserver(loadUtterances, 'comments')
+  </script>
+
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Spring Cloud 服务注册中心&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript">
+      //定义获取词语下标
+      var a_idx = 0;
+      jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+          //需要显示的词语
+          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
+          //设置词语给span标签
+          var $i = $("<span/>").text(a[a_idx]);
+          //下标等于原来下标+1  余 词语总数
+          a_idx = (a_idx + 1) % a.length;
+          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+          //获取x和y的指针坐标
+          var x = e.pageX, y = e.pageY;
+          //在鼠标的指针的位置给$i定义的span标签添加css样式
+          $i.css({
+            "z-index": 999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": rand_color()
+          });
+          // 随机颜色
+          function rand_color() {
+            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+          }
+          //在body添加这个标签
+          $("body").append($i);
+          //animate() 方法执行 CSS 属性集的自定义动画。
+          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+          $i.animate({
+            //将原来的位置向上移动180
+            "top": y - 180,
+            "opacity": 0
+            //1500动画的速度
+          }, 1500, function () {
+            //时间到了自动删除
+            $i.remove();
+          });
+        });
+      })
+      ;
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

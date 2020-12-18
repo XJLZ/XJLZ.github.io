@@ -221,15 +221,15 @@
 <h3 id="2-解压安装"><a href="#2-解压安装" class="headerlink" title="　　2.解压安装"></a>　　2.解压安装</h3><pre><code class="hljs angelscript">解压：tar -zxvf mongodb-linux-x86_64<span class="hljs-number">-4.0</span><span class="hljs-number">.6</span>.tgz
 移动：mv ./mongodb-linux-x86_64<span class="hljs-number">-4.0</span><span class="hljs-number">.6</span> /usr/local/mongodb</code></pre>
 
-<p>　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315144629293-243768918.png" srcset="/img/loading.gif" alt="img"></p>
+<p>　　<img src="https://i.loli.net/2020/12/18/glJos1c4pRftZeq.png" srcset="/img/loading.gif" alt="img"></p>
 <h2 id="3-配置conf与目录"><a href="#3-配置conf与目录" class="headerlink" title="3.配置conf与目录"></a>3.配置conf与目录</h2><h3 id="1-进入mongodb目录"><a href="#1-进入mongodb目录" class="headerlink" title="　　1.进入mongodb目录　　　"></a>　　1.进入mongodb目录　　　</h3><pre><code class="hljs awk">cd <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/mongodb/</span></code></pre>
 
-<p>　　　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315145017284-1028054786.png" srcset="/img/loading.gif" alt="img"></p>
+<p>　　　　<img src="https://i.loli.net/2020/12/18/uta8KDdAFbHUhep.png" srcset="/img/loading.gif" alt="img"></p>
 <h3 id="2-创建db目录和日志文件"><a href="#2-创建db目录和日志文件" class="headerlink" title="　　2.创建db目录和日志文件　　"></a>　　2.创建db目录和日志文件　　</h3><pre><code class="hljs awk">mkdir -p .<span class="hljs-regexp">/data/</span>db
 mkdir -p ./logs
 touch .<span class="hljs-regexp">/logs/m</span>ongodb.log</code></pre>
 
-<p>　　　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315145325509-1623167612.png" srcset="/img/loading.gif" alt="img"></p>
+<p>　　　　<img src="https://i.loli.net/2020/12/18/KJgWeotVpI2Da35.png" srcset="/img/loading.gif" alt="img"></p>
 <h3 id="3-创建mongodb-conf文件"><a href="#3-创建mongodb-conf文件" class="headerlink" title="　　3.创建mongodb.conf文件"></a>　　3.创建mongodb.conf文件</h3><p>　　　　<strong>vim mongodb.conf</strong></p>
 <pre><code class="hljs ini"><span class="hljs-comment">#端口号</span>
 <span class="hljs-attr">port</span>=<span class="hljs-number">27017</span>
@@ -246,12 +246,12 @@ touch .<span class="hljs-regexp">/logs/m</span>ongodb.log</code></pre>
 
 <h2 id="4-启动测试"><a href="#4-启动测试" class="headerlink" title="4.启动测试"></a>4.启动测试</h2><h3 id="1-启动"><a href="#1-启动" class="headerlink" title="　　1.启动　"></a>　　1.启动　</h3><pre><code class="hljs awk">.<span class="hljs-regexp">/bin/m</span>ongod --config mongodb.conf</code></pre>
 
-<p> 　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315150104231-1845968800.png" srcset="/img/loading.gif" alt="img"></p>
+<p> 　<img src="https://i.loli.net/2020/12/18/xtuVGrRTWA1BelK.png" srcset="/img/loading.gif" alt="img"></p>
 <h3 id="2-连接"><a href="#2-连接" class="headerlink" title="　　2.连接　"></a>　　2.连接　</h3><pre><code class="hljs awk">.<span class="hljs-regexp">/bin/m</span>ongo  --默认端口<span class="hljs-number">27017</span>
 .<span class="hljs-regexp">/bin/m</span>ongo localhost:<span class="hljs-number">23234</span>  --指定端口，需要与配置的端口号一致</code></pre>
 
-<p>　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315150455580-93719054.png" srcset="/img/loading.gif" alt="img"></p>
-<h3 id="3-测试"><a href="#3-测试" class="headerlink" title="　　3.测试　　"></a>　　3.测试　　<img src="https://img2018.cnblogs.com/blog/1253415/201903/1253415-20190315152856246-931789177.png" srcset="/img/loading.gif" alt="img"></h3><h2 id="5-配置mongodb服务开机启动"><a href="#5-配置mongodb服务开机启动" class="headerlink" title="5.配置mongodb服务开机启动"></a>5.配置mongodb服务开机启动</h2><h3 id="1-设置mongodb-service开机服务启动"><a href="#1-设置mongodb-service开机服务启动" class="headerlink" title="1.设置mongodb.service开机服务启动"></a>1.设置mongodb.service开机服务启动</h3><pre><code class="hljs routeros">cd /lib/systemd/system
+<p>　　<img src="https://i.loli.net/2020/12/18/F8DEWIfRJ9d7C4i.png" srcset="/img/loading.gif" alt="img"></p>
+<h3 id="3-测试"><a href="#3-测试" class="headerlink" title="　　3.测试　　"></a>　　3.测试　　<img src="https://i.loli.net/2020/12/18/xIGOgkawAnuHLlQ.png" srcset="/img/loading.gif" alt="img"></h3><h2 id="5-配置mongodb服务开机启动"><a href="#5-配置mongodb服务开机启动" class="headerlink" title="5.配置mongodb服务开机启动"></a>5.配置mongodb服务开机启动</h2><h3 id="1-设置mongodb-service开机服务启动"><a href="#1-设置mongodb-service开机服务启动" class="headerlink" title="1.设置mongodb.service开机服务启动"></a>1.设置mongodb.service开机服务启动</h3><pre><code class="hljs routeros">cd /lib/systemd/system
 vim mongodb.service
 
 添加如下配置--记得路劲和自己的配置路径要一致
@@ -683,5 +683,5 @@ vim mongodb.service
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>

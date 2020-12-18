@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      961 字
+      1k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      18
        分钟
     </span>
   
@@ -348,13 +348,15 @@ flush privileges;</code></pre>
 
 <p>3、添加用户</p>
 <pre><code class="hljs sql"><span class="hljs-comment">#添加用户“xiao&quot;，密码为: aquatic@zkcm</span>
-<span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;fx&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;fx@zkcm&#x27;</span>;
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;cpbdb@zkcm&#x27;</span>;
 <span class="hljs-comment">#赋权所有权限，并且可以查看所有表</span>
-<span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;xiao&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
+<span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
 <span class="hljs-comment">#赋权test数据库所有权限，只可以使用数据库test</span>
-<span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> fx.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;fx&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
+<span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> cpbdb.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
 <span class="hljs-comment">#刷新权限</span>
-<span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;</code></pre>
+<span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
+
+<span class="hljs-keyword">revoke</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;</code></pre>
 
 
 
@@ -365,7 +367,11 @@ rm -rf 上边查找到的路径，多个路径用空格隔开
 <span class="hljs-built_in">find</span> / -name mysql|xargs rm -rf</code></pre>
 
 <p>5、建库</p>
-<pre><code class="hljs routeros">CREATE DATABASE `fx`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8 COLLATE utf8_general_ci;</code></pre>
+<pre><code class="hljs routeros">CREATE DATABASE `fx`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `cpbdb-backup`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `cpbdb-dev`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `cpbdb-dev-test`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE `cpbdb`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;</code></pre>
 
 
             </article>
@@ -742,5 +748,5 @@ rm -rf 上边查找到的路径，多个路径用空格隔开
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</body>
 </html>
