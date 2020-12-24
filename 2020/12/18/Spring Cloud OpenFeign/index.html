@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Vue代理 - Hexo</title>
+  <title>Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-10 15:32">
-      2020年8月10日 下午
+    <time datetime="2020-12-18 14:43">
+      2020年12月18日 下午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      282 字
+      548 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      7
        分钟
     </span>
   
@@ -216,82 +216,81 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="资源路径代理（图片等）"><a href="#资源路径代理（图片等）" class="headerlink" title="资源路径代理（图片等）"></a>资源路径代理（图片等）</h4><h5 id="修改index-js"><a href="#修改index-js" class="headerlink" title="修改index.js"></a>修改index.js</h5><pre><code class="hljs dts"><span class="hljs-symbol">proxyTable:</span> &#123;
-    <span class="hljs-string">&quot;/resources&quot;</span>: &#123;
-<span class="hljs-symbol">        target:</span> <span class="hljs-string">&quot;http://localhost:9100/&quot;</span>, <span class="hljs-comment">//这里填写后端存放资源文件的域名</span>
-<span class="hljs-symbol">        ws:</span> true,
-<span class="hljs-symbol">        changeOrigin:</span> true, 是否跨域
-        <span class="hljs-comment">// 如果接口中是没有api的，那就直接置空（如上）。如果接口中有api，就需要写成&#123;‘^/api’:‘/api’&#125;</span>
-<span class="hljs-symbol">        pathRewrite:</span> &#123;
-        <span class="hljs-string">&quot;/api&quot;</span>: <span class="hljs-string">&quot;/&quot;</span>
+              <hr>
+<hr>
+<h4 id="OpenFeign简介"><a href="#OpenFeign简介" class="headerlink" title="OpenFeign简介"></a>OpenFeign简介</h4><p>​        OpenFeign是springcloud在Feign的基础上支持了SpringMVC的注解，如@RequestMapping等等。OpenFeign的@FeignClient可以解析SpringMVC的@RequestMapping注解下的接口，并通过动态代理的方式产生实现类，实现类中做负载均衡并调用其他服务。</p>
+<h5 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h5><p>​        在注册中心这个微服务中引入依赖</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+
+<p>​        在application.yml中添加配置</p>
+<pre><code class="hljs yml"><span class="hljs-comment">#设置feign 客户端超时时间（openFeign默认支持ribbon）</span>
+<span class="hljs-attr">ribbon:</span>
+  <span class="hljs-comment">#指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间 单位：毫秒</span>
+  <span class="hljs-attr">ReadTimeout:</span> <span class="hljs-number">5000</span>
+  <span class="hljs-comment">#指的是建立连接后从服务器读取到可用资源所用的时间,单位：毫秒</span>
+  <span class="hljs-attr">ConnectTimeout:</span> <span class="hljs-number">5000</span>
+
+ <span class="hljs-comment"># 设置回退生效</span>
+<span class="hljs-attr">feign:</span>
+  <span class="hljs-attr">hystrix:</span>
+    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+
+<span class="hljs-attr">hystrix:</span>
+  <span class="hljs-attr">command:</span>
+    <span class="hljs-attr">default:</span> <span class="hljs-comment">#也可以针对多个服务</span>
+      <span class="hljs-attr">execution:</span>
+        <span class="hljs-attr">isolation:</span>
+          <span class="hljs-attr">thread:</span>
+            <span class="hljs-attr">timeoutInMilliseconds:</span> <span class="hljs-number">5000</span> <span class="hljs-comment"># 设置hystrix的超时时间为5s</span></code></pre>
+
+<p>新建一个接口</p>
+<pre><code class="hljs java"><span class="hljs-meta">@FeignClient(value = &quot;consul-provider-payment&quot;, contextId = &quot;helloServiceClient&quot;, fallbackFactory = HelloServiceFallback.class)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IHelloService</span> </span>&#123;
+
+    <span class="hljs-meta">@GetMapping(&quot;hello&quot;)</span>
+    <span class="hljs-function">String <span class="hljs-title">hello</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;name&quot;)</span> String name)</span></span>;
+
+    <span class="hljs-meta">@GetMapping(&quot;user&quot;)</span>
+    <span class="hljs-function">String <span class="hljs-title">info</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre>
+
+
+
+<p>1.<code>value</code>指定资源服务的名称，通常为资源服务配置里 <code>spring.application.name</code>的值;</p>
+<p>2.<code>contextId</code>指定这个Feign Client的别名，当我们定义了多个Feign Client并且<code>value</code>值相同（即调用同一个服务）的时候，需要手动通过<code>contextId</code>设置别名，否则程序将抛出异常；`</p>
+<p>3.<code>fallbackFactory</code>指定了回退方法，当我们调用远程服务出现异常时，就会调用这个回退方法。<code>fallback</code>也可以指定回退方法，但<code>fallbackFactory</code>指定的回退方法里可以通过<code>Throwable</code>对象打印出异常日志，方便分析问题</p>
+<p>在接口下新建一个fallback包，进入，然后在该包下新建一个HelloServiceFallback</p>
+<pre><code class="hljs java"><span class="hljs-meta">@Slf4j</span>
+<span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloServiceFallback</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FallbackFactory</span>&lt;<span class="hljs-title">IHelloService</span>&gt; </span>&#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> IHelloService <span class="hljs-title">create</span><span class="hljs-params">(Throwable throwable)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> IHelloService() &#123;
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">hello</span><span class="hljs-params">(String name)</span> </span>&#123;
+                log.error(<span class="hljs-string">&quot;调用server-system-hello服务出错&quot;</span>, throwable);
+                <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;调用出错&quot;</span>;
+            &#125;
+
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">info</span><span class="hljs-params">()</span> </span>&#123;
+                log.error(<span class="hljs-string">&quot;调用server-system-info服务出错&quot;</span>, throwable);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+            &#125;
+        &#125;;
     &#125;
-&#125;,</code></pre>
+&#125;</code></pre>
 
-<pre><code class="hljs yml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span>
-
-<span class="hljs-attr">services:</span>
-  <span class="hljs-attr">febs-gateway:</span>
-    <span class="hljs-attr">image:</span> <span class="hljs-string">febs-gateway:latest</span>
-    <span class="hljs-attr">container_name:</span> <span class="hljs-string">febs-gateway</span>
-    <span class="hljs-attr">depends_on:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">febs-register</span>
-    <span class="hljs-attr">volumes:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;/home/docker/febs/logs:/log&quot;</span>
-    <span class="hljs-attr">command:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--nacos.url=192.168.186.140&quot;</span>
-    <span class="hljs-attr">ports:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-number">8301</span><span class="hljs-string">:8301</span>
-  <span class="hljs-attr">febs-auth:</span>
-    <span class="hljs-attr">image:</span> <span class="hljs-string">febs-auth:latest</span>
-    <span class="hljs-attr">container_name:</span> <span class="hljs-string">febs-auth</span>
-    <span class="hljs-attr">depends_on:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">febs-register</span>
-    <span class="hljs-attr">volumes:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;/home/docker/febs/logs:/log&quot;</span>
-    <span class="hljs-attr">command:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--nacos.url=192.168.186.140&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--mysql.username=root&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--mysql.password=zkcmroot&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--mysql.url=192.168.30.100&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--redis.url=192.168.30.100&quot;</span>
-  <span class="hljs-attr">febs-server-system:</span>
-    <span class="hljs-attr">image:</span> <span class="hljs-string">febs-server-system:latest</span>
-    <span class="hljs-attr">container_name:</span> <span class="hljs-string">febs-server-system</span>
-    <span class="hljs-attr">depends_on:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">febs-register</span>
-    <span class="hljs-attr">volumes:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;/home/docker/febs/logs:/log&quot;</span>
-    <span class="hljs-attr">command:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--nacos.url=192.168.186.140&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--rabbitmq.url=192.168.186.140&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--rabbitmq.username=admin&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--rabbitmq.password=admin&quot;</span>
-  <span class="hljs-attr">febs-server-test:</span>
-    <span class="hljs-attr">image:</span> <span class="hljs-string">febs-server-test:latest</span>
-    <span class="hljs-attr">container_name:</span> <span class="hljs-string">febs-server-test</span>
-    <span class="hljs-attr">depends_on:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">febs-register</span>
-    <span class="hljs-attr">volumes:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;/home/docker/febs/logs:/log&quot;</span>
-    <span class="hljs-attr">command:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--nacos.url=192.168.186.140&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--rabbitmq.url=192.168.186.140&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--rabbitmq.username=admin&quot;</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;--rabbitmq.password=admin&quot;</span></code></pre>
-
+<p>最后在启动类上添加注解：**@EnableFeignClients**</p>
 
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
-                    
-                  </div>
                 
               </div>
               
@@ -302,9 +301,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/10/VMware%20Workstation%2015%20Pro%20%E5%AF%86%E9%92%A5/">
+                      <a href="/2020/12/24/SomeBlogs/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">VMware Workstation 15 Pro 密钥</span>
+                        <span class="hidden-mobile">收集的一些博客</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -312,8 +311,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/10/%E8%99%9A%E6%8B%9F%E6%9C%BANAT%E6%A8%A1%E5%BC%8F/">
-                        <span class="hidden-mobile">VMWare Centos7 NAT模式</span>
+                      <a href="/2020/12/18/Spring%20Cloud%20%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">
+                        <span class="hidden-mobile">Spring Cloud 服务注册中心</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -501,7 +500,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Vue代理&nbsp;",
+        "&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

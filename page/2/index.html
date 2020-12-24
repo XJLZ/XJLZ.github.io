@@ -180,6 +180,88 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/">Centos7搭建FTP</a>
+
+      <a href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/" class="index-excerpt">
+        
+        
+          
+        
+        <div>安装前准备vsftpd是linux下的一款小巧轻快，安全易用的FTP服务器软件，是一款在各个Linux发行版中最受推崇的FTP服务器软件。
+1.安装vsftpd，直接yum 安装就可以了
+yum install -y vsftpd
+
+2.相关配置文件：
+cd /etc/vsftpd/
+
+3.启动服务
+systemctl enable vsftpd.service //设置开机自启动
+systemc</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/ftp/">ftp</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/MongoDB/">Linux安装MongoDB</a>
+
+      <a href="/2020/08/10/MongoDB/" class="index-excerpt">
+        
+        
+          
+        
+        <div>1.下载　　官方下载地址：https://www.mongodb.com/download-center/community
+2.上传解压　　1.使用工具（FileZilla）上传至服务器　　
+　　2.解压安装解压：tar -zxvf mongodb-linux-x86_64-4.0.6.tgz
+移动：mv ./mongodb-linux-x86_64-4.0.6 /usr/local/mongo</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">linux</a>
+            
+              <a href="/tags/mongo/">mongo</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/">Mongo常用查询</a>
 
       <a href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/" class="index-excerpt">
@@ -496,91 +578,6 @@ s</div>
               <a href="/tags/Centos7/">Centos7</a>
             
               <a href="/tags/Linux/">Linux</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Consul/">Consul</a>
-
-      <a href="/2020/08/10/Consul/" class="index-excerpt">
-        
-        
-          
-        
-        <div>安装1.下载
-wget https://releases.hashicorp.com/consul/1.8.3/consul_1.8.3_linux_amd64.zip 
-curl https://releases.hashicorp.com/consul/1.8.3/consul_1.8.3_linux_amd64.zip &gt; consul.zip
-
-ps:下载过慢请试着直接浏览器下载，再</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/Consul/">Consul</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/httpd/">httpd</a>
-
-      <a href="/2020/08/10/httpd/" class="index-excerpt">
-        
-        
-          
-        
-        <div>安装yum -y install httpd.x86_64
-
-
-
-
-
-配置文件(位置：/etc/httpd/conf/httpd.conf)Listen 80
-Listen 192.168.31.30:8080
-
-&lt;virtualhost 192.168.31.30:8080&gt;
-        Documentroot /home/diskdata/ftp/minioData
-    </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/httpd/">httpd</a>
             
           </div>
         
