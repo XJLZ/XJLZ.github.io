@@ -180,6 +180,138 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/%E8%99%9A%E6%8B%9F%E6%9C%BANAT%E6%A8%A1%E5%BC%8F/">VMWare Centos7 NAT模式</a>
+
+      <a href="/2020/08/10/%E8%99%9A%E6%8B%9F%E6%9C%BANAT%E6%A8%A1%E5%BC%8F/" class="index-excerpt">
+        
+        
+          
+        
+        <div>1、VMware设置点击 编辑 -&gt; 虚拟网络编辑器 -&gt; 更改设置 
+
+选择 NAT模式，具体勾选如下：
+
+打开 NAT设置，记录子网掩码，网关ip
+
+记录网段信息
+
+2、登录虚拟机root用户登录虚拟机，输入以命令，编辑保存
+vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+BOOTPROTO=&quot;static&quot;
+ONB</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/Node/">Node</a>
+
+      <a href="/2020/08/10/Node/" class="index-excerpt">
+        
+        
+          
+        
+        <div>换源持久使用
+npm config set registry https://registry.npm.taobao.org
+配置后可通过下面方式来验证是否成功
+npm config get registry
+
+</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Node/">Node</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/SELinux/">SELinux</a>
+
+      <a href="/2020/08/10/SELinux/" class="index-excerpt">
+        
+        
+          
+        
+        <div>SELinux查看SELinux状态：
+
+1、/usr/sbin/sestatus -v      ##如果SELinux status参数为enabled即为开启状态
+
+SELinux status:                 enabled
+
+2、getenforce                 ##也可以用这个命令检查
+
+关闭SELinux：
+
+1、临时关闭（不用重启机器）：
+
+s</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Linux/">Linux</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/08/10/Consul/">Consul</a>
 
       <a href="/2020/08/10/Consul/" class="index-excerpt">

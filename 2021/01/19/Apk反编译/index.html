@@ -17,10 +17,19 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>标签 - Centos7 - Hexo</title>
+  <title>Apk反编译 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -42,7 +51,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -142,7 +151,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/45.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -150,6 +159,40 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2021-01-19 09:32">
+      2021年1月19日 上午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      153 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -162,79 +205,119 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 16 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/08/10/SELinux/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SELinux</span>
-      <span style="float: right;">08-10</span>
-    </a>
-  
-    
-    <a href="/2020/08/10/Consul/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Consul</span>
-      <span style="float: right;">08-10</span>
-    </a>
-  
-    
-    <a href="/2020/08/10/httpd/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">httpd</span>
-      <span style="float: right;">08-10</span>
-    </a>
-  
-    
-    <a href="/2020/08/10/Centos7%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">CentOS 7中添加一个新用户并授权</span>
-      <span style="float: right;">08-10</span>
-    </a>
-  
-    
-    <a href="/2020/08/10/Centos7%E5%AE%89%E8%A3%85Node+Npm/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Centos7安装Node+Npm</span>
-      <span style="float: right;">08-10</span>
-    </a>
-  
-    
-    <a href="/2020/08/10/Nginx%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Nginx脚本安装</span>
-      <span style="float: right;">08-10</span>
-    </a>
-  
-</div>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/tags/Centos7/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/tags/Centos7/">1</a><span class="page-number current">2</span>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h4 id="1-工具准备"><a href="#1-工具准备" class="headerlink" title="1.工具准备"></a>1.工具准备</h4><p>1） </p>
+<ol start="2">
+<li></li>
+</ol>
+<ol start="3">
+<li></li>
+</ol>
+<p>或者</p>
+<h4 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h4><p>1、将apktool.bat和apktool.jar,然后把这两个工具放到C:\Windows底下</p>
+<p>2、命令</p>
+<pre><code class="hljs shell">apktool d D:\test\Andorid\demo.apk -o D:\test\Andorid\demo -f</code></pre>
+
+<p>​    将apk反编译，目标目录为 -o 后面的参数 ，-f 为覆盖</p>
+<p>3、使用压缩软件将apk解压，找到classes.dex</p>
+<p>4、解压dex-tools-2.0.zip到任意目录，将classes.dex复制到该解压目录，使用命令</p>
+<pre><code class="hljs shell">d2j-dex2jar.bat classes.dex</code></pre>
+
+<p>​    会得到一个jar包：classes-dex2jar.jar</p>
+<p>5、双击jadx-gui-1.2.0-no-jre-win.exe，打开上面得到的jar包，即可看到源代码</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Android/">Android</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Apk/">Apk</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/18/Docker-Compose/">
+                        <span class="hidden-mobile">Docker-Compose</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <div class="comments" id="comments">
+                
+                
+  <script type="text/javascript">
+    function loadUtterances() {
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.defer = false
+      s.setAttribute('repo', 'XJLZ/blog-comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('theme', 'github-light');
+      s.setAttribute('crossorigin', 'anonymous');
+      var e = document.getElementsByTagName('script')[0];
+      e.parentNode.insertBefore(s, e);
     }
+    createObserver(loadUtterances, 'comments')
   </script>
 
 
-
               </div>
-            </div>
+            
           </div>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -338,6 +421,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -345,7 +453,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - Centos7&nbsp;",
+        "Apk反编译&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -360,6 +468,21 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -373,6 +496,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
