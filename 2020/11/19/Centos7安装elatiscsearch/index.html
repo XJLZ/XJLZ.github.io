@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      816 字
+      1.1k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      18
        分钟
     </span>
   
@@ -382,6 +382,38 @@ elasticsearch.password: <span class="hljs-string">&quot;xxx&quot;</span></code><
 
 <p><strong>2.非root用户重启kibana服务</strong></p>
 <p><strong>3.登录kibana</strong></p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><h5 id="1-查询索引文档数量"><a href="#1-查询索引文档数量" class="headerlink" title="1.查询索引文档数量"></a>1.查询索引文档数量</h5><pre><code class="hljs dsconfig"><span class="hljs-string">curl </span><span class="hljs-built_in">--noproxy</span> <span class="hljs-string">&#x27;*&#x27;</span> <span class="hljs-built_in">--user</span> <span class="hljs-string">&#x27;user:passwd&#x27;</span> -X <span class="hljs-string">GET </span><span class="hljs-string">&#x27;http://ip:9200/_cat/count/index_name?v&#x27;</span>
+
+<span class="hljs-string">epoch </span>     <span class="hljs-string">timestamp </span><span class="hljs-string">count</span>
+<span class="hljs-string">1614838001 </span><span class="hljs-string">06:06:</span><span class="hljs-string">41 </span> <span class="hljs-string">122090</span>
+<span class="hljs-string"></span>
+<span class="hljs-string"></span>
+<span class="hljs-string">curl </span><span class="hljs-built_in">--noproxy</span> <span class="hljs-string">&#x27;*&#x27;</span> <span class="hljs-built_in">--user</span> <span class="hljs-string">&#x27;user:passwd&#x27;</span> -X <span class="hljs-string">GET </span><span class="hljs-string">&#x27;http://ip:9200/_cat/indices?v</span></code></pre>
+
+<h5 id="2-查看es状态"><a href="#2-查看es状态" class="headerlink" title="2.查看es状态"></a>2.查看es状态</h5><pre><code class="hljs routeros">curl --noproxy <span class="hljs-string">&#x27;*&#x27;</span> --user <span class="hljs-string">&#x27;user:passwd&#x27;</span> -X <span class="hljs-builtin-name">GET</span> <span class="hljs-string">&#x27;http://ip:9200/_cluster/health?pretty&#x27;</span>
+
+&#123;
+  <span class="hljs-string">&quot;cluster_name&quot;</span> : <span class="hljs-string">&quot;fx&quot;</span>,
+  <span class="hljs-string">&quot;status&quot;</span> : <span class="hljs-string">&quot;yellow&quot;</span>,
+  <span class="hljs-string">&quot;timed_out&quot;</span> : <span class="hljs-literal">false</span>,
+  <span class="hljs-string">&quot;number_of_nodes&quot;</span> : 1,
+  <span class="hljs-string">&quot;number_of_data_nodes&quot;</span> : 1,
+  <span class="hljs-string">&quot;active_primary_shards&quot;</span> : 22,
+  <span class="hljs-string">&quot;active_shards&quot;</span> : 22,
+  <span class="hljs-string">&quot;relocating_shards&quot;</span> : 0,
+  <span class="hljs-string">&quot;initializing_shards&quot;</span> : 0,
+  <span class="hljs-string">&quot;unassigned_shards&quot;</span> : 11,
+  <span class="hljs-string">&quot;delayed_unassigned_shards&quot;</span> : 0,
+  <span class="hljs-string">&quot;number_of_pending_tasks&quot;</span> : 0,
+  <span class="hljs-string">&quot;number_of_in_flight_fetch&quot;</span> : 0,
+  <span class="hljs-string">&quot;task_max_waiting_in_queue_millis&quot;</span> : 0,
+  <span class="hljs-string">&quot;active_shards_percent_as_number&quot;</span> : 66.66666666666666
+&#125;</code></pre>
+
+<h5 id="3-删除索引下的数据"><a href="#3-删除索引下的数据" class="headerlink" title="3.删除索引下的数据"></a>3.删除索引下的数据</h5><pre><code class="hljs dsconfig"><span class="hljs-string">curl </span><span class="hljs-built_in">--noproxy</span> <span class="hljs-string">&#x27;*&#x27;</span> <span class="hljs-built_in">--user</span> <span class="hljs-string">&#x27;user:passwd&#x27;</span> -X <span class="hljs-string">POST </span><span class="hljs-string">&#x27;http:ip//:9200/cpsl_library_v1.12/_delete_by_query?pretty&#x27;</span> -d <span class="hljs-string">&#x27;&#123;&quot;query&quot;: &#123;&quot;match_all&quot;: &#123;&#125;&#125;&#125;&#x27;</span>
+
+<span class="hljs-string">curl </span><span class="hljs-built_in">--noproxy</span> <span class="hljs-string">&#x27;*&#x27;</span> <span class="hljs-built_in">--user</span> <span class="hljs-string">&#x27;elastic:v2m$yYlvN!&#x27;</span> -X <span class="hljs-string">POST </span> <span class="hljs-string">&#x27;http://ip:9200/cpsl_library_v1.12/_delete_by_query?refresh&amp;pretty&#x27;</span> -H <span class="hljs-string">&#x27;Content-Type: application/json&#x27;</span> -d <span class="hljs-string">&#x27;&#123;&quot;query&quot;: &#123;&quot;match_all&quot;: &#123;&#125;&#125;&#125;&#x27;</span></code></pre>
+
 
             </article>
             <hr>

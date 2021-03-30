@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      1.8k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      27
        分钟
     </span>
   
@@ -333,21 +333,18 @@ sudo systemctl restart mysqld
 
 sudo systemctl status mysqld</code></pre>
 
-<p>1、 修改用户密码（init.sql）</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
+<h4 id="1、-修改用户密码（init-sql）"><a href="#1、-修改用户密码（init-sql）" class="headerlink" title="1、 修改用户密码（init.sql）"></a>1、 修改用户密码（init.sql）</h4><pre><code class="hljs sql"><span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
 <span class="hljs-comment">#修改root密码为root</span>
 <span class="hljs-keyword">alter</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;root&#x27;</span>;  
 <span class="hljs-comment">#刷新权限</span>
 <span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;</code></pre>
 
-<p>2、远程登录</p>
-<pre><code class="hljs routeros">use mysql;
+<h4 id="2、远程登录"><a href="#2、远程登录" class="headerlink" title="2、远程登录"></a>2、远程登录</h4><pre><code class="hljs routeros">use mysql;
 update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> host = <span class="hljs-string">&#x27;%&#x27;</span> where<span class="hljs-built_in"> user </span>= <span class="hljs-string">&#x27;root&#x27;</span>;
 <span class="hljs-comment">#刷新权限</span>
 flush privileges;</code></pre>
 
-<p>3、添加用户</p>
-<pre><code class="hljs sql"><span class="hljs-comment">#添加用户“xiao&quot;，密码为: aquatic@zkcm</span>
+<h4 id="3、添加用户"><a href="#3、添加用户" class="headerlink" title="3、添加用户"></a>3、添加用户</h4><pre><code class="hljs sql"><span class="hljs-comment">#添加用户“xiao&quot;，密码为: aquatic@zkcm</span>
 <span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">identified</span> <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;cpbdb@zkcm&#x27;</span>;
 <span class="hljs-comment">#赋权所有权限，并且可以查看所有表</span>
 <span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
@@ -360,19 +357,165 @@ flush privileges;</code></pre>
 
 
 
-<p>4、查找并删除mysql有关的文件</p>
-<pre><code class="hljs swift"><span class="hljs-built_in">find</span> / -name mysql
+<h4 id="4、查找并删除mysql有关的文件"><a href="#4、查找并删除mysql有关的文件" class="headerlink" title="4、查找并删除mysql有关的文件"></a>4、查找并删除mysql有关的文件</h4><pre><code class="hljs swift"><span class="hljs-built_in">find</span> / -name mysql
 rm -rf 上边查找到的路径，多个路径用空格隔开
 #或者下边一条命令即可
 <span class="hljs-built_in">find</span> / -name mysql|xargs rm -rf</code></pre>
 
-<p>5、建库</p>
-<pre><code class="hljs routeros">CREATE DATABASE `fx`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
+<h4 id="5、建库"><a href="#5、建库" class="headerlink" title="5、建库"></a>5、建库</h4><pre><code class="hljs routeros">CREATE DATABASE `fx`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE DATABASE `cpbdb-backup`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE DATABASE `cpbdb-dev`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE DATABASE `cpbdb-dev-test`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE DATABASE `cpbdb`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;</code></pre>
 
+<h4 id="6、导出"><a href="#6、导出" class="headerlink" title="6、导出"></a>6、导出</h4><pre><code class="hljs arcade">-- 只导出数据
+./mysqldump -t cpbdb -uroot -proot &gt; <span class="hljs-regexp">/home/</span>cpbdb.sql
+
+-- 只导出表结构
+./mysqldump -d cpbdb -uroot -proot &gt; <span class="hljs-regexp">/home/</span>cpbdb.sql
+
+-- 导出整个数据库
+./mysqldump -uroot -proot cpbdb &gt; <span class="hljs-regexp">/home/</span>cpbdb.sql</code></pre>
+
+<h4 id="7、查询表结构"><a href="#7、查询表结构" class="headerlink" title="7、查询表结构"></a>7、查询表结构</h4><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span>
+  TABLE_NAME 表名,
+  COLUMN_NAME 列名,
+  COLUMN_TYPE 数据类型,
+    COLUMN_DEFAULT 默认值,
+  IS_NULLABLE 强制,    
+  COLUMN_COMMENT 注释 
+<span class="hljs-keyword">FROM</span>
+ INFORMATION_SCHEMA.COLUMNS
+<span class="hljs-keyword">where</span>
+<span class="hljs-comment">-- db2为数据库名称，到时候只需要修改成你要导出表结构的数据库即可</span>
+table_schema =<span class="hljs-string">&#x27;db2&#x27;</span>
+<span class="hljs-keyword">and</span> table_name = <span class="hljs-string">&#x27;t_author_area&#x27;</span></code></pre>
+
+<p><img src="https://i.loli.net/2021/03/30/qHUOgFj9o3WCpnR.png" srcset="/img/loading.gif" alt="image-20210330163131838"></p>
+<table>
+<thead>
+<tr>
+<th align="left">列名</th>
+<th align="left">数据类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>TABLE_CATALOG</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">表限定符。</td>
+</tr>
+<tr>
+<td align="left"><strong>TABLE_SCHEMA</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">表所有者。</td>
+</tr>
+<tr>
+<td align="left"><strong>TABLE_NAME</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">表名。</td>
+</tr>
+<tr>
+<td align="left"><strong>COLUMN_NAME</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">列名。</td>
+</tr>
+<tr>
+<td align="left"><strong>ORDINAL_POSITION</strong></td>
+<td align="left"><strong>smallint</strong></td>
+<td align="left">列标识号。</td>
+</tr>
+<tr>
+<td align="left"><strong>COLUMN_DEFAULT</strong></td>
+<td align="left"><strong>nvarchar(4000)</strong></td>
+<td align="left">列的默认值。</td>
+</tr>
+<tr>
+<td align="left"><strong>IS_NULLABLE</strong></td>
+<td align="left"><strong>varchar(3)</strong></td>
+<td align="left">列的为空性。如果列允许 NULL，那么该列返回 YES。否则，返回 NO。</td>
+</tr>
+<tr>
+<td align="left"><strong>DATA_TYPE</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">系统提供的数据类型。</td>
+</tr>
+<tr>
+<td align="left"><strong>CHARACTER_MAXIMUM_LENGTH</strong></td>
+<td align="left"><strong>smallint</strong></td>
+<td align="left">以字符为单位的最大长度，适于二进制数据、字符数据，或者文本和图像数据。否则，返回 NULL。有关更多信息，请参见数据类型。</td>
+</tr>
+<tr>
+<td align="left"><strong>CHARACTER_OCTET_LENGTH</strong></td>
+<td align="left"><strong>smallint</strong></td>
+<td align="left">以字节为单位的最大长度，适于二进制数据、字符数据，或者文本和图像数据。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>NUMERIC_PRECISION</strong></td>
+<td align="left"><strong>tinyint</strong></td>
+<td align="left">近似数字数据、精确数字数据、整型数据或货币数据的精度。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>NUMERIC_PRECISION_RADIX</strong></td>
+<td align="left"><strong>smallint</strong></td>
+<td align="left">近似数字数据、精确数字数据、整型数据或货币数据的精度基数。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>NUMERIC_SCALE</strong></td>
+<td align="left"><strong>tinyint</strong></td>
+<td align="left">近似数字数据、精确数字数据、整数数据或货币数据的小数位数。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>DATETIME_PRECISION</strong></td>
+<td align="left"><strong>smallint</strong></td>
+<td align="left"><strong>datetime</strong> 及 SQL-92 <strong>interval</strong> 数据类型的子类型代码。对于其它数据类型，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>CHARACTER_SET_CATALOG</strong></td>
+<td align="left"><strong>varchar(6)</strong></td>
+<td align="left">如果列是字符数据或 <strong>text</strong> 数据类型，那么返回 <strong>master</strong>，指明字符集所在的数据库。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>CHARACTER_SET_SCHEMA</strong></td>
+<td align="left"><strong>varchar(3)</strong></td>
+<td align="left">如果列是字符数据或 <strong>text</strong> 数据类型，那么返回 <strong>DBO</strong>，指明字符集的所有者名称。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>CHARACTER_SET_NAME</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">如果该列是字符数据或 <strong>text</strong> 数据类型，那么为字符集返回唯一的名称。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>COLLATION_CATALOG</strong></td>
+<td align="left"><strong>varchar(6)</strong></td>
+<td align="left">如果列是字符数据或 <strong>text</strong> 数据类型，那么返回 <strong>master</strong>，指明在其中定义排序次序的数据库。否则此列为 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>COLLATION_SCHEMA</strong></td>
+<td align="left"><strong>varchar(3)</strong></td>
+<td align="left">返回 <strong>DBO</strong>，为字符数据或 <strong>text</strong> 数据类型指明排序次序的所有者。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>COLLATION_NAME</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">如果列是字符数据或 <strong>text</strong> 数据类型，那么为排序次序返回唯一的名称。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>DOMAIN_CATALOG</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">如果列是一种用户定义数据类型，那么该列是某个数据库名称，在该数据库名中创建了这种用户定义数据类型。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>DOMAIN_SCHEMA</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">如果列是一种用户定义数据类型，那么该列是这种用户定义数据类型的创建者。否则，返回 NULL。</td>
+</tr>
+<tr>
+<td align="left"><strong>DOMAIN_NAME</strong></td>
+<td align="left"><strong>nvarchar(128)</strong></td>
+<td align="left">如果列是一种用户定义数据类型，那么该列是这种用户定义数据类型的名称。否则，返回 NULL。</td>
+</tr>
+</tbody></table>
 
             </article>
             <hr>
