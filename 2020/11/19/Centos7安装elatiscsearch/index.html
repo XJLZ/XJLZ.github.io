@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      17
        分钟
     </span>
   
@@ -253,125 +253,67 @@ sysctl -p
 <p>下载安装包 <a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik/releases">https://github.com/medcl/elasticsearch-analysis-ik/releases</a></p>
 <p>解压到刚刚安装的es目录 如： /usr/local/es/plugins</p>
 <h4 id="配置elasticsearch-yml（无密码）"><a href="#配置elasticsearch-yml（无密码）" class="headerlink" title="配置elasticsearch.yml（无密码）"></a>配置elasticsearch.yml（无密码）</h4><p>进入安装目录的config目录，编辑vim elasticsearch.yml</p>
-<p>单节点配置：</p>
-<p>主要修改：</p>
-<p>node.name: node-1</p>
-<p>network.host: 192.168.186.140</p>
-<p>http.port: 9200</p>
-<p>cluster.initial_master_nodes: [“node-1”]</p>
-<pre><code class="hljs vala"><span class="hljs-meta"># ======================== Elasticsearch Configuration =========================</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</span>
-<span class="hljs-meta">#       Before you set out to tweak and tune the configuration, make sure you</span>
-<span class="hljs-meta">#       understand what are you trying to accomplish and the consequences.</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># The primary way of configuring a node is via this file. This template lists</span>
-<span class="hljs-meta"># the most important settings you may want to configure for a production cluster.</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Please consult the documentation for further information on configuration options:</span>
-<span class="hljs-meta"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># ---------------------------------- Cluster -----------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Use a descriptive name for your cluster:</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#cluster.name: my-application</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># ------------------------------------ Node ------------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Use a descriptive name for the node:</span>
-<span class="hljs-meta">#</span>
-node.name: node<span class="hljs-number">-1</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Add custom attributes to the node:</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#node.attr.rack: r1</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># ----------------------------------- Paths ------------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Path to directory where to store the data (separate multiple locations by comma):</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#path.data: /path/to/data</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Path to log files:</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#path.logs: /path/to/logs</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># ----------------------------------- Memory -----------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Lock the memory on startup:</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#bootstrap.memory_lock: true</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Make sure that the heap size is set to about half the memory available</span>
-<span class="hljs-meta"># on the system and that the owner of the process is allowed to use this</span>
-<span class="hljs-meta"># limit.</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Elasticsearch performs poorly when the system is swapping the memory.</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># ---------------------------------- Network -----------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Set the bind address to a specific IP (IPv4 or IPv6):</span>
-<span class="hljs-meta">#</span>
-network.host: <span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.140</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Set a custom port for HTTP:</span>
-<span class="hljs-meta">#</span>
-http.port: <span class="hljs-number">9200</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># For more information, consult the network module documentation.</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># --------------------------------- Discovery ----------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Pass an initial list of hosts to perform discovery when this node is started:</span>
-<span class="hljs-meta"># The default list of hosts is [&quot;127.0.0.1&quot;, &quot;[::1]&quot;]</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#discovery.seed_hosts: [&quot;host1&quot;, &quot;host2&quot;]</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Bootstrap the cluster using an initial set of master-eligible nodes:</span>
-<span class="hljs-meta">#</span>
-cluster.initial_master_nodes: [<span class="hljs-string">&quot;node-1&quot;</span>]
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># For more information, consult the discovery and cluster formation module documentation.</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># ---------------------------------- Gateway -----------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Block initial recovery after a full cluster restart until N nodes are started:</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#gateway.recover_after_nodes: 3</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># For more information, consult the gateway module documentation.</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># ---------------------------------- Various -----------------------------------</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta"># Require explicit names when deleting indices:</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#action.destructive_requires_name: true</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#</span>
-<span class="hljs-meta">#http.cors.enabled: true</span>
-<span class="hljs-meta">#http.cors.allow-origin: &quot;*&quot;</span>
-<span class="hljs-meta">#http.cors.allow-headers: &quot;X-Requested-With, Content-Type, Content-Length, X-User&quot;</span>
-<span class="hljs-meta">#xpack.security.enabled: true</span>
+<h5 id="集群配置："><a href="#集群配置：" class="headerlink" title="集群配置："></a>集群配置：</h5><pre><code class="hljs http"><span class="hljs-attribute">cluster.name</span>: cluster-es
 
-<span class="hljs-meta">#xpack.security.transport.ssl.enabled: true</span>
-</code></pre>
+<span class="hljs-attribute">node.name</span>: node-1
 
-<h4 id="配置elasticsearch-yml（有密码）"><a href="#配置elasticsearch-yml（有密码）" class="headerlink" title="配置elasticsearch.yml（有密码）"></a>配置elasticsearch.yml（有密码）</h4><p>编辑vim elasticsearch.yml</p>
-<p>添加</p>
-<pre><code class="hljs stylus">http<span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.enabled</span>: true
-http<span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.allow-origin</span>: <span class="hljs-string">&quot;*&quot;</span>
-http<span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.allow-headers</span>: <span class="hljs-string">&quot;X-Requested-With, Content-Type, Content-Length, X-User&quot;</span>
-xpack<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.enabled</span>: true
+<span class="hljs-attribute">network.host</span>: 192.168.186.140
 
-xpack<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.transport</span><span class="hljs-selector-class">.ssl</span><span class="hljs-selector-class">.enabled</span>: true</code></pre>
+<span class="hljs-attribute">node.master</span>: true
+<span class="hljs-attribute">node.data</span>: true
+<span class="hljs-attribute">http.port</span>: 9200
 
-<p>非root用户重启elasticsearch服务</p>
-<p>非root用户执行./elasticsearch-setup-passwords interactive   自定义密码</p>
+<span class="hljs-attribute">http.cors.enabled</span>: true
+<span class="hljs-attribute">http.cors.allow-origin</span>: &quot;*&quot;
+<span class="hljs-attribute">http.cors.allow-methods</span>: OPTIONS, HEAD, GET, POST, PUT, DELETE
+<span class="hljs-attribute">http.cors.allow-headers</span>: &quot;X-Requested-With, Content-Type, Content-Length, X-User&quot;
+
+
+<span class="hljs-attribute">cluster.initial_master_nodes</span>: [&quot;node-1&quot;,&quot;node-2&quot;,&quot;node-3&quot;]
+
+<span class="hljs-attribute">discovery.seed_hosts</span>: [&quot;192.168.186.140:9300&quot;, &quot;192.168.186.151:9300&quot;, &quot;192.168.186.152:9300&quot;]
+<span class="hljs-attribute">xpack.security.enabled</span>: true
+<span class="hljs-attribute">xpack.security.transport.ssl.enabled</span>: true
+<span class="hljs-attribute">xpack.security.transport.ssl.verification_mode</span>: certificate
+<span class="hljs-attribute">xpack.security.transport.ssl.keystore.path</span>: elastic-certificates.p12
+<span class="hljs-attribute">xpack.security.transport.ssl.truststore.path</span>: elastic-certificates.p12</code></pre>
+
+
+
+<h5 id="单节点配置："><a href="#单节点配置：" class="headerlink" title="单节点配置："></a>单节点配置：</h5><p>主要修改：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">node</span><span class="hljs-selector-class">.name</span>: <span class="hljs-selector-tag">node-1</span>
+<span class="hljs-selector-tag">network</span><span class="hljs-selector-class">.host</span>: 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.186</span><span class="hljs-selector-class">.140</span>
+<span class="hljs-selector-tag">http</span><span class="hljs-selector-class">.port</span>: 9200
+<span class="hljs-selector-tag">cluster</span><span class="hljs-selector-class">.initial_master_nodes</span>: <span class="hljs-selector-attr">[<span class="hljs-string">&quot;node-1&quot;</span>]</span>
+<span class="hljs-selector-tag">http</span><span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.enabled</span>: <span class="hljs-selector-tag">true</span>
+<span class="hljs-selector-tag">http</span><span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.allow-origin</span>: &quot;*&quot;
+<span class="hljs-selector-tag">http</span><span class="hljs-selector-class">.cors</span><span class="hljs-selector-class">.allow-headers</span>: &quot;<span class="hljs-selector-tag">X-Requested-With</span>, <span class="hljs-selector-tag">Content-Type</span>, <span class="hljs-selector-tag">Content-Length</span>, <span class="hljs-selector-tag">X-User</span>&quot;</code></pre>
+
+
+
+<h4 id="集群配置elasticsearch-yml（SSL认证-证书）"><a href="#集群配置elasticsearch-yml（SSL认证-证书）" class="headerlink" title="集群配置elasticsearch.yml（SSL认证/证书）"></a>集群配置elasticsearch.yml（SSL认证/证书）</h4><p><strong>生成证书—&gt;分发证书到节点—-&gt;修改配置文件—–&gt;elasticsearch各节点为xpack.security.transport添加密码</strong></p>
+<h5 id="生成证书-密码1"><a href="#生成证书-密码1" class="headerlink" title="生成证书(密码1)"></a>生成证书(密码1)</h5><pre><code class="hljs stata">bin/elasticsearch-certutil  <span class="hljs-keyword">ca</span>   
+bin/elasticsearch-certutil  cert --<span class="hljs-keyword">ca</span> elastic-<span class="hljs-keyword">stack</span>-<span class="hljs-keyword">ca</span>.p12</code></pre>
+
+<h5 id="分发证书到节点"><a href="#分发证书到节点" class="headerlink" title="分发证书到节点"></a>分发证书到节点</h5><pre><code class="hljs elixir">scp elastic-certificates.p12 es<span class="hljs-variable">@192</span>.<span class="hljs-number">168.186</span>.<span class="hljs-number">151</span><span class="hljs-symbol">:/home/es/elasticsearch-</span><span class="hljs-number">7.3</span>.<span class="hljs-number">2</span>/config/
+scp elastic-certificates.p12 es<span class="hljs-variable">@192</span>.<span class="hljs-number">168.186</span>.<span class="hljs-number">152</span><span class="hljs-symbol">:/home/es/elasticsearch-</span><span class="hljs-number">7.3</span>.<span class="hljs-number">2</span>/config/</code></pre>
+
+<h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><p>编辑vim elasticsearch.yml，添加如下配置：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">xpack</span><span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.enabled</span>: <span class="hljs-selector-tag">true</span>
+<span class="hljs-selector-tag">xpack</span><span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.transport</span><span class="hljs-selector-class">.ssl</span><span class="hljs-selector-class">.enabled</span>: <span class="hljs-selector-tag">truexpack</span><span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.enabled</span>: <span class="hljs-selector-tag">true</span>
+<span class="hljs-selector-tag">xpack</span><span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.transport</span><span class="hljs-selector-class">.ssl</span><span class="hljs-selector-class">.verification_mode</span>: <span class="hljs-selector-tag">certificate</span>
+<span class="hljs-selector-tag">xpack</span><span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.transport</span><span class="hljs-selector-class">.ssl</span><span class="hljs-selector-class">.keystore</span><span class="hljs-selector-class">.path</span>: <span class="hljs-selector-tag">elastic-certificates</span><span class="hljs-selector-class">.p12</span>
+<span class="hljs-selector-tag">xpack</span><span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.transport</span><span class="hljs-selector-class">.ssl</span><span class="hljs-selector-class">.truststore</span><span class="hljs-selector-class">.path</span>: <span class="hljs-selector-tag">elastic-certificates</span><span class="hljs-selector-class">.p12</span></code></pre>
+
+<h5 id="各节点为xpack-security-transport添加密码-密码为创建证书时设置的密码"><a href="#各节点为xpack-security-transport添加密码-密码为创建证书时设置的密码" class="headerlink" title="各节点为xpack.security.transport添加密码(密码为创建证书时设置的密码)"></a>各节点为xpack.security.transport添加密码(密码为创建证书时设置的密码)</h5><pre><code class="hljs stylus">bin/elasticsearch-keystore add xpack<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.transport</span><span class="hljs-selector-class">.ssl</span><span class="hljs-selector-class">.keystore</span>.secure_password
+bin/elasticsearch-keystore add xpack<span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.transport</span><span class="hljs-selector-class">.ssl</span><span class="hljs-selector-class">.truststore</span>.secure_password</code></pre>
+
+<h5 id="非root用户重启elasticsearch服务"><a href="#非root用户重启elasticsearch服务" class="headerlink" title="非root用户重启elasticsearch服务"></a>非root用户重启elasticsearch服务</h5><h5 id="设置密码（需要es服务正在运行中）"><a href="#设置密码（需要es服务正在运行中）" class="headerlink" title="设置密码（需要es服务正在运行中）"></a>设置密码（需要es服务正在运行中）</h5><pre><code class="hljs angelscript">bin/elasticsearch-setup-passwords <span class="hljs-built_in">int</span>eractive  </code></pre>
+
 <p><img src="https://i.loli.net/2020/11/19/kONVlUxq5BFfyvC.png" srcset="/img/loading.gif" alt="image-20201119102153473"></p>
 <h4 id="修改kibana配置文件（有密码）"><a href="#修改kibana配置文件（有密码）" class="headerlink" title="修改kibana配置文件（有密码）"></a>修改kibana配置文件（有密码）</h4><p><strong>1.修改kibana.yml配置文件，添加以下配置</strong></p>
 <pre><code class="hljs routeros"><span class="hljs-comment">#进入kibana安装目录</span>
-cd /usr/local/kibana-7.2.0-linux-x86_64/config
+cd /xxxx/kibana-7.2.0-linux-x86_64/config
 
 <span class="hljs-comment">#修改配置文件</span>
 vim kibana.yml
@@ -439,7 +381,7 @@ elasticsearch.password: <span class="hljs-string">&quot;xxx&quot;</span></code><
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/30/FFmpeg/">
+                      <a href="/2020/11/30/FFmpeg-ldl/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">FFmpeg</span>
                         <span class="visible-mobile">上一篇</span>

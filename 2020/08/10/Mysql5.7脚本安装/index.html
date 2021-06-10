@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      28
        分钟
     </span>
   
@@ -352,8 +352,16 @@ flush privileges;</code></pre>
 <span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> cpbdb.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
 <span class="hljs-comment">#刷新权限</span>
 <span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
-
-<span class="hljs-keyword">revoke</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;</code></pre>
+<span class="hljs-comment">#收回权限</span>
+<span class="hljs-keyword">revoke</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;cpbdb&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;
+<span class="hljs-comment">#主从</span>
+<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">REPLICATION</span> <span class="hljs-keyword">SLAVE</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;slave&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;123456&#x27;</span>;
+<span class="hljs-keyword">CHANGE</span> <span class="hljs-keyword">MASTER</span> <span class="hljs-keyword">TO</span>
+MASTER_HOST=<span class="hljs-string">&#x27;192.168.186.150&#x27;</span>,
+MASTER_USER=<span class="hljs-string">&#x27;slave&#x27;</span>,
+MASTER_PASSWORD=<span class="hljs-string">&#x27;123456&#x27;</span>,
+MASTER_LOG_FILE=<span class="hljs-string">&#x27;mysql-bin.000008&#x27;</span>,MASTER_LOG_POS=<span class="hljs-number">154</span>;
+</code></pre>
 
 
 

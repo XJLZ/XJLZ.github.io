@@ -180,6 +180,129 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2021/05/28/MyCat/">MyCat安装使用</a>
+
+      <a href="/2021/05/28/MyCat/" class="index-excerpt">
+        
+        
+          
+        
+        <div>1.下载安装下载目录：http://dl.mycat.org.cn/
+上传 解压tar -zxvf Mycat-server-1.6.7.4-release-20200105164103-linux.tar.gz 
+
+重要的三个配置文件cd mycat/conf
+    schema.xml        # 定义逻辑库,表,分片节点等内容
+    rule.xml        # 定义分片规则</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2021-05-28
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/MySql/">MySql</a>
+            
+              <a href="/tags/MyCat/">MyCat</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2021/05/20/Python3%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">Python3脚本安装</a>
+
+      <a href="/2021/05/20/Python3%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" class="index-excerpt">
+        
+        
+          
+        
+        <div>准备压缩包下载网站：https://www.python.org/ftp/python 
+例如：https://www.python.org/ftp/python/3.9.4/Python-3.9.4.tgz     
+安装依赖yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-dev</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2021-05-20
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Python3/">Python3</a>
+            
+              <a href="/tags/ShellScript/">ShellScript</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2021/04/30/Minio/">Minio</a>
+
+      <a href="/2021/04/30/Minio/" class="index-excerpt">
+        
+        
+          
+        
+        <div>环境Centos7
+安装Minio1.下载
+    wget https://dl.min.io/server/minio/release/linux-amd64/minio
+    或
+    curl https://dl.min.io/server/minio/release/linux-amd64/minio &gt; minio
+2.添加执行权限
+    chmod +x minio
+3</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2021-04-30
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Minio/">Minio</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2021/01/19/Apk%E5%8F%8D%E7%BC%96%E8%AF%91/">Apk反编译</a>
 
       <a href="/2021/01/19/Apk%E5%8F%8D%E7%BC%96%E8%AF%91/" class="index-excerpt">
@@ -236,7 +359,16 @@ apktool d D:\test\Andorid\demo.apk -o D:\test\Andorid\demo -f
           
         
         <div>1.下载https://github.com/docker/compose
-2.安装sudo chmod +x /usr/local/bin/docker-compose</div>
+2.安装sudo chmod +x /usr/local/bin/docker-compose
+
+
+
+4.编写docker-compose.ymlversion: &#x27;3&#x27;
+
+services:
+  docker-test:
+    image: docker-test:latest # 指定基础镜像
+ </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -264,35 +396,6 @@ apktool d D:\test\Andorid\demo.apk -o D:\test\Andorid\demo -f
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2021/01/18/FFmpeg-ldl/"></a>
-
-      <a href="/2021/01/18/FFmpeg-ldl/" class="index-excerpt">
-        
-        
-          
-        
-        <div>FFmpeg什么是FFmpeg?[^fast forward moving picture expert group 动态图像专家组]: 
-
-简介：
-FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序,提供了音视频的编码，解码，转码，封装，解封装，流，滤镜，播放等功能。采用LGPL或GPL许可证。它提供了录制、转换以及流化音视频的完整解决方案。它几乎支持所有的音视</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2021-01-18
-          </div>
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/12/24/SomeBlogs/">收集的一些博客</a>
 
       <a href="/2020/12/24/SomeBlogs/" class="index-excerpt">
@@ -300,13 +403,9 @@ FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其�
         
           
         
-        <div>收集的一些博客D:\test\secret&gt;keytool -list -v -keystore default.keystore  口令：1234qwer
-MD5:82:AD:9F:60:10:4F:AD:4A:83:7F:70:AA:C2:A7:2B:C8
-82ad9f60104fad4a837f70aac2a72bc8
-友盟key：5fc60196094d637f31309c41
-
-
-</div>
+        <div>收集的一些博客canal同步mysql数据到es、mysql：https://blog.csdn.net/tuesdayma/article/details/103294448
+Nginx upstream配置说明负载均衡：https://www.jianshu.com/p/50dfb0d69983
+Centos7安装ffmpeg：https://www.myfreax.com/how-to-in</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -323,35 +422,6 @@ MD5:82:AD:9F:60:10:4F:AD:4A:83:7F:70:AA:C2:A7:2B:C8
               <a href="/tags/blogs/">blogs</a>
             
           </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/12/18/Spring%20Cloud%20OpenFeign/"></a>
-
-      <a href="/2020/12/18/Spring%20Cloud%20OpenFeign/" class="index-excerpt">
-        
-        
-          
-        
-        <div>
-
-OpenFeign简介​        OpenFeign是springcloud在Feign的基础上支持了SpringMVC的注解，如@RequestMapping等等。OpenFeign的@FeignClient可以解析SpringMVC的@RequestMapping注解下的接口，并通过动态代理的方式产生实现类，实现类中做负载均衡并调用其他服务。
-使用方式​        在注册中心这个</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-12-18
-          </div>
-        
-        
         
       </div>
     </div>
@@ -390,6 +460,42 @@ CAP理论​        CAP理论是分布式架构中重要理论，CAP不能都取
               <a href="/tags/Spring-Cloud/">Spring Cloud</a>
             
               <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">服务注册与发现</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/12/18/Spring%20Cloud%20OpenFeign/">OpenFeign</a>
+
+      <a href="/2020/12/18/Spring%20Cloud%20OpenFeign/" class="index-excerpt">
+        
+        
+          
+        
+        <div>OpenFeign简介​        OpenFeign是springcloud在Feign的基础上支持了SpringMVC的注解，如@RequestMapping等等。OpenFeign的@FeignClient可以解析SpringMVC的@RequestMapping注解下的接口，并通过动态代理的方式产生实现类，实现类中做负载均衡并调用其他服务。
+使用方式​        在注册中心这个微服</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-12-18
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Spring-Cloud/">Spring Cloud</a>
+            
+              <a href="/tags/OpenFeign/">OpenFeign</a>
             
           </div>
         
@@ -441,27 +547,23 @@ ffmpeg -y \
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/">Centos7安装elasticsearch</a>
+      <a class="index-header" href="/2020/11/30/FFmpeg-ldl/">FFmpeg</a>
 
-      <a href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/" class="index-excerpt">
+      <a href="/2020/11/30/FFmpeg-ldl/" class="index-excerpt">
         
         
           
         
-        <div>下载安装包官网地址  https://www.elastic.co/cn/downloads/past-releases#elasticsearch
-选择自己要下载的版本，这里以v7.3.2为例
-安装&amp;脚本​    es是要用非root用户启动
-#!/bin/bash
-data=&quot;/usr/local&quot;
-# 设置用户和用户组
-user=&quot;es&quot;
-gr</div>
+        <div>FFmpeg什么是FFmpeg?[^fast forward moving picture expert group 动态图像专家组]: 
+
+简介：
+FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序,提供了音视频的编码，解码，转码，封装，解封装，流，滤镜，播放等功能。采用LGPL或GPL许可证。它提供了录制、转换以及流化音视频的完整解决方案。它几乎支持所有的音视</div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-11-19
+            <i class="iconfont icon-date"></i>&nbsp;2020-11-30
           </div>
         
         
@@ -469,104 +571,7 @@ gr</div>
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/elasticsearch/">elasticsearch</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">Kafka安装使用</a>
-
-      <a href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="index-excerpt">
-        
-        
-          
-        
-        <div>下载安装1.官网下载
-2.解压 tar -zxvf  xxxxxxx.tar.gz
-配置
-############################# Server Basics #############################
-
-# broker的id，要求唯一，集群部署不能重复
-broker.id=0
-############################# Socket Serve</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-10-29
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/Kafka/">Kafka</a>
-            
-              <a href="/tags/Spring-Boot/">Spring-Boot</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/10/10/Docker/">Docker</a>
-
-      <a href="/2020/10/10/Docker/" class="index-excerpt">
-        
-        
-          
-        
-        <div>安装&amp;配置常用命令基本命令#启动服务
-systemctl start docker
-#获取镜像
-docker  pull [镜像:xx.xx]
-//docker pull mysql:8.0.12
-
-#列出镜像
-docker image ls -a
-
-#运行容器
-docker run [镜像]
-
-#查看正在运行的容器
-docker ps
-
-#进入交互界面
-docker exec -it 【</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-10-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/Docker/">Docker</a>
+              <a href="/tags/FFmpeg/">FFmpeg</a>
             
           </div>
         
@@ -578,7 +583,7 @@ docker exec -it 【</div>
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

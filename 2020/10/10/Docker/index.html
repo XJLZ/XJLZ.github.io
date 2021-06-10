@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.9k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      27
        分钟
     </span>
   
@@ -480,6 +480,25 @@ $  <span class="hljs-string">./src/redis-server</span> <span class="hljs-string"
 <span class="hljs-comment"># 默认用户密码 </span>
     minioadmin
     minioadmin</code></pre>
+
+<h3 id="Docker-Build"><a href="#Docker-Build" class="headerlink" title="Docker Build"></a>Docker Build</h3><h4 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h4><h5 id="1-编写Dockerfile"><a href="#1-编写Dockerfile" class="headerlink" title="1.编写Dockerfile"></a>1.编写Dockerfile</h5><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> openjdk:<span class="hljs-number">8</span>u212-jre
+<span class="hljs-keyword">MAINTAINER</span> xxx xxxxx@qq.com
+
+<span class="hljs-keyword">COPY</span><span class="bash"> docker-test.jar /docker/docker-test.jar</span>
+<span class="hljs-keyword">ENTRYPOINT</span><span class="bash"> [<span class="hljs-string">&quot;java&quot;</span>, <span class="hljs-string">&quot;-Xmx256m&quot;</span>, <span class="hljs-string">&quot;-jar&quot;</span>, <span class="hljs-string">&quot;/docker/docker-test.jar&quot;</span>]</span></code></pre>
+
+<ol>
+<li><p><code>FROM openjdk:8u212-jre</code>表示由<code>openjdk:8u212-jre</code>基础镜像构建。因为我们的项目使用的是JDK 1.8，所以我们要依赖于1.8版本的JDK镜像构建，openjdk官方Docker镜像仓库为<a target="_blank" rel="noopener" href="https://hub.docker.com/_/openjdk?tab=tags%EF%BC%8C%E6%88%91%E6%8C%91%E4%BA%86%E4%B8%AA%E4%BD%93%E7%A7%AF%E7%9B%B8%E5%AF%B9%E8%BE%83%E5%B0%8F%E7%9A%84openjdk:8u212-jre%EF%BC%9B">https://hub.docker.com/_/openjdk?tab=tags，我挑了个体积相对较小的openjdk:8u212-jre；</a></p>
+</li>
+<li><p><code>MAINTAINER xxx xxxxx@qq.com</code>指定镜像的作者及联系方式；</p>
+</li>
+<li><p><code>COPY docker-test.jar /docker/docker-test.jar</code>表示将当前目录下的docker-test.jar拷贝到<code>openjdk:8u212-jre</code>镜像里的/docker目录下，名称也为docker-test.jar；</p>
+</li>
+<li><p><code>ENTRYPOINT [&quot;java&quot;, &quot;-Xmx256m&quot;, &quot;-jar&quot;, &quot;/docker/docker-test.jar&quot;]</code>表示运行<code>java -jar</code>运行镜像里的jar包，JVM内存最大分配为256m（因为要运行的微服务较多并且虚拟机内存只有6GB，所以内存分配小了点，实际可以根据宿主服务器的配置做出相应调整）。</p>
+</li>
+</ol>
+<h5 id="2-构建镜像"><a href="#2-构建镜像" class="headerlink" title="2.构建镜像"></a>2.构建镜像</h5><p>DockerFile创建好后，在当前目录下运行以下命令构建镜像：</p>
+<pre><code class="hljs cmake">docker build -t docker-<span class="hljs-keyword">test</span> .</code></pre>
 
 
             </article>

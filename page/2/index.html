@@ -180,6 +180,143 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/">Centos7安装elasticsearch</a>
+
+      <a href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/" class="index-excerpt">
+        
+        
+          
+        
+        <div>下载安装包官网地址  https://www.elastic.co/cn/downloads/past-releases#elasticsearch
+选择自己要下载的版本，这里以v7.3.2为例
+安装&amp;脚本​    es是要用非root用户启动
+#!/bin/bash
+data=&quot;/usr/local&quot;
+# 设置用户和用户组
+user=&quot;es&quot;
+gr</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-11-19
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/elasticsearch/">elasticsearch</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">Kafka安装使用</a>
+
+      <a href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="index-excerpt">
+        
+        
+          
+        
+        <div>下载安装1.官网下载
+2.解压 tar -zxvf  xxxxxxx.tar.gz
+配置
+############################# Server Basics #############################
+
+# broker的id，要求唯一，集群部署不能重复
+broker.id=0
+############################# Socket Serve</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-10-29
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Kafka/">Kafka</a>
+            
+              <a href="/tags/Spring-Boot/">Spring-Boot</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/10/10/Docker/">Docker</a>
+
+      <a href="/2020/10/10/Docker/" class="index-excerpt">
+        
+        
+          
+        
+        <div>安装&amp;配置常用命令基本命令#启动服务
+systemctl start docker
+#获取镜像
+docker  pull [镜像:xx.xx]
+//docker pull mysql:8.0.12
+
+#列出镜像
+docker image ls -a
+
+#运行容器
+docker run [镜像]
+
+#查看正在运行的容器
+docker ps
+
+#进入交互界面
+docker exec -it 【</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-10-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Docker/">Docker</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/09/22/Centos7%E5%AE%89%E8%A3%85RabbitMQ/">Linux安装RabbitMQ</a>
 
       <a href="/2020/09/22/Centos7%E5%AE%89%E8%A3%85RabbitMQ/" class="index-excerpt">
@@ -259,44 +396,6 @@ then
               <a href="/tags/JDK/">JDK</a>
             
               <a href="/tags/Java/">Java</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Centos7%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Centos7 常用命令</a>
-
-      <a href="/2020/08/10/Centos7%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="index-excerpt">
-        
-        
-          
-        
-        <div>开端口【单个】
-firewall-cmd --zone=public --add-port=2181/tcp --permanent
-【范围】
-firewall-cmd --zone=public --add-port=30000-30999/tcp --permanent
-【删除】
-firewall-cmd --zone=public --remove-port=8080/tcp --perma</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
             
           </div>
         
@@ -500,92 +599,11 @@ if [ ! -d &quot;/&quot;$&#123;data&#125</div>
     </div>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/VMware%20Workstation%2015%20Pro%20%E5%AF%86%E9%92%A5/">VMware Workstation 15 Pro 密钥</a>
-
-      <a href="/2020/08/10/VMware%20Workstation%2015%20Pro%20%E5%AF%86%E9%92%A5/" class="index-excerpt">
-        
-        
-          
-        
-        <div>VMware Workstation 15 Pro 密钥UG5J2-0ME12-M89WY-NPWXX-WQH88
-
-GA590-86Y05-4806Y-X4PEE-ZV8E0
-
-YA18K-0WY8P-H85DY-L4NZG-X7RAD
-
-UA5DR-2ZD4H-089FY-6YQ5T-YPRX6
-
-B806Y-86Y05-GA590-X4PEE-ZV8E0
-
-ZF582-0NW5N-H8D2P</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/VMware-Workstation/">VMware Workstation</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Vue%E7%9B%B8%E5%85%B3/">Vue代理</a>
-
-      <a href="/2020/08/10/Vue%E7%9B%B8%E5%85%B3/" class="index-excerpt">
-        
-        
-          
-        
-        <div>资源路径代理（图片等）修改index.jsproxyTable: &#123;
-    &quot;/resources&quot;: &#123;
-        target: &quot;http://localhost:9100/&quot;, //这里填写后端存放资源文件的域名
-        ws: true,
-        changeOrigin: true, 是否跨域
-    </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Vue/">Vue</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

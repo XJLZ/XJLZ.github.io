@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Centos7 常用命令 - Hexo</title>
+  <title>Python3脚本安装 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-10 15:32">
-      2020年8月10日 下午
+    <time datetime="2021-05-20 10:01">
+      2021年5月20日 上午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      319 字
+      202 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      3
        分钟
     </span>
   
@@ -216,53 +216,34 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="开端口"><a href="#开端口" class="headerlink" title="开端口"></a>开端口</h4><pre><code class="hljs routeros">【单个】
-firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=2181/tcp --permanent
-【范围】
-firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=30000-30999/tcp --permanent
-【删除】
-firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--remove-port</span>=8080/tcp --permanent
-【刷新配置】
-firewall-cmd --reload
-<span class="hljs-comment">#找出公共区域的所有设置</span>
-firewall-cmd <span class="hljs-attribute">--zone</span>=public --list-all
-firewall-cmd --list-all</code></pre>
+              <h4 id="准备压缩包"><a href="#准备压缩包" class="headerlink" title="准备压缩包"></a>准备压缩包</h4><p>下载网站：<a target="_blank" rel="noopener" href="https://www.python.org/ftp/python">https://www.python.org/ftp/python</a> </p>
+<p>例如：<a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.9.4/Python-3.9.4.tgz">https://www.python.org/ftp/python/3.9.4/Python-3.9.4.tgz</a>     </p>
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre><code class="hljs mipsasm">yum <span class="hljs-keyword">install </span>openssl-devel <span class="hljs-keyword">bzip2-devel </span>expat-devel gdbm-devel readline-devel sqlite-devel</code></pre>
 
-<h4 id="重启防火墙："><a href="#重启防火墙：" class="headerlink" title="重启防火墙："></a>重启防火墙：</h4><pre><code class="hljs css"><span class="hljs-selector-tag">systemctl</span> <span class="hljs-selector-tag">restart</span> <span class="hljs-selector-tag">firewalld</span><span class="hljs-selector-class">.service</span>
-<span class="hljs-selector-tag">systemctl</span> <span class="hljs-selector-tag">stop</span> <span class="hljs-selector-tag">firewalld</span><span class="hljs-selector-class">.service</span></code></pre>
+<h4 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h4><p><strong>自己修改压缩包存放目录和文件名</strong></p>
+<pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-built_in">cd</span> /root
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;开始解压&#x27;</span>
+tar -zxvf Python-3.6.5.tgz
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;进入文件夹&#x27;</span>
+<span class="hljs-built_in">cd</span> Python-3.6.5
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;创建安装目录&#x27;</span>
+mkdir /usr/<span class="hljs-built_in">local</span>/python3
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;指明安装路径&#x27;</span>
+./configure -prefix=/usr/<span class="hljs-built_in">local</span>/python3
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;编译安装&#x27;</span>
+make &amp;&amp; make install
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;为python3创建软连接&#x27;</span>
+ln -s /usr/<span class="hljs-built_in">local</span>/python3/bin/python3 /usr/bin/python3
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;为pip3创建软连接&#x27;</span>
+ln -s /usr/<span class="hljs-built_in">local</span>/python3/bin/pip3 /usr/bin/pip3
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;验证&#x27;</span>
+python3
+pip3 -V </code></pre>
 
-<h4 id="开机启动配置"><a href="#开机启动配置" class="headerlink" title="开机启动配置"></a>开机启动配置</h4><pre><code class="hljs applescript">/etc/rc.<span class="hljs-keyword">local</span>
-可加入命令，如：nohup java -jar <span class="hljs-built_in">text</span>.jar</code></pre>
+<p><strong>写完脚本记得添加执行权限</strong></p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">chmod</span> +<span class="hljs-selector-tag">x</span> <span class="hljs-selector-tag">xxxx</span><span class="hljs-selector-class">.sh</span></code></pre>
 
-<h4 id="shell脚本执行报错（-bin-bash-M-坏的解释器-没有那个文件或目录）"><a href="#shell脚本执行报错（-bin-bash-M-坏的解释器-没有那个文件或目录）" class="headerlink" title="shell脚本执行报错（ /bin/bash^M: 坏的解释器: 没有那个文件或目录）"></a>shell脚本执行报错（ /bin/bash^M: 坏的解释器: 没有那个文件或目录）</h4><pre><code class="hljs cmake">sed -i <span class="hljs-string">&quot;s/\r//&quot;</span> <span class="hljs-keyword">install</span>.sh</code></pre>
-
-<h4 id="查看系统版本"><a href="#查看系统版本" class="headerlink" title="查看系统版本"></a>查看系统版本</h4><pre><code class="hljs awk">cat <span class="hljs-regexp">/proc/</span>version
-cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
-
-<h4 id="查看文件-文件夹大小"><a href="#查看文件-文件夹大小" class="headerlink" title="查看文件/文件夹大小"></a>查看文件/文件夹大小</h4><pre><code class="hljs stata">指定目录的总大小，可以使用 du -<span class="hljs-keyword">sh</span> 目录名称，du -<span class="hljs-keyword">sh</span> <span class="hljs-keyword">test</span>/ 或 du -<span class="hljs-keyword">h</span> <span class="hljs-keyword">test</span>/
-当前目录大小 du -<span class="hljs-keyword">sh</span> 或  du -<span class="hljs-keyword">h</span>
-文件大小 du -<span class="hljs-keyword">h</span> index.html</code></pre>
-
-<h4 id="查看系统时间"><a href="#查看系统时间" class="headerlink" title="查看系统时间"></a>查看系统时间</h4><ul>
-<li>查看系统时间的命令： date</li>
-</ul>
-<h4 id="查看硬件时间"><a href="#查看硬件时间" class="headerlink" title="查看硬件时间"></a>查看硬件时间</h4><ul>
-<li>查看硬件时间的命令：  hwclock</li>
-</ul>
-<h4 id="时间服务器上的时间同步的方法"><a href="#时间服务器上的时间同步的方法" class="headerlink" title="时间服务器上的时间同步的方法"></a>时间服务器上的时间同步的方法</h4><pre><code class="hljs vala">安装ntpdate工具
-<span class="hljs-meta"># yum -y install ntp ntpdate</span>
-
-设置系统时间与网络时间同步
-<span class="hljs-meta"># ntpdate cn.pool.ntp.org</span>
-
-将系统时间写入硬件时间
-<span class="hljs-meta"># hwclock --systohc</span></code></pre>
-
-<h4 id="安装net-tools"><a href="#安装net-tools" class="headerlink" title="安装net-tools"></a>安装net-tools</h4><pre><code class="hljs apache"><span class="hljs-attribute">yum</span> install -y net-tools.x<span class="hljs-number">86</span>_<span class="hljs-number">64</span> </code></pre>
-
-<h4 id="安装lrzsz"><a href="#安装lrzsz" class="headerlink" title="安装lrzsz"></a>安装lrzsz</h4><pre><code class="hljs cmake">yum -y <span class="hljs-keyword">install</span> lrzsz</code></pre>
-
-<p>w1sTqlD8QvFsx/aoSPrmfZMQkAwAxy1y+eEXwEc7GiYb4Q5gujLos4M0xfu77S2ZR8rr0hwMoqKDLFVHA5PxayGHy8lMyZSn5K3vCcjR/4Z8vEyzGReK+EgucnatTkfgOOys1wS02UcoQfX5Cffg0PIhhPokggSTGk5gxBizoW9kvAmzspCJEQ+v3Gq9Q5bZlugpdiwJ3bbLiW/OHg1iZq39mAxXcvaPbWOJmtqhbmkDm/VCZ/zFQ1vf8Xi32rseazqFJsPhLOcZLdqLfwOjqoSJuc9G9mCQIxbtskBD9wQOP3AVmdhtEg6d+en4uhypJdf7UEUAWjCj2JO5BOg75ZAbnEr72s89N9HWsydsPQSWSJbmF75X2E22qg7naKjZZBSJZez45i7j5FgHp1pt82zvIWIlAItpYeH00Kkn96eUQ0ODQJ0wodg2Pfoi4Vu46wG3jC/1J0oOWBP2uzCy3JA+rqCgYAtB+NNhAidtwYPk4Nu1HxNFHKDRNo5MMKr/1ujMIBR2+4Eft2S1Mq7eq3vOrz5+AQdxv+rjRxyKMFaBHXKYxYU/6YfrqLqxqjx31JLVRMPdS5s5z58GosjqHNFPQY0Bhokc6ZauqSFelY/M2AHUdnlp4/YATZhjteIyJLIprT0UyYEiidwwtxzlCNfqyKLhfC72F0bB+n8TKIs=</p>
 
             </article>
             <hr>
@@ -275,6 +256,10 @@ cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
                     
                       <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
                     
+                      <a class="hover-with-bg" href="/tags/Python3/">Python3</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ShellScript/">ShellScript</a>
+                    
                   </div>
                 
               </div>
@@ -286,9 +271,9 @@ cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">
+                      <a href="/2021/05/28/MyCat/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JDK脚本安装</span>
+                        <span class="hidden-mobile">MyCat安装使用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -296,8 +281,8 @@ cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/">
-                        <span class="hidden-mobile">Centos7搭建FTP</span>
+                      <a href="/2021/04/30/Minio/">
+                        <span class="hidden-mobile">Minio</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -485,7 +470,7 @@ cat <span class="hljs-regexp">/etc/</span>redhat-release</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Centos7 常用命令&nbsp;",
+        "Python3脚本安装&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      152 字
+      156 字
     </span>
   
 
@@ -230,6 +230,8 @@
 <h4 id="命令导出数据库"><a href="#命令导出数据库" class="headerlink" title="命令导出数据库"></a>命令导出数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoexport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Images -c picjson -o <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json -f <span class="hljs-string">&quot;_id,tags,pid,p,uid,title,author,url,r18,width,height,_v&quot;</span></code></pre>
 
 <h4 id="命令导入数据库"><a href="#命令导入数据库" class="headerlink" title="命令导入数据库"></a>命令导入数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoimport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Pixiv -c picjson <span class="hljs-params">--file</span> <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json</code></pre>
+
+<h5 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h5><pre><code class="hljs plain"></code></pre>
 
 
             </article>
