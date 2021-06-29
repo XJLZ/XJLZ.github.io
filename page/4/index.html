@@ -180,6 +180,52 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/Nginx%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">Nginx脚本安装</a>
+
+      <a href="/2020/08/10/Nginx%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" class="index-excerpt">
+        
+        
+          
+        
+        <div>安装依赖1 gcc 安装
+yum install -y gcc gcc-c++
+2 PCRE pcre-devel 安装
+yum install -y pcre pcre-devel
+3 zlib 安装
+yum install -y zlib zlib-devel
+4 OpenSSL 安装
+yum install -y openssl openssl-devel
+
+
+脚本#!/bin/bash
+#</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Nginx/">Nginx</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/08/10/Centos7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Centos7常用命令</a>
 
       <a href="/2020/08/10/Centos7%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="index-excerpt">
@@ -207,6 +253,48 @@ firewall-cmd --zone=public --remove-port=8080/tcp --perma</div>
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Centos7/">Centos7</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E8%AF%B7%E6%B1%82header%E5%A4%B4%E4%BF%A1%E6%81%AF%E4%B8%A2%E5%A4%B1/">Nginx反向代理导致请求header头信息丢失</a>
+
+      <a href="/2020/08/10/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E8%AF%B7%E6%B1%82header%E5%A4%B4%E4%BF%A1%E6%81%AF%E4%B8%A2%E5%A4%B1/" class="index-excerpt">
+        
+        
+          
+        
+        <div>解决方法：
+
+方法一：NGINX代理时加上请求头信息：
+location /fxapi &#123;
+    proxy_pass   http://fxApi/;
+    proxy_set_header   Host             $host:$server_port;
+    proxy_set_header   X-Real-IP        $remote_addr;
+   </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">Centos7</a>
+            
+              <a href="/tags/Nginx/">Nginx</a>
             
           </div>
         

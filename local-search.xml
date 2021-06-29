@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>bilibiliApis</title>
+    <link href="/2021/06/11/BilibiliApis/"/>
+    <url>/2021/06/11/BilibiliApis/</url>
+    
+    <content type="html"><![CDATA[<h4 id="1-用户搜索"><a href="#1-用户搜索" class="headerlink" title="1. 用户搜索"></a>1. 用户搜索</h4><pre><code class="hljs sas">https://api.bilibili.com/<span class="hljs-meta">x</span>/web-interface/search/type?search_type=bili_user<span class="hljs-variable">&amp;page</span>=1<span class="hljs-variable">&amp;changing</span>=mid<span class="hljs-variable">&amp;__refresh__</span>=true<span class="hljs-variable">&amp;highlight</span>=1<span class="hljs-variable">&amp;single_column</span>=0<span class="hljs-variable">&amp;keyword</span>=新华社</code></pre><p>result：</p><pre><code class="hljs json">&#123;    <span class="hljs-attr">&quot;code&quot;</span>: <span class="hljs-number">0</span>,    <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;0&quot;</span>,    <span class="hljs-attr">&quot;ttl&quot;</span>: <span class="hljs-number">1</span>,    <span class="hljs-attr">&quot;data&quot;</span>: &#123;        <span class="hljs-attr">&quot;seid&quot;</span>: <span class="hljs-string">&quot;16508985117305632561&quot;</span>,         .....        &quot;result&quot;: [            &#123;                <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;bili_user&quot;</span>,                <span class="hljs-attr">&quot;mid&quot;</span>: <span class="hljs-number">473837611</span>,                <span class="hljs-attr">&quot;uname&quot;</span>: <span class="hljs-string">&quot;新华社&quot;</span>,                <span class="hljs-attr">&quot;usign&quot;</span>: <span class="hljs-string">&quot;我是稳中带皮皮中有稳稳得一皮的鲜花舍。本社专营各种新闻报道，欢迎各位选购。&quot;</span>,                <span class="hljs-attr">&quot;fans&quot;</span>: <span class="hljs-number">2165506</span>,                <span class="hljs-attr">&quot;videos&quot;</span>: <span class="hljs-number">1414</span>,                <span class="hljs-attr">&quot;upic&quot;</span>: <span class="hljs-string">&quot;//i2.hdslb.com/bfs/face/3e9def9e060a7654df1e65d4fe9d35c5e121e078.jpg&quot;</span>,                <span class="hljs-attr">&quot;verify_info&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,                <span class="hljs-attr">&quot;level&quot;</span>: <span class="hljs-number">6</span>,                <span class="hljs-attr">&quot;gender&quot;</span>: <span class="hljs-number">3</span>,                <span class="hljs-attr">&quot;is_upuser&quot;</span>: <span class="hljs-number">1</span>,                <span class="hljs-attr">&quot;is_live&quot;</span>: <span class="hljs-number">1</span>,                <span class="hljs-attr">&quot;room_id&quot;</span>: <span class="hljs-number">22015508</span>,                <span class="hljs-attr">&quot;res&quot;</span>: [                    &#123;                        <span class="hljs-attr">&quot;aid&quot;</span>: <span class="hljs-number">546096095</span>,                        <span class="hljs-attr">&quot;bvid&quot;</span>: <span class="hljs-string">&quot;BV1Xq4y1576Q&quot;</span>,                        <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;海军招生宣传片《踏浪扬帆 崭新征程》重磅发布&quot;</span>,                        <span class="hljs-attr">&quot;pubdate&quot;</span>: <span class="hljs-number">1623342182</span>,                        <span class="hljs-attr">&quot;arcurl&quot;</span>: <span class="hljs-string">&quot;http://www.bilibili.com/video/av546096095&quot;</span>,                        <span class="hljs-attr">&quot;pic&quot;</span>: <span class="hljs-string">&quot;//i2.hdslb.com/bfs/archive/cba9229c937b18f2bd7b4a60af10d885bd5ed774.jpg&quot;</span>,                        <span class="hljs-attr">&quot;play&quot;</span>: <span class="hljs-string">&quot;27772&quot;</span>,                        <span class="hljs-attr">&quot;dm&quot;</span>: <span class="hljs-number">67</span>,                        <span class="hljs-attr">&quot;coin&quot;</span>: <span class="hljs-number">844</span>,                        <span class="hljs-attr">&quot;fav&quot;</span>: <span class="hljs-number">486</span>,                        <span class="hljs-attr">&quot;desc&quot;</span>: <span class="hljs-string">&quot;这里有战舰乘风破浪，这里有潜艇潜行大洋，这里有战机巡航海天，这里有陆战精英全域出击，这里还有导弹剑指苍穹……报考海军院校，加入海军方阵，人民海军期待你的到来！&quot;</span>,                        <span class="hljs-attr">&quot;duration&quot;</span>: <span class="hljs-string">&quot;4:22&quot;</span>,                        <span class="hljs-attr">&quot;is_pay&quot;</span>: <span class="hljs-number">0</span>,                        <span class="hljs-attr">&quot;is_union_video&quot;</span>: <span class="hljs-number">1</span>                    &#125;                ],                <span class="hljs-attr">&quot;official_verify&quot;</span>: &#123;                    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-number">1</span>,                    <span class="hljs-attr">&quot;desc&quot;</span>: <span class="hljs-string">&quot;新华社官方账号&quot;</span>                &#125;,                <span class="hljs-attr">&quot;hit_columns&quot;</span>: []            &#125;        ],        &quot;show_column&quot;: 0    &#125;&#125;</code></pre><h4 id="2-用户视频"><a href="#2-用户视频" class="headerlink" title="2. 用户视频"></a>2. 用户视频</h4><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>api.bilibili.com<span class="hljs-regexp">/x/</span>space<span class="hljs-regexp">/arc/</span>search?ps=<span class="hljs-number">10</span>&amp;tid=<span class="hljs-number">0</span>&amp;pn=<span class="hljs-number">1</span>&amp;order=pubdate&amp;jsonp=jsonp&amp;mid=<span class="hljs-number">473837611</span></code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>bilibili</tag>
+      
+      <tag>Api</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MyCat安装使用</title>
     <link href="/2021/05/28/MyCat/"/>
     <url>/2021/05/28/MyCat/</url>
@@ -639,6 +660,27 @@
     <tags>
       
       <tag>Centos7</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Nginx反向代理导致请求header头信息丢失</title>
+    <link href="/2020/08/10/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E8%AF%B7%E6%B1%82header%E5%A4%B4%E4%BF%A1%E6%81%AF%E4%B8%A2%E5%A4%B1/"/>
+    <url>/2020/08/10/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E8%AF%B7%E6%B1%82header%E5%A4%B4%E4%BF%A1%E6%81%AF%E4%B8%A2%E5%A4%B1/</url>
+    
+    <content type="html"><![CDATA[<p><strong>解决方法：</strong></p><blockquote><p>方法一：NGINX代理时加上请求头信息：</p><pre><code>location /fxapi &#123;    proxy_pass   http://fxApi/;    proxy_set_header   Host             $host:$server_port;    proxy_set_header   X-Real-IP        $remote_addr;    proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;    proxy_set_header   Proxy-Client-IP  $remote_addr;&#125;</code></pre><p>由于前端代码request的header中包含_，所以这个配置没有生效</p><p>方法二：从根本解除nginx的限制，nginx默认request的header的那么中包含’_’时，会自动忽略掉。http部分中添加如下配置：underscores_in_headers on; （默认 underscores_in_headers 为off）</p></blockquote><p><img src="https://i.loli.net/2021/06/24/ecgwVKGZrAW1SPf.png" alt="image-20210624143610880"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+      <tag>Nginx</tag>
       
     </tags>
     
