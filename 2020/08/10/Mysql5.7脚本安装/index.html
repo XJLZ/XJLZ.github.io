@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      27
        分钟
     </span>
   
@@ -370,11 +370,7 @@ rm -rf 上边查找到的路径，多个路径用空格隔开
 #或者下边一条命令即可
 <span class="hljs-built_in">find</span> / -name mysql|xargs rm -rf</code></pre>
 
-<h4 id="5、建库"><a href="#5、建库" class="headerlink" title="5、建库"></a>5、建库</h4><pre><code class="hljs routeros">CREATE DATABASE `fx`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE DATABASE `cpbdb-backup`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE DATABASE `cpbdb-dev`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE DATABASE `cpbdb-dev-test`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE DATABASE `cpbdb`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;</code></pre>
+<h4 id="5、建库"><a href="#5、建库" class="headerlink" title="5、建库"></a>5、建库</h4><pre><code class="hljs routeros">CREATE DATABASE `fx`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <span class="hljs-builtin-name">SET</span> utf8mb4 COLLATE utf8mb4_general_ci;</code></pre>
 
 <h4 id="6、导出"><a href="#6、导出" class="headerlink" title="6、导出"></a>6、导出</h4><pre><code class="hljs arcade">-- 只导出数据
 ./mysqldump -t cpbdb -uroot -proot &gt; <span class="hljs-regexp">/home/</span>cpbdb.sql
@@ -385,7 +381,12 @@ CREATE DATABASE `cpbdb`<span class="hljs-built_in"> DEFAULT </span>CHARACTER <sp
 -- 导出整个数据库
 ./mysqldump -uroot -proot cpbdb &gt; <span class="hljs-regexp">/home/</span>cpbdb.sql</code></pre>
 
-<h4 id="7、查询表结构"><a href="#7、查询表结构" class="headerlink" title="7、查询表结构"></a>7、查询表结构</h4><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span>
+<h4 id="7、表操作"><a href="#7、表操作" class="headerlink" title="7、表操作"></a>7、表操作</h4><pre><code class="hljs sql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> t_dict_content_type <span class="hljs-keyword">modify</span> <span class="hljs-keyword">column</span> <span class="hljs-keyword">name</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">1000</span>);
+<span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">file</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">md5</span> = <span class="hljs-string">&#x27;1daa30a32b99a92062f481bd3ef8694c&#x27;</span></code></pre>
+
+
+
+<h4 id="8、查询表结构"><a href="#8、查询表结构" class="headerlink" title="8、查询表结构"></a>8、查询表结构</h4><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span>
   TABLE_NAME 表名,
   COLUMN_NAME 列名,
   COLUMN_TYPE 数据类型,
