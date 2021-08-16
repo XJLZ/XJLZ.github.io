@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      2k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      29
        分钟
     </span>
   
@@ -216,7 +216,20 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="安装-amp-配置"><a href="#安装-amp-配置" class="headerlink" title="安装&amp;配置"></a>安装&amp;配置</h1><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><pre><code class="hljs properties"><span class="hljs-comment">#启动服务</span>
+              <h1 id="安装-amp-配置"><a href="#安装-amp-配置" class="headerlink" title="安装&amp;配置"></a>安装&amp;配置</h1><p>安装去官网：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/centos/">https://docs.docker.com/engine/install/centos/</a></p>
+<h3 id="换源（vim-etc-docker-daemon-json）"><a href="#换源（vim-etc-docker-daemon-json）" class="headerlink" title="换源（vim /etc/docker/daemon.json）"></a>换源（vim /etc/docker/daemon.json）</h3><pre><code class="hljs json">&#123;
+    <span class="hljs-attr">&quot;registry-mirrors&quot;</span>: [
+        <span class="hljs-string">&quot;https://pee6w651.mirror.aliyuncs.com&quot;</span>,
+        <span class="hljs-string">&quot;https://kfwkfulq.mirror.aliyuncs.com&quot;</span>,
+        <span class="hljs-string">&quot;https://2lqq34jg.mirror.aliyuncs.com&quot;</span>,
+        <span class="hljs-string">&quot;http://hub-mirror.c.163.com&quot;</span>,
+        <span class="hljs-string">&quot;https://registry.docker-cn.com&quot;</span>
+    ]
+&#125;</code></pre>
+
+
+
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><pre><code class="hljs properties"><span class="hljs-comment">#启动服务</span>
 <span class="hljs-attr">systemctl</span> <span class="hljs-string">start docker</span>
 <span class="hljs-comment">#获取镜像</span>
 <span class="hljs-attr">docker</span>  <span class="hljs-string">pull [镜像:xx.xx]</span>
@@ -471,15 +484,14 @@ $  <span class="hljs-string">./src/redis-server</span> <span class="hljs-string"
 
 <h3 id="MinIO-Docker"><a href="#MinIO-Docker" class="headerlink" title="MinIO Docker"></a>MinIO Docker</h3><pre><code class="hljs routeros"><span class="hljs-comment"># docker安装镜像</span>
     docker pull minio/minio
-
 <span class="hljs-comment"># 启动</span>
-    docker <span class="hljs-builtin-name">run</span> -p 9000:9000 -d --name minio \
-      -v /home/Photo:/data \
-      -v /mnt/config:/root/.minio \
-      minio/minio<span class="hljs-built_in"> server </span>/data
-<span class="hljs-comment"># 默认用户密码 </span>
-    minioadmin
-    minioadmin</code></pre>
+
+docker <span class="hljs-builtin-name">run</span> -p 9000:9000 -p 9001:9001 --name minio \
+  -e <span class="hljs-string">&quot;MINIO_ROOT_USER=Minio_Admin&quot;</span> \
+  -e <span class="hljs-string">&quot;MINIO_ROOT_PASSWORD=Minio_Admin&quot;</span> \
+  -v /mnt/minio/data:/data \
+  -v /mnt/minio/config:/root/.minio \
+  minio/minio:RELEASE.2021-07-22T05-23-32Z<span class="hljs-built_in"> server </span>/data --console-address <span class="hljs-string">&quot;:9001&quot;</span></code></pre>
 
 <h3 id="Docker-Build"><a href="#Docker-Build" class="headerlink" title="Docker Build"></a>Docker Build</h3><h4 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h4><h5 id="1-编写Dockerfile"><a href="#1-编写Dockerfile" class="headerlink" title="1.编写Dockerfile"></a>1.编写Dockerfile</h5><pre><code class="hljs dockerfile"><span class="hljs-keyword">FROM</span> openjdk:<span class="hljs-number">8</span>u212-jre
 <span class="hljs-keyword">MAINTAINER</span> xxx xxxxx@qq.com

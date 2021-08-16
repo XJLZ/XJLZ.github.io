@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      186 字
+      200 字
     </span>
   
 
@@ -225,7 +225,8 @@
 
 <h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><pre><code class="hljs elixir">db.getCollection(<span class="hljs-string">&#x27;pixiv&#x27;</span>).find(&#123;<span class="hljs-string">&quot;author.name&quot;</span><span class="hljs-symbol">:/Rella/</span>&#125;)</code></pre>
 
-<h4 id="匹配删除"><a href="#匹配删除" class="headerlink" title="匹配删除"></a>匹配删除</h4><pre><code class="hljs arcade">db.getCollection(<span class="hljs-string">&quot;Rainbow&quot;</span>).remove(&#123;<span class="hljs-string">&quot;content&quot;</span>:&#123;<span class="hljs-symbol">$rege</span>x:<span class="hljs-regexp">/^访问太频繁服务器受不了啦/</span>&#125;&#125;);</code></pre>
+<h4 id="匹配删除"><a href="#匹配删除" class="headerlink" title="匹配删除"></a>匹配删除</h4><pre><code class="hljs apache"><span class="hljs-attribute">db</span>.getCollection(<span class="hljs-string">&quot;Rainbow&quot;</span>).remove(&#123;<span class="hljs-string">&quot;content&quot;</span>:&#123;$regex:/^访问太频繁服务器受不了啦/&#125;&#125;)
+<span class="hljs-attribute">db</span>.getCollection(<span class="hljs-string">&quot;job&quot;</span>).deleteMany(&#123;&#x27;md<span class="hljs-number">5</span>&#x27;:&#x27;f<span class="hljs-number">78</span>f<span class="hljs-number">90</span>cbb<span class="hljs-number">3</span>f<span class="hljs-number">3</span>ebe<span class="hljs-number">5</span>a<span class="hljs-number">2</span>a<span class="hljs-number">6931</span>f<span class="hljs-number">3</span>c<span class="hljs-number">6156</span>ee&#x27;&#125;)</code></pre>
 
 <h4 id="命令导出数据库"><a href="#命令导出数据库" class="headerlink" title="命令导出数据库"></a>命令导出数据库</h4><pre><code class="hljs jboss-cli"><span class="hljs-string">./mongoexport</span> -h 127.0.0.1 <span class="hljs-params">--port</span> 50003 -d Images -c picjson -o <span class="hljs-string">/home/picjson.js</span> <span class="hljs-params">--type</span> json -f <span class="hljs-string">&quot;_id,tags,pid,p,uid,title,author,url,r18,width,height,_v&quot;</span></code></pre>
 
