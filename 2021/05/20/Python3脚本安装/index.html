@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      209 字
+      312 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      5
        分钟
     </span>
   
@@ -218,7 +218,22 @@
             <article class="markdown-body">
               <h4 id="准备压缩包"><a href="#准备压缩包" class="headerlink" title="准备压缩包"></a>准备压缩包</h4><p>下载网站：<a target="_blank" rel="noopener" href="https://www.python.org/ftp/python">https://www.python.org/ftp/python</a> </p>
 <p>例如：<a target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.9.4/Python-3.9.4.tgz">https://www.python.org/ftp/python/3.9.4/Python-3.9.4.tgz</a>     </p>
-<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre><code class="hljs mipsasm">yum <span class="hljs-keyword">install </span>openssl-devel <span class="hljs-keyword">bzip2-devel </span>expat-devel gdbm-devel readline-devel sqlite-devel</code></pre>
+<h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><pre><code class="hljs mipsasm">yum <span class="hljs-keyword">install </span>zlib-devel <span class="hljs-keyword">bzip2-devel </span>openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc* make -y</code></pre>
+
+<h4 id="SSL模块"><a href="#SSL模块" class="headerlink" title="SSL模块"></a>SSL模块</h4><pre><code class="hljs crystal"><span class="hljs-comment">#修改Setup文件,在解压文件夹下的Modules文件夹下的Setup</span>
+vim Modules/Setup
+<span class="hljs-comment">#修改结果如下：去掉最后4行注释，得到如下的结果</span>
+<span class="hljs-comment"># Socket module helper for socket(2)</span>
+_socket socketmodule.c timemodule.c
+
+<span class="hljs-comment"># Socket module helper for SSL support; you must comment out the other</span>
+<span class="hljs-comment"># socket line above, and possibly edit the SSL variable:</span>
+SSL=<span class="hljs-regexp">/usr/local</span><span class="hljs-regexp">/ssl</span>
+<span class="hljs-regexp">_ssl _ssl.c \</span>
+<span class="hljs-regexp">-DUSE_SSL -I$(SSL)/include</span> -I$(SSL)/<span class="hljs-keyword">include</span>/openssl \
+-L$(SSL)/<span class="hljs-class"><span class="hljs-keyword">lib</span> -<span class="hljs-title">lssl</span> -<span class="hljs-title">lcrypto</span></span></code></pre>
+
+
 
 <h4 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h4><p><strong>自己修改压缩包存放目录和文件名</strong></p>
 <pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span>

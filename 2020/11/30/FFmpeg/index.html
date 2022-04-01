@@ -216,7 +216,7 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -i akane.mp<span class="hljs-number">4</span> -c copy -map <span class="hljs-number">0</span> -f segment -segment_list akane.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span> -segment_time <span class="hljs-number">10</span> akane%<span class="hljs-number">03</span>d.ts</code></pre>
+              <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -i akane.mp<span class="hljs-number">4</span> -c copy -map <span class="hljs-number">0</span> -f segment -segment_list akane.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span> -segment_time <span class="hljs-number">10</span> segment%d.ts</code></pre>
 
 
 

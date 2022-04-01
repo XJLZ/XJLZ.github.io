@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      65
+      66
        分钟
     </span>
   
@@ -324,6 +324,12 @@ ffmpeg -i input.mp4 -vcodec copy -an output.mp4
 <span class="hljs-comment">// 提取视频中的音频 （格式需要和Duration: Stream #0:1(und): Audio:***,格式(***)一样）</span>
 ffmpeg -i input.mp4 -acodec copy -vn output.mp3
 <span class="hljs-comment">// -vn: 去掉视频；-acodec: 音频选项， 一般后面加copy表示拷贝</span>
+
+<span class="hljs-comment">// 将1张图片和1个MP3音频文件转为MP4</span>
+ffmpeg -i akane.aac -i cover.jpg -acodec aac -strict -<span class="hljs-number">2</span> -vcodec libx264 -ar <span class="hljs-number">22050</span> -ab <span class="hljs-number">128</span>k -ac <span class="hljs-number">2</span> -pix_fmt yuvj420p -y test.mp4
+
+<span class="hljs-comment">// 转为mp4</span>
+ffmpeg -i aaa.flv -c copy out.mp4
 
 <span class="hljs-comment">// 音视频合成</span>
 ffmpeg -y –i input.mp4 –i input.mp3 –vcodec copy –acodec copy output.mp4
