@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5k 字
+      5.1k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      66
+      67
        分钟
     </span>
   
@@ -327,6 +327,7 @@ ffmpeg -i input.mp4 -acodec copy -vn output.mp3
 
 <span class="hljs-comment">// 将1张图片和1个MP3音频文件转为MP4</span>
 ffmpeg -i akane.aac -i cover.jpg -acodec aac -strict -<span class="hljs-number">2</span> -vcodec libx264 -ar <span class="hljs-number">22050</span> -ab <span class="hljs-number">128</span>k -ac <span class="hljs-number">2</span> -pix_fmt yuvj420p -y test.mp4
+ffmpeg -i Rubia.mp3 -i cover.jpg -acodec mp3 -strict -<span class="hljs-number">2</span> -vcodec libx264 -ar <span class="hljs-number">22050</span> -ab <span class="hljs-number">128</span>k -ac <span class="hljs-number">2</span> -pix_fmt yuvj420p -y test.mp4
 
 <span class="hljs-comment">// 转为mp4</span>
 ffmpeg -i aaa.flv -c copy out.mp4

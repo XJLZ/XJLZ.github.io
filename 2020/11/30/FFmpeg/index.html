@@ -236,7 +236,7 @@ playlist.m3u8   <span class="hljs-comment">#  生成的m3u8文件</span></code><
 -hls_segment_filename <span class="hljs-string">&quot;playlist%03d.ts&quot;</span> <span class="hljs-string">\</span>
 playlist.m3u8</code></pre>
 
-<pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -y -i akane.mp<span class="hljs-number">4</span> -hls_time <span class="hljs-number">4</span> -hls_key_info_file enc.keyinfo -hls_segment_filename <span class="hljs-string">&quot;playlist%03d.ts&quot;</span> playlist.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span></code></pre>
+<pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -y -i akane.mp<span class="hljs-number">4</span> -hls_time <span class="hljs-number">30</span> -hls_key_info_file enc.keyinfo -hls_segment_filename <span class="hljs-string">&quot;akane%03d.ts&quot;</span> akane.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span></code></pre>
 
 <pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -y -i akane.mp<span class="hljs-number">4</span> -hls_time <span class="hljs-number">4</span> -hls_segment_filename <span class="hljs-string">&quot;playlist%03d.ts&quot;</span> playlist.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span></code></pre>
 
