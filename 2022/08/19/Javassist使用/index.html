@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Centos7安装FFmpeg - Hexo</title>
+  <title>Javassist - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2022-04-02 09:32">
-      2022年4月2日 上午
+    <time datetime="2022-08-19 16:32">
+      2022年8月19日 下午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      193 字
+      398 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      6
        分钟
     </span>
   
@@ -216,44 +216,69 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h3 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h3><p><a target="_blank" rel="noopener" href="http://www.ffmpeg.org/releases/">http://www.ffmpeg.org/releases/</a></p>
-<p>选择对应版本的压缩包，例如：ffmpeg-5.0.tar.gz      </p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ol>
-<li><p>上传到服务器</p>
-</li>
-<li><p>安装编译环境</p>
-<p>&lt;!–hexoPostRenderEscape:<pre><code class="hljs cmake">sudo yum -y <span class="hljs-keyword">install</span> make automake gcc gcc-c++ cc kernel-devel glibc-devel</p>
-</li>
-</ol>
-<p>sudo yum -y <span class="hljs-keyword">install</span> libxml2 libxml2-devel libxslt libxslt-devel</p>
-<p>sudo yum -y <span class="hljs-keyword">install</span> yasm</code></pre>:hexoPostRenderEscape–&gt;</p>
-<ol start="3">
-<li><p>解压</p>
-<pre><code class="hljs css"><span class="hljs-selector-tag">tar</span> <span class="hljs-selector-tag">zxvf</span> <span class="hljs-selector-tag">ffmpeg-4</span><span class="hljs-selector-class">.4</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span></code></pre>
-</li>
-<li><p>编译安装</p>
-<pre><code class="hljs awk">sudo .<span class="hljs-regexp">/configure --enable-shared --prefix=/u</span>sr<span class="hljs-regexp">/local/</span>ffmpeg
-sudo make &amp;&amp; make install</code></pre>
-</li>
-<li><p>行环境变量配置</p>
-<pre><code class="hljs awk">sudo vim <span class="hljs-regexp">/etc/</span>ld.so.conf
-添加安装的路径: 
-<span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/ffmpeg/</span>bin
-更新
-ldconfig</code></pre>
-</li>
-<li><p>建立软连接，变为全局,对应自己路径</p>
-<pre><code class="hljs awk">sudo ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/ffmpeg/</span>bin<span class="hljs-regexp">/ffmpeg /u</span>sr<span class="hljs-regexp">/local/</span>bin</code></pre>
-</li>
-<li><p>验证</p>
-<pre><code class="hljs applescript">ffmpeg -<span class="hljs-built_in">version</span></code></pre>
+              <p>首先需要引入jar包：</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.javassist<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>javassist<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.27.0-GA<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
 
+<p>有如下类对象：</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.example.demotools;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestUtil</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TestUtil</span><span class="hljs-params">()</span> </span>&#123;
+    &#125;
 
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getName</span><span class="hljs-params">(String var0)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;this is changed by javassis&quot;</span>;
+    &#125;
 
-</li>
-</ol>
-<p>ps:</p>
-<p>若无法安装到/usr/local/ffmpeg,可以安装到当前登录用户名(user01)下的文件空间下，例如：/home/user01/</p>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">getName2</span><span class="hljs-params">(String var0)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;-23333-wwwww-222222222&quot;</span>;
+    &#125;
+&#125;
+</code></pre>
+
+<p>修改代码</p>
+<pre><code class="hljs reasonml">public static void main(String<span class="hljs-literal">[]</span> args) throws Exception &#123;
+        <span class="hljs-comment">// 这一步是完整的jar包路径</span>
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ClassPool</span>.</span></span>get<span class="hljs-constructor">Default()</span>.insert<span class="hljs-constructor">ClassPath(<span class="hljs-string">&quot;D:\\repository\\com\\example\\demotools\\0.0.1-SNAPSHOT\\demotools-0.0.1-SNAPSHOT2.jar&quot;</span>)</span>;
+        CtClass ctClass = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ClassPool</span>.</span></span>get<span class="hljs-constructor">Default()</span>.get<span class="hljs-constructor">CtClass(<span class="hljs-string">&quot;com.example.demotools.TestUtil&quot;</span>)</span>;
+        CtMethod getName = ctClass.get<span class="hljs-constructor">DeclaredMethod(<span class="hljs-string">&quot;getName&quot;</span>)</span>;
+        getName.set<span class="hljs-constructor">Body(<span class="hljs-string">&quot;&#123;if(true)&#123;return \&quot;this is 1\&quot;;&#125;else&#123;return \&quot;this is not 1\&quot;;&#125;&#125;&quot;</span>)</span>;
+        getName.insert<span class="hljs-constructor">Before(<span class="hljs-string">&quot;return $1;&quot;</span>)</span>;
+        CtMethod getName2 = ctClass.get<span class="hljs-constructor">DeclaredMethod(<span class="hljs-string">&quot;getName2&quot;</span>)</span>;
+        getName2.set<span class="hljs-constructor">Body(<span class="hljs-string">&quot;&#123;String a;if(true)&#123;a=\&quot;this is a FiledValue\&quot;;return a;&#125;else&#123;return $1;&#125;&#125;&quot;</span>)</span>;
+        <span class="hljs-comment">// 这一步就是将破译完的代码放在桌面上</span>
+        ctClass.write<span class="hljs-constructor">File(<span class="hljs-string">&quot;D:\\tmp\\&quot;</span>)</span>;
+
+    &#125;</code></pre>
+
+<p>修改后</p>
+<pre><code class="hljs arduino">package com.example.demotools;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestUtil</span> &#123;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TestUtil</span><span class="hljs-params">()</span> </span>&#123;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">String</span> <span class="hljs-title">getName</span><span class="hljs-params">(<span class="hljs-keyword">String</span> var0)</span> </span>&#123;
+        <span class="hljs-keyword">return</span> var0;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">String</span> <span class="hljs-title">getName2</span><span class="hljs-params">(<span class="hljs-keyword">String</span> var0)</span> </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;
+            <span class="hljs-keyword">String</span> var1 = <span class="hljs-string">&quot;this is a FiledValue&quot;</span>;
+            <span class="hljs-keyword">return</span> var1;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-keyword">return</span> var0;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>这一步之后，你会在D:\tmp\发现一个com文件夹，没错，这个就是最重要的东西！！！<br>将你使用的jar包拷贝到桌面上解压，然后将刚才的文件复制到解压后的文件夹里面进行覆盖，然后将META-INF中 *.RSA 和 *.SF 文件删除后，重新打包。</p>
+<pre><code class="hljs awk">jar cvfm xxxxx.jar META-INF<span class="hljs-regexp">/MANIFEST.MF ./</span></code></pre>
+
+<p>更多使用：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1815164">https://cloud.tencent.com/developer/article/1815164</a></p>
 
             </article>
             <hr>
@@ -264,9 +289,9 @@ ldconfig</code></pre>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
                     
-                      <a class="hover-with-bg" href="/tags/ffmpeg/">ffmpeg</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AD%97%E8%8A%82%E7%A0%81/">字节码</a>
                     
                   </div>
                 
@@ -279,9 +304,9 @@ ldconfig</code></pre>
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/19/Javassist%E4%BD%BF%E7%94%A8/">
+                      <a href="/2022/12/10/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Javassist</span>
+                        <span class="hidden-mobile">常用正则表达式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -289,8 +314,8 @@ ldconfig</code></pre>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2021/06/11/BilibiliApis/">
-                        <span class="hidden-mobile">bilibiliApis</span>
+                      <a href="/2022/04/02/Centos7%20%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85FFmpeg/">
+                        <span class="hidden-mobile">Centos7安装FFmpeg</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -478,7 +503,7 @@ ldconfig</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Centos7安装FFmpeg&nbsp;",
+        "Javassist&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

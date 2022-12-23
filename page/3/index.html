@@ -180,6 +180,79 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/MongoDB/">Linux安装MongoDB</a>
+
+      <a href="/2020/08/10/MongoDB/" class="index-excerpt">
+        
+        
+          
+        
+        <div>1.下载　　官方下载地址：https://www.mongodb.com/download-center/community
+2.上传解压　　1.使用工具（FileZilla）上传至服务器　　
+　　2.解压安装解压：tar -zxvf mongodb-linux-x86_64-4.0.6.tgz
+移动：mv ./mongodb-linux-x86_64-4.0.6 /usr/local/mongo</div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">linux</a>
+            
+              <a href="/tags/mongo/">mongo</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
+      <a class="index-header" href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/">Mongo常用查询</a>
+
+      <a href="/2020/08/10/Mongo%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2/" class="index-excerpt">
+        
+        
+          
+        
+        <div>查询并显示集合中的数据db.getCollection(&#x27;pixiv&#x27;).aggregate([
+    &#123; $group: &#123; _id : &#x27;$author.id&#x27;, count: &#123; $sum : 1 &#125; &#125; &#125;,
+    &#123; $match: &#123; count: &#123; </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/mongodb/">mongodb</a>
+            
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-12 mx-auto index-info">
       <a class="index-header" href="/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/">Navicat12激活</a>
 
       <a href="/2020/08/10/Navicat12%E6%BF%80%E6%B4%BB/" class="index-excerpt">
@@ -508,90 +581,6 @@ Listen 192.168.31.30:8080
               <a href="/tags/Centos7/">Centos7</a>
             
               <a href="/tags/httpd/">httpd</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Centos7%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7/">CentOS 7中添加一个新用户并授权</a>
-
-      <a href="/2020/08/10/Centos7%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7/" class="index-excerpt">
-        
-        
-          
-        
-        <div>CentOS 7中添加一个新用户并授权创建新用户创建一个用户名为：linuxidc
-[root@localhost ~]# adduser linuxidc
-
-为这个用户初始化密码，linux会判断密码复杂度，不过可以强行忽略：
-[root@localhost ~]# passwd linuxidc
-更改用户 zhangbiao 的密码 。
-新的 密码：
-无效的密码： 密码未通过字典检查 - 过于</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Centos7%E5%AE%89%E8%A3%85Node+Npm/">Centos7安装Node+Npm</a>
-
-      <a href="/2020/08/10/Centos7%E5%AE%89%E8%A3%85Node+Npm/" class="index-excerpt">
-        
-        
-          
-        
-        <div>Centos7安装Node+Npm
-node官网下载node（**Linux Binaries (x64)**）安装包 [https://nodejs.org/zh-cn/download/]
-执行解压操作
-
-tar -xvf node-v10.16.3-linux-x64.tar.xz 
-
-确认一下nodejs下bin目录是否有node 和npm文件,如果有执行软连接，如果没有重新下载
-建立软连</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/node/">node</a>
-            
-              <a href="/tags/npm/">npm</a>
             
           </div>
         
