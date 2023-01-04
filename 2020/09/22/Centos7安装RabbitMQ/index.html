@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      1.1k 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      15
        分钟
     </span>
   
@@ -322,6 +322,11 @@ rabbitmqctl  change_password  <span class="hljs-literal">admin</span>  <span cla
 ].</code></pre>
 
 <p><strong>ps：最后的英文句号不能漏掉</strong></p>
+<h5 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h5><p>插件地址： <a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">https://www.rabbitmq.com/community-plugins.html</a></p>
+<p>插件目录：/usr/lib/rabbitmq/lib/rabbitmq_server-<em>version</em>/plugins</p>
+<p>文件拷贝到插件目录后，通过命令<code>sudo rabbitmq-plugins enable plugin-name</code>启用插件。</p>
+<p>至此插件安装完成。</p>
+<p>sudo rabbitmq-plugins list 查看已有插件列表</p>
 
             </article>
             <hr>
