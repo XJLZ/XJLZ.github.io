@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Minio - Hexo</title>
+  <title>Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -164,8 +164,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2021-04-30 12:00">
-      2021年4月30日 中午
+    <time datetime="2021-04-30 11:13">
+      2021年4月30日 上午
     </time>
   </div>
 
@@ -175,7 +175,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      227 字
+      486 字
     </span>
   
 
@@ -185,7 +185,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      7
        分钟
     </span>
   
@@ -216,7 +216,14 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><p><strong>Centos7</strong></p>
+              <hr>
+<p>title: Minio<br>date: 2021-04-30 12:00:00<br>tags:</p>
+<ul>
+<li>Centos7</li>
+<li>Minio</li>
+</ul>
+<hr>
+<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><p><strong>Centos7</strong></p>
 <h4 id="安装Minio"><a href="#安装Minio" class="headerlink" title="安装Minio"></a>安装Minio</h4><pre><code class="hljs awk"><span class="hljs-number">1</span>.下载
     wget https:<span class="hljs-regexp">//</span>dl.min.io<span class="hljs-regexp">/server/mi</span>nio<span class="hljs-regexp">/release/</span>linux-amd64/minio
     或
@@ -236,6 +243,56 @@
     IP:<span class="hljs-number">9999</span>
     默认账号密码都是 minioadmin</code></pre>
 
+<h4 id="新版本minio"><a href="#新版本minio" class="headerlink" title="新版本minio"></a>新版本minio</h4><ol>
+<li>本体下载</li>
+</ol>
+<pre><code class="hljs awk">wget https:<span class="hljs-regexp">//</span>dl.minio.org.cn<span class="hljs-regexp">/server/mi</span>nio<span class="hljs-regexp">/release/</span>linux-amd64/minio</code></pre>
+
+<ol start="2">
+<li>下载配置到 /etc/systemd/system/</li>
+</ol>
+<pre><code class="hljs awk">wget https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/minio/mi</span>nio-service<span class="hljs-regexp">/master/</span>linux-systemd/minio.service
+    删除文件里的 User/Group</code></pre>
+
+
+
+<ol start="3">
+<li>vim /etc/default/minio</li>
+</ol>
+<pre><code class="hljs ini"><span class="hljs-comment"># 指定数据存储目录(注意这个目录要存在)</span>
+<span class="hljs-attr">MINIO_VOLUMES</span>=<span class="hljs-string">&quot;/home/user01/minio/data&quot;</span>
+
+<span class="hljs-comment"># 指定监听端口(也可以监听指定网卡，如 127.0.0.1:9199)</span>
+<span class="hljs-attr">MINIO_OPTS</span>=<span class="hljs-string">&quot;--address :9000  --console-address :9001&quot;</span>
+
+<span class="hljs-comment"># 账号</span>
+<span class="hljs-attr">MINIO_ROOT_USER</span>=<span class="hljs-string">&quot;admin&quot;</span>
+
+<span class="hljs-comment"># 密码</span>
+<span class="hljs-attr">MINIO_ROOT_PASSWORD</span>=<span class="hljs-string">&quot;miniopwd&quot;</span>
+
+
+<span class="hljs-comment"># Access key 建议与MINIO_ROOT_USER相同</span>
+<span class="hljs-attr">MINIO_ACCESS_KEY</span>=<span class="hljs-string">&quot;admin&quot;</span>
+
+<span class="hljs-comment"># Secret key 建议与MINIO_ROOT_PASSWORD相同</span>
+<span class="hljs-attr">MINIO_SECRET_KEY</span>=<span class="hljs-string">&quot;miniopwd&quot;</span>
+
+<span class="hljs-comment"># 区域值，这是完全自己写的，比如你愿意的话写“abcd”也行，但标准格式是“国家-区域-编号”，</span>
+<span class="hljs-comment"># 如“中国-华北-1号”就可写成“cn-north-1”，又比如“美国-西部-2号”可写成“us-west-1”</span>
+<span class="hljs-attr">MINIO_REGION</span>=<span class="hljs-string">&quot;cn-hanghzou-1&quot;</span>
+
+<span class="hljs-comment"># 域名 没域名就写 IP:端口 端口为MINIO_OPTS里指定的</span>
+<span class="hljs-comment">#MINIO_DOMAIN=192.168.31.91:9001</span></code></pre>
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><pre><code class="hljs properties"><span class="hljs-attr">systemctl</span> <span class="hljs-string">daemon-reload</span>
+<span class="hljs-attr">systemctl</span> <span class="hljs-string">start minio</span>
+<span class="hljs-attr">systemctl</span> <span class="hljs-string">status minio</span>
+<span class="hljs-attr">systemctl</span> <span class="hljs-string">stop minio</span>
+</code></pre>
+
+
+
 <h4 id="安装MC"><a href="#安装MC" class="headerlink" title="安装MC"></a>安装MC</h4><pre><code class="hljs awk"><span class="hljs-number">1</span>.下载
     wget https:<span class="hljs-regexp">//</span>dl.min.io<span class="hljs-regexp">/client/m</span>c<span class="hljs-regexp">/release/</span>linux-amd64/mc
     或
@@ -253,15 +310,6 @@
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Minio/">Minio</a>
-                    
-                  </div>
                 
               </div>
               
@@ -471,7 +519,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Minio&nbsp;",
+        "&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -622,5 +670,5 @@
 
 
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
