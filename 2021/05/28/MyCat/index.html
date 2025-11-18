@@ -1,61 +1,142 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
+  
+    <meta name="description" content="1.下载安装下载目录：http:&#x2F;&#x2F;dl.mycat.org.cn&#x2F; 上传 解压1tar -zxvf Mycat-server-1.6.7.4-release-20200105164103-linux.tar.gz   重要的三个配置文件1234cd mycat&#x2F;conf    schema.xml        # 定义逻辑库,表,分片节点等内容    rule.xml        # 定义分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyCat安装使用">
+<meta property="og:url" content="http://yoursite.com/2021/05/28/MyCat/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.下载安装下载目录：http:&#x2F;&#x2F;dl.mycat.org.cn&#x2F; 上传 解压1tar -zxvf Mycat-server-1.6.7.4-release-20200105164103-linux.tar.gz   重要的三个配置文件1234cd mycat&#x2F;conf    schema.xml        # 定义逻辑库,表,分片节点等内容    rule.xml        # 定义分">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/XKktJQwYia36GCF.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/DJvq1XdKa6mpUo4.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/umHdGDIxKP38aqX.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/yMWzaxAohXFscLS.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/XOS6Cm8Ict5NDvk.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/jpmbc9KJuny8fAx.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/njtefbCBFz5g3l6.png">
+<meta property="og:image" content="https://i.loli.net/2021/05/28/1ew5CDNQMpcOLsU.png">
+<meta property="article:published_time" content="2021-05-28T03:32:00.000Z">
+<meta property="article:modified_time" content="2021-05-28T10:07:11.658Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Centos7">
+<meta property="article:tag" content="MySql">
+<meta property="article:tag" content="MyCat">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2021/05/28/XKktJQwYia36GCF.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>MyCat安装使用 - Hexo</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"41fc030db57d5570dd22f78997dc4a7e","google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"tajs":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 5.0.0"></head>
 
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>XJL的博客</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>XJL的博客</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -72,9 +153,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -84,9 +165,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -96,9 +177,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -108,9 +189,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -120,9 +201,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
@@ -132,17 +213,26 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/">
+              <a class="nav-link" href="/links/" target="_self">
                 <i class="iconfont icon-link-fill"></i>
-                友链
+                <span>友链</span>
               </a>
             </li>
           
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -150,313 +240,340 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
-              
-            </span>
+  
 
-            
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2021-05-28 11:32">
-      2021年5月28日 中午
-    </time>
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MyCat安装使用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-05-28 11:32" pubdate>
+          2021年5月28日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          10 分钟
+        
+      </span>
+    
+
+    
+    
   </div>
 
 
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1.2k 字
-    </span>
-  
+        
+      </div>
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
       
-      
-      17
-       分钟
-    </span>
-  
-
-  
-  
+    </div>
+  </div>
 </div>
 
-            
-          </div>
+</div>
 
-          
-        </div>
-      </div>
-    </div>
   </header>
 
   <main>
     
       
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-            <article class="markdown-body">
-              <h4 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1.下载安装"></a>1.下载安装</h4><p>下载目录：<a target="_blank" rel="noopener" href="http://dl.mycat.org.cn/">http://dl.mycat.org.cn/</a></p>
-<h5 id="上传-解压"><a href="#上传-解压" class="headerlink" title="上传 解压"></a>上传 解压</h5><pre><code class="hljs css"><span class="hljs-selector-tag">tar</span> <span class="hljs-selector-tag">-zxvf</span> <span class="hljs-selector-tag">Mycat-server-1</span><span class="hljs-selector-class">.6</span><span class="hljs-selector-class">.7</span><span class="hljs-selector-class">.4-release-20200105164103-linux</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span> </code></pre>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
 
-<h5 id="重要的三个配置文件"><a href="#重要的三个配置文件" class="headerlink" title="重要的三个配置文件"></a>重要的三个配置文件</h5><pre><code class="hljs crmsh">cd mycat/conf
-    schema.<span class="hljs-keyword">xml</span>        <span class="hljs-title"># 定义逻辑库,表,分片节点等内容</span>
-<span class="hljs-title">    rule</span>.<span class="hljs-keyword">xml</span>        <span class="hljs-title"># 定义分片规则</span>
-<span class="hljs-title">    server</span>.<span class="hljs-keyword">xml</span>        <span class="hljs-title"># mycat</span>服务配置</code></pre>
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">MyCat安装使用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h4 id="1-下载安装"><a href="#1-下载安装" class="headerlink" title="1.下载安装"></a>1.下载安装</h4><p>下载目录：<a target="_blank" rel="noopener" href="http://dl.mycat.org.cn/">http://dl.mycat.org.cn/</a></p>
+<h5 id="上传-解压"><a href="#上传-解压" class="headerlink" title="上传 解压"></a>上传 解压</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">tar</span> <span class="hljs-selector-tag">-zxvf</span> <span class="hljs-selector-tag">Mycat-server-1</span><span class="hljs-selector-class">.6</span><span class="hljs-selector-class">.7</span><span class="hljs-selector-class">.4-release-20200105164103-linux</span><span class="hljs-selector-class">.tar</span><span class="hljs-selector-class">.gz</span> <br></code></pre></td></tr></table></figure>
+
+<h5 id="重要的三个配置文件"><a href="#重要的三个配置文件" class="headerlink" title="重要的三个配置文件"></a>重要的三个配置文件</h5><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">cd mycat/conf<br>    schema.<span class="hljs-keyword">xml</span>        <span class="hljs-title"># 定义逻辑库,表,分片节点等内容</span><br><span class="hljs-title">    rule</span>.<span class="hljs-keyword">xml</span>        <span class="hljs-title"># 定义分片规则</span><br><span class="hljs-title">    server</span>.<span class="hljs-keyword">xml</span>        <span class="hljs-title"># mycat</span>服务配置<br></code></pre></td></tr></table></figure>
 
 <h4 id="2-修改配置文件"><a href="#2-修改配置文件" class="headerlink" title="2.修改配置文件"></a>2.修改配置文件</h4><h5 id="修改server-xml"><a href="#修改server-xml" class="headerlink" title="修改server.xml"></a>修改server.xml</h5><p><em><!-- 配置 MyCat 用户名 密码 --></em></p>
-<pre><code class="hljs applescript">&lt;user <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;mycat&quot;</span> defaultAccount=<span class="hljs-string">&quot;true&quot;</span>&gt;
-    &lt;<span class="hljs-keyword">property</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;<span class="hljs-number">123456</span>&lt;/<span class="hljs-keyword">property</span>&gt;
-    &lt;<span class="hljs-keyword">property</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;schemas&quot;</span>&gt;TESTDB&lt;/<span class="hljs-keyword">property</span>&gt;
-    &lt;<span class="hljs-keyword">property</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;defaultSchema&quot;</span>&gt;TESTDB&lt;/<span class="hljs-keyword">property</span>&gt;
-&lt;/user&gt;</code></pre>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs applescript">&lt;user <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;mycat&quot;</span> defaultAccount=<span class="hljs-string">&quot;true&quot;</span>&gt;<br>    &lt;<span class="hljs-keyword">property</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;<span class="hljs-number">123456</span>&lt;/<span class="hljs-keyword">property</span>&gt;<br>    &lt;<span class="hljs-keyword">property</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;schemas&quot;</span>&gt;TESTDB&lt;/<span class="hljs-keyword">property</span>&gt;<br>    &lt;<span class="hljs-keyword">property</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">&quot;defaultSchema&quot;</span>&gt;TESTDB&lt;/<span class="hljs-keyword">property</span>&gt;<br>&lt;/user&gt;<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/05/28/XKktJQwYia36GCF.png" srcset="/img/loading.gif" alt="image-20210528110254129"></p>
-<h5 id="修改schema-xml"><a href="#修改schema-xml" class="headerlink" title="修改schema.xml"></a>修改schema.xml</h5><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mycat</span>:schema <span class="hljs-meta-keyword">SYSTEM</span> <span class="hljs-meta-string">&quot;schema.dtd&quot;</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">mycat:schema</span> <span class="hljs-attr">xmlns:mycat</span>=<span class="hljs-string">&quot;http://io.mycat/&quot;</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- 相当与一个虚拟数据库,这个库中的表格映射了test库中的表 --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;TESTDB&quot;</span> <span class="hljs-attr">checkSQLschema</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">sqlMaxLimit</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">dataNode</span>=<span class="hljs-string">&quot;dn1&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- 数据节点 host150 机器内的 mycat 数据库 --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">dataNode</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dn1&quot;</span> <span class="hljs-attr">dataHost</span>=<span class="hljs-string">&quot;host150&quot;</span> <span class="hljs-attr">database</span>=<span class="hljs-string">&quot;mycat&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">dataHost</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;host150&quot;</span> <span class="hljs-attr">maxCon</span>=<span class="hljs-string">&quot;1000&quot;</span> <span class="hljs-attr">minCon</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">balance</span>=<span class="hljs-string">&quot;2&quot;</span></span>
-<span class="hljs-tag">                          <span class="hljs-attr">writeType</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">dbType</span>=<span class="hljs-string">&quot;mysql&quot;</span> <span class="hljs-attr">dbDriver</span>=<span class="hljs-string">&quot;jdbc&quot;</span> <span class="hljs-attr">switchType</span>=<span class="hljs-string">&quot;1&quot;</span>  <span class="hljs-attr">slaveThreshold</span>=<span class="hljs-string">&quot;100&quot;</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- 心跳 默认就好 --&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">heartbeat</span>&gt;</span>select user()<span class="hljs-tag">&lt;/<span class="hljs-name">heartbeat</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- 读写分离 --&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">writeHost</span> <span class="hljs-attr">host</span>=<span class="hljs-string">&quot;hostM1&quot;</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&quot;jdbc:mysql://192.168.186.150:3306&quot;</span> <span class="hljs-attr">user</span>=<span class="hljs-string">&quot;root&quot;</span> <span class="hljs-attr">password</span>=<span class="hljs-string">&quot;root&quot;</span>&gt;</span>
-                         <span class="hljs-tag">&lt;<span class="hljs-name">readHost</span> <span class="hljs-attr">host</span>=<span class="hljs-string">&quot;hostS1&quot;</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&quot;jdbc:mysql://192.168.186.151:3306&quot;</span> <span class="hljs-attr">user</span>=<span class="hljs-string">&quot;root&quot;</span> <span class="hljs-attr">password</span>=<span class="hljs-string">&quot;root&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">readHost</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">writeHost</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">dataHost</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">mycat:schema</span>&gt;</span></code></pre>
+<p><img src="https://i.loli.net/2021/05/28/XKktJQwYia36GCF.png" srcset="/img/loading.gif" lazyload alt="image-20210528110254129"></p>
+<h5 id="修改schema-xml"><a href="#修改schema-xml" class="headerlink" title="修改schema.xml"></a>修改schema.xml</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mycat</span>:schema <span class="hljs-meta-keyword">SYSTEM</span> <span class="hljs-meta-string">&quot;schema.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mycat:schema</span> <span class="hljs-attr">xmlns:mycat</span>=<span class="hljs-string">&quot;http://io.mycat/&quot;</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 相当与一个虚拟数据库,这个库中的表格映射了test库中的表 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">schema</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;TESTDB&quot;</span> <span class="hljs-attr">checkSQLschema</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">sqlMaxLimit</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">dataNode</span>=<span class="hljs-string">&quot;dn1&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">schema</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 数据节点 host150 机器内的 mycat 数据库 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dataNode</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dn1&quot;</span> <span class="hljs-attr">dataHost</span>=<span class="hljs-string">&quot;host150&quot;</span> <span class="hljs-attr">database</span>=<span class="hljs-string">&quot;mycat&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dataHost</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;host150&quot;</span> <span class="hljs-attr">maxCon</span>=<span class="hljs-string">&quot;1000&quot;</span> <span class="hljs-attr">minCon</span>=<span class="hljs-string">&quot;10&quot;</span> <span class="hljs-attr">balance</span>=<span class="hljs-string">&quot;2&quot;</span></span><br><span class="hljs-tag">                          <span class="hljs-attr">writeType</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">dbType</span>=<span class="hljs-string">&quot;mysql&quot;</span> <span class="hljs-attr">dbDriver</span>=<span class="hljs-string">&quot;jdbc&quot;</span> <span class="hljs-attr">switchType</span>=<span class="hljs-string">&quot;1&quot;</span>  <span class="hljs-attr">slaveThreshold</span>=<span class="hljs-string">&quot;100&quot;</span>&gt;</span><br>                <span class="hljs-comment">&lt;!-- 心跳 默认就好 --&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">heartbeat</span>&gt;</span>select user()<span class="hljs-tag">&lt;/<span class="hljs-name">heartbeat</span>&gt;</span><br>                <span class="hljs-comment">&lt;!-- 读写分离 --&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">writeHost</span> <span class="hljs-attr">host</span>=<span class="hljs-string">&quot;hostM1&quot;</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&quot;jdbc:mysql://192.168.186.150:3306&quot;</span> <span class="hljs-attr">user</span>=<span class="hljs-string">&quot;root&quot;</span> <span class="hljs-attr">password</span>=<span class="hljs-string">&quot;root&quot;</span>&gt;</span><br>                         <span class="hljs-tag">&lt;<span class="hljs-name">readHost</span> <span class="hljs-attr">host</span>=<span class="hljs-string">&quot;hostS1&quot;</span> <span class="hljs-attr">url</span>=<span class="hljs-string">&quot;jdbc:mysql://192.168.186.151:3306&quot;</span> <span class="hljs-attr">user</span>=<span class="hljs-string">&quot;root&quot;</span> <span class="hljs-attr">password</span>=<span class="hljs-string">&quot;root&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">readHost</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">writeHost</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dataHost</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mycat:schema</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/05/28/DJvq1XdKa6mpUo4.png" srcset="/img/loading.gif" alt="image-20210528110517024"></p>
-<pre><code class="hljs lsl">读写分离 一般设置为 <span class="hljs-number">1</span> 或者 <span class="hljs-number">3</span>，这里为了看清效果 设置为 <span class="hljs-number">2</span>
-balance=<span class="hljs-string">&quot;2&quot;</span>
-负载均衡类型，目前的取值有<span class="hljs-number">3</span>种：
-<span class="hljs-number">1.</span> balance=<span class="hljs-string">&quot;0&quot;</span>, 不开启读写分离机制，所有读操作都发送到当前可用的 writehost 上。 
-<span class="hljs-number">2.</span> balance=<span class="hljs-string">&quot;1&quot;</span>，全部的 readhost 与 standby wtirehost 参与select语句的负载均衡，简单的说，当双主双从模式(M1-&gt;S1，M2-&gt;S2，并且M1与M2互为主备)，正常情况下，M2,S1,S2 都参与 select 语句的负载均衡。 
-<span class="hljs-number">3.</span> balance=<span class="hljs-string">&quot;2&quot;</span>，所以读操作都随机的在 writehost、readhost 上分发。
-<span class="hljs-number">4.</span> balance=<span class="hljs-string">&quot;3&quot;</span>，所有读请求随机的分发到 writehost 对应的 readhost 执行，writehost不负担读压力，注意 balance=<span class="hljs-number">3</span> 只有<span class="hljs-number">1.4</span>及其以后版本有，<span class="hljs-number">1.3</span>没有。</code></pre>
+<p><img src="https://i.loli.net/2021/05/28/DJvq1XdKa6mpUo4.png" srcset="/img/loading.gif" lazyload alt="image-20210528110517024"></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs lsl">读写分离 一般设置为 <span class="hljs-number">1</span> 或者 <span class="hljs-number">3</span>，这里为了看清效果 设置为 <span class="hljs-number">2</span><br>balance=<span class="hljs-string">&quot;2&quot;</span><br>负载均衡类型，目前的取值有<span class="hljs-number">3</span>种：<br><span class="hljs-number">1.</span> balance=<span class="hljs-string">&quot;0&quot;</span>, 不开启读写分离机制，所有读操作都发送到当前可用的 writehost 上。 <br><span class="hljs-number">2.</span> balance=<span class="hljs-string">&quot;1&quot;</span>，全部的 readhost 与 standby wtirehost 参与select语句的负载均衡，简单的说，当双主双从模式(M1-&gt;S1，M2-&gt;S2，并且M1与M2互为主备)，正常情况下，M2,S1,S2 都参与 select 语句的负载均衡。 <br><span class="hljs-number">3.</span> balance=<span class="hljs-string">&quot;2&quot;</span>，所以读操作都随机的在 writehost、readhost 上分发。<br><span class="hljs-number">4.</span> balance=<span class="hljs-string">&quot;3&quot;</span>，所有读请求随机的分发到 writehost 对应的 readhost 执行，writehost不负担读压力，注意 balance=<span class="hljs-number">3</span> 只有<span class="hljs-number">1.4</span>及其以后版本有，<span class="hljs-number">1.3</span>没有。<br></code></pre></td></tr></table></figure>
 
 
 
-<h4 id="3-启动-amp-登录"><a href="#3-启动-amp-登录" class="headerlink" title="3.启动&amp;登录"></a>3.启动&amp;登录</h4><pre><code class="hljs crmsh">bin/mycat <span class="hljs-literal">start</span></code></pre>
+<h4 id="3-启动-amp-登录"><a href="#3-启动-amp-登录" class="headerlink" title="3.启动&amp;登录"></a>3.启动&amp;登录</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">bin/mycat <span class="hljs-literal">start</span><br></code></pre></td></tr></table></figure>
 
-<pre><code class="hljs angelscript">mysql -umycat -p123456 -P <span class="hljs-number">8066</span> -h <span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.150</span></code></pre>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">mysql -umycat -p123456 -P <span class="hljs-number">8066</span> -h <span class="hljs-number">192.168</span><span class="hljs-number">.186</span><span class="hljs-number">.150</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/05/28/umHdGDIxKP38aqX.png" srcset="/img/loading.gif" alt="image-20210528112139346"></p>
+<p><img src="https://i.loli.net/2021/05/28/umHdGDIxKP38aqX.png" srcset="/img/loading.gif" lazyload alt="image-20210528112139346"></p>
 <h4 id="4-搭建读写分离"><a href="#4-搭建读写分离" class="headerlink" title="4.搭建读写分离"></a>4.搭建读写分离</h4><h5 id="一主一从"><a href="#一主一从" class="headerlink" title="一主一从"></a>一主一从</h5><h6 id="1-主机配置"><a href="#1-主机配置" class="headerlink" title="1.主机配置"></a>1.主机配置</h6><ul>
 <li>vim /etc/mt.cnf </li>
 </ul>
-<pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span>
-<span class="hljs-comment"># 主服务器唯一 ID</span>
-<span class="hljs-attr">server_id</span>=<span class="hljs-number">1</span>
-<span class="hljs-comment"># 启用二进制日志</span>
-<span class="hljs-attr">log-bin</span>=mysql-bin
-<span class="hljs-comment"># 设置 logbin 格式</span>
-<span class="hljs-attr">binlog-format</span>=STATEMENT
-<span class="hljs-comment"># 设置不要复制的数据库</span>
-<span class="hljs-attr">binlog-ignore-db</span>=mysql
-<span class="hljs-attr">binlog-ignore-db</span>=infomation_schema
-<span class="hljs-comment"># 设置需要复制的数据库</span>
-<span class="hljs-attr">binlog-do-db</span>=mycat</code></pre>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span><br><span class="hljs-comment"># 主服务器唯一 ID</span><br><span class="hljs-attr">server_id</span>=<span class="hljs-number">1</span><br><span class="hljs-comment"># 启用二进制日志</span><br><span class="hljs-attr">log-bin</span>=mysql-bin<br><span class="hljs-comment"># 设置 logbin 格式</span><br><span class="hljs-attr">binlog-format</span>=STATEMENT<br><span class="hljs-comment"># 设置不要复制的数据库</span><br><span class="hljs-attr">binlog-ignore-db</span>=mysql<br><span class="hljs-attr">binlog-ignore-db</span>=infomation_schema<br><span class="hljs-comment"># 设置需要复制的数据库</span><br><span class="hljs-attr">binlog-do-db</span>=mycat<br></code></pre></td></tr></table></figure>
 
-<h5 id=""><a href="#" class="headerlink" title=""></a><em><!-- binlog_format 三种格式--></em></h5><pre><code class="hljs vala"><span class="hljs-meta"># master写入执行的SQL语句到binlog中，从库读取这些SQL语句并执行，</span>
-<span class="hljs-meta"># 这种基于SQL语句的复制方式是MySQL最早支持的复制方式。</span>
-<span class="hljs-meta"># 缺点 执行某些函数时可能造成主从不一致的情况 如 update ... time=now()</span>
-binlog_format=statement
-
-<span class="hljs-meta"># 可以将master的binlog_format配置成同时使用基于statement和row两者的组合格式，</span>
-<span class="hljs-meta"># 它记录日志取决于修改的类型，选择合适的格式来记录该修改。</span>
-<span class="hljs-meta"># 默认情况下使用statement格式记录日志，特定情况下转换成基于row格式记录。</span>
-<span class="hljs-meta"># 缺点 识别不了特定的名称[系统变量] 如 @@host name</span>
-binlog_format=mixed
-
-<span class="hljs-meta"># MySQL5.7.7版本之后，把binlog_format的默认值修改为了row，</span>
-<span class="hljs-meta"># master将修改表的event写入binlog中，并且master将该binlog发送给slave，</span>
-<span class="hljs-meta"># slave重放binlog中的event。基于row格式复制时最安全的复制，slave需要的行锁更少。</span>
-<span class="hljs-meta"># 复制过程中建议使用row格式，其他格式可能会造成主从数据不一致的情况。</span>
-<span class="hljs-meta"># 缺点 执行 100 万次更新,会记录一百万次</span>
-binlog_format=row</code></pre>
+<h5 id=""><a href="#" class="headerlink" title=""></a><em><!-- binlog_format 三种格式--></em></h5><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># master写入执行的SQL语句到binlog中，从库读取这些SQL语句并执行，</span><br><span class="hljs-meta"># 这种基于SQL语句的复制方式是MySQL最早支持的复制方式。</span><br><span class="hljs-meta"># 缺点 执行某些函数时可能造成主从不一致的情况 如 update ... time=now()</span><br>binlog_format=statement<br><br><span class="hljs-meta"># 可以将master的binlog_format配置成同时使用基于statement和row两者的组合格式，</span><br><span class="hljs-meta"># 它记录日志取决于修改的类型，选择合适的格式来记录该修改。</span><br><span class="hljs-meta"># 默认情况下使用statement格式记录日志，特定情况下转换成基于row格式记录。</span><br><span class="hljs-meta"># 缺点 识别不了特定的名称[系统变量] 如 @@host name</span><br>binlog_format=mixed<br> <br><span class="hljs-meta"># MySQL5.7.7版本之后，把binlog_format的默认值修改为了row，</span><br><span class="hljs-meta"># master将修改表的event写入binlog中，并且master将该binlog发送给slave，</span><br><span class="hljs-meta"># slave重放binlog中的event。基于row格式复制时最安全的复制，slave需要的行锁更少。</span><br><span class="hljs-meta"># 复制过程中建议使用row格式，其他格式可能会造成主从数据不一致的情况。</span><br><span class="hljs-meta"># 缺点 执行 100 万次更新,会记录一百万次</span><br>binlog_format=row<br></code></pre></td></tr></table></figure>
 
 <h6 id="2-从机配置"><a href="#2-从机配置" class="headerlink" title="2.从机配置"></a>2.从机配置</h6><ul>
 <li>vim /etc/mt.cnf </li>
 </ul>
-<pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span>
-<span class="hljs-comment"># 从机服务器唯一 ID</span>
-<span class="hljs-attr">server_id</span>=<span class="hljs-number">2</span>
-<span class="hljs-comment"># 启用中继日志</span>
-<span class="hljs-attr">relay-log</span>=mysql-relay</code></pre>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span><br><span class="hljs-comment"># 从机服务器唯一 ID</span><br><span class="hljs-attr">server_id</span>=<span class="hljs-number">2</span><br><span class="hljs-comment"># 启用中继日志</span><br><span class="hljs-attr">relay-log</span>=mysql-relay<br></code></pre></td></tr></table></figure>
 
 <p><strong>主从机都关闭防火墙或者开启3306端口 ，重启 mysql 服务</strong></p>
-<h5 id="主机上创建账户并授权-slave"><a href="#主机上创建账户并授权-slave" class="headerlink" title="主机上创建账户并授权 slave"></a>主机上创建账户并授权 slave</h5><pre><code class="hljs sql">1.登录数据库
-mysql -uroot -proot
-2.创建账户并授权 slave 
-<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">REPLICATION</span> <span class="hljs-keyword">SLAVE</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;slave&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;sasa&#x27;</span>;
-3.刷新权限
-<span class="hljs-keyword">FLUSH</span> <span class="hljs-keyword">PRIVILEGES</span>;
-4.查看主机状态
-<span class="hljs-keyword">show</span> <span class="hljs-keyword">master</span> <span class="hljs-keyword">status</span>;</code></pre>
+<h5 id="主机上创建账户并授权-slave"><a href="#主机上创建账户并授权-slave" class="headerlink" title="主机上创建账户并授权 slave"></a>主机上创建账户并授权 slave</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">1.登录数据库<br>mysql -uroot -proot<br>2.创建账户并授权 slave <br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">REPLICATION</span> <span class="hljs-keyword">SLAVE</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;slave&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;sasa&#x27;</span>;<br>3.刷新权限<br><span class="hljs-keyword">FLUSH</span> <span class="hljs-keyword">PRIVILEGES</span>;<br>4.查看主机状态<br><span class="hljs-keyword">show</span> <span class="hljs-keyword">master</span> <span class="hljs-keyword">status</span>;<br></code></pre></td></tr></table></figure>
 
 <p>+—————————+————-+———————–+————————————–+—————————-+<br>| File                           | Position | Binlog_Do_DB | Binlog_Ignore_DB               | Executed_Gtid_Set |<br>+—————————+————-+———————–+————————————–+—————————-+<br>| mysql-bin.000008 |     3703 | mycat                 | mysql,infomation_schema |                                  |<br>+—————————+————-+———————–+————————————–+—————————-+</p>
 <p>ps: <strong>此后，主机不要做任何操作</strong></p>
-<h5 id="从机配置"><a href="#从机配置" class="headerlink" title="从机配置"></a>从机配置</h5><pre><code class="hljs routeros">1.登录数据库
-mysql -uroot -proot
-2.重置
-mysql&gt; stop slave;  
-mysql&gt; reset master;
-3.配置
-CHANGE MASTER <span class="hljs-keyword">TO</span> <span class="hljs-attribute">MASTER_HOST</span>=<span class="hljs-string">&#x27;192.168.186.150&#x27;</span>,
-<span class="hljs-attribute">MASTER_USER</span>=<span class="hljs-string">&#x27;slave&#x27;</span>,
-<span class="hljs-attribute">MASTER_PASSWORD</span>=<span class="hljs-string">&#x27;sasa&#x27;</span>,
-<span class="hljs-attribute">MASTER_LOG_FILE</span>=<span class="hljs-string">&#x27;mysql-bin.000008&#x27;</span>,MASTER_LOG_POS=3703;
-4.从机执行复制功能
-start slave;
-5.查看从机服务状态
-show slave status\G;</code></pre>
+<h5 id="从机配置"><a href="#从机配置" class="headerlink" title="从机配置"></a>从机配置</h5><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs routeros">1.登录数据库<br>mysql -uroot -proot<br>2.重置<br>mysql&gt; stop slave;  <br>mysql&gt; reset master;<br>3.配置<br>CHANGE MASTER <span class="hljs-keyword">TO</span> <span class="hljs-attribute">MASTER_HOST</span>=<span class="hljs-string">&#x27;192.168.186.150&#x27;</span>,<br><span class="hljs-attribute">MASTER_USER</span>=<span class="hljs-string">&#x27;slave&#x27;</span>,<br><span class="hljs-attribute">MASTER_PASSWORD</span>=<span class="hljs-string">&#x27;sasa&#x27;</span>,<br><span class="hljs-attribute">MASTER_LOG_FILE</span>=<span class="hljs-string">&#x27;mysql-bin.000008&#x27;</span>,MASTER_LOG_POS=3703;<br>4.从机执行复制功能<br>start slave;<br>5.查看从机服务状态<br>show slave status\G;<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/05/28/yMWzaxAohXFscLS.png" srcset="/img/loading.gif" alt="image-20210528130555085"></p>
-<p><img src="https://i.loli.net/2021/05/28/XOS6Cm8Ict5NDvk.png" srcset="/img/loading.gif" alt="image-20210528131440355"></p>
+<p><img src="https://i.loli.net/2021/05/28/yMWzaxAohXFscLS.png" srcset="/img/loading.gif" lazyload alt="image-20210528130555085"></p>
+<p><img src="https://i.loli.net/2021/05/28/XOS6Cm8Ict5NDvk.png" srcset="/img/loading.gif" lazyload alt="image-20210528131440355"></p>
 <p>遇到的问题： <a target="_blank" rel="noopener" href="https://blog.csdn.net/leshami/article/details/43854505">https://blog.csdn.net/leshami/article/details/43854505</a></p>
 <h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p>进入主机mysql</p>
 <p>插入一条数据</p>
-<pre><code class="hljs less"><span class="hljs-selector-tag">insert</span> <span class="hljs-selector-tag">into</span> <span class="hljs-selector-tag">user</span> <span class="hljs-selector-tag">values</span>(<span class="hljs-number">8</span>,<span class="hljs-variable">@@hostname</span>);</code></pre>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">insert</span> <span class="hljs-selector-tag">into</span> <span class="hljs-selector-tag">user</span> <span class="hljs-selector-tag">values</span>(<span class="hljs-number">8</span>,<span class="hljs-variable">@@hostname</span>);<br></code></pre></td></tr></table></figure>
 
 <p>查看主从机数据</p>
 <p>主：</p>
-<p><img src="https://i.loli.net/2021/05/28/jpmbc9KJuny8fAx.png" srcset="/img/loading.gif" alt="image-20210528140816254"></p>
+<p><img src="https://i.loli.net/2021/05/28/jpmbc9KJuny8fAx.png" srcset="/img/loading.gif" lazyload alt="image-20210528140816254"></p>
 <p>从：</p>
-<p><img src="https://i.loli.net/2021/05/28/njtefbCBFz5g3l6.png" srcset="/img/loading.gif" alt="image-20210528140843508"></p>
+<p><img src="https://i.loli.net/2021/05/28/njtefbCBFz5g3l6.png" srcset="/img/loading.gif" lazyload alt="image-20210528140843508"></p>
 <p>主机登录mycat</p>
-<pre><code class="hljs routeros">mysql -umycat -p123456 -P 8066 -h 192.168.186.150
-use TESTDB;
-select * <span class="hljs-keyword">from</span><span class="hljs-built_in"> user </span>where id = 8;</code></pre>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">mysql -umycat -p123456 -P 8066 -h 192.168.186.150<br>use TESTDB;<br>select * <span class="hljs-keyword">from</span><span class="hljs-built_in"> user </span>where id = 8;<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2021/05/28/1ew5CDNQMpcOLsU.png" srcset="/img/loading.gif" alt="image-20210528141021129"></p>
+<p><img src="https://i.loli.net/2021/05/28/1ew5CDNQMpcOLsU.png" srcset="/img/loading.gif" lazyload alt="image-20210528141021129"></p>
 
-            </article>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
-                    
-                      <a class="hover-with-bg" href="/tags/MySql/">MySql</a>
-                    
-                      <a class="hover-with-bg" href="/tags/MyCat/">MyCat</a>
-                    
-                  </div>
                 
               </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Centos7/" class="print-no-link">#Centos7</a>
+      
+        <a href="/tags/MySql/" class="print-no-link">#MySql</a>
+      
+        <a href="/tags/MyCat/" class="print-no-link">#MyCat</a>
+      
+    </div>
+  
+</div>
+
+
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MyCat安装使用</div>
+      <div>http://yoursite.com/2021/05/28/MyCat/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年5月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/11/BilibiliApis/">
+                      <a href="/2021/06/11/BilibiliApis/" title="bilibiliApis">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">bilibiliApis</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/20/Python3%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">
+                      <a href="/2021/05/20/Python3%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" title="Python3脚本安装">
                         <span class="hidden-mobile">Python3脚本安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-              <!-- Comments -->
-              <div class="comments" id="comments">
-                
-                
+  
+  
+    <article id="comments" lazyload>
+      
   <script type="text/javascript">
-    function loadUtterances() {
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.defer = false
       s.setAttribute('repo', 'XJLZ/blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
-      s.setAttribute('theme', 'github-light');
+      s.setAttribute('theme', schema);
       s.setAttribute('crossorigin', 'anonymous');
-      var e = document.getElementsByTagName('script')[0];
-      e.parentNode.insertBefore(s, e);
-    }
-    createObserver(loadUtterances, 'comments')
+      document.getElementById('comments').appendChild(s);
+    })
   </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </div>
-            
-          </div>
+    </article>
+  
+
+
+          </article>
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-      </div>
-    
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -469,79 +586,197 @@ select * <span class="hljs-keyword">from</span><span class="hljs-built_in"> user
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
 
-  
+    
 
-  
+    
+  </main>
 
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
     
-  <div class="statistics">
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
     
     
 
-    
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
+        typing(text);
       
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
+    })(window, document);
+  </script>
 
 
-    
-
-    
-  </div>
-</footer>
-
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
 
 
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -549,188 +784,15 @@ select * <span class="hljs-keyword">from</span><span class="hljs-built_in"> user
 
 
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "MyCat安装使用&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
 
-
-
-
-
-
-
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

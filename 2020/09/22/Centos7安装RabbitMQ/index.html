@@ -1,61 +1,135 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
+  
+    <meta name="description" content="安装ErlangRabbitMQ是用Erlang语言编写的，在本教程中我们将安装最新版本的Erlang到服务器中。 Erlang在默认的YUM存储库中不可用，因此您将需要安装EPEL存储库。 运行以下命令相同。 123yum -y install epel-releaseyum -y update  现在使用以下命令安装Erlang。 1yum -y install erlang socat  您">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux安装RabbitMQ">
+<meta property="og:url" content="http://yoursite.com/2020/09/22/Centos7%E5%AE%89%E8%A3%85RabbitMQ/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装ErlangRabbitMQ是用Erlang语言编写的，在本教程中我们将安装最新版本的Erlang到服务器中。 Erlang在默认的YUM存储库中不可用，因此您将需要安装EPEL存储库。 运行以下命令相同。 123yum -y install epel-releaseyum -y update  现在使用以下命令安装Erlang。 1yum -y install erlang socat  您">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/09/22/Q1dIyYVlfcCTBJR.png">
+<meta property="article:published_time" content="2020-09-22T07:40:00.000Z">
+<meta property="article:modified_time" content="2023-01-04T10:05:42.545Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Centos7">
+<meta property="article:tag" content="Rabbit">
+<meta property="article:tag" content="消息队列">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2020/09/22/Q1dIyYVlfcCTBJR.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>Linux安装RabbitMQ - Hexo</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-  
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"41fc030db57d5570dd22f78997dc4a7e","google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"tajs":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 5.0.0"></head>
 
 
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>XJL的博客</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>XJL的博客</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -72,9 +146,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -84,9 +158,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -96,9 +170,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -108,9 +182,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -120,9 +194,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
@@ -132,17 +206,26 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/">
+              <a class="nav-link" href="/links/" target="_self">
                 <i class="iconfont icon-link-fill"></i>
-                友链
+                <span>友链</span>
               </a>
             </li>
           
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -150,176 +233,156 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
-              
-            </span>
+  
 
-            
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-22 15:40">
-      2020年9月22日 下午
-    </time>
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux安装RabbitMQ"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-09-22 15:40" pubdate>
+          2020年9月22日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          9 分钟
+        
+      </span>
+    
+
+    
+    
   </div>
 
 
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1.1k 字
-    </span>
-  
+        
+      </div>
 
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
       
-      
-      15
-       分钟
-    </span>
-  
-
-  
-  
+    </div>
+  </div>
 </div>
 
-            
-          </div>
+</div>
 
-          
-        </div>
-      </div>
-    </div>
   </header>
 
   <main>
     
       
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <div class="post-content mx-auto" id="post">
-            
-            <article class="markdown-body">
-              <h5 id="安装Erlang"><a href="#安装Erlang" class="headerlink" title="安装Erlang"></a>安装Erlang</h5><p>RabbitMQ是用Erlang语言编写的，在本教程中我们将安装最新版本的Erlang到服务器中。 Erlang在默认的YUM存储库中不可用，因此您将需要安装EPEL存储库。 运行以下命令相同。</p>
-<pre><code class="hljs sql">yum -y <span class="hljs-keyword">install</span> epel-<span class="hljs-keyword">release</span>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
 
-yum -y <span class="hljs-keyword">update</span></code></pre>
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux安装RabbitMQ</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h5 id="安装Erlang"><a href="#安装Erlang" class="headerlink" title="安装Erlang"></a>安装Erlang</h5><p>RabbitMQ是用Erlang语言编写的，在本教程中我们将安装最新版本的Erlang到服务器中。 Erlang在默认的YUM存储库中不可用，因此您将需要安装EPEL存储库。 运行以下命令相同。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">yum -y <span class="hljs-keyword">install</span> epel-<span class="hljs-keyword">release</span><br><br>yum -y <span class="hljs-keyword">update</span><br></code></pre></td></tr></table></figure>
 
 <p>现在使用以下命令安装Erlang。</p>
-<pre><code class="hljs cmake">yum -y <span class="hljs-keyword">install</span> erlang socat</code></pre>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yum -y <span class="hljs-keyword">install</span> erlang socat<br></code></pre></td></tr></table></figure>
 
 <p>您现在可以使用以下命令检查Erlang版本。</p>
 <p>erl -version</p>
 <p>您将得到以下输出。</p>
-<pre><code class="hljs angelscript">[<span class="hljs-symbol">root@</span>liptan-pc ~]# erl -version
-Erlang (ASYNC_THREADS,HIPE) (BEAM) emulator version <span class="hljs-number">5.10</span><span class="hljs-number">.4</span></code></pre>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">[<span class="hljs-symbol">root@</span>liptan-pc ~]# erl -version<br>Erlang (ASYNC_THREADS,HIPE) (BEAM) emulator version <span class="hljs-number">5.10</span><span class="hljs-number">.4</span><br></code></pre></td></tr></table></figure>
 
 <p>要切换到Erlang <a target="_blank" rel="noopener" href="https://www.linuxcool.com/">shell</a>，可以键入以下命令。</p>
-<pre><code class="hljs ebnf"><span class="hljs-attribute">erl</span></code></pre>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">erl</span><br></code></pre></td></tr></table></figure>
 
 <p>shell将更改，您将得到以下输出。</p>
-<pre><code class="hljs apache"><span class="hljs-attribute">Erlang</span> R<span class="hljs-number">16</span>B<span class="hljs-number">03</span>-<span class="hljs-number">1</span> (erts-<span class="hljs-number">5</span>.<span class="hljs-number">10</span>.<span class="hljs-number">4</span>)<span class="hljs-meta"> [source] [64-bit] [async-threads:10] [hipe] [kernel-poll:false]</span>
-
-<span class="hljs-attribute">Eshell</span> V<span class="hljs-number">5</span>.<span class="hljs-number">10</span>.<span class="hljs-number">4</span>  (abort with ^G)
-<span class="hljs-attribute">1</span>&gt;</code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Erlang</span> R<span class="hljs-number">16</span>B<span class="hljs-number">03</span>-<span class="hljs-number">1</span> (erts-<span class="hljs-number">5</span>.<span class="hljs-number">10</span>.<span class="hljs-number">4</span>)<span class="hljs-meta"> [source] [64-bit] [async-threads:10] [hipe] [kernel-poll:false]</span><br><br><span class="hljs-attribute">Eshell</span> V<span class="hljs-number">5</span>.<span class="hljs-number">10</span>.<span class="hljs-number">4</span>  (abort with ^G)<br><span class="hljs-attribute">1</span>&gt;<br></code></pre></td></tr></table></figure>
 
 <p>您可以通过按ctrl + C两次退出shell。 Erlang现在安装在系统上，现在可以继续安装RabbitMQ。</p>
 <h5 id="安装RabbitMQ"><a href="#安装RabbitMQ" class="headerlink" title="安装RabbitMQ"></a>安装RabbitMQ</h5><p>RabbitMQ为预编译并可以直接安装的企业<a target="_blank" rel="noopener" href="https://www.linuxprobe.com/">Linux系统</a>提供RPM软件包。 唯一需要的依赖是将Erlang安装到系统中。 我们已经安装了Erlang，我们可以进一步下载RabbitMQ。 通过运行下载Erlang RPM软件包。</p>
-<pre><code class="hljs apache"><span class="hljs-attribute">wget</span> https://www.rabbitmq.com/releases/rabbitmq-server/v<span class="hljs-number">3</span>.<span class="hljs-number">6</span>.<span class="hljs-number">10</span>/rabbitmq-server-<span class="hljs-number">3</span>.<span class="hljs-number">6</span>.<span class="hljs-number">10</span>-<span class="hljs-number">1</span>.el<span class="hljs-number">7</span>.noarch.rpm</code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wget</span> https://www.rabbitmq.com/releases/rabbitmq-server/v<span class="hljs-number">3</span>.<span class="hljs-number">6</span>.<span class="hljs-number">10</span>/rabbitmq-server-<span class="hljs-number">3</span>.<span class="hljs-number">6</span>.<span class="hljs-number">10</span>-<span class="hljs-number">1</span>.el<span class="hljs-number">7</span>.noarch.rpm<br></code></pre></td></tr></table></figure>
 
 <p>如果你没有安装wget ，可以运行yum -y install wget 。 您可以随时找到最新版本的RabbitMQ下载页面的链接。</p>
 <p>通过运行导入GPG密钥：</p>
-<pre><code class="hljs groovy">rpm –<span class="hljs-keyword">import</span> <span class="hljs-attr">https:</span><span class="hljs-comment">//www.rabbitmq.com/rabbitmq-release-signing-key.asc</span></code></pre>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs groovy">rpm –<span class="hljs-keyword">import</span> <span class="hljs-attr">https:</span><span class="hljs-comment">//www.rabbitmq.com/rabbitmq-release-signing-key.asc</span><br></code></pre></td></tr></table></figure>
 
 <p>运行RPM安装RPM包：</p>
-<pre><code class="hljs apache"><span class="hljs-attribute">rpm</span> -Uvh rabbitmq-server-<span class="hljs-number">3</span>.<span class="hljs-number">6</span>.<span class="hljs-number">10</span>-<span class="hljs-number">1</span>.el<span class="hljs-number">7</span>.noarch.rpm</code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">rpm</span> -Uvh rabbitmq-server-<span class="hljs-number">3</span>.<span class="hljs-number">6</span>.<span class="hljs-number">10</span>-<span class="hljs-number">1</span>.el<span class="hljs-number">7</span>.noarch.rpm<br></code></pre></td></tr></table></figure>
 
 <p>RabbitMQ现已安装在您的系统上。</p>
 <h5 id="开始RabbitMQ"><a href="#开始RabbitMQ" class="headerlink" title="开始RabbitMQ"></a>开始RabbitMQ</h5><p>您可以通过运行以下命令启动RabbitMQ服务器进程。</p>
-<pre><code class="hljs pgsql">systemctl <span class="hljs-keyword">start</span> rabbitmq-<span class="hljs-keyword">server</span></code></pre>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">systemctl <span class="hljs-keyword">start</span> rabbitmq-<span class="hljs-keyword">server</span><br></code></pre></td></tr></table></figure>
 
 <p>要在引导时自动启动RabbitMQ，请运行以下命令。</p>
-<pre><code class="hljs pgsql">systemctl <span class="hljs-keyword">enable</span> rabbitmq-<span class="hljs-keyword">server</span></code></pre>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">systemctl <span class="hljs-keyword">enable</span> rabbitmq-<span class="hljs-keyword">server</span><br></code></pre></td></tr></table></figure>
 
 <p>要检查RabbitMQ服务器的状态，请运行：</p>
-<pre><code class="hljs axapta">systemctl status rabbitmq-<span class="hljs-keyword">server</span></code></pre>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta">systemctl status rabbitmq-<span class="hljs-keyword">server</span><br></code></pre></td></tr></table></figure>
 
 <p>如果启动成功，您应该得到以下输出。</p>
-<pre><code class="hljs angelscript">? rabbitmq-server.service - RabbitMQ broker
-   Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; enabled; vendor preset: disabled)
-   Active: active (running) since Sat <span class="hljs-number">2017</span><span class="hljs-number">-07</span><span class="hljs-number">-15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> UTC; <span class="hljs-number">3</span>min <span class="hljs-number">22</span>s ago
- Main PID: <span class="hljs-number">29006</span> (beam.smp)
-   Status: <span class="hljs-string">&quot;Initialized&quot;</span>
-   CGroup: /system.slice/rabbitmq-server.service
-           ??<span class="hljs-number">29006</span> /usr/lib64/erlang/erts<span class="hljs-number">-9.0</span>/bin/beam.smp -W w -A <span class="hljs-number">64</span> -P <span class="hljs-number">1048576</span> -t <span class="hljs-number">5000000</span> -stbt db -zdbbl <span class="hljs-number">32000</span> -K tr...
-           ??<span class="hljs-number">29149</span> /usr/lib64/erlang/erts<span class="hljs-number">-9.0</span>/bin/epmd -daemon
-           ??<span class="hljs-number">29283</span> erl_child_setup <span class="hljs-number">1024</span>
-           ??<span class="hljs-number">29303</span> inet_gethost <span class="hljs-number">4</span>
-           ??<span class="hljs-number">29304</span> inet_gethost <span class="hljs-number">4</span>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">? rabbitmq-server.service - RabbitMQ broker<br>   Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; enabled; vendor preset: disabled)<br>   Active: active (running) since Sat <span class="hljs-number">2017</span><span class="hljs-number">-07</span><span class="hljs-number">-15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> UTC; <span class="hljs-number">3</span>min <span class="hljs-number">22</span>s ago<br> Main PID: <span class="hljs-number">29006</span> (beam.smp)<br>   Status: <span class="hljs-string">&quot;Initialized&quot;</span><br>   CGroup: /system.slice/rabbitmq-server.service<br>           ??<span class="hljs-number">29006</span> /usr/lib64/erlang/erts<span class="hljs-number">-9.0</span>/bin/beam.smp -W w -A <span class="hljs-number">64</span> -P <span class="hljs-number">1048576</span> -t <span class="hljs-number">5000000</span> -stbt db -zdbbl <span class="hljs-number">32000</span> -K tr...<br>           ??<span class="hljs-number">29149</span> /usr/lib64/erlang/erts<span class="hljs-number">-9.0</span>/bin/epmd -daemon<br>           ??<span class="hljs-number">29283</span> erl_child_setup <span class="hljs-number">1024</span><br>           ??<span class="hljs-number">29303</span> inet_gethost <span class="hljs-number">4</span><br>           ??<span class="hljs-number">29304</span> inet_gethost <span class="hljs-number">4</span><br><br>Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">13</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: Starting broker...<br>Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: systemd unit <span class="hljs-keyword">for</span> activation check: <span class="hljs-string">&quot;rabbitmq-server.service&quot;</span><br>Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos systemd[<span class="hljs-number">1</span>]: Started RabbitMQ broker.<br>Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: completed with <span class="hljs-number">0</span> plugins.<br></code></pre></td></tr></table></figure>
 
-Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">13</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: Starting broker...
-Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: systemd unit <span class="hljs-keyword">for</span> activation check: <span class="hljs-string">&quot;rabbitmq-server.service&quot;</span>
-Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos systemd[<span class="hljs-number">1</span>]: Started RabbitMQ broker.
-Jul <span class="hljs-number">15</span> <span class="hljs-number">18</span>:<span class="hljs-number">59</span>:<span class="hljs-number">14</span> centos rabbitmq-server[<span class="hljs-number">29006</span>]: completed with <span class="hljs-number">0</span> plugins.</code></pre>
-
-<h5 id="修改防火墙和SELinux规则"><a href="#修改防火墙和SELinux规则" class="headerlink" title="修改防火墙和SELinux规则"></a>修改防火墙和<a href="/2020/08/10/SELinux/">SELinux规则</a></h5><pre><code class="hljs dockerfile">
-<span class="hljs-comment">#放行5672和15672两个端口，（--permanent表示永久生效，没有此参数重启后失效）</span>
-firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --zone=public --add-port=5672/tcp --permanent</span>
-
-firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --zone=public --add-port=15672/tcp --permanent</span>
-
-<span class="hljs-comment">#重载防火墙是设置生效</span>
-firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --reload</span>
-
-<span class="hljs-comment">#查看放行端口列表，此时列表显示如下图</span>
-firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --list-all</span></code></pre>
+<h5 id="修改防火墙和SELinux规则"><a href="#修改防火墙和SELinux规则" class="headerlink" title="修改防火墙和SELinux规则"></a>修改防火墙和<a href="/2020/08/10/SELinux/">SELinux规则</a></h5><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><br><span class="hljs-comment">#放行5672和15672两个端口，（--permanent表示永久生效，没有此参数重启后失效）</span><br>firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --zone=public --add-port=5672/tcp --permanent</span><br> <br>firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --zone=public --add-port=15672/tcp --permanent</span><br> <br><span class="hljs-comment">#重载防火墙是设置生效</span><br>firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --reload</span><br> <br><span class="hljs-comment">#查看放行端口列表，此时列表显示如下图</span><br>firewall-<span class="hljs-keyword">cmd</span><span class="bash"> --list-all</span><br></code></pre></td></tr></table></figure>
 
 <p>如果您启用SELinux，则必须运行以下命令以允许RabbitMQ服务。</p>
-<pre><code class="hljs angelscript">setsebool -P nis_enabled <span class="hljs-number">1</span></code></pre>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">setsebool -P nis_enabled <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 <h5 id="访问Web控制台"><a href="#访问Web控制台" class="headerlink" title="访问Web控制台"></a>访问Web控制台</h5><p>启动RabbitMQ Web管理控制台，方法是运行：</p>
-<pre><code class="hljs routeros">rabbitmq-plugins <span class="hljs-builtin-name">enable</span> rabbitmq_management</code></pre>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">rabbitmq-plugins <span class="hljs-builtin-name">enable</span> rabbitmq_management<br></code></pre></td></tr></table></figure>
 
 <p>通过运行以下命令，将RabbitMQ文件的所有权提供给RabbitMQ用户：</p>
-<pre><code class="hljs crystal">chown -R <span class="hljs-symbol">rabbitmq:</span>rabbitmq /var/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">rabbitmq</span>/</span></code></pre>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal">chown -R <span class="hljs-symbol">rabbitmq:</span>rabbitmq /var/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">rabbitmq</span>/</span><br></code></pre></td></tr></table></figure>
 
 <p>现在，您将需要为RabbitMQ Web管理控制台创建管理用户。 运行以下命令相同。</p>
-<pre><code class="hljs nsis"><span class="hljs-comment">#查看当前用户列表</span>
-rabbitmqctl list_users
-<span class="hljs-comment">#添加admin用户，用户名和密码都为admin </span>
-rabbitmqctl add_user <span class="hljs-literal">admin</span> <span class="hljs-literal">admin</span>
-<span class="hljs-comment">#设置admin的角色为administrator</span>
-rabbitmqctl set_user_tags <span class="hljs-literal">admin</span> administrator
-<span class="hljs-comment">#设置admin用户的权限，可访问所有</span>
-rabbitmqctl set_permissions -p / <span class="hljs-literal">admin</span> “.*” “.*” “.*”
-修改密码
-rabbitmqctl  change_password  <span class="hljs-literal">admin</span>  <span class="hljs-string">&#x27;Newpassword&#x27;</span></code></pre>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs nsis"><span class="hljs-comment">#查看当前用户列表</span><br>rabbitmqctl list_users<br><span class="hljs-comment">#添加admin用户，用户名和密码都为admin </span><br>rabbitmqctl add_user <span class="hljs-literal">admin</span> <span class="hljs-literal">admin</span><br><span class="hljs-comment">#设置admin的角色为administrator</span><br>rabbitmqctl set_user_tags <span class="hljs-literal">admin</span> administrator<br><span class="hljs-comment">#设置admin用户的权限，可访问所有</span><br>rabbitmqctl set_permissions -p / <span class="hljs-literal">admin</span> “.*” “.*” “.*”<br>修改密码<br>rabbitmqctl  change_password  <span class="hljs-literal">admin</span>  <span class="hljs-string">&#x27;Newpassword&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <p>将管理员更改为管理员用户的首选用户名。 确保将StrongPassword更改为非常强大的密码。</p>
 <p>要访问RabbitMQ的管理面板，请使用您最喜爱的Web浏览器并打开以下URL。</p>
-<pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>Your_Server_IP:<span class="hljs-number">15672</span>/</code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>Your_Server_IP:<span class="hljs-number">15672</span>/<br></code></pre></td></tr></table></figure>
 
 <h5 id="开启远程访问"><a href="#开启远程访问" class="headerlink" title="开启远程访问"></a>开启远程访问</h5><p>在使用上述新建的账号访问webUI界面可以看到Config file，在overview下面, 如果没有找到配置文件后面会加上（not found）</p>
-<p><img src="https://i.loli.net/2020/09/22/Q1dIyYVlfcCTBJR.png" srcset="/img/loading.gif" alt="image-20200922163249512"></p>
+<p><img src="https://i.loli.net/2020/09/22/Q1dIyYVlfcCTBJR.png" srcset="/img/loading.gif" lazyload alt="image-20200922163249512"></p>
 <p>没有就到该目录下新建一个，并开启远程访问（在结合SpringBoot时，RabbitMQ初始化默认是使用guest账户，因此需要给该账户开启远程访问），配置如下</p>
-<pre><code class="hljs prolog">[                                                                                                           &#123; rabbit , [ &#123; tcp_listeners , [ <span class="hljs-number">5672</span> ] &#125; , &#123; loopback_users , [ <span class="hljs-string">&quot;guest&quot;</span> ] &#125; ] &#125;
-].</code></pre>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs prolog">[                                                                                                           &#123; rabbit , [ &#123; tcp_listeners , [ <span class="hljs-number">5672</span> ] &#125; , &#123; loopback_users , [ <span class="hljs-string">&quot;guest&quot;</span> ] &#125; ] &#125;<br>].<br></code></pre></td></tr></table></figure>
 
 <p><strong>ps：最后的英文句号不能漏掉</strong></p>
 <h5 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h5><p>插件地址： <a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">https://www.rabbitmq.com/community-plugins.html</a></p>
@@ -328,107 +391,196 @@ rabbitmqctl  change_password  <span class="hljs-literal">admin</span>  <span cla
 <p>至此插件安装完成。</p>
 <p>sudo rabbitmq-plugins list 查看已有插件列表</p>
 
-            </article>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Centos7/">Centos7</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Rabbit/">Rabbit</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>
-                    
-                  </div>
                 
               </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Centos7/" class="print-no-link">#Centos7</a>
+      
+        <a href="/tags/Rabbit/" class="print-no-link">#Rabbit</a>
+      
+        <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="print-no-link">#消息队列</a>
+      
+    </div>
+  
+</div>
+
+
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux安装RabbitMQ</div>
+      <div>http://yoursite.com/2020/09/22/Centos7安装RabbitMQ/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2020年9月22日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
               
               
-                <div class="post-prevnext row">
-                  <div class="post-prev col-6">
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/10/Docker/">
+                      <a href="/2020/10/10/Docker/" title="Docker">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Docker</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
-                  </div>
-                  <div class="post-next col-6">
+                  </article>
+                  <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">
+                      <a href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" title="JDK脚本安装">
                         <span class="hidden-mobile">JDK脚本安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
-                  </div>
+                  </article>
                 </div>
               
             </div>
 
             
-              <!-- Comments -->
-              <div class="comments" id="comments">
-                
-                
+  
+  
+    <article id="comments" lazyload>
+      
   <script type="text/javascript">
-    function loadUtterances() {
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
       var s = document.createElement('script');
       s.setAttribute('src', 'https://utteranc.es/client.js');
-      s.defer = false
       s.setAttribute('repo', 'XJLZ/blog-comment');
       s.setAttribute('issue-term', 'pathname');
       
-      s.setAttribute('theme', 'github-light');
+      s.setAttribute('theme', schema);
       s.setAttribute('crossorigin', 'anonymous');
-      var e = document.getElementsByTagName('script')[0];
-      e.parentNode.insertBefore(s, e);
-    }
-    createObserver(loadUtterances, 'comments')
+      document.getElementById('comments').appendChild(s);
+    })
   </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
-              </div>
-            
-          </div>
+    </article>
+  
+
+
+          </article>
         </div>
       </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-      </div>
-    
+
+
+  </aside>
+
+
+    </div>
   </div>
 </div>
 
-<!-- Custom -->
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -441,79 +593,197 @@ rabbitmqctl  change_password  <span class="hljs-literal">admin</span>  <span cla
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
 
-  
+    
 
-  
+    
+  </main>
 
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
     
-  <div class="statistics">
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
     
     
 
-    
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
+        typing(text);
       
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
+    })(window, document);
+  </script>
 
 
-    
-
-    
-  </div>
-</footer>
-
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
 
 
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -521,188 +791,15 @@ rabbitmqctl  change_password  <span class="hljs-literal">admin</span>  <span cla
 
 
 
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: 'article.markdown-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "Linux安装RabbitMQ&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
-  </script>
-
-
-
-
-
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
 
-
-
-
-
-
-
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

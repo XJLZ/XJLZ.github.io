@@ -1,52 +1,120 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>Hexo</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
 
 
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"41fc030db57d5570dd22f78997dc4a7e","google":null,"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"tajs":null,"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
 <meta name="generator" content="Hexo 5.0.0"></head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>XJL的博客</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>XJL的博客</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -63,9 +131,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -75,9 +143,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -87,9 +155,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -99,9 +167,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -111,9 +179,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
@@ -123,17 +191,26 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/">
+              <a class="nav-link" href="/links/" target="_self">
                 <i class="iconfont icon-link-fill"></i>
-                友链
+                <span>友链</span>
               </a>
             </li>
           
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -141,34 +218,40 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
-         style="background: url('http://114.55.28.190/setu/12.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fadeInUp">
-            <span class="h2" id="subtitle">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('http://114.55.28.190/setu/12.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -179,26 +262,28 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/12/18/Spring%20Cloud%20%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">Spring Cloud 服务注册中心</a>
-
-      <a href="/2020/12/18/Spring%20Cloud%20%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/" class="index-excerpt">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-          
-        
-        <div>什么是服务注册中心​        服务注册中心就是，在微服务体系中，其中有一个服务是用来集中管理这些微服务实例，微服务间的调用只需要知道对方的服务名，而无需关注具体的IP和端口，便于微服务架构的拓展和维护。
-CAP理论​        CAP理论是分布式架构中重要理论，CAP不能都取，只能取其二
+        <a href="/2020/12/24/SomeBlogs/" target="_self">
+          收集的一些博客
+        </a>
+      </h2>
 
-
-一致性(Consistency) (所有节点在同一时间具有相同的数据)
-可用性(Availabi</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/12/24/SomeBlogs/" target="_self">
+        <div>
+          收集的一些博客canal同步mysql数据到es、mysql：https://blog.csdn.net/tuesdayma/article/details/103294448 Nginx upstream配置说明负载均衡：https://www.jianshu.com/p/50dfb0d69983 官方Centos7安装ffmpeg：https://trac.ffmpeg.org/wiki/Co
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-12-18
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-24 10:32" pubdate>
+              2020-12-24
+            </time>
           </div>
         
         
@@ -206,35 +291,39 @@ CAP理论​        CAP理论是分布式架构中重要理论，CAP不能都取
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Spring-Cloud/">Spring Cloud</a>
-            
-              <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">服务注册与发现</a>
+              <a href="/tags/blogs/">#blogs</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/12/18/Spring%20Cloud%20OpenFeign/">OpenFeign</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/12/18/Spring%20Cloud%20OpenFeign/" target="_self">
+          OpenFeign
+        </a>
+      </h2>
 
-      <a href="/2020/12/18/Spring%20Cloud%20OpenFeign/" class="index-excerpt">
-        
-        
-          
-        
-        <div>OpenFeign简介​        OpenFeign是springcloud在Feign的基础上支持了SpringMVC的注解，如@RequestMapping等等。OpenFeign的@FeignClient可以解析SpringMVC的@RequestMapping注解下的接口，并通过动态代理的方式产生实现类，实现类中做负载均衡并调用其他服务。
-使用方式​        在注册中心这个微服</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/12/18/Spring%20Cloud%20OpenFeign/" target="_self">
+        <div>
+          OpenFeign简介​        OpenFeign是springcloud在Feign的基础上支持了SpringMVC的注解，如@RequestMapping等等。OpenFeign的@FeignClient可以解析SpringMVC的@RequestMapping注解下的接口，并通过动态代理的方式产生实现类，实现类中做负载均衡并调用其他服务。 使用方式​        在注册中心这个微服
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-12-18
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-18 09:32" pubdate>
+              2020-12-18
+            </time>
           </div>
         
         
@@ -242,41 +331,41 @@ CAP理论​        CAP理论是分布式架构中重要理论，CAP不能都取
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Spring-Cloud/">Spring Cloud</a>
+              <a href="/tags/Spring-Cloud/">#Spring Cloud</a>
             
-              <a href="/tags/OpenFeign/">OpenFeign</a>
+              <a href="/tags/OpenFeign/">#OpenFeign</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/11/30/FFmpeg/">FFmpeg</a>
-
-      <a href="/2020/11/30/FFmpeg/" class="index-excerpt">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-          
-        
-        <div>安装命令ffmpeg -i akane.mp4 -c copy -map 0 -f segment -segment_list akane.m3u8 -segment_time 10 segment%d.ts
+        <a href="/2020/12/18/Spring%20Cloud%20%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/" target="_self">
+          Spring Cloud 服务注册中心
+        </a>
+      </h2>
 
-
-
-ffmpeg -y \
--i The_Kriss_Vector.mp4 \
--hls_time 20 \       # 将test.mp4分割成每个小段多少秒
--hls_key_in</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/12/18/Spring%20Cloud%20%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/" target="_self">
+        <div>
+          什么是服务注册中心​        服务注册中心就是，在微服务体系中，其中有一个服务是用来集中管理这些微服务实例，微服务间的调用只需要知道对方的服务名，而无需关注具体的IP和端口，便于微服务架构的拓展和维护。 CAP理论​        CAP理论是分布式架构中重要理论，CAP不能都取，只能取其二   一致性(Consistency) (所有节点在同一时间具有相同的数据) 可用性(Availabi
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-11-30
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-18 09:32" pubdate>
+              2020-12-18
+            </time>
           </div>
         
         
@@ -284,35 +373,41 @@ ffmpeg -y \
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/FFmpeg/">FFmpeg</a>
+              <a href="/tags/Spring-Cloud/">#Spring Cloud</a>
+            
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0/">#服务注册与发现</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/11/30/FFmpeg-ldl/">FFmpeg</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/11/30/FFmpeg-ldl/" target="_self">
+          FFmpeg
+        </a>
+      </h2>
 
-      <a href="/2020/11/30/FFmpeg-ldl/" class="index-excerpt">
-        
-        
-          
-        
-        <div>FFmpeg什么是FFmpeg?[^fast forward moving picture expert group 动态图像专家组]: 
-
-简介：
-FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序,提供了音视频的编码，解码，转码，封装，解封装，流，滤镜，播放等功能。采用LGPL或GPL许可证。它提供了录制、转换以及流化音视频的完整解决方案。它几乎支持所有的音视</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/11/30/FFmpeg-ldl/" target="_self">
+        <div>
+          FFmpeg什么是FFmpeg?[^fast forward moving picture expert group 动态图像专家组]:   简介： 1FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序,提供了音视频的编码，解码，转码，封装，解封装，流，滤镜，播放等功能。采用LGPL或GPL许可证。它提供了录制、转换以及流化音视频的完整解决方案。它几乎支持所有的音
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-11-30
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-30 15:32" pubdate>
+              2020-11-30
+            </time>
           </div>
         
         
@@ -320,39 +415,39 @@ FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/FFmpeg/">FFmpeg</a>
+              <a href="/tags/FFmpeg/">#FFmpeg</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/">Centos7安装elasticsearch</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/11/30/FFmpeg/" target="_self">
+          FFmpeg
+        </a>
+      </h2>
 
-      <a href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/" class="index-excerpt">
-        
-        
-          
-        
-        <div>下载安装包官网地址  https://www.elastic.co/cn/downloads/past-releases#elasticsearch
-选择自己要下载的版本，这里以v7.3.2为例
-安装&amp;脚本​    es是要用非root用户启动
-#!/bin/bash
-data=&quot;/usr/local&quot;
-# 设置用户和用户组
-user=&quot;es&quot;
-gr</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/11/30/FFmpeg/" target="_self">
+        <div>
+          安装命令1ffmpeg -i akane.mp4 -c copy -map 0 -f segment -segment_list akane.m3u8 -segment_time 10 segment%d.ts    1234567ffmpeg -y \-i The_Kriss_Vector.mp4 \-hls_time 20 \       # 将test.mp4分割成每个小段多少秒-hls_k
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-11-19
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-30 15:32" pubdate>
+              2020-11-30
+            </time>
           </div>
         
         
@@ -360,41 +455,39 @@ gr</div>
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Centos7/">Centos7</a>
-            
-              <a href="/tags/elasticsearch/">elasticsearch</a>
+              <a href="/tags/FFmpeg/">#FFmpeg</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">Kafka安装使用</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/" target="_self">
+          Centos7安装elasticsearch
+        </a>
+      </h2>
 
-      <a href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="index-excerpt">
-        
-        
-          
-        
-        <div>下载安装1.官网下载
-2.解压 tar -zxvf  xxxxxxx.tar.gz
-配置
-############################# Server Basics #############################
-
-# broker的id，要求唯一，集群部署不能重复
-broker.id=0
-############################# Socket Serve</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/11/19/Centos7%E5%AE%89%E8%A3%85elatiscsearch/" target="_self">
+        <div>
+          下载安装包官网地址  https://www.elastic.co/cn/downloads/past-releases#elasticsearch 选择自己要下载的版本，这里以v7.3.2为例 安装&amp;脚本​    es是要用非root用户启动 1234567891011121314151617181920212223242526272829#!/bin/bashdata=&quot;/u
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-10-29
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-19 09:32" pubdate>
+              2020-11-19
+            </time>
           </div>
         
         
@@ -402,40 +495,41 @@ broker.id=0
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Centos7/">Centos7</a>
+              <a href="/tags/Centos7/">#Centos7</a>
             
-              <a href="/tags/Kafka/">Kafka</a>
-            
-              <a href="/tags/Spring-Boot/">Spring-Boot</a>
+              <a href="/tags/elasticsearch/">#elasticsearch</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/10/10/Docker/">Docker</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" target="_self">
+          Kafka安装使用
+        </a>
+      </h2>
 
-      <a href="/2020/10/10/Docker/" class="index-excerpt">
-        
-        
-          
-        
-        <div>安装&amp;配置安装去官网：https://docs.docker.com/engine/install/centos/
-换源（vim /etc/docker/daemon.json）&#123;
-    &quot;registry-mirrors&quot;: [
-        &quot;https://pee6w651.mirror.aliyuncs.com&quot;,
-      </div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/10/29/Kafka%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          下载安装1.官网下载 2.解压 tar -zxvf  xxxxxxx.tar.gz 配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-10-10
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-29 11:32" pubdate>
+              2020-10-29
+            </time>
           </div>
         
         
@@ -443,42 +537,43 @@ broker.id=0
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Centos7/">Centos7</a>
+              <a href="/tags/Centos7/">#Centos7</a>
             
-              <a href="/tags/Docker/">Docker</a>
+              <a href="/tags/Kafka/">#Kafka</a>
+            
+              <a href="/tags/Spring-Boot/">#Spring-Boot</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/22/Centos7%E5%AE%89%E8%A3%85RabbitMQ/">Linux安装RabbitMQ</a>
-
-      <a href="/2020/09/22/Centos7%E5%AE%89%E8%A3%85RabbitMQ/" class="index-excerpt">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-          
-        
-        <div>安装ErlangRabbitMQ是用Erlang语言编写的，在本教程中我们将安装最新版本的Erlang到服务器中。 Erlang在默认的YUM存储库中不可用，因此您将需要安装EPEL存储库。 运行以下命令相同。
-yum -y install epel-release
+        <a href="/2020/10/10/Docker/" target="_self">
+          Docker
+        </a>
+      </h2>
 
-yum -y update
-
-现在使用以下命令安装Erlang。
-yum -y install erlang socat
-
-您现在</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/10/10/Docker/" target="_self">
+        <div>
+          安装&amp;配置安装去官网：https://docs.docker.com/engine/install/centos/ 换源（vim /etc/docker/daemon.json）12345678910111213141516171819202122232425262728293031323334353637&#123;    &quot;registry-mirrors&quot;: [
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-22
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-10 15:32" pubdate>
+              2020-10-10
+            </time>
           </div>
         
         
@@ -486,44 +581,41 @@ yum -y install erlang socat
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Centos7/">Centos7</a>
+              <a href="/tags/Centos7/">#Centos7</a>
             
-              <a href="/tags/Rabbit/">Rabbit</a>
-            
-              <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">消息队列</a>
+              <a href="/tags/Docker/">#Docker</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/">JDK脚本安装</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2020/09/22/Centos7%E5%AE%89%E8%A3%85RabbitMQ/" target="_self">
+          Linux安装RabbitMQ
+        </a>
+      </h2>
 
-      <a href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" class="index-excerpt">
-        
-        
-          
-        
-        <div>脚本脚本与压缩包同目录
-#!/bin/bash
-#判断是否安装有openJDK
-yum list installed |grep -e java -e jdk
-if [ $? -eq 0 ]
-then
-        read -p &quot;继续执行将卸载已有JDK,y确定，其他退出?&quot; choose
-        if [ $choose==&quot;y&quot; ]
-   </div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/09/22/Centos7%E5%AE%89%E8%A3%85RabbitMQ/" target="_self">
+        <div>
+          安装ErlangRabbitMQ是用Erlang语言编写的，在本教程中我们将安装最新版本的Erlang到服务器中。 Erlang在默认的YUM存储库中不可用，因此您将需要安装EPEL存储库。 运行以下命令相同。 123yum -y install epel-releaseyum -y update  现在使用以下命令安装Erlang。 1yum -y install erlang socat  您
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-11
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-22 15:40" pubdate>
+              2020-09-22
+            </time>
           </div>
         
         
@@ -531,45 +623,43 @@ then
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Centos7/">Centos7</a>
+              <a href="/tags/Centos7/">#Centos7</a>
             
-              <a href="/tags/JDK/">JDK</a>
+              <a href="/tags/Rabbit/">#Rabbit</a>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">#消息队列</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/">Centos7搭建FTP</a>
-
-      <a href="/2020/08/10/Centos7%E6%90%AD%E5%BB%BAFTP/" class="index-excerpt">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
         
-        
-          
-        
-        <div>安装前准备vsftpd是linux下的一款小巧轻快，安全易用的FTP服务器软件，是一款在各个Linux发行版中最受推崇的FTP服务器软件。
-1.安装vsftpd，直接yum 安装就可以了
-yum install -y vsftpd
+        <a href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" target="_self">
+          JDK脚本安装
+        </a>
+      </h2>
 
-2.相关配置文件：
-cd /etc/vsftpd/
-
-3.启动服务
-systemctl enable vsftpd.service //设置开机自启动
-systemc</div>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/11/JDK%E8%84%9A%E6%9C%AC%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          脚本脚本与压缩包同目录 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#!/bin/bash#判断是否安装有openJDKyum list installed |grep -e java -e jdkif [ $? -eq 0 ]then        read -p &quot
+        </div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-11 15:32" pubdate>
+              2020-08-11
+            </time>
           </div>
         
         
@@ -577,29 +667,25 @@ systemc</div>
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Centos7/">Centos7</a>
+              <a href="/tags/Centos7/">#Centos7</a>
             
-              <a href="/tags/ftp/">ftp</a>
+              <a href="/tags/JDK/">#JDK</a>
+            
+              <a href="/tags/Java/">#Java</a>
             
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -609,16 +695,15 @@ systemc</div>
         </div>
       </div>
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -631,79 +716,104 @@ systemc</div>
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
-  
 
-  
+    
 
-  
+    
+  </main>
 
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
     
-  <div class="statistics">
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
     
     
 
-    
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
+        typing(text);
       
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
+    })(window, document);
+  </script>
 
 
-    
-
-    
-  </div>
-</footer>
-
-<!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
-
-<!-- Plugins -->
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
-
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -711,134 +821,15 @@ systemc</div>
 
 
 
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-
-
-
-
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
 
   
-  
-    <script type="text/javascript">
-      //定义获取词语下标
-      var a_idx = 0;
-      jQuery(document).ready(function ($) {
-        //点击body时触发事件
-        $("body").click(function (e) {
-          //需要显示的词语
-          var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
-          //设置词语给span标签
-          var $i = $("<span/>").text(a[a_idx]);
-          //下标等于原来下标+1  余 词语总数
-          a_idx = (a_idx + 1) % a.length;
-          //获取鼠标指针的位置，分别相对于文档的左和右边缘。
-          //获取x和y的指针坐标
-          var x = e.pageX, y = e.pageY;
-          //在鼠标的指针的位置给$i定义的span标签添加css样式
-          $i.css({
-            "z-index": 999,
-            "top": y - 20,
-            "left": x,
-            "position": "absolute",
-            "font-weight": "bold",
-            "color": rand_color()
-          });
-          // 随机颜色
-          function rand_color() {
-            return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
-          }
-          //在body添加这个标签
-          $("body").append($i);
-          //animate() 方法执行 CSS 属性集的自定义动画。
-          //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
-          //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
-          $i.animate({
-            //将原来的位置向上移动180
-            "top": y - 180,
-            "opacity": 0
-            //1500动画的速度
-          }, 1500, function () {
-            //时间到了自动删除
-            $i.remove();
-          });
-        });
-      })
-      ;
-    </script>
-  
 
-
-
-
-
-
-
-
-
-
-
-  
-    <!-- Baidu Analytics -->
-    <script defer>
-      var _hmt = _hmt || [];
-      (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?41fc030db57d5570dd22f78997dc4a7e";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();
-    </script>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
