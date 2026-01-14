@@ -807,3 +807,350 @@ PD9waHAKCi8vIOaVmeWtpuWHveaVsO+8muaJk+WNsOasoui/juS/oeaBrwpmdW5jdGlvbiBwcmludFdl
 5qyi6L+O5p2l5YiwIFBIUCDln7rnoYDmlZnlraYhCui/meaYr+S4gOS4queu\ngOWNleeahCBQSFAg56S65L6L56iL5bqP44CCCgrnrKzkuIDkuKrmlbDlpKfk\nuo7nrKzkuozkuKrmlbAK5Lik5Liq5pWw55qE5ZKM5pivOiA4CuaVsOe7hOea\nhOWFg+e0oDogMSAyIDMgNCA1IAox5YiwMTDnmoTmlbDlrZc6IDEgMiAzIDQg\nNSA2IDcgOCA5IDEwIArmhJ/osKLkvb/nlKggUEhQIOaVmeeoiyEK\n
 ```
 
+
+
+## html
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://ide.judge0.com/images/icon_var2_rounded_512.png" type="image/png">
+    <title>Judge0 专业版在线代码沙箱</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+        }
+
+        /* 深色背景更专业 */
+        #editor {
+            min-height: 500px;
+        }
+
+        .result-panel {
+            background-color: #1e293b;
+            color: #f1f5f9;
+        }
+    </style>
+</head>
+
+<body class="text-slate-200 p-4 md:p-8">
+
+    <div class="max-w-[1600px] mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold text-white">Judge0 <span class="text-blue-500">Code Sandbox</span>
+                </h1>
+                <p class="text-slate-400">高性能、全语种在线执行环境</p>
+            </div>
+
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <div class="flex-1">
+                    <label class="block text-xs uppercase font-bold text-slate-500 mb-1">编程语言</label>
+                    <select id="language-select"
+                        class="w-full md:w-64 bg-slate-800 border border-slate-700 p-2 rounded text-white outline-none focus:border-blue-500">
+                        <option value="">正在加载语言列表...</option>
+                    </select>
+                </div>
+                <button id="run-btn"
+                    class="mt-5 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 px-8 rounded shadow-lg transition-all active:scale-95 disabled:opacity-50">
+                    运行代码
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+            <div class="xl:col-span-2 space-y-4">
+                <div class="bg-slate-800 rounded-lg overflow-hidden border border-slate-700 shadow-2xl">
+                    <div class="bg-slate-700 px-4 py-2 text-xs font-mono flex justify-between">
+                        <span>SOURCE CODE</span>
+                        <span id="editor-lang-name">Java</span>
+                    </div>
+                    <div id="editor"></div>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-slate-800 p-5 rounded-lg border border-slate-700">
+                    <h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-yellow-500 rounded-full"></span> 运行配置
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">命令行参数 (Command Line Args)</label>
+                            <input type="text" id="command-args" placeholder="例如: arg1 arg2"
+                                class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-sm outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">标准输入 (STDIN)</label>
+                            <textarea id="stdin" rows="4" placeholder="代码执行时的输入流内容..."
+                                class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-sm outline-none focus:border-blue-500"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 rounded-lg border border-slate-700 overflow-hidden flex-1">
+                    <div class="bg-slate-700 px-4 py-2 text-xs font-mono flex justify-between items-center">
+                        <span>EXECUTION RESULT</span>
+                        <span id="status-badge" class="px-2 py-0.5 rounded bg-slate-600 text-[10px]">IDLE</span>
+                    </div>
+                    <div class="p-4">
+                        <div id="output-meta" class="text-[10px] font-mono text-slate-500 mb-2 flex gap-3">
+                        </div>
+                        <pre id="output"
+                            class="font-mono text-sm h-[260px] overflow-auto whitespace-pre-wrap text-green-400">等待代码提交...</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const languageMapping = {
+            // Web 全家桶
+            'typescript': 'typescript',
+            'javascript': 'javascript',
+            'node.js': 'javascript',
+            'html': 'html',
+            'css': 'css',
+
+            // C 家族 (注意顺序：先 C++ 再 C)
+            'c++': 'cpp',
+            'cpp': 'cpp',
+            'c#': 'csharp',
+            'objective-c': 'objective-c',
+            'c ': 'c', // 匹配 "C (GCC...)"
+
+            // 核心后端语言
+            'java': 'java',
+            'python': 'python',
+            'py': 'python',
+            'go': 'go',
+            'golang': 'go',
+            'rust': 'rust',
+            'php': 'php',
+            'ruby': 'ruby',
+            'swift': 'swift',
+            'kotlin': 'kotlin',
+            'scala': 'scala',
+
+            // 脚本与工具
+            'bash': 'shell',
+            'shell': 'shell',
+            'sql': 'sql',
+            'perl': 'perl',
+            'r ': 'r',
+            'lua': 'lua',
+
+            // 其他
+            'dart': 'dart',
+            'haskell': 'haskell',
+            'erlang': 'erlang',
+            'elixir': 'elixir'
+        };
+        let tokenCache = {}; // 用于存储 { 'hash_key': 'submission_token' }
+        // API 基础配置 (替换为你自己的 Judge0 地址)
+        const BASE_URL = "http://192.168.31.26:2358";
+        const API_KEY = "YOUR_RAPIDAPI_KEY"; // 请在此填入你的 Key
+
+        let editor;
+        const langSelect = document.getElementById('language-select');
+        const runBtn = document.getElementById('run-btn');
+        const outputArea = document.getElementById('output');
+        const statusBadge = document.getElementById('status-badge');
+        const outputMeta = document.getElementById('output-meta');
+        document.getElementById('command-args').value = "arg1 arg2";
+        // 1. 初始化编辑器
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' } });
+        require(['vs/editor/editor.main'], function () {
+            editor = monaco.editor.create(document.getElementById('editor'), {
+                value: 'public class Main {\n    public static void main(String[] args) {\n        if (args.length > 0) {\n            System.out.println("第一个参数是: " + args[0]);\n            System.out.println("第二个参数是: " + args[1]);\n        } else {\n            System.out.println("没有接收到参数");\n        }\n    }\n}',
+                language: 'java',
+                theme: 'vs-dark',
+                fontSize: 14,
+                automaticLayout: true
+            });
+            fetchLanguages();
+        });
+        // 2. 修改后的加载语言函数
+        async function fetchLanguages() {
+            try {
+                const response = await fetch(`${BASE_URL}/languages`, {
+                    headers: { 'x-rapidapi-key': API_KEY }
+                });
+                const langs = await response.json();
+
+                langSelect.innerHTML = langs.map(l =>
+                    `<option value="${l.id}" data-name="${l.name}">${l.name}</option>`
+                ).join('');
+
+                // 默认选择 Java (假设 ID 是 62)
+                langSelect.value = "62";
+                // 初始化时也同步一次语言
+                const selectedOption = langSelect.options[langSelect.selectedIndex];
+                if (selectedOption) updateEditorLanguage(selectedOption.getAttribute('data-name'));
+
+            } catch (err) {
+                debugger
+                langSelect.innerHTML = `<option>加载失败</option>`;
+            }
+        }
+
+        // 监听下拉框切换
+        langSelect.addEventListener('change', (e) => {
+            const selectedOption = e.target.options[e.target.selectedIndex];
+            const fullLanguageName = selectedOption.getAttribute('data-name');
+            updateEditorLanguage(fullLanguageName);
+        });
+
+        // 3. 运行代码逻辑
+        async function runCode() {
+            const langId = langSelect.value;
+            const sourceCode = editor.getValue();
+            const stdin = document.getElementById('stdin').value;
+            const commandArgs = document.getElementById('command-args').value;
+
+            // --- 1. 压缩内容：生成唯一的哈希 Key ---
+            // 即使 sourceCode 有几万行，生成的 hash 也只有 64 个字符
+            const rawContent = `${langId}_${sourceCode}_${stdin}_${commandArgs}`;
+            const contentHash = await generateHash(rawContent);
+
+            // --- 2. 检查缓存 ---
+            if (tokenCache[contentHash]) {
+                console.log("命中哈希缓存，Token:", tokenCache[contentHash]);
+                pollResult(tokenCache[contentHash]);
+                return;
+            }
+            // --- 3. 如果没有缓存，则正常提交 ---
+            const payload = {
+                source_code: utoa(sourceCode),
+                language_id: parseInt(langId),
+                stdin: utoa(stdin),
+                command_line_arguments: commandArgs
+            };
+
+            updateStatus("SUBMITTING", "bg-blue-500");
+            runBtn.disabled = true;
+
+            try {
+                const res = await fetch(`${BASE_URL}/submissions?base64_encoded=true&wait=false`, {
+                    method: 'POST',
+                    headers: {
+                        'x-rapidapi-key': API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const { token } = await res.json();
+
+                // 将新 token 存入缓存
+                tokenCache[contentHash] = token;
+
+                pollResult(token);
+            } catch (err) {
+                outputArea.innerText = "Error: " + err.message;
+                runBtn.disabled = false;
+            }
+        }
+
+        // 4. 轮询结果
+        async function pollResult(token) {
+            updateStatus("PROCESSING", "bg-yellow-600");
+            setTimeout(() => {
+                const check = async () => {
+                    const res = await fetch(`${BASE_URL}/submissions/${token}?base64_encoded=true`, {
+                        headers: { 'x-rapidapi-key': API_KEY }
+                    });
+                    const data = await res.json();
+
+                    if (data.status.id <= 2) {
+                        setTimeout(check, 1000);
+                    } else {
+                        displayResult(data);
+                    }
+                };
+                check();
+            }, 500);
+
+        }
+        // 编码：将字符串转为 UTF-8 字节后再进行 Base64 编码
+        function utoa(str) {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+
+        // 解码：对应的解码函数（如果需要显示结果）
+        function atou(str) {
+            return decodeURIComponent(escape(atob(str)));
+        }
+        function displayResult(data) {
+            runBtn.disabled = false;
+            // 解码结果
+            const stdout = data.stdout ? atou(data.stdout) : "";
+            const stderr = data.stderr ? atou(data.stderr) : "";
+            const compileOut = data.compile_output ? atou(data.compile_output) : "";
+
+            outputArea.innerText = stdout || compileOut || stderr || "Finished (No Output)";
+            outputArea.className = stderr || compileOut ? "text-red-400" : "text-green-400";
+
+            outputMeta.innerHTML = `
+                <span>TIME: ${data.time || 0}s</span>
+                <span>MEMORY: ${data.memory || 0}KB</span>
+            `;
+
+            const statusColor = data.status.id === 3 ? "bg-green-600" : "bg-red-600";
+            updateStatus(data.status.description.toUpperCase(), statusColor);
+        }
+
+        function updateStatus(text, colorClass) {
+            statusBadge.innerText = text;
+            statusBadge.className = `px-2 py-0.5 rounded text-[10px] ${colorClass}`;
+        }
+        // 识别并更新编辑器语言的函数
+        function updateEditorLanguage(langName) {
+            if (!langName || !editor) return;
+            const name = langName.toLowerCase();
+            let monacoLang = 'plaintext';
+
+            // 解决 Java vs JavaScript 问题的最稳妥办法：
+            // 检查是否包含 JavaScript，如果是，就直接定死，不再往下匹配 Java
+            if (name.includes('javascript')) {
+                monacoLang = 'javascript';
+            } else {
+                // 遍历映射表
+                for (let key in languageMapping) {
+                    if (name.includes(key)) {
+                        monacoLang = languageMapping[key];
+                        break; // 匹配到第一个（最匹配的）就跳出
+                    }
+                }
+            }
+
+            const model = editor.getModel();
+            if (model) {
+                monaco.editor.setModelLanguage(model, monacoLang);
+            }
+            document.getElementById('editor-lang-name').innerText = monacoLang.toUpperCase();
+        }
+        // 将长字符串转换为固定的 SHA-256 哈希
+        async function generateHash(text) {
+            const msgUint8 = new TextEncoder().encode(text);                           // 编码为字节
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);        // 计算哈希
+            const hashArray = Array.from(new Uint8Array(hashBuffer));                  // 转为字节数组
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // 转为 16 进制字符串
+            return hashHex;
+        }
+
+        runBtn.addEventListener('click', runCode);
+    </script>
+</body>
+
+</html>
+```
+
