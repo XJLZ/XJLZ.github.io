@@ -15,7 +15,6 @@ tags:
 ### 换源（vim /etc/docker/daemon.json）
 
 ```
-
 {
     "registry-mirrors": [
         "https://docker.1ms.run",
@@ -46,12 +45,21 @@ tags:
         "https://docker.mirrors.sjtug.sjtu.edu.cn",
         "https://docker.mirrors.ustc.edu.cn",
         "https://mirror.iscas.ac.cn",
-        "https://docker.rainbond.cc"
+        "https://docker.rainbond.cc",
+        "https://ccr.ccs.tencentyun.com",
+        "https://hub.xdark.top",
+        "https://dhub.kubesre.xyz",
+        "https://docker.kejilion.pro",
+        "https://docker.hlmirror.com",
+        "https://run-docker.cn",
+        "https://docker.sunzishaokao.com",
+        "https://image.cloudlayer.icu",
+        "https://docker.tbedu.top",
+        "https://hub.crdz.gq",
+        "https://docker.melikeme.cn",
+        "https://registry-1.docker.io"
     ]
 }
-需要重启
-systemctl daemon-reload
-systemctl restart docker
 ```
 
 

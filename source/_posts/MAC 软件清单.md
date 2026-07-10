@@ -124,3 +124,19 @@ node --version > .node-version
 | 指令                     | 說明         |
 | ------------------------ | ------------ |
 | `fnm uninstall <版本號>` | 移除指定版本 |
+
+# docker
+
+[官网]: https://www.docker.com/get-started/
+
+https://github.com/datawhalechina/docker-notes/blob/main/docs/ch2/ch2_2.md
+
+https://phoenixnap.com/kb/install-docker-macos
+
+```
+brew install --cask docker
+
+# 兼容X86
+softwareupdate --install-rosetta
+```
+
