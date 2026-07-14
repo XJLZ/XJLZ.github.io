@@ -19,15 +19,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Homebrew1&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;    git1brew install git    JDK1curl -s &quot;https:&#x2F;&#x2F;get.sdkman.io&quot; | bash   123">
+    <meta name="description" content="Homebrew1234&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;# 中科大源&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;misc&#x2F;brew-install">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac 软件清单">
 <meta property="og:url" content="http://yoursite.com/2026/07/10/MAC%20%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Homebrew1&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;    git1brew install git    JDK1curl -s &quot;https:&#x2F;&#x2F;get.sdkman.io&quot; | bash   123">
+<meta property="og:description" content="Homebrew1234&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;# 中科大源&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;misc&#x2F;brew-install">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-10T03:32:00.000Z">
-<meta property="article:modified_time" content="2026-07-14T09:58:49.736Z">
+<meta property="article:modified_time" content="2026-07-14T12:43:06.180Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Mac">
 <meta name="twitter:card" content="summary_large_image">
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          384 字
+          508 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -316,30 +316,29 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/bin/</span>bash -c <span class="hljs-string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/bin/</span>bash -c <span class="hljs-string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br><br><span class="hljs-comment"># 中科大源</span><br><span class="hljs-regexp">/bin/</span>bash -c <span class="hljs-string">&quot;$(curl -fsSL https://mirrors.ustc.edu.cn/misc/brew-install.sh)&quot;</span><br></code></pre></td></tr></table></figure>
 
-
+<p><strong>下载比较慢，手动安装 Command Line Tools 26.6</strong></p>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/download/all/">https://developer.apple.com/download/all/</a></p>
+<h2 id="配置镜像源"><a href="#配置镜像源" class="headerlink" title="配置镜像源"></a>配置镜像源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.zshrc<br><span class="hljs-comment"># Homebrew 镜像 中科大源</span><br><span class="hljs-built_in">export</span> HOMEBREW_API_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/api<br><span class="hljs-built_in">export</span> HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles<br><span class="hljs-built_in">export</span> HOMEBREW_BREW_GIT_REMOTE=https://mirrors.ustc.edu.cn/brew.git<br><span class="hljs-comment"># 清华</span><br><span class="hljs-comment">#export HOMEBREW_API_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api</span><br><span class="hljs-comment">#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles</span><br><span class="hljs-comment">#export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><br><span class="hljs-comment">#更新</span><br><span class="hljs-built_in">source</span> ~/.zshrc<br>brew update<br>brew config<br></code></pre></td></tr></table></figure>
 
 <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>git<br></code></pre></td></tr></table></figure>
 
+<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -s <span class="hljs-string">&quot;https://get.sdkman.io&quot;</span> | zsh <br></code></pre></td></tr></table></figure>
 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装对 Java 8 原生支持最好的 Zulu</span><br>sdk install java 8.0.492-zulu<br><br><span class="hljs-comment"># 安装 Java 17 或 21，用 Temurin</span><br>sdk install java 17.0.19-tem<br>sdk install java 21.0.11-tem<br></code></pre></td></tr></table></figure>
 
-<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">curl -s <span class="hljs-string">&quot;https://get.sdkman.io&quot;</span> <span class="hljs-string">| bash </span><br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 路径</span><br><span class="hljs-regexp">/Users/</span>xiao<span class="hljs-regexp">/.sdkman/</span>candidates/java<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 安装对 Java 8 原生支持最好的 Zulu</span><br><span class="hljs-attribute">sdk</span> install java <span class="hljs-number">8</span>.<span class="hljs-number">0</span>.<span class="hljs-number">492</span>.zulu<br><br><span class="hljs-comment"># 安装 Java 17 或 21，用 Temurin</span><br><span class="hljs-attribute">sdk</span> install java <span class="hljs-number">17</span>.<span class="hljs-number">0</span>.<span class="hljs-number">19</span>-tem<br><span class="hljs-attribute">sdk</span> install java <span class="hljs-number">21</span>.<span class="hljs-number">0</span>.<span class="hljs-number">11</span>-tem<br></code></pre></td></tr></table></figure>
+<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看所有可用的 Maven 版本</span><br>sdk list maven<br><br><span class="hljs-comment"># 安装你需要的版本，例如 3.8.6</span><br>sdk install maven 3.8.6<br><br><span class="hljs-comment"># 安装最新版本</span><br>sdk install maven<br></code></pre></td></tr></table></figure>
 
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 路径</span><br><span class="hljs-regexp">/Users/</span>xiao<span class="hljs-regexp">/.sdkman/</span>candidates/maven<br></code></pre></td></tr></table></figure>
 
-
-<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 查看所有可用的 Maven 版本</span><br><span class="hljs-attribute">sdk</span> list maven<br><br><span class="hljs-comment"># 安装你需要的版本，例如 3.8.6</span><br><span class="hljs-attribute">sdk</span> install maven <span class="hljs-number">3</span>.<span class="hljs-number">8</span>.<span class="hljs-number">6</span><br><br><span class="hljs-comment"># 安装最新版本</span><br><span class="hljs-attribute">sdk</span> install maven<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">brew install fnm<br>brew<span class="hljs-built_in"> upgrade </span>fnm<br></code></pre></td></tr></table></figure>
+<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install fnm<br>brew upgrade fnm<br></code></pre></td></tr></table></figure>
 
 <h2 id="Shell-設定（必做，否則指令不生效）"><a href="#Shell-設定（必做，否則指令不生效）" class="headerlink" title="Shell 設定（必做，否則指令不生效）"></a>Shell 設定（必做，否則指令不生效）</h2><p>安裝完 fnm 本體只是第一步——還要讓 shell 認識它，自動版本切換才能運作。</p>
-<h3 id="Zsh（-zshrc）"><a href="#Zsh（-zshrc）" class="headerlink" title="Zsh（.zshrc）"></a>Zsh（<code>.zshrc</code>）</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs zsh"><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(fnm env --use-on-cd --shell zsh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs zsh">nano ~/.zshrc<br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(fnm env --use-on-cd)</span>&quot;</span><br><span class="hljs-comment"># fnm node下载镜像</span><br><span class="hljs-built_in">export</span> FNM_NODE_DIST_MIRROR=https://npmmirror.com/mirrors/node<br><span class="hljs-comment"># npm镜像源</span><br>npm_config_registry=https://registry.npmmirror.com<br><br><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
 
-<h3 id="Bash（-bashrc）"><a href="#Bash（-bashrc）" class="headerlink" title="Bash（.bashrc）"></a>Bash（<code>.bashrc</code>）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(fnm env --use-on-cd --shell bash)</span>&quot;</span><br></code></pre></td></tr></table></figure>
 <h3 id="指定项目node版本"><a href="#指定项目node版本" class="headerlink" title="指定项目node版本"></a>指定项目node版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node --version &gt; .node-version<br></code></pre></td></tr></table></figure>
 
 <blockquote>
@@ -353,8 +352,8 @@
 </tr>
 </thead>
 <tbody><tr>
-<td><code>fnm install &lt;版本號&gt;</code></td>
-<td>安裝特定版本，例如 <code>fnm install 20.11.0</code></td>
+<td><code>fnm install &lt;版本號&gt;</code>,</td>
+<td>安裝特定版本，例如 <code>fnm install 24</code></td>
 </tr>
 <tr>
 <td><code>fnm install --lts</code></td>
@@ -374,7 +373,7 @@
 </thead>
 <tbody><tr>
 <td><code>fnm use &lt;版本號&gt;</code></td>
-<td>切換到指定版本</td>
+<td>切換到指定版本,<code>fnm use 14</code></td>
 </tr>
 <tr>
 <td><code>fnm use --lts</code></td>
@@ -431,7 +430,10 @@
 </tbody></table>
 <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p><a target="_blank" rel="noopener" href="https://github.com/datawhalechina/docker-notes/blob/main/docs/ch2/ch2_2.md">https://github.com/datawhalechina/docker-notes/blob/main/docs/ch2/ch2_2.md</a></p>
 <p><a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/install-docker-macos">https://phoenixnap.com/kb/install-docker-macos</a></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">brew <span class="hljs-keyword">install</span> <span class="hljs-comment">--cask docker</span><br><br><span class="hljs-comment"># 兼容X86</span><br>softwareupdate <span class="hljs-comment">--install-rosetta</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install --cask docker<br><br><span class="hljs-comment"># 兼容X86</span><br>softwareupdate --install-rosetta<br></code></pre></td></tr></table></figure>
+
+
+
 
 
                 
