@@ -27,7 +27,7 @@
 <meta property="og:description" content="Homebrew1234&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;Homebrew&#x2F;install&#x2F;HEAD&#x2F;install.sh)&quot;# 中科大源&#x2F;bin&#x2F;bash -c &quot;$(curl -fsSL https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;misc&#x2F;brew-install">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-10T03:32:00.000Z">
-<meta property="article:modified_time" content="2026-07-14T12:43:06.180Z">
+<meta property="article:modified_time" content="2026-07-23T05:29:57.364Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Mac">
 <meta name="twitter:card" content="summary_large_image">
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          508 字
+          801 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          7 分钟
         
       </span>
     
@@ -322,22 +322,47 @@
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/download/all/">https://developer.apple.com/download/all/</a></p>
 <h2 id="配置镜像源"><a href="#配置镜像源" class="headerlink" title="配置镜像源"></a>配置镜像源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.zshrc<br><span class="hljs-comment"># Homebrew 镜像 中科大源</span><br><span class="hljs-built_in">export</span> HOMEBREW_API_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/api<br><span class="hljs-built_in">export</span> HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles<br><span class="hljs-built_in">export</span> HOMEBREW_BREW_GIT_REMOTE=https://mirrors.ustc.edu.cn/brew.git<br><span class="hljs-comment"># 清华</span><br><span class="hljs-comment">#export HOMEBREW_API_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api</span><br><span class="hljs-comment">#export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles</span><br><span class="hljs-comment">#export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><br><span class="hljs-comment">#更新</span><br><span class="hljs-built_in">source</span> ~/.zshrc<br>brew update<br>brew config<br></code></pre></td></tr></table></figure>
 
-<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>git<br></code></pre></td></tr></table></figure>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><p><a target="_blank" rel="noopener" href="https://git-scm.com/install/mac">官网</a></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>git<br></code></pre></td></tr></table></figure>
 
-<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -s <span class="hljs-string">&quot;https://get.sdkman.io&quot;</span> | zsh <br></code></pre></td></tr></table></figure>
+<h1 id="iTerm-oh-my-zsh"><a href="#iTerm-oh-my-zsh" class="headerlink" title="iTerm + oh-my-zsh"></a>iTerm + oh-my-zsh</h1><p><a target="_blank" rel="noopener" href="https://iterm2.com/index.html">iTerm官网</a></p>
+<h2 id="安装-iTerm2"><a href="#安装-iTerm2" class="headerlink" title="安装 iTerm2"></a>安装 iTerm2</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>--cask iterm2<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装对 Java 8 原生支持最好的 Zulu</span><br>sdk install java 8.0.492-zulu<br><br><span class="hljs-comment"># 安装 Java 17 或 21，用 Temurin</span><br>sdk install java 17.0.19-tem<br>sdk install java 21.0.11-tem<br></code></pre></td></tr></table></figure>
+<h2 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh-my-zsh"></a>安装oh-my-zsh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="安装常用插件"><a href="#安装常用插件" class="headerlink" title="安装常用插件"></a>安装常用插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 命令补充</span><br>git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions<br><span class="hljs-comment"># 高亮</span><br>git <span class="hljs-built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting<br></code></pre></td></tr></table></figure>
+
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><p><a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">ohmyzsh主题</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim ~/.zshrc<br><span class="hljs-comment"># 修改主题 </span><br>ZSH_THEME=<span class="hljs-string">&quot;ys&quot;</span><br><span class="hljs-comment"># 修改插件</span><br>plugins=(git zsh-autosuggestions zsh-syntax-highlighting)<br><br><span class="hljs-comment"># 保存后加载</span><br><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<h1 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h1><p><a target="_blank" rel="noopener" href="https://sdkman.io/">sdkman</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -s <span class="hljs-string">&quot;https://get.sdkman.io&quot;</span> | zsh <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装对 Java 8 原生支持最好的 Zulu</span><br>sdk install java 8.0.492-zulu<br><br><span class="hljs-comment"># 安装 Java 17 或 21，用 Temurin</span><br>sdk install java 17.0.19-tem<br>sdk install java 21.0.11-tem<br><br><span class="hljs-comment"># 卸载</span><br>sdk uninstall java 11.0.22-tem<br><br><span class="hljs-comment"># 切换java</span><br>sdk use java 21.0.11-tem<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 路径</span><br><span class="hljs-regexp">/Users/</span>xiao<span class="hljs-regexp">/.sdkman/</span>candidates/java<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p> 进入项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> java-project<br></code></pre></td></tr></table></figure>
+
+<p>设置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sdk env init<br></code></pre></td></tr></table></figure>
+
+<p>会生成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">.sdkmanrc<br>sdk env<br></code></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Enable auto-env through the sdkman_auto_env config</span><br><span class="hljs-comment"># Add key=value pairs of SDKs to use below</span><br>java=21.0.11-tem<br></code></pre></td></tr></table></figure>
 
 <h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看所有可用的 Maven 版本</span><br>sdk list maven<br><br><span class="hljs-comment"># 安装你需要的版本，例如 3.8.6</span><br>sdk install maven 3.8.6<br><br><span class="hljs-comment"># 安装最新版本</span><br>sdk install maven<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 路径</span><br><span class="hljs-regexp">/Users/</span>xiao<span class="hljs-regexp">/.sdkman/</span>candidates/maven<br></code></pre></td></tr></table></figure>
 
-<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install fnm<br>brew upgrade fnm<br></code></pre></td></tr></table></figure>
+<h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><p><a target="_blank" rel="noopener" href="https://github.com/Schniz/fnm">fnm</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install fnm<br>brew upgrade fnm<br></code></pre></td></tr></table></figure>
 
 <h2 id="Shell-設定（必做，否則指令不生效）"><a href="#Shell-設定（必做，否則指令不生效）" class="headerlink" title="Shell 設定（必做，否則指令不生效）"></a>Shell 設定（必做，否則指令不生效）</h2><p>安裝完 fnm 本體只是第一步——還要讓 shell 認識它，自動版本切換才能運作。</p>
-<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs zsh">nano ~/.zshrc<br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(fnm env --use-on-cd)</span>&quot;</span><br><span class="hljs-comment"># fnm node下载镜像</span><br><span class="hljs-built_in">export</span> FNM_NODE_DIST_MIRROR=https://npmmirror.com/mirrors/node<br><span class="hljs-comment"># npm镜像源</span><br>npm_config_registry=https://registry.npmmirror.com<br><br><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">nano ~/.zshrc<br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(fnm env --use-on-cd)</span>&quot;</span><br><span class="hljs-comment"># fnm node下载镜像</span><br><span class="hljs-built_in">export</span> FNM_NODE_DIST_MIRROR=https://npmmirror.com/mirrors/node<br><span class="hljs-comment"># npm镜像源</span><br>npm_config_registry=https://registry.npmmirror.com<br><br><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure>
 
 <h3 id="指定项目node版本"><a href="#指定项目node版本" class="headerlink" title="指定项目node版本"></a>指定项目node版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">node --version &gt; .node-version<br></code></pre></td></tr></table></figure>
 
@@ -428,13 +453,37 @@
 <td>移除指定版本</td>
 </tr>
 </tbody></table>
-<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p><a target="_blank" rel="noopener" href="https://github.com/datawhalechina/docker-notes/blob/main/docs/ch2/ch2_2.md">https://github.com/datawhalechina/docker-notes/blob/main/docs/ch2/ch2_2.md</a></p>
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p><a target="_blank" rel="noopener" href="https://www.docker.com/get-started/">官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/datawhalechina/docker-notes/blob/main/docs/ch2/ch2_2.md">https://github.com/datawhalechina/docker-notes/blob/main/docs/ch2/ch2_2.md</a></p>
 <p><a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/install-docker-macos">https://phoenixnap.com/kb/install-docker-macos</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install --cask docker<br><br><span class="hljs-comment"># 兼容X86</span><br>softwareupdate --install-rosetta<br></code></pre></td></tr></table></figure>
 
+<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 pyenv</span><br>brew install pyenv<br><br><span class="hljs-comment"># 修改配置</span><br>vim ~/.zshrc<br><br><span class="hljs-built_in">export</span> PYENV_ROOT=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.pyenv&quot;</span><br><span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PYENV_ROOT</span>/bin:<span class="hljs-variable">$PATH</span>&quot;</span><br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(pyenv init -)</span>&quot;</span><br><br><span class="hljs-built_in">source</span> ~/.zshrc<br><br><br><span class="hljs-comment"># 验证</span><br>pyenv --version<br><br><span class="hljs-comment"># 查看可安装版本</span><br>pyenv install --list<br><span class="hljs-comment"># 安装</span><br>pyenv install 3.12.13<br><span class="hljs-comment"># 检查</span><br>pyenv versions<br><span class="hljs-comment"># 设置默认版本</span><br>pyenv global 3.12.13<br></code></pre></td></tr></table></figure>
 
+<h2 id="pip-镜像配置"><a href="#pip-镜像配置" class="headerlink" title="pip 镜像配置"></a>pip 镜像配置</h2><p>创建：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mkdir -p ~/.config/pip<br><br>vim ~/.config/pip/pip.conf<br></code></pre></td></tr></table></figure>
 
+<p>内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">[global]<br>index-url=https://pypi.tuna.tsinghua.edu.cn/simple<br><br>[install]<br>trusted-host=pypi.tuna.tsinghua.edu.cn<br></code></pre></td></tr></table></figure>
 
+<p>测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install requests<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p>进入项目：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">cd <span class="hljs-keyword">my</span>-project<br></code></pre></td></tr></table></figure>
+
+<p>设置：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">pyenv</span> local <span class="hljs-number">3</span>.<span class="hljs-number">12</span>.<span class="hljs-number">13</span><br></code></pre></td></tr></table></figure>
+
+<p>会生成：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">.<span class="hljs-keyword">python</span>-<span class="hljs-keyword">version</span><br></code></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-number">3.12</span><span class="hljs-number">.13</span><br></code></pre></td></tr></table></figure>
+
+<p>以后进入目录自动切换。</p>
+<p>例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">project-a</span><br> ├── <span class="hljs-selector-class">.python-version</span>  <span class="hljs-selector-tag">-</span>&gt; 3<span class="hljs-selector-class">.12</span><span class="hljs-selector-class">.13</span><br><br><span class="hljs-selector-tag">project-b</span><br> ├── <span class="hljs-selector-class">.python-version</span>  <span class="hljs-selector-tag">-</span>&gt; 3<span class="hljs-selector-class">.12</span><span class="hljs-selector-class">.4</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
