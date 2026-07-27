@@ -19,23 +19,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="12345title: Nginx 增强date: 2026-07-27 13:32:00tags:- Nginx- Linux  log1234567891011121314151617181920212223242526&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时">
+    <meta name="description" content="log1234567891011121314151617181920212223242526&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时不报错    missingok    # 空日志不切割    notifempty    # gzip压缩历史日志    comp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2026/07/27/Nginx/index.html">
+<meta property="og:title" content="Nginx 增强">
+<meta property="og:url" content="http://yoursite.com/2026/07/27/Nginx%E5%A2%9E%E5%BC%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="12345title: Nginx 增强date: 2026-07-27 13:32:00tags:- Nginx- Linux  log1234567891011121314151617181920212223242526&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时">
+<meta property="og:description" content="log1234567891011121314151617181920212223242526&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时不报错    missingok    # 空日志不切割    notifempty    # gzip压缩历史日志    comp">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-07-27T05:55:26.564Z">
-<meta property="article:modified_time" content="2026-07-27T06:35:49.967Z">
+<meta property="article:published_time" content="2026-07-27T05:32:00.000Z">
+<meta property="article:modified_time" content="2026-07-27T06:41:56.690Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hexo</title>
+  <title>Nginx 增强 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="Nginx 增强"></span>
           
         </div>
 
@@ -248,7 +250,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-07-27 13:55" pubdate>
+        <time datetime="2026-07-27 13:32" pubdate>
           2026年7月27日 下午
         </time>
       </span>
@@ -261,7 +263,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          196 字
+          186 字
         
       </span>
     
@@ -310,14 +312,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">Nginx 增强</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">Nginx</span> <span class="hljs-string">增强</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2026-07-27 13:32:00</span><br><span class="hljs-attr">tags:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">Nginx</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">Linux</span><br></code></pre></td></tr></table></figure>
-
-<h1 id="log"><a href="#log" class="headerlink" title="log"></a>log</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">/data/soft/nginx/logs/*.<span class="hljs-built_in">log</span> &#123;<br>    <span class="hljs-comment"># 切割周期</span><br>    daily<br>    <span class="hljs-comment"># 保留数量</span><br>    rotate 30<br>    <span class="hljs-comment"># 日志不存在时不报错</span><br>    missingok<br>    <span class="hljs-comment"># 空日志不切割</span><br>    notifempty<br>    <span class="hljs-comment"># gzip压缩历史日志</span><br>    compress<br>    <span class="hljs-comment"># 延迟一次压缩</span><br>    delaycompress<br>    <span class="hljs-comment"># 使用日期作为后缀</span><br>    dateext<br>    <span class="hljs-comment"># 日期格式</span><br>    dateformat -%Y%m%d<br>    <span class="hljs-comment"># 脚本只执行一次</span><br>    sharedscripts<br><br>    postrotate<br>        <span class="hljs-keyword">if</span> [ -f /data/soft/nginx/logs/nginx.pid ]; <span class="hljs-keyword">then</span><br>            <span class="hljs-built_in">kill</span> -USR1 <span class="hljs-string">&quot;<span class="hljs-subst">$(cat /data/soft/nginx/logs/nginx.pid)</span>&quot;</span><br>        <span class="hljs-keyword">fi</span><br>    endscript<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="log"><a href="#log" class="headerlink" title="log"></a>log</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">/data/soft/nginx/logs/*.<span class="hljs-built_in">log</span> &#123;<br>    <span class="hljs-comment"># 切割周期</span><br>    daily<br>    <span class="hljs-comment"># 保留数量</span><br>    rotate 30<br>    <span class="hljs-comment"># 日志不存在时不报错</span><br>    missingok<br>    <span class="hljs-comment"># 空日志不切割</span><br>    notifempty<br>    <span class="hljs-comment"># gzip压缩历史日志</span><br>    compress<br>    <span class="hljs-comment"># 延迟一次压缩</span><br>    delaycompress<br>    <span class="hljs-comment"># 使用日期作为后缀</span><br>    dateext<br>    <span class="hljs-comment"># 日期格式</span><br>    dateformat -%Y%m%d<br>    <span class="hljs-comment"># 脚本只执行一次</span><br>    sharedscripts<br><br>    postrotate<br>        <span class="hljs-keyword">if</span> [ -f /data/soft/nginx/logs/nginx.pid ]; <span class="hljs-keyword">then</span><br>            <span class="hljs-built_in">kill</span> -USR1 <span class="hljs-string">&quot;<span class="hljs-subst">$(cat /data/soft/nginx/logs/nginx.pid)</span>&quot;</span><br>        <span class="hljs-keyword">fi</span><br>    endscript<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>然后检查配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">logrotate -d /etc/logrotate.d/nginx<br></code></pre></td></tr></table></figure>
@@ -331,8 +331,6 @@
 
 <h1 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">gzip</span> <span class="hljs-literal">on</span>;<br><span class="hljs-attribute">gzip_min_length</span> <span class="hljs-number">1k</span>;<br><span class="hljs-attribute">gzip_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;<br><span class="hljs-attribute">gzip_comp_level</span> <span class="hljs-number">6</span>;<br><span class="hljs-attribute">gzip_vary</span> <span class="hljs-literal">on</span>;<br><span class="hljs-attribute">gzip_proxied</span> any;<br><br>gzip_types<br>    text/plain<br>    text/css<br>    text/xml<br>    application/json<br>    application/javascript<br>    application/xml<br>    application/xml+rss<br>    application/atom+xml<br>    image/svg+xml;<br></code></pre></td></tr></table></figure>
 
-
-
                 
               </div>
             
@@ -340,6 +338,15 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Nginx/" class="print-no-link">#Nginx</a>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+    </div>
   
 </div>
 
@@ -349,8 +356,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://yoursite.com/2026/07/27/Nginx/</div>
+      <div>Nginx 增强</div>
+      <div>http://yoursite.com/2026/07/27/Nginx增强/</div>
     </div>
     <div class="license-meta">
       
