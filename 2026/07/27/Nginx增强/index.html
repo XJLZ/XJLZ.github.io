@@ -19,15 +19,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="log1234567891011121314151617181920212223242526&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时不报错    missingok    # 空日志不切割    notifempty    # gzip压缩历史日志    comp">
+    <meta name="description" content="log12345678910111213141516171819202122232425262728293031323334353637383940414243444546# 自定义安装的nginx&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时不报错    missin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx 增强">
 <meta property="og:url" content="http://yoursite.com/2026/07/27/Nginx%E5%A2%9E%E5%BC%BA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="log1234567891011121314151617181920212223242526&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时不报错    missingok    # 空日志不切割    notifempty    # gzip压缩历史日志    comp">
+<meta property="og:description" content="log12345678910111213141516171819202122232425262728293031323334353637383940414243444546# 自定义安装的nginx&#x2F;data&#x2F;soft&#x2F;nginx&#x2F;logs&#x2F;*.log &amp;#123;    # 切割周期    daily    # 保留数量    rotate 30    # 日志不存在时不报错    missin">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-27T05:32:00.000Z">
-<meta property="article:modified_time" content="2026-07-27T06:48:42.687Z">
+<meta property="article:modified_time" content="2026-08-20T05:52:37.413Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Nginx">
 <meta property="article:tag" content="Linux">
@@ -263,7 +263,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          186 字
+          369 字
         
       </span>
     
@@ -275,7 +275,7 @@
         
         
           <!-- compatible with older versions-->
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="log"><a href="#log" class="headerlink" title="log"></a>log</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">/data/soft/nginx/logs/*.<span class="hljs-built_in">log</span> &#123;<br>    <span class="hljs-comment"># 切割周期</span><br>    daily<br>    <span class="hljs-comment"># 保留数量</span><br>    rotate 30<br>    <span class="hljs-comment"># 日志不存在时不报错</span><br>    missingok<br>    <span class="hljs-comment"># 空日志不切割</span><br>    notifempty<br>    <span class="hljs-comment"># gzip压缩历史日志</span><br>    compress<br>    <span class="hljs-comment"># 延迟一次压缩</span><br>    delaycompress<br>    <span class="hljs-comment"># 使用日期作为后缀</span><br>    dateext<br>    <span class="hljs-comment"># 日期格式</span><br>    dateformat -%Y%m%d<br>    <span class="hljs-comment"># 脚本只执行一次</span><br>    sharedscripts<br><br>    postrotate<br>        <span class="hljs-keyword">if</span> [ -f /data/soft/nginx/logs/nginx.pid ]; <span class="hljs-keyword">then</span><br>            <span class="hljs-built_in">kill</span> -USR1 <span class="hljs-string">&quot;<span class="hljs-subst">$(cat /data/soft/nginx/logs/nginx.pid)</span>&quot;</span><br>        <span class="hljs-keyword">fi</span><br>    endscript<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="log"><a href="#log" class="headerlink" title="log"></a>log</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 自定义安装的nginx</span><br>/data/soft/nginx/logs/*.<span class="hljs-built_in">log</span> &#123;<br>    <span class="hljs-comment"># 切割周期</span><br>    daily<br>    <span class="hljs-comment"># 保留数量</span><br>    rotate 30<br>    <span class="hljs-comment"># 日志不存在时不报错</span><br>    missingok<br>    <span class="hljs-comment"># 空日志不切割</span><br>    notifempty<br>    <span class="hljs-comment"># gzip压缩历史日志</span><br>    compress<br>    <span class="hljs-comment"># 延迟一次压缩</span><br>    delaycompress<br>    <span class="hljs-comment"># 使用日期作为后缀</span><br>    dateext<br>    <span class="hljs-comment"># 日期格式</span><br>    dateformat -%Y%m%d<br>    <span class="hljs-comment"># 脚本只执行一次</span><br>    sharedscripts<br><br>    postrotate<br>        <span class="hljs-keyword">if</span> [ -f /data/soft/nginx/logs/nginx.pid ]; <span class="hljs-keyword">then</span><br>            <span class="hljs-built_in">kill</span> -USR1 <span class="hljs-string">&quot;<span class="hljs-subst">$(cat /data/soft/nginx/logs/nginx.pid)</span>&quot;</span><br>        <span class="hljs-keyword">fi</span><br>    endscript<br>&#125;<br><br><span class="hljs-comment"># yum/dnf安装的nginx</span><br>/var/<span class="hljs-built_in">log</span>/nginx/*.<span class="hljs-built_in">log</span> &#123;<br>    daily<br>    rotate 30<br>    missingok<br>    notifempty<br>    compress<br>    delaycompress<br>    dateext<br>    dateformat -%Y%m%d<br>    sharedscripts<br><br>    postrotate<br>        <span class="hljs-keyword">if</span> [ -f /run/nginx.pid ]; <span class="hljs-keyword">then</span><br>            <span class="hljs-built_in">kill</span> -USR1 <span class="hljs-string">&quot;<span class="hljs-subst">$(cat /run/nginx.pid)</span>&quot;</span><br>        <span class="hljs-keyword">fi</span><br>    endscript<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>然后检查配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">logrotate -d /etc/logrotate.d/nginx<br></code></pre></td></tr></table></figure>
@@ -329,7 +329,7 @@
 <p>日志切割的完整过程是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">access.log<br>    ↓ logrotate 重命名<br>access.log-20260727<br>    ↓ 向 Nginx 发送 USR1<br>Nginx 创建并写入新的 access.log<br></code></pre></td></tr></table></figure>
 
-<h1 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">gzip</span> <span class="hljs-literal">on</span>;<br><span class="hljs-attribute">gzip_min_length</span> <span class="hljs-number">1k</span>;<br><span class="hljs-attribute">gzip_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;<br><span class="hljs-attribute">gzip_comp_level</span> <span class="hljs-number">6</span>;<br><span class="hljs-attribute">gzip_vary</span> <span class="hljs-literal">on</span>;<br><span class="hljs-attribute">gzip_proxied</span> any;<br><br>gzip_types<br>    text/plain<br>    text/css<br>    text/xml<br>    application/json<br>    application/javascript<br>    application/xml<br>    application/xml+rss<br>    application/atom+xml<br>    image/svg+xml;<br></code></pre></td></tr></table></figure>
+<h1 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h1><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">gzip</span> <span class="hljs-literal">on</span>; <span class="hljs-comment"># 开启Gzip压缩</span><br><span class="hljs-attribute">gzip_min_length</span> <span class="hljs-number">1k</span>; <span class="hljs-comment"># 仅压缩大于1KB的响应（避免小数据压缩反而增加体积）</span><br><span class="hljs-attribute">gzip_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>; <span class="hljs-comment"># 仅对HTTP 1.1及以上协议启用（避免老协议兼容性问题）</span><br><span class="hljs-attribute">gzip_comp_level</span> <span class="hljs-number">6</span>; <span class="hljs-comment"># 压缩级别（1-9，6为兼顾压缩率与性能的最优值：1级最快但压缩率低，9级反之）</span><br>gzip_types<br>    text/plain<br>    text/css<br>    application/json<br>    application/javascript<br>    application/xml<br>    application/xml+rss<br>    text/javascript<br>    image/svg+xml; # 需压缩的MIME类型（重点包含教材接口的XML/JSON格式）<br><span class="hljs-attribute">gzip_vary</span> <span class="hljs-literal">on</span>; <span class="hljs-comment"># 向客户端返回Vary: Accept-Encoding头，告知客户端支持压缩（CDN场景必备）</span><br><span class="hljs-attribute">gzip_proxied</span> any; <span class="hljs-comment"># 对代理请求也启用压缩（若Nginx反向代理后端服务，必须配置此项）</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -402,6 +402,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/07/31/tusd/" title="tusd">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">tusd</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
