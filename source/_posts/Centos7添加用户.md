@@ -92,3 +92,4 @@ Administrator. It usually boils down to these three things:
 ```
 
 第一次使用会提示你，你已经化身超人，身负责任。而且需要输入密码才可以下一步。如果不想需要输入密码怎么办，将最后一个ALL修改成NOPASSWD: ALL。
+

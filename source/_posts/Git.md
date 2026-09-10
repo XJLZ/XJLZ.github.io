@@ -9,11 +9,9 @@ tags:
 
 [官网]: https://git-scm.com/
 
- 
-
 #### 命令
 
-```
+```bas
 # 配置git信息
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
@@ -45,4 +43,3 @@ git branch -a
 # 切换分支
 git checkout -b dev origin/dev
 ```
-

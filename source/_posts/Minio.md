@@ -1,5 +1,3 @@
-
-
 ---
 title: Minio
 date: 2024-01-11 12:00:00
@@ -7,8 +5,6 @@ tags:
 - Centos7
 - Minio
 ---
-
-
 
 #### 环境
 
@@ -18,23 +14,23 @@ tags:
 
 ```
 1.下载
-	wget https://dl.min.io/server/minio/release/linux-amd64/minio
-	或
-	curl https://dl.min.io/server/minio/release/linux-amd64/minio > minio
+    wget https://dl.min.io/server/minio/release/linux-amd64/minio
+    或
+    curl https://dl.min.io/server/minio/release/linux-amd64/minio > minio
 2.添加执行权限
-	chmod +x minio
+    chmod +x minio
 3.创建存储目录
-	mkdir /home/minio/data
+    mkdir /home/minio/data
 4.防火墙开启端口
-	firewall-cmd --zone=public --add-port=9999/tcp --permanent
-	firewall-cmd --reload
+    firewall-cmd --zone=public --add-port=9999/tcp --permanent
+    firewall-cmd --reload
 5.运行（指定端口）---默认端口是9000
-	nohup ./minio server --address 本机IP:9999 /home/minio/data/ > /home/minio/minio.log 2>&1 &
+    nohup ./minio server --address 本机IP:9999 /home/minio/data/ > /home/minio/minio.log 2>&1 &
 6.默认端口启动
-	nohup ./minio server /home/minio/data/ > /home/minio/minio.log 2>&1 &
+    nohup ./minio server /home/minio/data/ > /home/minio/minio.log 2>&1 &
 7.访问web管理界面
-	IP:9999
-	默认账号密码都是 minioadmin
+    IP:9999
+    默认账号密码都是 minioadmin
 ```
 
 #### 新版本minio
@@ -45,14 +41,12 @@ tags:
 wget https://dl.minio.org.cn/server/minio/release/linux-amd64/minio
 ```
 
-2.  下载配置到 /etc/systemd/system/
+2. 下载配置到 /etc/systemd/system/
 
 ```
 wget https://raw.githubusercontent.com/minio/minio-service/master/linux-systemd/minio.service
-	删除文件里的 User/Group
+    删除文件里的 User/Group
 ```
-
-   
 
 3. vim /etc/default/minio
 
@@ -91,20 +85,17 @@ systemctl daemon-reload
 systemctl start minio
 systemctl status minio
 systemctl stop minio
-
 ```
-
-
 
 #### 安装MC
 
 ```
 1.下载
-	wget https://dl.min.io/client/mc/release/linux-amd64/mc
-	或
-	curl https://dl.min.io/client/mc/release/linux-amd64/mc > mc
+    wget https://dl.min.io/client/mc/release/linux-amd64/mc
+    或
+    curl https://dl.min.io/client/mc/release/linux-amd64/mc > mc
 2.添加执行权限
-	chmod +x mc
+    chmod +x mc
 ```
 
 #### 给MC添加minio

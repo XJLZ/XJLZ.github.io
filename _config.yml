@@ -106,7 +106,7 @@ theme: fluid
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: "git"
-  repo: "https://git@github.com/XJLZ/XJLZ.github.io.git"
+  repo: "https://github.com/XJLZ/XJLZ.github.io.git"
   branch: master
 
 onContent:
