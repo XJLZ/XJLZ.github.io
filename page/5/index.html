@@ -265,6 +265,48 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2020/08/10/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E8%AF%B7%E6%B1%82header%E5%A4%B4%E4%BF%A1%E6%81%AF%E4%B8%A2%E5%A4%B1/" target="_self">
+          Nginx反向代理导致请求header头信息丢失
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/10/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E8%AF%B7%E6%B1%82header%E5%A4%B4%E4%BF%A1%E6%81%AF%E4%B8%A2%E5%A4%B1/" target="_self">
+        <div>
+          解决方法：  方法一：NGINX代理时加上请求头信息： location /fxapi &#123;     proxy_pass   http://fxApi/;     proxy_set_header   Host             $host:$server_port;     proxy_set_header   X-Real-IP        $remote_addr;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-10 15:32" pubdate>
+              2020-08-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">#Centos7</a>
+            
+              <a href="/tags/Nginx/">#Nginx</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2020/08/10/SELinux/" target="_self">
           SELinux
         </a>

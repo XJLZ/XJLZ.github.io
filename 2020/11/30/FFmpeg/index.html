@@ -19,15 +19,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装命令1ffmpeg -i akane.mp4 -c copy -map 0 -f segment -segment_list akane.m3u8 -segment_time 10 segment%d.ts    1234567ffmpeg -y \-i The_Kriss_Vector.mp4 \-hls_time 20 \       # 将test.mp4分割成每个小段多少秒-hls_k">
+    <meta name="description" content="安装命令1ffmpeg -i akane.mp4 -c copy -map 0 -f segment -segment_list akane.m3u8 -segment_time 10 segment%d.ts  1234567ffmpeg -y \-i The_Kriss_Vector.mp4 \-hls_time 20 \       # 将test.mp4分割成每个小段多少秒-hls_key">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FFmpeg">
+<meta property="og:title" content="FFmpeg——常用命令">
 <meta property="og:url" content="http://yoursite.com/2020/11/30/FFmpeg/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="安装命令1ffmpeg -i akane.mp4 -c copy -map 0 -f segment -segment_list akane.m3u8 -segment_time 10 segment%d.ts    1234567ffmpeg -y \-i The_Kriss_Vector.mp4 \-hls_time 20 \       # 将test.mp4分割成每个小段多少秒-hls_k">
+<meta property="og:description" content="安装命令1ffmpeg -i akane.mp4 -c copy -map 0 -f segment -segment_list akane.m3u8 -segment_time 10 segment%d.ts  1234567ffmpeg -y \-i The_Kriss_Vector.mp4 \-hls_time 20 \       # 将test.mp4分割成每个小段多少秒-hls_key">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-30T07:32:00.000Z">
-<meta property="article:modified_time" content="2026-08-13T09:09:15.115Z">
+<meta property="article:modified_time" content="2026-09-10T08:00:04.742Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="FFmpeg">
 <meta name="twitter:card" content="summary_large_image">
@@ -36,7 +36,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>FFmpeg - Hexo</title>
+  <title>FFmpeg——常用命令 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="FFmpeg"></span>
+            <span id="subtitle" data-typed-text="FFmpeg——常用命令"></span>
           
         </div>
 
@@ -311,45 +311,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">FFmpeg</h1>
+            <h1 id="seo-header">FFmpeg——常用命令</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -i akane.mp<span class="hljs-number">4</span> -c copy -map <span class="hljs-number">0</span> -f segment -segment_list akane.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span> -segment_time <span class="hljs-number">10</span> segment%d.ts<br></code></pre></td></tr></table></figure>
+                <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -i akane.mp4 -c copy -map 0 -f segment -segment_list akane.m3u8 -segment_time 10 segment%d.ts<br></code></pre></td></tr></table></figure>
 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -y \<br>-i The_Kriss_Vector.mp4 \<br>-hls_time 20 \       <span class="hljs-comment"># 将test.mp4分割成每个小段多少秒</span><br>-hls_key_info_file encrypt.keyinfo \<br>-hls_playlist_type vod \   <span class="hljs-comment"># vod 是点播，表示PlayList不会变</span><br>-hls_segment_filename <span class="hljs-string">&quot;playlist%d.ts&quot;</span> \  <span class="hljs-comment">#  每个小段的文件名</span><br>playlist.m3u8   <span class="hljs-comment">#  生成的m3u8文件</span><br></code></pre></td></tr></table></figure>
 
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -y \<br>-i The_Kriss_Vector.mp4 \<br>-hls_time 20 \<br>-hls_key_info_file encrypt.keyinfo \<br>-hls_playlist_type event \<br>-hls_segment_filename <span class="hljs-string">&quot;playlist%03d.ts&quot;</span> \<br>playlist.m3u8<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livescript">ffmpeg -y <span class="hljs-string">\</span><br>-i The_Kriss_Vector.mp4 <span class="hljs-string">\</span><br>-hls_time <span class="hljs-number">20</span> <span class="hljs-string">\</span>       <span class="hljs-comment"># 将test.mp4分割成每个小段多少秒</span><br>-hls_key_info_file encrypt.keyinfo <span class="hljs-string">\</span><br>-hls_playlist_type vod <span class="hljs-string">\</span>   <span class="hljs-comment"># vod 是点播，表示PlayList不会变</span><br>-hls_segment_filename <span class="hljs-string">&quot;playlist%d.ts&quot;</span> <span class="hljs-string">\</span>  <span class="hljs-comment">#  每个小段的文件名</span><br>playlist.m3u8   <span class="hljs-comment">#  生成的m3u8文件</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -y -i akane.mp4 -hls_time 30 -hls_key_info_file enc.keyinfo -hls_segment_filename <span class="hljs-string">&quot;akane%03d.ts&quot;</span> akane.m3u8<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livescript">ffmpeg -y <span class="hljs-string">\</span><br>-i The_Kriss_Vector.mp4 <span class="hljs-string">\</span><br>-hls_time <span class="hljs-number">20</span> <span class="hljs-string">\</span><br>-hls_key_info_file encrypt.keyinfo <span class="hljs-string">\</span><br>-hls_playlist_type event <span class="hljs-string">\</span><br>-hls_segment_filename <span class="hljs-string">&quot;playlist%03d.ts&quot;</span> <span class="hljs-string">\</span><br>playlist.m3u8<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg -y -i akane.mp4 -hls_time 4 -hls_segment_filename <span class="hljs-string">&quot;playlist%03d.ts&quot;</span> playlist.m3u8<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -y -i akane.mp<span class="hljs-number">4</span> -hls_time <span class="hljs-number">30</span> -hls_key_info_file enc.keyinfo -hls_segment_filename <span class="hljs-string">&quot;akane%03d.ts&quot;</span> akane.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+<h3 id="获取视频自带封面"><a href="#获取视频自带封面" class="headerlink" title="获取视频自带封面"></a>获取视频自带封面</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># disposition 匹配</span><br>ffmpeg -y -i input.mp4 -map 0:v:disp:attached_pic -frames:v 1 =q:v 2 cover.jpg<br><span class="hljs-comment"># 查看流数据</span><br>ffprobe -v quiet -print_format json -show_streams input.mp4<br><br><span class="hljs-comment"># 视频流索引</span><br>ffmpeg -i input.mp4 -map 0:v:1 cover.jpg<br><span class="hljs-comment"># 视频流索引-不知道在哪个视频流</span><br>ffmpeg -y -i input.mp4 -map 0:$(ffprobe -v quiet -select_streams v -show_entries stream=index:stream_disposition -of json output2.mp4 | jq -r <span class="hljs-string">&#x27;.streams[] | select(.disposition.attached_pic==1) | .index&#x27;</span>) -frames:v 2 cover.jpg<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ffmpeg</span> -y -i akane.mp<span class="hljs-number">4</span> -hls_time <span class="hljs-number">4</span> -hls_segment_filename <span class="hljs-string">&quot;playlist%03d.ts&quot;</span> playlist.m<span class="hljs-number">3</span>u<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
-
-
-
-<p>获取视频自带封面</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># disposition 匹配</span><br>ffmpeg -y -i input.mp4 -map 0:v:disp:attached_pic -frames:v 1 =q:v 2 cover.jpg<br><span class="hljs-comment"># 查看流数据</span><br>ffprobe -v quiet -print_format json -show_streams input.mp4<br><br><span class="hljs-comment"># 视频流索引</span><br>ffmpeg -i input.mp4 -map 0:v:1 cover.jpg<br><span class="hljs-comment"># 视频流索引-不知道在哪个视频流</span><br>ffmpeg -y -i input.mp4 -map 0:$(ffprobe -v quiet -select_streams v -show_entries stream=index:stream_disposition -of json output2.mp4 | jq -r <span class="hljs-string">&#x27;.streams[] | select(.disposition.attached_pic==1) | .index&#x27;</span>) -frames:v 2 cover.jpg<br></code></pre></td></tr></table></figure>
-
-<p>截取图片</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 取第一帧</span><br>ffmpeg -y -i input.mp4 -map  -frames:v 1 -q:v 2 output.jpg  <br><span class="hljs-comment"># 从(-ss) 0 秒开始 只输出 1 帧</span><br>ffmpeg -i input.mp4 -ss 0 -frames:v 1 -q:v 2 output.jpg<br></code></pre></td></tr></table></figure>
+<h3 id="截取图片"><a href="#截取图片" class="headerlink" title="截取图片"></a>截取图片</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 取第一帧</span><br>ffmpeg -y -i input.mp4 -map  -frames:v 1 -q:v 2 output.jpg  <br><span class="hljs-comment"># 从(-ss) 0 秒开始 只输出 1 帧</span><br>ffmpeg -i input.mp4 -ss 0 -frames:v 1 -q:v 2 output.jpg<br></code></pre></td></tr></table></figure>
 
 <p>参数：</p>
 <ul>
 <li><code>-frames:v 1</code>：取第一张视频帧</li>
 <li><code>-q:v 2</code>：JPEG 质量（1 最好，31 最差）</li>
 </ul>
-<p>添加静音音轨</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ffmpeg -y -i input.mp4 -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -shortest -c:v copy -c:a aac -movflags +faststart output.mp4<br></code></pre></td></tr></table></figure>
+<h3 id="添加静音音轨"><a href="#添加静音音轨" class="headerlink" title="添加静音音轨"></a>添加静音音轨</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ffmpeg -y -i input.mp4 -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -shortest -c:v copy -c:a aac -movflags +faststart output.mp4<br></code></pre></td></tr></table></figure>
 
-<p>给 MP4 添加内嵌封面</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ffmpeg -y -i input.mp4 -i cover.jpg -map 0:v -map 0:a? -map 1:v -c copy -c:v:1 mjpeg -disposition:v:1 ttached_pic output.mp4<br></code></pre></td></tr></table></figure>
+<h3 id="给-MP4-添加内嵌封面"><a href="#给-MP4-添加内嵌封面" class="headerlink" title="给 MP4 添加内嵌封面"></a>给 MP4 添加内嵌封面</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">ffmpeg -y -i input.mp4 -i cover.jpg -map 0:v -map 0:a? -map 1:v -c copy -c:v:1 mjpeg -disposition:v:1 ttached_pic output.mp4<br></code></pre></td></tr></table></figure>
 
-<p>替换第一帧</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs livescript">ffmpeg <span class="hljs-string">\</span><br>-y <span class="hljs-string">\</span><br>-<span class="hljs-keyword">loop</span> <span class="hljs-number">1</span> -i cover.jpg <span class="hljs-string">\</span><br>-i output2.mp4 <span class="hljs-string">\</span><br>-filter_complex <span class="hljs-string">&quot;</span><br><span class="hljs-string">[0:v]scale=584:620,setsar=1,format=yuv420p,trim=duration=1,setpts=PTS-STARTPTS[v0];</span><br><span class="hljs-string">[1:v]setsar=1,format=yuv420p,setpts=PTS-STARTPTS[v1];</span><br><span class="hljs-string">[v0][v1]concat=n=2:v=1:a=0[v]</span><br><span class="hljs-string">&quot;</span> <span class="hljs-string">\</span><br>-<span class="hljs-keyword">map</span> <span class="hljs-string">&quot;[v]&quot;</span> <span class="hljs-string">\</span><br>-<span class="hljs-keyword">map</span> <span class="hljs-string">&quot;1:a?&quot;</span> <span class="hljs-string">\</span><br>-c:v libx264 <span class="hljs-string">\</span><br>-c:a copy <span class="hljs-string">\</span><br>output3.mp4<br></code></pre></td></tr></table></figure>
-
+<h3 id="替换第一帧"><a href="#替换第一帧" class="headerlink" title="替换第一帧"></a>替换第一帧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">ffmpeg \<br>-y \<br>-loop 1 -i cover.jpg \<br>-i output2.mp4 \<br>-filter_complex <span class="hljs-string">&quot;</span><br><span class="hljs-string">[0:v]scale=584:620,setsar=1,format=yuv420p,trim=duration=1,setpts=PTS-STARTPTS[v0];</span><br><span class="hljs-string">[1:v]setsar=1,format=yuv420p,setpts=PTS-STARTPTS[v1];</span><br><span class="hljs-string">[v0][v1]concat=n=2:v=1:a=0[v]</span><br><span class="hljs-string">&quot;</span> \<br>-map <span class="hljs-string">&quot;[v]&quot;</span> \<br>-map <span class="hljs-string">&quot;1:a?&quot;</span> \<br>-c:v libx264 \<br>-c:a copy \<br>output3.mp4<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -374,7 +364,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>FFmpeg</div>
+      <div>FFmpeg——常用命令</div>
       <div>http://yoursite.com/2020/11/30/FFmpeg/</div>
     </div>
     <div class="license-meta">
