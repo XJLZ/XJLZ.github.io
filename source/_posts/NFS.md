@@ -90,6 +90,7 @@ sudo umount /data/tusd
 sudo mount -a
 df -hT /data/tusd
 ```
+
 ## Mac
 
 ```sh
@@ -101,14 +102,12 @@ sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address
 sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.30.117" service name="rpc-bind" accept'
 ```
 
-
-
 ```sh
 sudo mount -t nfs \
   -o vers=3,resvport,rw \
   192.168.31.199:/data/tusd \
   /Users/xiao/Desktop/data/tusd
-  
+
 sudo mount -t nfs -o vers=3,resvport,rw  192.168.31.91:/data/tusd /Users/xiao/Desktop/data/tusd
 ```
 

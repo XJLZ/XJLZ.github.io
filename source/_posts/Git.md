@@ -11,7 +11,7 @@ tags:
 
 #### 命令
 
-```bas
+```bash
 # 配置git信息
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com

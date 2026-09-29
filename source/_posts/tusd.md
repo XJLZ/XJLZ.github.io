@@ -272,12 +272,11 @@ server {
 -host=192.168.31.91
 
 -hooks-http=http://192.168.31.199:18080/resource/internal/tusd/hooks-proxy \
-
 ```
 
 **Nginx 同步修改**
 
-```
+```nginx
 upstream resource_centre_tusd {
     server 192.168.31.91:1080;
     keepalive 16;
@@ -286,7 +285,7 @@ upstream resource_centre_tusd {
 
 Hook 代理不能继续只监听回环地址：
 
-```
+```nginx
 server {
     listen 192.168.31.199:18080;
     server_name _;
@@ -337,8 +336,6 @@ location /resource-center/tus/ {
       proxy_set_header header-token $http_header_token;
   }
 ```
-
-
 
 # 升级和回滚
 

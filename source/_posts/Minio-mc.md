@@ -1,11 +1,12 @@
 ```yaml
-title: minio-mc
+title: s3-client
 date: 2026-09-10 11:32:00
 tags:
 - minio
+- aws s3
 ```
 
-# 安装
+# MC安装
 
 [官网]: https://dl.min.io/client/mc/release/
 
@@ -79,6 +80,7 @@ mc ls --recursive <ALIAS>/<BUCKET>/<PREFIX>/
 
 ```bash
 mc du <ALIAS>/<BUCKET>/<PREFIX>/
+mc du --json minio91/resource/latex/
 ```
 
 - **读取/查看文件内容 (`cat` / `head`)：**
@@ -158,3 +160,219 @@ mc ls --json minio91/mybucket/ | jq '.key'
 ```bash
   echo "Hello World" | mc pipe minio91/mybucket/test.txt
 ```
+
+## 同步
+
+```bash
+ mc mirror --overwrite --retry \
+  minio91/resource/latex/6 \
+  zos/szjc-uat/latex/6
+```
+
+### 排除某些文件/目录
+
+例如排除 `.tmp` 文件：
+
+```bash
+mc mirror --overwrite --retry \
+  --exclude "*.tmp" \
+  minio91/resource/mathml \
+  zos/ctyun-szjc-pro-data/mathml
+```
+
+排除某个目录：
+
+```bash
+mc mirror --overwrite --retry \
+  --exclude "cache/*" \
+  minio91/resource/mathml \
+  zos/ctyun-szjc-pro-data/mathml
+```
+
+### 只传某种文件
+
+例如只传 `.xml`：
+
+```bash
+mc mirror --overwrite --retry \
+  --include "*.xml" \
+  minio91/resource/mathml \
+  zos/ctyun-szjc-pro-data/mathml
+```
+
+### 多个过滤规则
+
+例如只传 XML，但排除某个子目录：
+
+```bash
+mc mirror --overwrite --retry \
+  --include "*.xml" \
+  --exclude "test/*" \
+  minio91/resource/mathml \
+  zos/ctyun-szjc-pro-data/mathml
+```
+
+### 只传某个子目录
+
+如果你只想传 `mathml` 下的某个目录，最简单是直接指定 prefix：
+
+```bash
+mc mirror \
+  minio91/resource/mathml/2025 \
+  zos/ctyun-szjc-pro-data/mathml/2025
+```
+
+# rclone
+
+## Mac
+
+```bash
+ brew install rclone
+```
+
+### 配置
+
+执行：
+
+```bash
+rclone config
+```
+
+交互选择：
+
+这里 **provider 选 `Other`**，因为 ZOS 是 S3 兼容存储
+
+```bash
+n) New remote
+name> minio91
+Storage> s3
+provider> Minio
+env_auth> false
+access_key_id> 你的MinIO Access Key
+secret_access_key> 你的MinIO Secret Key
+region> 
+endpoint> http://你的MinIO地址:9000
+location_constraint>
+acl> private
+```
+
+配置完成后测试：
+
+```bash
+rclone lsd minio91:
+```
+
+再测试 bucket：
+
+```bash
+rclone lsf minio91:resource
+```
+
+### 1. 列出当前目录下文件/文件夹及大小
+
+```bash
+rclone size minio91:resource/mathml
+```
+
+输出汇总大小和文件数，但**不是逐文件列表**。
+
+### 2. 逐个列出文件，显示大小
+
+```bash
+rclone ls minio91:resource/mathml
+```
+
+输出格式：
+
+```bash
+123456  9/a.svg
+789012  9/b.svg
+```
+
+第一列就是字节数。
+
+### 3. 人类可读的大小（KB / MB / GB）
+
+```bash
+rclone lsl minio91:resource/mathml
+```
+
+例如：
+
+```bash
+2026-09-17 10:20:00       120 KiB  9/a.svg
+2026-09-17 10:20:01       3.2 MiB  9/b.svg
+```
+
+### 4. 只看当前路径下的文件夹汇总大小
+
+```bash
+rclone size minio91:resource/mathml/9
+```
+
+### 5. 按目录层级统计大小
+
+```bash
+rclone size minio91:resource/mathml --fast-list
+```
+
+如果想看到类似：
+
+```bash
+9       1.2 GB
+10      800 MB
+11      2.3 GB
+```
+
+可以用：
+
+```bash
+rclone lsd minio91:resource/mathml
+```
+
+但 `lsd` 主要列目录，不显示目录大小。
+
+## 同步
+
+```bash
+rclone copy \
+  minio91:resource/latex/4/86978e670e63eed5828b9b3e1a8c286b.svg \
+  zos:ctyun-szjc-pro-data/latex/4/ \
+  --s3-acl public-read \
+  --progress \
+  --transfers 32 \
+  --checkers 16 \
+  --retries 10 \
+  --low-level-retries 20 \
+  --stats 5s
+```
+
+```bash
+rclone copy \
+  minio91:resource/mathml \
+  zos:ctyun-szjc-pro-data/mathml \
+  --include "*.svg" \
+  --s3-acl public-read \
+  --progress \
+  --transfers 32 \
+  --checkers 16 \
+  --retries 10 \
+  --low-level-retries 20 \
+  --stats 5s
+```
+
+#### 逐项解释
+
+| 参数                               | 含义                                                        |
+| -------------------------------- | --------------------------------------------------------- |
+| `rclone copy`                    | 复制文件，**不会删除目标端多余文件**                                      |
+| `minio91:resource/mathml`        | 源端：remote=`minio91`，bucket=`resource`，路径=`mathml`         |
+| `zos:ctyun-szjc-pro-data/mathml` | 目标端：remote=`zos`，bucket=`ctyun-szjc-pro-data`，路径=`mathml` |
+| `--include "*.svg"`              | 只复制 `.svg` 文件，其他后缀跳过                                      |
+| `--s3-acl public-read`           | 上传时请求设置对象 ACL 为 `public-read`                             |
+| `--progress`                     | 显示实时传输进度                                                  |
+| `--transfers 32`                 | 同时传输最多 **32 个文件**                                         |
+| `--checkers 16`                  | 同时进行最多 **16 个检查/对比任务**                                    |
+| `--retries 10`                   | 失败任务最多重试 10 次                                             |
+| `--low-level-retries 20`         | 底层 HTTP/API 请求失败最多重试 20 次                                 |
+| `--stats 5s`                     | 每 5 秒刷新一次统计信息                                             |
