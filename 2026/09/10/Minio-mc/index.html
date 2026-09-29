@@ -19,15 +19,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1234title: minio-mcdate: 2026-09-10 11:32:00tags:- minio  安装Mac1brew install minio&#x2F;stable&#x2F;mc  MinIO Client (mc) 是 MinIO 官方提供的命令行工具，其语法和 UNIX 命令行保持一致（如 ls, cp, cat 等）。它不仅支持 MinIO，还兼容 AWS S3、Google Clou">
+    <meta name="description" content="12345title: s3-clientdate: 2026-09-10 11:32:00tags:- minio- aws s3  MC安装Mac1brew install minio&#x2F;stable&#x2F;mc  MinIO Client (mc) 是 MinIO 官方提供的命令行工具，其语法和 UNIX 命令行保持一致（如 ls, cp, cat 等）。它不仅支持 MinIO，还兼容 AWS S3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/2026/09/10/Minio-mc/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1234title: minio-mcdate: 2026-09-10 11:32:00tags:- minio  安装Mac1brew install minio&#x2F;stable&#x2F;mc  MinIO Client (mc) 是 MinIO 官方提供的命令行工具，其语法和 UNIX 命令行保持一致（如 ls, cp, cat 等）。它不仅支持 MinIO，还兼容 AWS S3、Google Clou">
+<meta property="og:description" content="12345title: s3-clientdate: 2026-09-10 11:32:00tags:- minio- aws s3  MC安装Mac1brew install minio&#x2F;stable&#x2F;mc  MinIO Client (mc) 是 MinIO 官方提供的命令行工具，其语法和 UNIX 命令行保持一致（如 ls, cp, cat 等）。它不仅支持 MinIO，还兼容 AWS S3">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-09-10T08:00:45.832Z">
-<meta property="article:modified_time" content="2026-09-10T08:13:35.471Z">
+<meta property="article:modified_time" content="2026-09-24T10:02:27.942Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -261,7 +261,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          647 字
+          1.3k 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          11 分钟
         
       </span>
     
@@ -315,9 +315,9 @@
             
               <div class="markdown-body">
                 
-                <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">minio-mc</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2026-09-10 11:32:00</span><br><span class="hljs-attr">tags:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">minio</span><br></code></pre></td></tr></table></figure>
+                <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> <span class="hljs-string">s3-client</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2026-09-10 11:32:00</span><br><span class="hljs-attr">tags:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">minio</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">aws</span> <span class="hljs-string">s3</span><br></code></pre></td></tr></table></figure>
 
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install minio/stable/mc<br></code></pre></td></tr></table></figure>
+<h1 id="MC安装"><a href="#MC安装" class="headerlink" title="MC安装"></a>MC安装</h1><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install minio/stable/mc<br></code></pre></td></tr></table></figure>
 
 <p>MinIO Client (<code>mc</code>) 是 MinIO 官方提供的命令行工具，其语法和 UNIX 命令行保持一致（如 <code>ls</code>, <code>cp</code>, <code>cat</code> 等）。它不仅支持 MinIO，还兼容 AWS S3、Google Cloud Storage 等主流对象存储服务。</p>
 <h3 id="一、-基础配置管理-alias"><a href="#一、-基础配置管理-alias" class="headerlink" title="一、 基础配置管理 (alias)"></a>一、 基础配置管理 (<code>alias</code>)</h3><p><code>alias</code> 用于管理管理与 MinIO 服务端的连接凭证。</p>
@@ -356,7 +356,7 @@
 <ul>
 <li><strong>查看文件或目录占用空间 (<code>du</code>)：</strong></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc du &lt;ALIAS&gt;/&lt;BUCKET&gt;/&lt;PREFIX&gt;/<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc du &lt;ALIAS&gt;/&lt;BUCKET&gt;/&lt;PREFIX&gt;/<br>mc du --json minio91/resource/latex/<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><strong>读取/查看文件内容 (<code>cat</code> / <code>head</code>)：</strong></li>
@@ -397,6 +397,120 @@
 <li><strong>管道直接上传：</strong></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello World&quot;</span> | mc pipe minio91/mybucket/test.txt<br></code></pre></td></tr></table></figure>
+
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc mirror --overwrite --retry \<br> minio91/resource/latex/6 \<br> zos/szjc-uat/latex/6<br></code></pre></td></tr></table></figure>
+
+<h3 id="排除某些文件-目录"><a href="#排除某些文件-目录" class="headerlink" title="排除某些文件/目录"></a>排除某些文件/目录</h3><p>例如排除 <code>.tmp</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc mirror --overwrite --retry \<br>  --exclude <span class="hljs-string">&quot;*.tmp&quot;</span> \<br>  minio91/resource/mathml \<br>  zos/ctyun-szjc-pro-data/mathml<br></code></pre></td></tr></table></figure>
+
+<p>排除某个目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc mirror --overwrite --retry \<br>  --exclude <span class="hljs-string">&quot;cache/*&quot;</span> \<br>  minio91/resource/mathml \<br>  zos/ctyun-szjc-pro-data/mathml<br></code></pre></td></tr></table></figure>
+
+<h3 id="只传某种文件"><a href="#只传某种文件" class="headerlink" title="只传某种文件"></a>只传某种文件</h3><p>例如只传 <code>.xml</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc mirror --overwrite --retry \<br>  --include <span class="hljs-string">&quot;*.xml&quot;</span> \<br>  minio91/resource/mathml \<br>  zos/ctyun-szjc-pro-data/mathml<br></code></pre></td></tr></table></figure>
+
+<h3 id="多个过滤规则"><a href="#多个过滤规则" class="headerlink" title="多个过滤规则"></a>多个过滤规则</h3><p>例如只传 XML，但排除某个子目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc mirror --overwrite --retry \<br>  --include <span class="hljs-string">&quot;*.xml&quot;</span> \<br>  --exclude <span class="hljs-string">&quot;test/*&quot;</span> \<br>  minio91/resource/mathml \<br>  zos/ctyun-szjc-pro-data/mathml<br></code></pre></td></tr></table></figure>
+
+<h3 id="只传某个子目录"><a href="#只传某个子目录" class="headerlink" title="只传某个子目录"></a>只传某个子目录</h3><p>如果你只想传 <code>mathml</code> 下的某个目录，最简单是直接指定 prefix：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mc mirror \<br>  minio91/resource/mathml/2025 \<br>  zos/ctyun-szjc-pro-data/mathml/2025<br></code></pre></td></tr></table></figure>
+
+<h1 id="rclone"><a href="#rclone" class="headerlink" title="rclone"></a>rclone</h1><h2 id="Mac-1"><a href="#Mac-1" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">brew install rclone<br></code></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone config<br></code></pre></td></tr></table></figure>
+
+<p>交互选择：</p>
+<p>这里 **provider 选 <code>Other</code>**，因为 ZOS 是 S3 兼容存储</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">n) New remote<br>name&gt; minio91<br>Storage&gt; s3<br>provider&gt; Minio<br>env_auth&gt; <span class="hljs-literal">false</span><br>access_key_id&gt; 你的MinIO Access Key<br>secret_access_key&gt; 你的MinIO Secret Key<br>region&gt; <br>endpoint&gt; http://你的MinIO地址:9000<br>location_constraint&gt;<br>acl&gt; private<br></code></pre></td></tr></table></figure>
+
+<p>配置完成后测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone lsd minio91:<br></code></pre></td></tr></table></figure>
+
+<p>再测试 bucket：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone lsf minio91:resource<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-列出当前目录下文件-文件夹及大小"><a href="#1-列出当前目录下文件-文件夹及大小" class="headerlink" title="1. 列出当前目录下文件/文件夹及大小"></a>1. 列出当前目录下文件/文件夹及大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone size minio91:resource/mathml<br></code></pre></td></tr></table></figure>
+
+<p>输出汇总大小和文件数，但<strong>不是逐文件列表</strong>。</p>
+<h3 id="2-逐个列出文件，显示大小"><a href="#2-逐个列出文件，显示大小" class="headerlink" title="2. 逐个列出文件，显示大小"></a>2. 逐个列出文件，显示大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone ls minio91:resource/mathml<br></code></pre></td></tr></table></figure>
+
+<p>输出格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">123456  9/a.svg<br>789012  9/b.svg<br></code></pre></td></tr></table></figure>
+
+<p>第一列就是字节数。</p>
+<h3 id="3-人类可读的大小（KB-MB-GB）"><a href="#3-人类可读的大小（KB-MB-GB）" class="headerlink" title="3. 人类可读的大小（KB / MB / GB）"></a>3. 人类可读的大小（KB / MB / GB）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone lsl minio91:resource/mathml<br></code></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">2026-09-17 10:20:00       120 KiB  9/a.svg<br>2026-09-17 10:20:01       3.2 MiB  9/b.svg<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-只看当前路径下的文件夹汇总大小"><a href="#4-只看当前路径下的文件夹汇总大小" class="headerlink" title="4. 只看当前路径下的文件夹汇总大小"></a>4. 只看当前路径下的文件夹汇总大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone size minio91:resource/mathml/9<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-按目录层级统计大小"><a href="#5-按目录层级统计大小" class="headerlink" title="5. 按目录层级统计大小"></a>5. 按目录层级统计大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone size minio91:resource/mathml --fast-list<br></code></pre></td></tr></table></figure>
+
+<p>如果想看到类似：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">9       1.2 GB<br>10      800 MB<br>11      2.3 GB<br></code></pre></td></tr></table></figure>
+
+<p>可以用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone lsd minio91:resource/mathml<br></code></pre></td></tr></table></figure>
+
+<p>但 <code>lsd</code> 主要列目录，不显示目录大小。</p>
+<h2 id="同步-1"><a href="#同步-1" class="headerlink" title="同步"></a>同步</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone copy \<br>  minio91:resource/latex/4/86978e670e63eed5828b9b3e1a8c286b.svg \<br>  zos:ctyun-szjc-pro-data/latex/4/ \<br>  --s3-acl public-read \<br>  --progress \<br>  --transfers 32 \<br>  --checkers 16 \<br>  --retries 10 \<br>  --low-level-retries 20 \<br>  --stats 5s<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">rclone copy \<br>  minio91:resource/mathml \<br>  zos:ctyun-szjc-pro-data/mathml \<br>  --include <span class="hljs-string">&quot;*.svg&quot;</span> \<br>  --s3-acl public-read \<br>  --progress \<br>  --transfers 32 \<br>  --checkers 16 \<br>  --retries 10 \<br>  --low-level-retries 20 \<br>  --stats 5s<br></code></pre></td></tr></table></figure>
+
+<h4 id="逐项解释"><a href="#逐项解释" class="headerlink" title="逐项解释"></a>逐项解释</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rclone copy</code></td>
+<td>复制文件，<strong>不会删除目标端多余文件</strong></td>
+</tr>
+<tr>
+<td><code>minio91:resource/mathml</code></td>
+<td>源端：remote=<code>minio91</code>，bucket=<code>resource</code>，路径=<code>mathml</code></td>
+</tr>
+<tr>
+<td><code>zos:ctyun-szjc-pro-data/mathml</code></td>
+<td>目标端：remote=<code>zos</code>，bucket=<code>ctyun-szjc-pro-data</code>，路径=<code>mathml</code></td>
+</tr>
+<tr>
+<td><code>--include &quot;*.svg&quot;</code></td>
+<td>只复制 <code>.svg</code> 文件，其他后缀跳过</td>
+</tr>
+<tr>
+<td><code>--s3-acl public-read</code></td>
+<td>上传时请求设置对象 ACL 为 <code>public-read</code></td>
+</tr>
+<tr>
+<td><code>--progress</code></td>
+<td>显示实时传输进度</td>
+</tr>
+<tr>
+<td><code>--transfers 32</code></td>
+<td>同时传输最多 <strong>32 个文件</strong></td>
+</tr>
+<tr>
+<td><code>--checkers 16</code></td>
+<td>同时进行最多 <strong>16 个检查/对比任务</strong></td>
+</tr>
+<tr>
+<td><code>--retries 10</code></td>
+<td>失败任务最多重试 10 次</td>
+</tr>
+<tr>
+<td><code>--low-level-retries 20</code></td>
+<td>底层 HTTP/API 请求失败最多重试 20 次</td>
+</tr>
+<tr>
+<td><code>--stats 5s</code></td>
+<td>每 5 秒刷新一次统计信息</td>
+</tr>
+</tbody></table>
 
                 
               </div>

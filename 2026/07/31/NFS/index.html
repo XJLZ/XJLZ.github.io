@@ -27,7 +27,7 @@
 <meta property="og:description" content="服务端1sudo yum install -y nfs-utils  编辑 &#x2F;etc&#x2F;exports，增加： 123456&#x2F;data&#x2F;tusd 192.168.31.200(rw,sync,no_subtree_check)&#x2F;data&#x2F;tusd 192.168.31.201(rw,sync,no_subtree_check)&#x2F;data&#x2F;tusd 192.168.30.117(rw,sync,no_">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-31T03:32:00.000Z">
-<meta property="article:modified_time" content="2026-08-14T06:59:19.876Z">
+<meta property="article:modified_time" content="2026-09-15T02:14:07.669Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Mac">
 <meta property="article:tag" content="Linux">
@@ -349,11 +349,10 @@
 
 <p>验证：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo umount /data/tusd<br>sudo mount -a<br>df -hT /data/tusd<br></code></pre></td></tr></table></figure>
+
 <h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># NFS服务的需开启</span><br>sudo firewall-cmd --permanent --add-rich-rule=<span class="hljs-string">&#x27;rule family=&quot;ipv4&quot; source address=&quot;192.168.30.117&quot; service name=&quot;nfs&quot; accept&#x27;</span><br><br>sudo firewall-cmd --permanent --add-rich-rule=<span class="hljs-string">&#x27;rule family=&quot;ipv4&quot; source address=&quot;192.168.30.117&quot; service name=&quot;mountd&quot; accept&#x27;</span><br><br>sudo firewall-cmd --permanent --add-rich-rule=<span class="hljs-string">&#x27;rule family=&quot;ipv4&quot; source address=&quot;192.168.30.117&quot; service name=&quot;rpc-bind&quot; accept&#x27;</span><br></code></pre></td></tr></table></figure>
 
-
-
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo mount -t nfs \<br>  -o vers=3,resvport,rw \<br>  192.168.31.199:/data/tusd \<br>  /Users/xiao/Desktop/data/tusd<br>  <br>sudo mount -t nfs -o vers=3,resvport,rw  192.168.31.91:/data/tusd /Users/xiao/Desktop/data/tusd<br></code></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo mount -t nfs \<br>  -o vers=3,resvport,rw \<br>  192.168.31.199:/data/tusd \<br>  /Users/xiao/Desktop/data/tusd<br><br>sudo mount -t nfs -o vers=3,resvport,rw  192.168.31.91:/data/tusd /Users/xiao/Desktop/data/tusd<br></code></pre></td></tr></table></figure>
 
 <h3 id="自动挂载-1"><a href="#自动挂载-1" class="headerlink" title="自动挂载"></a>自动挂载</h3><p>临时挂载验证通过后，再考虑写入 Mac 的 <code>/etc/fstab</code>：</p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-number">192.168</span><span class="hljs-number">.31</span><span class="hljs-number">.199</span>:/data/tusd /Users/xiao/resource-tusd nfs rw,vers=<span class="hljs-number">3</span>,resvport <span class="hljs-number">0</span> <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
